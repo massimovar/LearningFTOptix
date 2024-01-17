@@ -7,7 +7,7 @@ Presentazione FTOptix: overview
 # Getting started guide 
 Optix_Getting_Started_Guide_EN_v8 
 
-# Training material: 
+# Training material
 Optix_1.2.0.272_ v17
 
 # YouTube playlist
