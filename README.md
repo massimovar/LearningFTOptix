@@ -1,5 +1,5 @@
 # LearningFTOptix
-A set of resources in order to became an FTOptix expert!
+A set of resources in order to become an FTOptix expert!
 
 ## FTOptix overview
 Presentazione FTOptix: overview
