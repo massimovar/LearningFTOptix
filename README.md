@@ -1,5 +1,5 @@
 # LearningFTOptix
-A set of resources in order to become an FTOptix expert!
+A set of resources in order to become an FTOptix power user!
 
 ## FTOptix overview
 [What is FTOptix?](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOpti_Overview.pdf)
@@ -10,9 +10,6 @@ A set of resources in order to become an FTOptix expert!
 ## Training material
 [Technical training](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf)
 
-## YouTube playlist
-[Rockwell channel](https://www.youtube.com/playlist?list=PL3K_BigUXJ1M1-JpRiwIIhzJUbhwtK3yy)
-
 ## Knowledge base
 [How can we help?](https://rockwellautomation.custhelp.com/app/home)
 
@@ -21,3 +18,6 @@ A set of resources in order to become an FTOptix expert!
 
 ## C# NetLogic cheat sheet
 [cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
+
+## YouTube playlist
+[Rockwell channel](https://www.youtube.com/playlist?list=PL3K_BigUXJ1M1-JpRiwIIhzJUbhwtK3yy)
