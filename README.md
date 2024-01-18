@@ -2,13 +2,13 @@
 A set of resources in order to become an FTOptix expert!
 
 ## FTOptix overview
-Presentazione FTOptix: overview
+[What is FTOptix?](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOpti_Overview.pdf)
 
 ## Getting started guide 
-Optix_Getting_Started_Guide_EN_v8 
+[Install FTOptix](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Getting_Started_Guide.pdf)
 
 ## Training material
-Optix_1.2.0.272_ v17
+[Technical training](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf)
 
 ## YouTube playlist
 [Rockwell channel](https://www.youtube.com/playlist?list=PL3K_BigUXJ1M1-JpRiwIIhzJUbhwtK3yy)
