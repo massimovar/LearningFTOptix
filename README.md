@@ -1,4 +1,4 @@
-# LearningFTOptix
+# Learning FTOptix
 A set of resources in order to become an FTOptix power user!
 
 ## FTOptix overview
