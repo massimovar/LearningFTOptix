@@ -18,5 +18,5 @@ A set of resources in order to become an FTOptix power user!
 ## C# NetLogic cheat sheet
 - [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
 
-## GitHub repositories 
-- [Dozens of examples!](https://github.com/FactoryTalk-Optix)
+## Examples
+- GitHub repositories  [Dozens of examples!](https://github.com/FactoryTalk-Optix)
