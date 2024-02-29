@@ -13,6 +13,8 @@ A set of resources in order to become an FTOptix power user!
 - YouTube playlist [Rockwell channel](https://www.youtube.com/playlist?list=PL3K_BigUXJ1M1-JpRiwIIhzJUbhwtK3yy)
 
 ## Knowledge base
+- [FactoryTalk Optix Help Center](https://www.rockwellautomation.com/docs/en/factorytalk-optix/1-00/contents-ditamap.html)
+  - [Known anomalies](https://www.rockwellautomation.com/docs/en/factorytalk-optix/1-00/contents-ditamap/release-notes/known-anomalies.html)   
 - [How can we help?](https://rockwellautomation.custhelp.com/app/home)
 - C# NetLogic [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
 
