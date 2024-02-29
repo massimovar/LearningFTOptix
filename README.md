@@ -19,7 +19,7 @@ A set of resources in order to become an FTOptix power user!
 ## Examples
 - GitHub repositories  [Dozens of examples!](https://github.com/FactoryTalk-Optix)
 
-## 🔧 Miscellaneous
+## Miscellaneous
 - Choose your tool to write scripts in FTOptix Studio
   - [Visual Studio code](https://code.visualstudio.com/)
   - [Visual Studio 2022](https://visualstudio.microsoft.com/it/vs/)
