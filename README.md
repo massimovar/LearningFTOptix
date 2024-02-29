@@ -26,3 +26,4 @@ A set of resources in order to become an FTOptix power user!
       - [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
       - [NuGet Gallery](https://marketplace.visualstudio.com/items?itemName=patcx.vscode-nuget-gallery) 
   - [Visual Studio 2022](https://visualstudio.microsoft.com/it/vs/)
+- [.NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
