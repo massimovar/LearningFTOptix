@@ -21,5 +21,5 @@ A set of resources in order to become an FTOptix power user!
 
 ## 🔧 Miscellaneous
 - Choose your tool to write scripts in FTOptix Studio
-  - [https://code.visualstudio.com/](Visual Studio code)
-  - [https://visualstudio.microsoft.com/it/vs/](Visual Studio 2022)
+  - [Visual Studio code](https://code.visualstudio.com/)
+  - [Visual Studio 2022](https://visualstudio.microsoft.com/it/vs/)
