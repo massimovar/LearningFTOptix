@@ -14,7 +14,12 @@ A set of resources in order to become an FTOptix power user!
 
 ## Knowledge base
 - [How can we help?](https://rockwellautomation.custhelp.com/app/home)
-- C# NetLogic cheat sheet [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
+- C# NetLogic [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
 
 ## Examples
 - GitHub repositories  [Dozens of examples!](https://github.com/FactoryTalk-Optix)
+
+## 🔧 Miscellaneous
+- Choose your tool to write scripts in FTOptix Studio
+  - [https://code.visualstudio.com/](Visual Studio code)
+  - [https://visualstudio.microsoft.com/it/vs/](Visual Studio 2022)
