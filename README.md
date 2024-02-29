@@ -22,4 +22,7 @@ A set of resources in order to become an FTOptix power user!
 ## Miscellaneous
 - Choose your tool to write scripts in FTOptix Studio
   - [Visual Studio code](https://code.visualstudio.com/)
+    - Suggested extensions
+      - [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+      - [NuGet Gallery](https://marketplace.visualstudio.com/items?itemName=patcx.vscode-nuget-gallery) 
   - [Visual Studio 2022](https://visualstudio.microsoft.com/it/vs/)
