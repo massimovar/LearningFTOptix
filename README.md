@@ -8,8 +8,8 @@ A set of resources in order to become an FTOptix power user!
 ## 🏁 Getting started 
 - [Create a MyRockwell account and install FTOptix](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Getting_Started_Guide.pdf)
 - [FactoryTalk Optix Portfolio Technical Documentation](https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html)
-  - [Installation guide](https://www.rockwellautomation.com/docs/en/factorytalk-optix/current/installation-guide-ditamap.html) 
-  - [FactoryTalk Optix Solutions Application Technique](https://www.rockwellautomation.com/docs/en/factorytalk-optix/technical-content/optix-at001/factorytalk-optix-solutions-application-technique-.html)
+  - [FTOptix Installation guide](https://www.rockwellautomation.com/docs/en/factorytalk-optix/current/installation-guide-ditamap.html) 
+  - [FTOptix Solutions Application Technique](https://www.rockwellautomation.com/docs/en/factorytalk-optix/technical-content/optix-at001/factorytalk-optix-solutions-application-technique-.html)
   - [Hardware options and more](https://www.rockwellautomation.com/en-us/solutions/hmi/optix.html)
 
 ## Learning material
