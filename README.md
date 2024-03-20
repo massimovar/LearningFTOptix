@@ -5,8 +5,12 @@ A set of resources in order to become an FTOptix power user!
 - [What is FTOptix? An overview](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOpti_Overview.pdf)
 - [FTOptix 1.3 new features](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix%20v1.3.pdf)
 
-## Getting started guide 
-- 🏁 [Create a MyRockwell account and install FTOptix](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Getting_Started_Guide.pdf)
+## 🏁 Getting started 
+- [Create a MyRockwell account and install FTOptix](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Getting_Started_Guide.pdf)
+- [FactoryTalk Optix Portfolio Technical Documentation](https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html)
+  - [Installation guide](https://www.rockwellautomation.com/docs/en/factorytalk-optix/current/installation-guide-ditamap.html) 
+  - [FactoryTalk Optix Solutions Application Technique](https://www.rockwellautomation.com/docs/en/factorytalk-optix/technical-content/optix-at001/factorytalk-optix-solutions-application-technique-.html)
+  - [Hardware options and more](https://www.rockwellautomation.com/en-us/solutions/hmi/optix.html)
 
 ## Learning material
 - [Technical training](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf)
