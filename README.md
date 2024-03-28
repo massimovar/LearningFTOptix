@@ -3,7 +3,7 @@ A set of resources in order to become an FTOptix power user!
 
 ## FTOptix overviews
 - [What is FTOptix? An overview](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOpti_Overview.pdf)
-- 📯 Latest releases
+- 🆕 Latest releases
   - [FTOptix 1.3 new features](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix%20v1.3.pdf)
 
 ## 🏁 Getting started 
