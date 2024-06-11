@@ -36,5 +36,5 @@ A set of resources in order to become an FTOptix power user!
 ## Examples
 - GitHub repositories  [Dozens of examples!](https://github.com/FactoryTalk-Optix)
 
-# 🖥️ Optix Panels
+# 🖥️ OptixPanels
 - [download firmware ('drivers and firmware' section](https://www.rockwellautomation.com/en-us/support/product/product-downloads.html)
