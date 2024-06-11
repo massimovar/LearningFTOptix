@@ -39,4 +39,4 @@ A set of resources in order to become an FTOptix power user!
 - [.NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
 # 🖥️ Optix Panels
-- [download firmware ('drivers and firmware' section] (https://www.rockwellautomation.com/en-us/support/product/product-downloads.html)
+- [download firmware ('drivers and firmware' section](https://www.rockwellautomation.com/en-us/support/product/product-downloads.html)
