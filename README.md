@@ -17,19 +17,14 @@ A set of resources in order to become an FTOptix power user!
 ## Learning material
 - [Technical training](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf)
 - [FactoryTalk Optix Help Center](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html)
-  - [Known anomalies](https://www.rockwellautomation.com/docs/en/factorytalk-optix/1-00/contents-ditamap/release-notes/known-anomalies.html)   
+  - [Known anomalies](https://www.rockwellautomation.com/docs/en/factorytalk-optix/1-00/contents-ditamap/release-notes/known-anomalies.html)
+- [RA Knowledge base](https://rockwellautomation.custhelp.com/app/home)
 - YouTube
   - RA playlist [Rockwell channel](https://www.youtube.com/playlist?list=PL3K_BigUXJ1M1-JpRiwIIhzJUbhwtK3yy)
   - [some other tutorials (ITA)](https://www.youtube.com/channel/UCTnVOaqnbAceKqE-8a5ObrA)
 
-## Knowledge base
-- [How can we help?](https://rockwellautomation.custhelp.com/app/home)
+## Scripting
 - C# NetLogic [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
-
-## Examples
-- GitHub repositories  [Dozens of examples!](https://github.com/FactoryTalk-Optix)
-
-## Miscellaneous
 - Choose your tool to write scripts in FTOptix Studio
   - [Visual Studio code](https://code.visualstudio.com/)
     - Suggested extensions
@@ -37,6 +32,9 @@ A set of resources in order to become an FTOptix power user!
       - [NuGet Gallery](https://marketplace.visualstudio.com/items?itemName=patcx.vscode-nuget-gallery) 
   - [Visual Studio 2022](https://visualstudio.microsoft.com/it/vs/)
 - [.NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+
+## Examples
+- GitHub repositories  [Dozens of examples!](https://github.com/FactoryTalk-Optix)
 
 # 🖥️ Optix Panels
 - [download firmware ('drivers and firmware' section](https://www.rockwellautomation.com/en-us/support/product/product-downloads.html)
