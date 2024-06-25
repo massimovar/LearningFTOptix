@@ -38,4 +38,4 @@ A set of resources in order to become an FTOptix power user!
 
 # 🖥️ OptixPanels
 - [Overview, ASEM site](https://www.asemautomation.com/en/products.html?_id=41)
-- [download firmware ('drivers and firmware' section](https://www.rockwellautomation.com/en-us/support/product/product-downloads.html)
+- [Download firmware ('drivers and firmware' section)](https://www.rockwellautomation.com/en-us/support/product/product-downloads.html)
