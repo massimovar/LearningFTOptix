@@ -36,7 +36,7 @@ A set of resources in order to become an FTOptix power user!
 ## ⚗️ Examples
 - GitHub repositories  [Dozens of examples!](https://github.com/FactoryTalk-Optix)
 
-# ✏️ Test yourself!
+## ✏️ Test yourself!
 - [FTOptix: start free exam](https://demoapps.optix.cloud.rockwellautomation.com/runtime-demos/exam/)
 
 # 🖥️ OptixPanels
