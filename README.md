@@ -36,9 +36,9 @@ A set of resources in order to become an FTOptix power user!
 ## ⚗️ Examples
 - GitHub repositories  [Dozens of examples!](https://github.com/FactoryTalk-Optix)
 
+# Test yourself!
+- [FTOptix: start free exam](https://demoapps.optix.cloud.rockwellautomation.com/runtime-demos/exam/)
+
 # 🖥️ OptixPanels
 - [Overview, ASEM site](https://www.asemautomation.com/en/products.html?_id=41)
 - [Download firmware ('drivers and firmware' section)](https://www.rockwellautomation.com/en-us/support/product/product-downloads.html)
-
-# Test yourself!
-- [FTOptix: start free exam](https://demoapps.optix.cloud.rockwellautomation.com/runtime-demos/exam/)
