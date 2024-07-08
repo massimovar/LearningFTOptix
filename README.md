@@ -33,7 +33,7 @@ A set of resources in order to become an FTOptix power user!
   - [Visual Studio 2022](https://visualstudio.microsoft.com/it/vs/)
 - [.NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
-## Examples
+## ⚗️ Examples
 - GitHub repositories  [Dozens of examples!](https://github.com/FactoryTalk-Optix)
 
 # 🖥️ OptixPanels
