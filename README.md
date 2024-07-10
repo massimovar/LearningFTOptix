@@ -17,7 +17,6 @@ A set of resources in order to become an FTOptix power user!
 ## 📖 Learning material
 - [Technical training](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf)
 - [FactoryTalk Optix Help Center](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html)
-  - [Known anomalies](https://www.rockwellautomation.com/docs/en/factorytalk-optix/1-00/contents-ditamap/release-notes/known-anomalies.html)
 - [RA Knowledge base](https://rockwellautomation.custhelp.com/app/home)
 - YouTube
   - RA playlist [Rockwell channel](https://www.youtube.com/playlist?list=PL3K_BigUXJ1M1-JpRiwIIhzJUbhwtK3yy)
