@@ -24,7 +24,9 @@ A set of resources in order to become an FTOptix power user!
     - [What is an alias? (ITA)](https://www.youtube.com/watch?v=BoWB3jcCFg8&ab_channel=HMIfromatoz)
 
 ## ⌨️ Scripting
-- C# NetLogic [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
+- C# NetLogic
+  - [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
+  - [Other super useful C# snippets](https://gist.github.com/AlessioForafo)
 - Choose your tool to write scripts in FTOptix Studio
   - [Visual Studio code](https://code.visualstudio.com/)
     - Suggested extensions
