@@ -2,13 +2,11 @@
 A set of resources in order to become an FTOptix power user!
 
 
-<details>
-  <summary> ## 🏁 FTOptix overviews </summary>
+## 🏁 FTOptix overview 
 - [What is FTOptix? An overview](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOpti_Overview.pdf)
 - Latest releases
   - [FTOptix 1.4 new features](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix%20v1.4.pdf)
   - [FTOptix 1.3 new features](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix%20v1.3.pdf)
-</details>
 
 ## 🚀 Getting started 
 - [Create a MyRockwell account and install FTOptix](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Getting_Started_Guide.pdf)
