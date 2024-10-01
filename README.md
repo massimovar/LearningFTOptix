@@ -1,6 +1,12 @@
 # 📚 Learning FTOptix
 A set of resources in order to become an FTOptix power user!
 
+<details>
+  <summary>Click me</summary>
+
+  dsd
+</details>details>
+
 ## 🏁 FTOptix overviews
 - [What is FTOptix? An overview](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOpti_Overview.pdf)
 - Latest releases
