@@ -41,7 +41,7 @@
 - GitHub repositories  [Dozens of examples!](https://github.com/FactoryTalk-Optix)
 
 ## ✏️ Test yourself!
-- [FTOptix: start free exam!](https://demoapps.optix.cloud.rockwellautomation.com/runtime-demos/exam/)
+- [Start free exam!](https://demoapps.optix.cloud.rockwellautomation.com/runtime-demos/exam/)
 
 # 🖥️ OptixPanels
 - [Overview, ASEM site](https://www.asemautomation.com/en/products.html?_id=41)
