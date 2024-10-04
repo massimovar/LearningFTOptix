@@ -17,8 +17,9 @@
 
 ## 📖 Learning material
 - [Technical training](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf)
-- [FactoryTalk Optix Help Center](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html)
-- [RA Knowledge base](https://rockwellautomation.custhelp.com/app/home)
+- Help!
+  - [FactoryTalk Optix Help Center](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html)
+  - [RA Knowledge base](https://rockwellautomation.custhelp.com/app/home)
 - YouTube
   - [Rockwell channel](https://www.youtube.com/playlist?list=PL3K_BigUXJ1M1-JpRiwIIhzJUbhwtK3yy)
   - [some other tutorials (ITA)](https://www.youtube.com/channel/UCTnVOaqnbAceKqE-8a5ObrA)
