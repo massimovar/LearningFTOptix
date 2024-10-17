@@ -30,12 +30,12 @@
   - ⭐ [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
   - ⭐ [Other super useful C# snippets](https://gist.github.com/AlessioForafo)
 - Choose your tool to write scripts in FTOptix Studio
-
 <details>
-<summary>[Visual Studio code](https://code.visualstudio.com/)</summary>
+<summary></summary>
+      - [Visual Studio code](https://code.visualstudio.com/)
       - Suggested extensions
-      - [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-      - [NuGet Gallery](https://marketplace.visualstudio.com/items?itemName=patcx.vscode-nuget-gallery) 
+        - [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+        - [NuGet Gallery](https://marketplace.visualstudio.com/items?itemName=patcx.vscode-nuget-gallery) 
 </details>
   - [Visual Studio 2022](https://visualstudio.microsoft.com/it/vs/)
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
