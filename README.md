@@ -4,7 +4,7 @@
 
 ## 🏁 FTOptix overview 
 - [What is FTOptix? An overview](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOpti_Overview.pdf)
-- 🔝 Latest releases
+- ⭐ Latest releases
   - [FTOptix 1.4 new features](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix%20v1.4.pdf)
   - [FTOptix 1.3 new features](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix%20v1.3.pdf)
 
@@ -27,8 +27,8 @@
 
 ## ⌨️ Scripting
 - **C# NetLogic**
-  - 🔝 [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
-  - 🔝 [Other super useful C# snippets](https://gist.github.com/AlessioForafo)
+  - ⭐ [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
+  - ⭐ [Other super useful C# snippets](https://gist.github.com/AlessioForafo)
 - Choose your tool to write scripts in FTOptix Studio
   - [Visual Studio code](https://code.visualstudio.com/)
     - Suggested extensions
@@ -38,7 +38,7 @@
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
 ## ⚗️ Examples
-- 🔝 GitHub repositories  [Dozens of examples!](https://github.com/FactoryTalk-Optix)
+- ⭐ GitHub repositories  [Dozens of examples!](https://github.com/FactoryTalk-Optix)
 
 ## ✏️ Test yourself!
 - [Start free exam!](https://demoapps.optix.cloud.rockwellautomation.com/runtime-demos/exam/)
