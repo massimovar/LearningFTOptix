@@ -38,9 +38,9 @@
   * **Visual Studio 2022** https://visualstudio.microsoft.com/it/vs/
 </details>
 
-- **C# NetLogic**
-  - ⭐ [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
-  - ⭐ [Other super useful C# snippets](https://gist.github.com/AlessioForafo)
+**C# snippets ready to go**
+- ⭐ [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
+- ⭐ [Other super useful C# snippets](https://gist.github.com/AlessioForafo)
 
 
 
