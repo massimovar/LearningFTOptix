@@ -29,16 +29,18 @@
 - **C# NetLogic**
   - ⭐ [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
   - ⭐ [Other super useful C# snippets](https://gist.github.com/AlessioForafo)
-- Choose your tool to write scripts in FTOptix Studio
+
 <details>
-<summary></summary>
-      - [Visual Studio code](https://code.visualstudio.com/)
-      - Suggested extensions
-        - [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-        - [NuGet Gallery](https://marketplace.visualstudio.com/items?itemName=patcx.vscode-nuget-gallery) 
+<summary>Choose your tool to write scripts in FTOptix Studio</summary>
+  [Visual Studio code](https://code.visualstudio.com/)
+  Suggested extensions:
+  [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+  [NuGet Gallery](https://marketplace.visualstudio.com/items?itemName=patcx.vscode-nuget-gallery) 
+
+  [Visual Studio 2022](https://visualstudio.microsoft.com/it/vs/)
 </details>
-  - [Visual Studio 2022](https://visualstudio.microsoft.com/it/vs/)
-- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+
+[.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
 ## ⚗️ Examples
 - ⭐ GitHub repositories  [Dozens of examples!](https://github.com/FactoryTalk-Optix)
