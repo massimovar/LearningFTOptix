@@ -31,7 +31,7 @@
   - ⭐ [Other super useful C# snippets](https://gist.github.com/AlessioForafo)
 
 <details>
-<summary>Choose your tool to write scripts in FTOptix Studio</summary>
+<summary>Choose your tool to write scripts in FTOptix Studio (click!)</summary>
   
   * Visual Studio code: https://code.visualstudio.com/
     * Suggested extensions:
