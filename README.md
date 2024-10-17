@@ -35,7 +35,7 @@
       - [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
       - [NuGet Gallery](https://marketplace.visualstudio.com/items?itemName=patcx.vscode-nuget-gallery) 
   - [Visual Studio 2022](https://visualstudio.microsoft.com/it/vs/)
-- [.NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
 ## ⚗️ Examples
 - GitHub repositories  [Dozens of examples!](https://github.com/FactoryTalk-Optix)
