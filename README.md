@@ -26,10 +26,6 @@
     - [What is an alias? (ITA)](https://www.youtube.com/watch?v=BoWB3jcCFg8&ab_channel=HMIfromatoz)
 
 ## ⌨️ Scripting
-- **C# NetLogic**
-  - ⭐ [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
-  - ⭐ [Other super useful C# snippets](https://gist.github.com/AlessioForafo)
-
 <details>
 <summary>Choose your tool to write scripts in FTOptix Studio (click!)</summary>
   
@@ -40,8 +36,11 @@
     * Don't forget to install .NET 8 SDK: https://dotnet.microsoft.com/en-us/download/dotnet/8.0
 
   * Visual Studio 2022: https://visualstudio.microsoft.com/it/vs/
-    
 </details>
+
+- **C# NetLogic**
+  - ⭐ [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
+  - ⭐ [Other super useful C# snippets](https://gist.github.com/AlessioForafo)
 
 
 
