@@ -20,7 +20,7 @@
 - Help!
   - [FactoryTalk Optix Help Center](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html)
   - [RA Knowledge base](https://rockwellautomation.custhelp.com/app/home)
-  - [RA Literarure Library](https://www.rockwellautomation.com/en-us/support/documentation/literature-library.html)
+  - [RA Literature Library](https://www.rockwellautomation.com/en-us/support/documentation/literature-library.html)
 - YouTube
   - [Rockwell channel](https://www.youtube.com/playlist?list=PL3K_BigUXJ1M1-JpRiwIIhzJUbhwtK3yy)
   - [some other tutorials (ITA)](https://www.youtube.com/channel/UCTnVOaqnbAceKqE-8a5ObrA)
