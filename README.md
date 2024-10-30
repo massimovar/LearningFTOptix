@@ -51,3 +51,4 @@
 # 🖥️ OptixPanels
 - [Overview, ASEM site](https://www.asemautomation.com/en/products.html?_id=41)
 - [Download firmware ('drivers and firmware' section)](https://www.rockwellautomation.com/en-us/support/product/product-downloads.html)
+- [OptixPanel Standard User Manual](https://literature.rockwellautomation.com/idc/groups/literature/documents/um/2800s-um001_-en-p.pdf)
