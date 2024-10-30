@@ -9,6 +9,7 @@
   - [FTOptix 1.3 new features](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix%20v1.3.pdf)
 
 ## 🚀 Getting started 
+- [System requirements](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/release-notes-ditamap/system/system-requirements.html)
 - [Create a MyRockwell account and install FTOptix](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Getting_Started_Guide.pdf)
 - [FactoryTalk Optix Portfolio Technical Documentation](https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html)
   - [FTOptix Installation guide](https://www.rockwellautomation.com/docs/en/factorytalk-optix/current/installation-guide-ditamap.html) 
