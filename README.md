@@ -16,7 +16,6 @@
 - [FactoryTalk Optix Portfolio Technical Documentation](https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html)
   - [FTOptix Installation guide](https://www.rockwellautomation.com/docs/en/factorytalk-optix/current/installation-guide-ditamap.html) 
   - [FTOptix Solutions Application Technique](https://www.rockwellautomation.com/docs/en/factorytalk-optix/technical-content/optix-at001/factorytalk-optix-solutions-application-technique-.html)
-  - [Hardware options and more](https://www.rockwellautomation.com/en-us/solutions/hmi/optix.html)
 
 ## 📖 Learning material
 - [Technical training](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf)
@@ -60,3 +59,4 @@
 - [Download firmware ('drivers and firmware' section)](https://www.rockwellautomation.com/en-us/support/product/product-downloads.html)
 - [OptixPanel Standard User Manual](https://literature.rockwellautomation.com/idc/groups/literature/documents/um/2800s-um001_-en-p.pdf)
 - [Embedded Edge Compute Module](https://literature.rockwellautomation.com/idc/groups/literature/documents/um/1756-um021_-en-p.pdf)
+- [Hardware options and more](https://www.rockwellautomation.com/en-us/solutions/hmi/optix.html)
