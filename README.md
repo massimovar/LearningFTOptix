@@ -1,15 +1,17 @@
 # 📚 Learning FTOptix
 #### A set of resources in order to become an FTOptix power user!
 
-
 ## 🏁 FTOptix overview 
 - [What is FTOptix? An overview](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOpti_Overview.pdf)
 - Latest releases
   - [FTOptix 1.4 new features](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix%20v1.4.pdf)
   - [FTOptix 1.3 new features](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix%20v1.3.pdf)
 
-## 🚀 Getting started 
+## System requirements and ports configuration
 - [System requirements](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/release-notes-ditamap/system/system-requirements.html)
+- [Network ports configuration](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/getting-started/configuration/network-ports-configuration.html)
+
+## 🚀 Download and install
 - [Create a MyRockwell account and install FTOptix](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Getting_Started_Guide.pdf)
 - [FactoryTalk Optix Portfolio Technical Documentation](https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html)
   - [FTOptix Installation guide](https://www.rockwellautomation.com/docs/en/factorytalk-optix/current/installation-guide-ditamap.html) 
@@ -26,11 +28,8 @@
   - [Rockwell channel](https://www.youtube.com/playlist?list=PL3K_BigUXJ1M1-JpRiwIIhzJUbhwtK3yy)
   - [some other tutorials (ITA)](https://www.youtube.com/channel/UCTnVOaqnbAceKqE-8a5ObrA)
     - [What is an alias? (ITA)](https://www.youtube.com/watch?v=BoWB3jcCFg8&ab_channel=HMIfromatoz)
-   
-## 21 CFR Part 11 Regulation 
-- [FactoryTalk® Optix Instructions compliant with the 21 CFR Part 11 Regulation](https://literature.rockwellautomation.com/idc/groups/literature/documents/um/optix-um001_-en-p.pdf)
 
-## ⌨️ Scripting
+## ⌨️ Ready to use scripts
 <details>
 <summary>Choose your tool to write scripts in FTOptix Studio (click!)</summary>
   
@@ -49,6 +48,9 @@
 
 ## ⚗️ Examples
 - GitHub repositories  [Dozens of examples!](https://github.com/FactoryTalk-Optix)
+
+## 21 CFR Part 11 Regulation 
+- [FactoryTalk® Optix Instructions compliant with the 21 CFR Part 11 Regulation](https://literature.rockwellautomation.com/idc/groups/literature/documents/um/optix-um001_-en-p.pdf)
 
 ## ✏️ Test yourself!
 - [Start free exam!](https://demoapps.optix.cloud.rockwellautomation.com/runtime-demos/exam/)
