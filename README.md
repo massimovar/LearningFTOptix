@@ -7,7 +7,7 @@
   - [FTOptix 1.4 new features](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix%20v1.4.pdf)
   - [FTOptix 1.3 new features](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix%20v1.3.pdf)
 
-## System requirements and ports configuration
+## 📜 System requirements and ports configuration
 - [System requirements](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/release-notes-ditamap/system/system-requirements.html)
 - [Network ports configuration](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/getting-started/configuration/network-ports-configuration.html)
 
@@ -49,7 +49,7 @@
 ## ⚗️ Examples
 - GitHub repositories  [Dozens of examples!](https://github.com/FactoryTalk-Optix)
 
-## 21 CFR Part 11 Regulation 
+## 🕵️ 21 CFR Part 11 Regulation 
 - [FactoryTalk® Optix Instructions compliant with the 21 CFR Part 11 Regulation](https://literature.rockwellautomation.com/idc/groups/literature/documents/um/optix-um001_-en-p.pdf)
 
 ## ✏️ Test yourself!
