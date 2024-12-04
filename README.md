@@ -50,6 +50,7 @@
 
 ## ⚗️ Examples
 - GitHub repositories  [Dozens of examples!](https://github.com/FactoryTalk-Optix)
+- [Sample code library](https://www.rockwellautomation.com/it-it/support/product/product-downloads/application-code-library/sample-code.html)
 
 ## 🕵️ 21 CFR Part 11 Regulation 
 - [FactoryTalk® Optix Instructions compliant with the 21 CFR Part 11 Regulation](https://literature.rockwellautomation.com/idc/groups/literature/documents/um/optix-um001_-en-p.pdf)
