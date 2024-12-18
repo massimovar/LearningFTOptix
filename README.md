@@ -32,7 +32,8 @@
 - YouTube
   - [Rockwell channel](https://www.youtube.com/playlist?list=PL3K_BigUXJ1M1-JpRiwIIhzJUbhwtK3yy)
   - [some other tutorials (ITA)](https://www.youtube.com/channel/UCTnVOaqnbAceKqE-8a5ObrA)
-    - [What is an alias? (ITA)](https://www.youtube.com/watch?v=BoWB3jcCFg8&ab_channel=HMIfromatoz)
+    - [What is an alias? (ITA)](https://youtu.be/BoWB3jcCFg8)
+    - [Manage users, groups, roles (ITA)](https://youtu.be/9e8B5Euv3F8)
 - Webinars (ITA)
   - [Responsive UI](https://www.asem.it/it/pagina/35/webinar.html)
 
