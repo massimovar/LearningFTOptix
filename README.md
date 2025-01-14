@@ -15,29 +15,29 @@
 - [System requirements](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/release-notes-ditamap/system/system-requirements.html)
 - [Network ports configuration](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/getting-started/configuration/network-ports-configuration.html)
 
-## 🚀 Download and install
+## 🚀 Download, install, start!
 
 - [Create a MyRockwell account for downloading FTOptix and manage licenses](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Getting_Started_Guide.pdf)
 - [Install FTOptix](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/installation-guide-ditamap.html)
-- [FactoryTalk Optix Portfolio Technical Documentation](https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html)
-  - [FTOptix Installation guide](https://www.rockwellautomation.com/docs/en/factorytalk-optix/current/installation-guide-ditamap.html)
-  - [FTOptix Solutions Application Technique](https://www.rockwellautomation.com/docs/en/factorytalk-optix/technical-content/optix-at001/factorytalk-optix-solutions-application-technique-.html)
+- [FTOptix quick start](https://www.rockwellautomation.com/docs/en/factorytalk-optix/technical-content/optix-at001/factorytalk-optix-solutions-application-technique-.html)
 
 ## 📖 Learning material
 
-- [Technical training](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf)
 - Help!
-  - [FactoryTalk Optix Help Center](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html)
+  - [FTOptix Online Help](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html)
   - [FAQs](https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1141346/loc/en_US)
+- [Technical training pdf](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf)
+- Other resources
+  - [FactoryTalk Optix Portfolio Technical Documentation](https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html)
   - [RA Knowledge base](https://rockwellautomation.custhelp.com/app/home)
   - [RA Literature Library](https://www.rockwellautomation.com/en-us/support/documentation/literature-library.html)
-- YouTube
-  - [Rockwell channel](https://www.youtube.com/playlist?list=PL3K_BigUXJ1M1-JpRiwIIhzJUbhwtK3yy)
+- Videos
+  - [Rockwell Youtube channel](https://www.youtube.com/playlist?list=PL3K_BigUXJ1M1-JpRiwIIhzJUbhwtK3yy)
   - [some other tutorials (ITA)](https://www.youtube.com/channel/UCTnVOaqnbAceKqE-8a5ObrA)
     - [What is an alias? (ITA)](https://youtu.be/BoWB3jcCFg8)
     - [Manage users, groups, roles (ITA)](https://youtu.be/9e8B5Euv3F8)
-- Webinars (ITA)
-  - [Responsive UI](https://www.asem.it/it/pagina/35/webinar.html)
+  - Webinars (ITA)
+    - [Responsive UI](https://www.asem.it/it/pagina/35/webinar.html)
 
 ## ⌨️ Ready to use scripts
 
