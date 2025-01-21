@@ -37,7 +37,7 @@
     - [What is an alias? (ITA)](https://youtu.be/BoWB3jcCFg8)
     - [Manage users, groups, roles (ITA)](https://youtu.be/Ccd0YVDYj4k)
   - Webinars (ITA)
-    - [Responsive UI](https://www.asem.it/it/pagina/35/webinar.html)
+    - [Responsive UI](https://www.youtube.com/watch?v=1fI2JVNK3qY&ab_channel=ASEMS.r.l.)
 
 ## ⌨️ Ready to use scripts
 
