@@ -36,13 +36,18 @@
   - [some other tutorials (ITA)](https://www.youtube.com/channel/UCTnVOaqnbAceKqE-8a5ObrA)
     - [What is an alias? (ITA)](https://youtu.be/BoWB3jcCFg8)
     - [Manage users, groups, roles (ITA)](https://youtu.be/Ccd0YVDYj4k)
+    - [How to update your project if PLC tags change?](https://youtu.be/BrhrQNulqSM)
   - Webinars (ITA)
     - [Responsive UI](https://www.youtube.com/watch?v=1fI2JVNK3qY&ab_channel=ASEMS.r.l.)
 
-## ⌨️ Ready to use scripts
+## 👾 Ready to use scripts
 
-<details>
-<summary>Choose your tool to write scripts in FTOptix Studio (click!)</summary>
+- [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
+- [Other super useful C# snippets](https://gist.github.com/AlessioForafo)
+
+## 🧑🏻‍💻 How to write scripts in FTOptix?
+
+Choose your tool to write scripts in FTOptix Studio
 
 - **Visual Studio code** <https://code.visualstudio.com/>
   - Suggested extensions:
@@ -52,16 +57,9 @@
 
 - **Visual Studio 2022** <https://visualstudio.microsoft.com/it/vs/>
 
-</details>
-
-**C# snippets ready to go**
-
-- [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
-- [Other super useful C# snippets](https://gist.github.com/AlessioForafo)
-
 ## ⚗️ Examples
 
-- GitHub repositories  [Dozens of examples!](https://github.com/FactoryTalk-Optix)
+- GitHub repositories [Dozens of examples!](https://github.com/FactoryTalk-Optix)
 - [Sample code library](https://www.rockwellautomation.com/it-it/support/product/product-downloads/application-code-library/sample-code.html)
 
 ## 🕵️ 21 CFR Part 11 Regulation
