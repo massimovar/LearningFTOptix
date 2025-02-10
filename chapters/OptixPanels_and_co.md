@@ -10,3 +10,6 @@
 
 ### Portfolio
 - [Hardware options - portfolio](https://www.rockwellautomation.com/en-us/solutions/hmi/optix.html)
+
+### Search a manual
+- [RA Literature Library](https://www.rockwellautomation.com/en-us/support/documentation/literature-library.html)
