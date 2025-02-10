@@ -17,4 +17,3 @@
 ### Other resources
   - [FactoryTalk Optix Portfolio Technical Documentation](https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html)
   - [RA Knowledge base](https://rockwellautomation.custhelp.com/app/home)
-  - [RA Literature Library](https://www.rockwellautomation.com/en-us/support/documentation/literature-library.html)
