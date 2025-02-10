@@ -9,5 +9,5 @@
 - 📖 [Learning material](./chapters/Learning_material.md)
 - ⚗️ [Here are a lot of example projects for you](./chapters/Examples.md)
 - 👾 [Ready to use scripts](./chapters/Ready_to_use_scripts.md)
-- 🕵️ [21 CFR Part 11 Regulation](./chapters/21_CFR_Part_11_Regulation.md)
+- 🔏 [21 CFR Part 11 Regulation](./chapters/21_CFR_Part_11_Regulation.md)
 - 🖥️ [OptixPanels & co](./chapters/OptixPanels_and_co.md)
