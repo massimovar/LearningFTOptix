@@ -1,4 +1,4 @@
-# 📚 Learning FTOptix
+# 📚 Learning FactoryTalk® Optix™
 
 ## A set of resources in order to become an FTOptix power user
 
