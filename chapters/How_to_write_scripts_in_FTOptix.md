@@ -1,4 +1,4 @@
-## 🧑🏻‍💻 What software do I use to write scripts in FTOptix?
+## 🧑🏻‍💻 How to write scripts in FTOptix
 
 Choose your tool to write scripts in FTOptix Studio
 

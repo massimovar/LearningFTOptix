@@ -1,4 +1,4 @@
-## 📖 Learning material
+## 📚 Learning material
 
 ### Help
   - [FTOptix Online Help](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html)

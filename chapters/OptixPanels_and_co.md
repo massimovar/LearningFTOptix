@@ -1,4 +1,4 @@
-## 🖥️ OptixPanels & co
+## 💻 OptixPanels & co
 
 ### Optix Panel
 
