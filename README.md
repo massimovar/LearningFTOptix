@@ -4,8 +4,6 @@
 
 - 🏁 [What is FTOptix?](./chapters/FTOptix_overview.md)
 - 🚀 [Download, install, start!](./chapters/Download_install_start.md)
-  - 🧑🏻‍💻 [What software do I use to write scripts in FTOptix?](./chapters/How_to_write_scripts_in_FTOptix.md)
-  - 📜 [System requirements and ports configuration](./chapters/System_requirements_and_ports_configuration.md)
 - 📖 [Learn FTOptix](./chapters/Learning_material.md)
 - ⚗️ [A lot of example projects for you](./chapters/Examples.md)
 - 👾 [Ready to use scripts](./chapters/Ready_to_use_scripts.md)
