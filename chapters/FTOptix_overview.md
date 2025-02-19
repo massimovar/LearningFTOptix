@@ -1,4 +1,4 @@
-## 🏁 FTOptix overview
+## 📘 FTOptix overview
 
 - [What is FTOptix](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOpti_Overview.pdf)
 - Latest releases
