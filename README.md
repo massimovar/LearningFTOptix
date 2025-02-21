@@ -12,7 +12,7 @@
 
 - 🛠️ **100 projects examples and scripts for you** → [Link](./chapters/Examples.md)
 
-- 👼 **good practices** when creating your projects → [Link](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/good-practices.md)
+- 👼 **Good practices for creating your projects** → [Link](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/good-practices.md)
 
 - 🔒 **21 CFR Part 11 Regulation** → [Link](./chapters/21_CFR_Part_11_Regulation.md)
 
