@@ -12,6 +12,6 @@
 
 - 🛠️ **100 projects examples and scripts for you** → [Link](./chapters/Examples.md)
 
-- 💲 **How to manage my licenses? (ITA)** → [Link](https://www.youtube.com/watch?v=9mrr5zXu52o&ab_channel=ASEMS.r.l.)
+- 💲 **How to manage my licenses? (ITA)** → [Link](https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.)
 
 - 💻 **OptixPanels & co** → [Link](./chapters/OptixPanels_and_co.md)
