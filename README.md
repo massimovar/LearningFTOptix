@@ -14,6 +14,4 @@
 
 - 🛠️ **100 projects examples and scripts for you** → [Link](./chapters/Examples.md)
 
-- 🔒 **21 CFR Part 11 Regulation** → [Link](./chapters/21_CFR_Part_11_Regulation.md)
-
 - 💻 **OptixPanels & co** → [Link](./chapters/OptixPanels_and_co.md)
