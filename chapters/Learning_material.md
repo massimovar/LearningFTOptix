@@ -1,4 +1,4 @@
-## 📚 Learn Optix
+## 📚 Learn FTOptix
 
 - 🆘 Help -> [Link](./Learning_material_Help.md)
 - 🎥 Videos -> [Link](./Learning_material_Videos.md)
