@@ -1,5 +1,7 @@
 ## 📚 Learning material
 
+👼 **Good practices for creating your projects** → [Link](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/good-practices.md)
+
 ### Help
   - [FTOptix Online Help](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html)
   - [FAQs](https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1141346/loc/en_US)
