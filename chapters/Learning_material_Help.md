@@ -1,4 +1,4 @@
-## Learning Material
+## Training material
 
 - [Introduction to FTOptix Studio and Hands on lab PDF](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/Introduction_to_FactoryTalk_Optix_Visualization_Platform_Hands_On_Lab.pdf)
 - [Technical training PDF](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf)
