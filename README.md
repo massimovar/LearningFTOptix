@@ -2,7 +2,7 @@
 
 #### A set of resources in order to become an FTOptix power user
 
-![LearnOptix](./images/LearnOptix.png)
+<img src="./images/LearnOptix.png" alt="LearnOptix" width="200" height="200">
 
 ---
 
