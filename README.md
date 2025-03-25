@@ -2,6 +2,8 @@
 
 #### A set of resources in order to become an FTOptix power user
 
+![LearnOptix](./images/LearnOptix.png)
+
 ---
 
 - 🌐 **What is FTOptix?** → [Link](./chapters/FTOptix_overview.md)
