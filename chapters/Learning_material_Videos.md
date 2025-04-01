@@ -1,7 +1,7 @@
 ## Videos
 
 - Tutorials (ITA)
-  - [FTHub: how to manage licenses?](https://www.youtube.com/watch?v=9mrr5zXu52o&ab_channel=ASEMS.r.l.)
+  - [FTHub: how to manage licenses?](https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.)
   - [What is an alias?](https://youtu.be/BoWB3jcCFg8)
   - [How to update your project if PLC tags have changed?](https://youtu.be/BrhrQNulqSM)
 - Webinars (ITA)
