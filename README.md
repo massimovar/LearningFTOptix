@@ -18,4 +18,4 @@
 
 ---
 
-#### Are you searching also for Ubiquity / FTRA informations? -> [Link](https://github.com/massimovar/LearningUbiquityX/)!
+#### Are you searching also for Ubiquity / FTRA informations? -> [Link](https://github.com/massimovar/LearningUbiquityX/)
