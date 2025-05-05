@@ -4,7 +4,7 @@
 
 ---
 
-- 🌐 **What is FTOptix?** → [Link](./chapters/FTOptix_overview.md)
+- 🌐 **What is FTOptix and new releases** → [Link](./chapters/FTOptix_overview.md)
 
 - 🚀 **Download, install, start!** → [Link](./chapters/Download_install_start.md)
 
