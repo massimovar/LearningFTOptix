@@ -16,7 +16,7 @@
 
 - 💻 **OptixPanels** → [Link](./chapters/OptixPanels_and_co.md)
 
-- 🆕 **OptixEdge** → [Link](./chapters/OptixPanels_and_co.md)
+- 🆕 **OptixEdge** → [Link](./chapters/OptixEdge.md)
 
 ---
 
