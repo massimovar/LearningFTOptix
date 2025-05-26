@@ -21,7 +21,3 @@
 ---
 
 #### Are you also looking for information about Ubiquity / FTRA? -> [Link](https://github.com/massimovar/LearningUbiquityX/)
-
-
-
-######## (unofficial repo)
