@@ -8,7 +8,7 @@
 
 - 🚀 **Download, Install, Start** → [Link](./chapters/Download_install_start.md)
 
-- 📚 **Complete pdf course** →  [Link](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf) and more → [Link](./chapters/Learning_material.md)
+- 📚 **Complete pdf course** →  [Link](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf) and more content → [Link](./chapters/Learning_material.md)
 
 - 🛠️ **100 projects examples and scripts** → [Link](./chapters/Examples.md)
 
