@@ -7,14 +7,13 @@
   <p align="center">
     A set of resources in order to become an FTOptix power user
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html"><strong>Resources, by Rockwell Automation »</strong></a>
     <br />
     <br />
     <a href="https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOpti_Overview.pdf">What is FTOptix?</a>
     &middot;
     <a href="https://github.com/massimovar/LearningFTOptix/blob/main/chapters/FTOptix_overview.md#latest-releases">New releases</a>
     &middot;
-    <a href="https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html">Resources, by Rockwell Automation</a>
   </p>
 </div>
 
