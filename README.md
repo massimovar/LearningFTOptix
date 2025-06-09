@@ -6,7 +6,7 @@
 
 - 🌐 **FTOptix and new releases** → [Link](./chapters/FTOptix_overview.md)
 
-- 🏁 **FactoryTalk Optix Resources, Rockwell Automation** → [Link](https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html)
+- 🏁 **FTOptix Resources, Rockwell Automation** → [Link](https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html)
 
 - 🚀 **Download, Install, Start** → [Link](./chapters/Download_install_start.md)
 
