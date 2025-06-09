@@ -19,7 +19,7 @@
 - 💲 **How to manage my licenses? (ITA)** → [Link](https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.)
 
 ---
-- Hardware
+- Hardware solutions
 
   - 💻 **OptixPanels** → [Link](./chapters/OptixPanels_and_co.md)
 
