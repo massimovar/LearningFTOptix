@@ -2,7 +2,7 @@
 <br />
 <div align="center">
 
-  <h3 align="center">📘 Learning FactoryTalk® Optix™</h3>
+  <h1 align="center">📘 Learning FactoryTalk® Optix™</h1>
 
   <p align="center">
     A set of resources in order to become an FTOptix power user
