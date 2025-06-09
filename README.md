@@ -12,7 +12,7 @@
     <br />
     <a href="https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOpti_Overview.pdf">What is FTOptix?</a>
     &middot;
-    <a href="https://github.com/massimovar/LearningFTOptix/blob/main/chapters/FTOptix_overview.md#latest-releases">New releases</a>
+    <a href="https://github.com/massimovar/LearningFTOptix/blob/main/chapters/FTOptix_overview.md#latest-releases">New releases!</a>
     &middot;
   </p>
 </div>
