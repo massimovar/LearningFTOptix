@@ -1,4 +1,4 @@
-# 📘 Learning FactoryTalk® Optix™ <img src="./images/LearnOptix.png" alt="LearnOptix" width="150" height="150" align="right">
+# 📘 Learning FactoryTalk® Optix™ <img src="./images/LearnOptix.png" alt="LearnOptix" width="250" height="250" align="right">
 
 #### A set of resources in order to become an FTOptix power user
 
