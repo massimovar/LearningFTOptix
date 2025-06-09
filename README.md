@@ -4,9 +4,9 @@
 
 ---
 
-- 🌐 **FTOptix and new releases** → [Link](./chapters/FTOptix_overview.md)
+- 🌐 **New releases** → [Link](./chapters/FTOptix_overview.md)
 
-- 🏁 **FTOptix Resources, Rockwell Automation** → [Link](https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html)
+- 🏁 **Resources, by Rockwell Automation** → [Link](https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html)
 
 ---
 
