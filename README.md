@@ -18,8 +18,10 @@
   </p>
 </div>
 
+<!-- MAIN RESOURCES -->
+## Hello, FTOptix!
 
-- 🌐 **New releases** → [Link](./chapters/FTOptix_overview.md)
+- 🌐 **What is FTOptix and new releases** → [Link](./chapters/FTOptix_overview.md)
 
 - 🏁 **Resources, by Rockwell Automation** → [Link](https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html)
 
