@@ -20,7 +20,7 @@
   </p>
 </div>
 
-
+<br />
 
 <!-- MAIN RESOURCES -->
 ## Main resources
