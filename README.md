@@ -18,8 +18,6 @@
   </p>
 </div>
 
-<!-- FTOPTIX -->
-## FTOptix
 
 - 🌐 **New releases** → [Link](./chapters/FTOptix_overview.md)
 
