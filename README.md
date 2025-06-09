@@ -8,6 +8,8 @@
 
 - 🏁 **FTOptix Resources, Rockwell Automation** → [Link](https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html)
 
+---
+
 - 🚀 **Download, Install, Start** → [Link](./chapters/Download_install_start.md)
 
 - 📚 **Complete course** →  [Link](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf) and more content → [Link](./chapters/Learning_material.md)
@@ -16,9 +18,11 @@
 
 - 💲 **How to manage my licenses? (ITA)** → [Link](https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.)
 
-- 💻 **OptixPanels** → [Link](./chapters/OptixPanels_and_co.md)
+- Hardware
 
-- _NEW_ 🎉 **OptixEdge** → [Link](./chapters/OptixEdge.md)
+  - 💻 **OptixPanels** → [Link](./chapters/OptixPanels_and_co.md)
+
+  - _NEW_ 🎉 **OptixEdge** → [Link](./chapters/OptixEdge.md)
 
 ---
 
