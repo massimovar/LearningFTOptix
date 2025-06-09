@@ -1,8 +1,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
+  <a href="https://github.com/massimovar/LearningFTOptix/blob/main/README.md">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-  <h1 align="center">📘 Learning FactoryTalk® Optix™</h1>
+  <h1 align="center">Learning FactoryTalk® Optix™</h1>
 
   <p align="center">
     A set of resources in order to become an FTOptix power user
