@@ -8,5 +8,4 @@
     - [Responsive UI](https://www.youtube.com/watch?v=1fI2JVNK3qY&ab_channel=ASEMS.r.l.)
   - Rockwell Automation
     - [Webinar Series: Revitalize Your HMI Operations](https://www.rockwellautomation.com/en-us/events/webinars/revitalize-your-hmi-operations-webinar-series.html)
-
-- [Rockwell Youtube channel](https://www.youtube.com/playlist?list=PL3K_BigUXJ1M1-JpRiwIIhzJUbhwtK3yy)
+    - [Rockwell Youtube channel](https://www.youtube.com/playlist?list=PL3K_BigUXJ1M1-JpRiwIIhzJUbhwtK3yy)
