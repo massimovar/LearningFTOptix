@@ -1,3 +1,5 @@
+[![Forks][forks-shield]][forks-url]
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
