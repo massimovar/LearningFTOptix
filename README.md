@@ -1,12 +1,8 @@
-# 📘 Learning FactoryTalk® Optix™ <img src="./images/LearnOptix.png" alt="LearnOptix" width="150" height="150" align="right">
-
-#### A set of resources in order to become an FTOptix power user
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
 
-  <h3 align="center">Learning FactoryTalk® Optix™</h3>
+  <h3 align="center">📘 Learning FactoryTalk® Optix™</h3>
 
   <p align="center">
     A set of resources in order to become an FTOptix power user
