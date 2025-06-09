@@ -10,20 +10,13 @@
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOpti_Overview.pdf">What is FTOptix?</a>
     &middot;
-    <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    <a href="https://github.com/massimovar/LearningFTOptix/blob/main/chapters/FTOptix_overview.md#latest-releases">New releases</a>
     &middot;
-    <a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+    <a href="https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html">Resources, by Rockwell Automation</a>
   </p>
 </div>
-
-<!-- MAIN RESOURCES -->
-## Hello, FTOptix!
-
-- 🌐 **What is FTOptix and new releases** → [Link](./chapters/FTOptix_overview.md)
-
-- 🏁 **Resources, by Rockwell Automation** → [Link](https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html)
 
 <!-- MAIN RESOURCES -->
 ## Main resources
