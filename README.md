@@ -31,7 +31,7 @@
 
 - 🛠️ 100 projects examples → [Link](https://github.com/FactoryTalk-Optix) and scripts → [Link](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Ready_to_use_scripts.md)
 
-- 💲 How to manage my licenses? (ITA) → [Link](https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.)
+- 💲 How to manage licenses? (ITA) → [Link](https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.)
 
 <!-- HARDWARE SOLUTION -->
 ## Hardware solutions
