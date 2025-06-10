@@ -27,7 +27,7 @@
 
 - 🚀 Download, Install, Start → [Link](./chapters/Download_install_start.md)
 
-- 📚 Complete course →  [Link](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf) and more content (videos, etc.) → [Link](./chapters/Learning_material.md)
+- 📚 Complete course →  [Link](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf) and more (videos, etc.) → [Link](./chapters/Learning_material.md)
 
 - 🛠️ 100 projects examples → [Link](https://github.com/FactoryTalk-Optix) and scripts → [Link](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Ready_to_use_scripts.md)
 
