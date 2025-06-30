@@ -1,5 +1,5 @@
-## "FT Optix Essentials" 
-- ASEM tutorials (ITA)-> [Link](https://www.youtube.com/watch?v=mqgBHsxT2MA&list=PLdrWYH7B3F3566vPxCiw3HmPZ56HUIVkN&ab_channel=ASEMS.r.l.)
+## FT Optix Essentials (ITA)
+- ASEM tutorials -> [Link](https://www.youtube.com/watch?v=mqgBHsxT2MA&list=PLdrWYH7B3F3566vPxCiw3HmPZ56HUIVkN&ab_channel=ASEMS.r.l.)
 - [FTHub: how to manage licenses?](https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.)
 - [What is an alias?](https://youtu.be/BoWB3jcCFg8)
 - [How to update your project if PLC tags have changed?](https://youtu.be/BrhrQNulqSM)
