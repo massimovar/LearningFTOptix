@@ -42,13 +42,12 @@
 
   - _NEW_ 🎉 OptixEdge → [Link](./chapters/OptixEdge.md)
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=massimovar/LearningFTOptix&type=Date)](https://www.star-history.com/#massimovar/LearningFTOptix&Date)
 
 ---
 
 #### Are you also looking for information about Ubiquity / FTRA? -> [Link](https://github.com/massimovar/LearningUbiquityX/)
 
 ---
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=massimovar/LearningFTOptix&type=Date)](https://www.star-history.com/#massimovar/LearningFTOptix&Date)
