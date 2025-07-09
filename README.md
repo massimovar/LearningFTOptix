@@ -27,7 +27,7 @@
 
 - 🚀 Download, Install, Start → [Link](./chapters/Download_install_start.md)
 
-- 📚 Complete course →  [Link](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf) and more → [Link](./chapters/Learning_material.md)
+- 📚 Complete course →  [Link](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf) ( and more → [Link](./chapters/Learning_material.md) )
 
 - 🎥 Video tutorials  →  [Link](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Learning_material_Videos.md)
 
