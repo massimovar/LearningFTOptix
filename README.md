@@ -31,7 +31,9 @@
 
 - 🎥 Video tutorials  →  [Link](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Learning_material_Videos.md)
 
-- 🛠️ 100 projects examples → [Link](https://github.com/FactoryTalk-Optix) and scripts → [Link](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Ready_to_use_scripts.md)
+- 🛠️ 100 projects examples → [Link](https://github.com/FactoryTalk-Optix)
+
+- </> A lot of scripts → [Link](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Ready_to_use_scripts.md)
 
 - 💲 How to manage licenses? (ITA) → [Link](https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.)
 
