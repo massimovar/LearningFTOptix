@@ -1,4 +1,4 @@
-# 🚀 Best Practices for FTOptix
+# 🚀 Best Practice for FTOptix
 
 ## 1. UI Design Principles
 - [ ] Ensure UI is efficient and responsive
@@ -34,10 +34,10 @@
 - [ ] Use NetLogic scripts for lazy loading
 - [ ] Use NetLogic scripts for on-demand destruction/recreation
 - [ ] Instantiate repetitive or hidden objects only when needed
-- [ ] Reference: NetLogic_CheatSheet - Creating Objects
+- [ ] Reference: NetLogic_CheatSheet - [Creating Objects](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/creating-objects.md#iuaobjects)
 
 ## 6. Diagnostic Tools
 - [ ] Use the NodesCounterDialog widget
-- [ ] Identify pages with high node count
-- [ ] Detect performance bottlenecks
-- [ ] Analyze which
+    - [ ] Identify pages with high node count
+    - [ ] Detect performance bottlenecks
+    - [ ] Analyze which elements need optimization
