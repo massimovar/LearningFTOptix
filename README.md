@@ -35,7 +35,7 @@
 
 </> A lot of scripts → [Link](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Ready_to_use_scripts.md)
 
-🚀 Best practices for better performances! → [Link]()
+🚀 Best practices for better performances! → [Link](./chapters/best_practises.md)
 
 💲 How to manage licenses? (ITA) → [Link](https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.)
 
