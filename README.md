@@ -25,17 +25,19 @@
 <!-- MAIN RESOURCES -->
 ## Main resources
 
-- 🚀 Download, Install, Start → [Link](./chapters/Download_install_start.md)
+🌱 Download, Install, Start → [Link](./chapters/Download_install_start.md)
 
-- 📚 Complete course →  [Link](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf) ( and more → [Link](./chapters/Learning_material.md) )
+📚 Complete course →  [Link](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf) ( and more → [Link](./chapters/Learning_material.md) )
 
-- 🎥 Video tutorials  →  [Link](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Learning_material_Videos.md)
+🎥 Video tutorials  →  [Link](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Learning_material_Videos.md)
 
-- 🛠️ 100 projects examples → [Link](https://github.com/FactoryTalk-Optix)
+🛠️ 100 projects examples → [Link](https://github.com/FactoryTalk-Optix)
 
-- </> A lot of scripts → [Link](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Ready_to_use_scripts.md)
+</> A lot of scripts → [Link](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Ready_to_use_scripts.md)
 
-- 💲 How to manage licenses? (ITA) → [Link](https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.)
+🚀 Best practices for better performances! → [Link]()
+
+💲 How to manage licenses? (ITA) → [Link](https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.)
 
 <!-- HARDWARE SOLUTION -->
 ## Hardware solutions
