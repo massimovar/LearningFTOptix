@@ -23,32 +23,30 @@
 <br />
 
 <!-- MAIN RESOURCES -->
-## Main resources
+## Main Resources
 
-  🌱 Download, Install, Start → [Link](./chapters/Download_install_start.md)
+### Getting Started
+- 🌱 **Download, Install, Start:** [Guide](./chapters/Download_install_start.md)
+- 💲 **License Management (ITA):** [YouTube Video](https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.)
 
-  💲 How to manage licenses? (ITA) → [Link](https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.)
+### Learning Materials
+- 📚 **Complete Course:** [PDF](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf)
+- 📖 **More Learning Material:** [Collection](./chapters/Learning_material.md)
+- 🎥 **Video Tutorials:** [Playlist](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Learning_material_Videos.md)
 
-  📚 Complete course →  [Link](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf) ( and more → [Link](./chapters/Learning_material.md) )
+### Examples
+- 🛠️ **100 Project Examples:** [Repository](https://github.com/FactoryTalk-Optix)
+- 💻 **Ready-to-Use Scripts:** [Scripts](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Ready_to_use_scripts.md)
 
-  🎥 Video tutorials  →  [Link](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Learning_material_Videos.md)
+### Advanced Topics
+- 🚀 **Best Practices for Performance:** [Tips](./chapters/best_practice.md)
 
-## Examples
+---
 
-  🛠️ 100 projects examples → [Link](https://github.com/FactoryTalk-Optix)
+## Hardware Solutions
 
-  </> A lot of scripts → [Link](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Ready_to_use_scripts.md)
-
-## Developing like a pro
-
-  🚀 Best practice for better performances! → [Link](./chapters/best_practice.md)
-
-<!-- HARDWARE SOLUTION -->
-## Hardware solutions
-
-  💻 OptixPanels → [Link](./chapters/OptixPanels_and_co.md)
-
-  _NEW_ 🎉 OptixEdge → [Link](./chapters/OptixEdge.md)
+- 💻 **OptixPanels:** [Overview](./chapters/OptixPanels_and_co.md)
+- 🆕 🎉 **OptixEdge:** [Details](./chapters/OptixEdge.md)
 
 ## Star History
 
