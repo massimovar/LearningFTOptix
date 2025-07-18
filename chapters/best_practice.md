@@ -1,5 +1,4 @@
-# 🚀 Best Practice for FTOptix
-
+# 🚀 Best Practice
 *just some unofficial notes*
 
 ## 1. UI Design Principles
