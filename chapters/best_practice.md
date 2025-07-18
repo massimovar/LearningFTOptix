@@ -1,5 +1,7 @@
 # 🚀 Best Practice for FTOptix
 
+*just some unofficial notes*
+
 ## 1. UI Design Principles
 - [ ] Ensure UI is efficient and responsive
 - [ ] Minimize the total node count per page
