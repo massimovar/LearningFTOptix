@@ -20,11 +20,6 @@
   </p>
 </div>
 
-<br />
-
-<!-- MAIN RESOURCES -->
-## Main Resources
-
 ### Getting Started
 - 🌱 **Download, Install, Start:** [Guide](./chapters/Download_install_start.md)
 - 💲 **License Management (ITA):** [YouTube Video](https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.)
@@ -38,7 +33,7 @@
 - 🛠️ **100 Project Examples:** [Repository](https://github.com/FactoryTalk-Optix)
 - 💻 **Ready-to-Use Scripts:** [Scripts](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Ready_to_use_scripts.md)
 
-### Advanced Topics
+### Develop like a pro
 - 🚀 **Best Practices for Performance:** [Tips](./chapters/best_practice.md)
 
 ---
