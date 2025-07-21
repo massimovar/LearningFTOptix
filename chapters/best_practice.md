@@ -40,9 +40,9 @@ Every design decision affects the total number of nodes and the complexity of th
     
     One of the biggest benefits of this method is that it enables a form of lazy loading, where objects are instantiated while the page is already displayed and functional. 
     This results in:
-    - [ ] Faster initial page loads, as only the essential UI elements are rendered upfront.
-    - [ ] Smoother page transitions, since additional objects are loaded dynamically without delaying the page display.
-    - [ ] Better resource management, as objects can be destroyed and recreated on demand, reducing memory usage.
+    - Faster initial page loads, as only the essential UI elements are rendered upfront.
+    - Smoother page transitions, since additional objects are loaded dynamically without delaying the page display.
+    - Better resource management, as objects can be destroyed and recreated on demand, reducing memory usage.
     
     This method is particularly advantageous in scenarios where many UI elements would otherwise be hidden by default, such as complex dashboards, interactive lists, or modal pop-ups. Instead of keeping them in memory while hidden, you can instantiate them only when required, ensuring optimal performance.
     
