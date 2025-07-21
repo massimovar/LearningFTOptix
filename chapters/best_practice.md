@@ -3,7 +3,7 @@
 
 ## 1. UI Design Principles
 Ensure UI is efficient and responsive
-- [ ] Minimize node count per page (see [Diagnostic Tools](#7.-Diagnostic-Tool))
+- [ ] Minimize node count per page (see [Diagnostic Tools](#7-diagnostic-tools))
 - [ ] Avoid unnecessary graphics, variables, and dynamic links
 - [ ] Use stylesheets and single dynamic links for styles
 
