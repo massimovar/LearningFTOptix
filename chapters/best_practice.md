@@ -17,7 +17,7 @@ Each dynamic link adds at least 2-3 extra references, and complex dynamic links 
 (see [Diagnostic Tools](#7-diagnostic-tools))
 
 ## Image & Graphic Optimization
-- [ ] PNGs are lighter to render, SVGs offer greater flexibility (but "Advanced SVG Image" object could have a lot of dynamic links ...)
+- [ ] PNGs are lighter to render, SVGs offer greater flexibility (but "Advanced SVG Image" object can have a lot of dynamic links ...)
 - [ ] Optimize/compress PNGs
 - [ ] Avoid large/uncompressed images
 - [ ] Balance performance and quality
