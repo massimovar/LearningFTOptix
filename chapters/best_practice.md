@@ -3,9 +3,9 @@
 
 ## 1. UI Design Principles
 - [ ] Ensure UI is efficient and responsive
-- [ ] Minimize node count per page
-- [ ] Avoid unnecessary graphics, variables, and dynamic links
-- [ ] Use stylesheets and single dynamic links for styles
+    - [ ] Minimize node count per page
+    - [ ] Avoid unnecessary graphics, variables, and dynamic links
+    - [ ] Use stylesheets and single dynamic links for styles
 
 ## 2. Handling Node Count
 - [ ] Each dynamic link = at least 3 OPC UA nodes
