@@ -64,8 +64,7 @@ See the full list: [Good Practices](https://github.com/FactoryTalk-Optix/NetLogi
 
 ## Diagnostic Tools
 - [ ] Project information
-
- When you open the project in IDE the Studio Output will provide you with the actual number of nodes of the project. The message will contain the path of the project following the nodes count. In the same way, if you open with a text editor the project file with extension “.optix” you will find at the end of the file, the statistics of the project
+    - When you open the project in IDE the Studio Output will provide you with the actual number of nodes of the project. The message will contain the path of the project following the nodes count. In the same way, if you open with a text editor the project file with extension “.optix” you will find at the end of the file, the statistics of the project
 
 - [ ] Use NodesCounterDialog widget
     - [ ] Identify high node count pages
