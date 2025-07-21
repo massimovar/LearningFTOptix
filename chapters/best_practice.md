@@ -12,9 +12,9 @@ Ensure UI is efficient and responsive
 ## 2. Handling Node Count
 - [ ] PLC variables are counted as nodes at the start of the Runtime, always import only variables that you need to exchange with the HMI.
 - [ ] Each dynamic link = at least 3 OPC UA nodes
-    •	The materialized property node (no longer inherited from its base type).
-    •	The link node represents the connection.
-    •	The target node receiving the linked value
+    - [ ] The materialized property node (no longer inherited from its base type).
+    - [ ] The link node represents the connection.
+    - [ ] The target node receiving the linked value
 - [ ] Minimize converters (especially when nested) and nested dynamic links
 - [ ] Avoid complex links in reused/high-traffic objects
 - [ ] Prefer aliases over dynamic links in same container
@@ -54,7 +54,7 @@ See the full list: [Good Practices](https://github.com/FactoryTalk-Optix/NetLogi
 
 ## 7. Diagnostic Tools
 - [ ] Project information
-    •    When you open the project in IDE the Studio Output will provide you with the actual number of nodes of the project. The message will contain the path of the project following the nodes count. In the same way, if you open with a text editor the project file with extension “.optix” you will find at the end of the file, the statistics of the project
+When you open the project in IDE the Studio Output will provide you with the actual number of nodes of the project. The message will contain the path of the project following the nodes count. In the same way, if you open with a text editor the project file with extension “.optix” you will find at the end of the file, the statistics of the project
 - [ ] Use NodesCounterDialog widget
     - [ ] Identify high node count pages
     - [ ] Detect bottlenecks
