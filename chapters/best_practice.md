@@ -2,25 +2,25 @@
 *just some unofficial notes*
 
 ## 1. UI Design Principles
-- [ ] Ensure UI is efficient and responsive
-    - [ ] Minimize node count per page
-    - [ ] Avoid unnecessary graphics, variables, and dynamic links
-    - [ ] Use stylesheets and single dynamic links for styles
+Ensure UI is efficient and responsive
+- [ ] Minimize node count per page
+- [ ] Avoid unnecessary graphics, variables, and dynamic links
+- [ ] Use stylesheets and single dynamic links for styles
 
 ## 2. Handling Node Count
 - [ ] Each dynamic link = at least 3 OPC UA nodes
-- [ ] Minimize converters and nested dynamic links
+- [ ] Minimize converters (especially when nested) and nested dynamic links
 - [ ] Avoid complex links in reused/high-traffic objects
 - [ ] Prefer aliases over dynamic links in same container
 
 ## 3. Image & Graphic Optimization
-- [ ] Prefer SVG over PNG
+- [ ] PNGs are lighter to render, SVGs offer greater flexibility
 - [ ] Optimize/compress PNGs
 - [ ] Avoid large/uncompressed images
 - [ ] Balance performance and quality
 
 ## 4. Reducing Overhead
-- [ ] Use scripts (NetLogic) for complex logic
+- [ ] Use scripts (NetLogic) for complex logics
 - [ ] Aggregate shared variables
 
 ## 5. Dynamic Object Management
@@ -30,7 +30,6 @@
 - [ ] [Reference: Creating Objects](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/creating-objects.md#iuaobjects)
 
 ## 6. Project Structure & Naming Rules
-
 - [ ] Use meaningful names for all project elements (avoid defaults, numbers, abbreviations)
 - [ ] Use PascalCase for object names, camelCase for variables
 - [ ] Store all graphics in the UI folder, organized by Templates/Screens
