@@ -1,11 +1,11 @@
-# 🚀 Best Practice
+# 🚀 Performance optimizations
 *just some unofficial notes*
 
 Every design decision affects the total number of nodes and the complexity of the runtime model. Striking a balance between reusability, modularity, and performance is key, always considering the target hardware where the project will be deployed.
 
 ## Handling Node Count
 - [ ] PLC variables are counted as nodes at the start of the Runtime, always import only variables that you need to exchange with the HMI.
-- [ ] Each dynamic link = at least 3 OPC UA nodes
+- [ ] Each dynamic link = at least 3 OPC UA nodes. Each dynamic link adds at least 2-3 extra references, and complex dynamic links (e.g., converters, expressions, switch-case logic) may add dozens. More references = slower traversal and resolution time.
     - [ ] The materialized property node (no longer inherited from its base type).
     - [ ] The link node represents the connection.
     - [ ] The target node receiving the linked value
@@ -13,7 +13,6 @@ Every design decision affects the total number of nodes and the complexity of th
 - [ ] Avoid complex links in reused/high-traffic objects
 - [ ] Prefer aliases over dynamic links in same container
 
-Each dynamic link adds at least 2-3 extra references, and complex dynamic links (e.g., converters, expressions, switch-case logic) may add dozens. More references = slower traversal and resolution time.
 (see [Diagnostic Tools](#7-diagnostic-tools))
 
 ## Image & Graphic Optimization
