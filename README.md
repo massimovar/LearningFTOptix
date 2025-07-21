@@ -34,7 +34,7 @@
 - 💻 **Ready-to-Use Scripts:** [Scripts](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Ready_to_use_scripts.md)
 
 ### Develop like a pro
-- 🚀 **Best Practices for Performances:** [Tips](./chapters/best_practice.md)
+- 🚀 **Best Practice for Performances:** [Tips](./chapters/best_practice.md)
 
 ---
 
