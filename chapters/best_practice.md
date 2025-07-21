@@ -5,10 +5,11 @@ Every design decision affects the total number of nodes and the complexity of th
 
 ## Handling Node Count
 - [ ] PLC variables are counted as nodes at the start of the Runtime, always import only variables that you need to exchange with the HMI.
-- [ ] Each dynamic link = at least 3 OPC UA nodes. Each dynamic link adds at least 2-3 extra references, and complex dynamic links (e.g., converters, expressions, switch-case logic) may add dozens. More references = slower traversal and resolution time.
-    - [ ] The materialized property node (no longer inherited from its base type).
-    - [ ] The link node represents the connection.
-    - [ ] The target node receiving the linked value
+- [ ] Each dynamic link = at least 3 OPC UA nodes.
+    - The materialized property node (no longer inherited from its base type).
+    - The link node represents the connection.
+    - The target node receiving the linked value
+- [ ] Each dynamic link adds at least 2-3 extra references, and complex dynamic links (e.g., converters, expressions, switch-case logic) may add dozens. More references = slower traversal and resolution time.
 - [ ] Minimize converters (especially when nested) and nested dynamic links
 - [ ] Avoid complex links in reused/high-traffic objects
 - [ ] Prefer aliases over dynamic links in same container
