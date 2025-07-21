@@ -9,8 +9,8 @@ Every design decision affects the total number of nodes and the complexity of th
     - The materialized property node (no longer inherited from its base type).
     - The link node represents the connection.
     - The target node receiving the linked value
-- [ ] Each dynamic link adds at least 2-3 extra references, and complex dynamic links (e.g., converters, expressions, switch-case logic) may add dozens. More references = slower traversal and resolution time.
 - [ ] Minimize converters (especially when nested) and nested dynamic links
+    - Each dynamic link adds at least 2-3 extra references, and complex dynamic links (e.g., converters, expressions, switch-case logic) may add dozens. More references = slower traversal and resolution time.
 - [ ] Avoid complex links in reused/high-traffic objects
 - [ ] Prefer aliases over dynamic links in same container
 
