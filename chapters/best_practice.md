@@ -5,7 +5,6 @@ Every design decision affects the total number of nodes and the complexity of th
 
 ## Handling Node Count
 - [ ] PLC variables are counted as nodes at the start of the Runtime, always import only variables that you need to exchange with the HMI.
-    - [ ] 
 - [ ] Each dynamic link = at least 3 OPC UA nodes
     - [ ] The materialized property node (no longer inherited from its base type).
     - [ ] The link node represents the connection.
@@ -35,12 +34,13 @@ Each dynamic link adds at least 2-3 extra references, and complex dynamic links 
 
 [Reference: Creating Objects](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/creating-objects.md#iuaobjects)
 
-## Project Structure & Naming Rules
+## Project Structure
 - [ ] Store all graphics in the UI folder, organized by Templates/Screens
 - [ ] Use a single EmbeddedDatabase with multiple tables if needed
 - [ ] Place global variables in the Model folder
 - [ ] Use Panels to group items for permissions/logic
 
+## Naming Rules
 - [ ] Use meaningful names for all project elements (avoid defaults, numbers, abbreviations)
 - [ ] Use PascalCase for object names, camelCase for variables
 - [ ] Use English for object names and localization keys
