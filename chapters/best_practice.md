@@ -32,21 +32,21 @@ Each dynamic link adds at least 2-3 extra references, and complex dynamic links 
 - [ ] Use NetLogic for dynamic instantiation/lazy loading
 - [ ] Instantiate objects only when needed: avoid using "Visible" property
 
-### Why?
-
-FT Optix renders and loads a page only when all its components are fully initialized. This means that if a page contains many preloaded objects, the system will take longer to process everything before displaying the UI. This can result in longer load times and a noticeable delay when switching between pages.
-
-By using dynamic instantiation with NetLogic scripts, you can create and manage objects only when they are needed, instead of preloading everything at once. This approach is especially useful when dealing with repetitive elements, such as multiple instances of the same type of object that are only shown based on user interaction or external triggers.
-
-One of the biggest benefits of this method is that it enables a form of lazy loading, where objects are instantiated while the page is already displayed and functional. 
-This results in:
-- [ ] Faster initial page loads, as only the essential UI elements are rendered upfront.
-- [ ] Smoother page transitions, since additional objects are loaded dynamically without delaying the page display.
-- [ ] Better resource management, as objects can be destroyed and recreated on demand, reducing memory usage.
-
-This method is particularly advantageous in scenarios where many UI elements would otherwise be hidden by default, such as complex dashboards, interactive lists, or modal pop-ups. Instead of keeping them in memory while hidden, you can instantiate them only when required, ensuring optimal performance.
-
-[Reference: Creating Objects](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/creating-objects.md#iuaobjects)
+    ### Why?
+    
+    FT Optix renders and loads a page only when all its components are fully initialized. This means that if a page contains many preloaded objects, the system will take longer to process everything before displaying the UI. This can result in longer load times and a noticeable delay when switching between pages.
+    
+    By using dynamic instantiation with NetLogic scripts, you can create and manage objects only when they are needed, instead of preloading everything at once. This approach is especially useful when dealing with repetitive elements, such as multiple instances of the same type of object that are only shown based on user interaction or external triggers.
+    
+    One of the biggest benefits of this method is that it enables a form of lazy loading, where objects are instantiated while the page is already displayed and functional. 
+    This results in:
+    - [ ] Faster initial page loads, as only the essential UI elements are rendered upfront.
+    - [ ] Smoother page transitions, since additional objects are loaded dynamically without delaying the page display.
+    - [ ] Better resource management, as objects can be destroyed and recreated on demand, reducing memory usage.
+    
+    This method is particularly advantageous in scenarios where many UI elements would otherwise be hidden by default, such as complex dashboards, interactive lists, or modal pop-ups. Instead of keeping them in memory while hidden, you can instantiate them only when required, ensuring optimal performance.
+    
+    [Reference: Creating Objects](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/creating-objects.md#iuaobjects)
 
 ## Project Structure
 - [ ] Store all graphics in the UI folder, organized by Templates/Screens
