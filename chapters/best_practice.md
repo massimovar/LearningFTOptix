@@ -26,7 +26,7 @@ Ensure UI is efficient and responsive
 ## 5. Dynamic Object Management
 - [ ] Avoid preloading unnecessary UI objects
 - [ ] Use NetLogic for dynamic instantiation/lazy loading
-- [ ] Instantiate objects only when needed
+- [ ] Instantiate objects only when needed: avoid using "Visible" property
 - [ ] [Reference: Creating Objects](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/creating-objects.md#iuaobjects)
 
 ## 6. Project Structure & Naming Rules
