@@ -33,7 +33,7 @@
 - 🛠️ **100 Project Examples:** [Repository](https://github.com/FactoryTalk-Optix)
 - 💻 **Ready-to-Use Scripts:** [Scripts](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Ready_to_use_scripts.md)
 
-### Misc
+### Develop like a pro
 - 🚀 **Performance optimizations:** [Tips](./chapters/best_practice.md)
 - 😇 **General good practice** [Tips](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/good-practices.md)
 
