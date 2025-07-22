@@ -2,6 +2,14 @@
 
 *just some unofficial notes*
 
+---
+- [Minimize the number of nodes](#minimize-the-number-of-nodes)
+- [Reducing Overhead](#reducing-overhead)
+- [Dynamic Object Management](#dynamic-object-management)
+- [Image & Graphic Optimization](#image--graphic-optimization)
+- [Diagnostic Tools](#diagnostic-tools)
+---
+
 Every design decision affects the total number of nodes and the complexity of the runtime model. Striking a balance between reusability, modularity, and performance is key, always considering the target hardware where the project will be deployed.
 
 ## Minimize the number of nodes
