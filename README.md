@@ -35,6 +35,7 @@
 
 ### Misc
 - 🚀 **Performance optimizations:** [Tips](./chapters/best_practice.md)
+- 😇 **General good practice** [Tips](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/good-practices.md)
 
 ---
 
