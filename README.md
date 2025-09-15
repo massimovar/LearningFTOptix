@@ -17,6 +17,8 @@
     &middot;
     <a href="https://github.com/massimovar/LearningFTOptix/blob/main/chapters/FTOptix_overview.md#latest-releases">New releases!</a>
     &middot;
+    <a href="https://rockwellautomation.sharepoint.com/sites/ASEMMARKETING350/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FASEMMARKETING350%2FShared%20Documents%2FSales%20Kit%2FPresentations%2FEN%2FOptix%20Internal%20Outlook%20and%20Roadmap%2EPDF&parent=%2Fsites%2FASEMMARKETING350%2FShared%20Documents%2FSales%20Kit%2FPresentations%2FEN">What’s new in the next release? 👀</a>
+    &middot;
   </p>
 </div>
 
