@@ -23,19 +23,23 @@
 </div>
 
 ### Getting Started
+
 - 🌱 **Download, Install, Start:** [Guide](./chapters/Download_install_start.md)
 - 💲 **License Management (ITA):** [YouTube Video](https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.)
 
 ### Learning Materials
+
 - 📚 **Complete Course:** [PDF](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf)
 - 🎥 **Video Tutorials:** [Playlist](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Learning_material_Videos.md)
 - 📖 **More Learning Material:** [Collection](./chapters/Learning_material.md)
 
 ### Examples
+
 - 🛠️ **100 Project Examples:** [Repository](https://github.com/FactoryTalk-Optix)
 - 💻 **Ready-to-Use Scripts:** [Scripts](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Ready_to_use_scripts.md)
 
 ### Develop like a pro
+
 - 🆕 🔥 **FTOptix Runtime Logs parser**: [Parser](https://asem-applicationsoftwareengineers.github.io/OptixRuntimeLogsParser/index.html)
 - 🚀 **Performance optimizations:** [Tips](./chapters/best_practice.md)
 - 😇 **General good practice** [Tips](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/good-practices.md)
