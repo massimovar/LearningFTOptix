@@ -1,5 +1,3 @@
-## 🎥 Video tutorials -> [Link](./Learning_material_Videos.md)
-
 ## 📚 Training material
 
 - 📘 Basic course [Introduction to FTOptix Studio and Hands on lab PDF](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/Introduction_to_FactoryTalk_Optix_Visualization_Platform_Hands_On_Lab.pdf)
