@@ -8,5 +8,5 @@
 ## 📂 Other resources
 
 - 👼 **Good practices for creating your projects** → [Link](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/good-practices.md)
-- 🔒 **21 CFR Part 11 Regulation** → [Link](./21_CFR_Part_11_Regulation.md)
+- 🔒 **21 CFR Part 11 Regulation** → [Link](https://literature.rockwellautomation.com/idc/groups/literature/documents/um/optix-um001_-en-p.pdf)
 - [RA Knowledge base](https://rockwellautomation.custhelp.com/app/home)
