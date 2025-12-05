@@ -10,6 +10,8 @@
   <p align="center">
     A set of resources in order to become an FTOptix power user
     <br />
+    (unofficial repo)
+    <br />
     <a href="https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html"><strong>Resources, by Rockwell Automation »</strong></a>
     <br />
     <br />
