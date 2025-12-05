@@ -46,7 +46,7 @@
 
 ### FTOptix and Docker
 
-- Deploying FactoryTalk® Optix™ Applications on Docker containers [Documentation](https://github.com/FactoryTalk-Optix/Optix_Docker_FTOptixUpdateServer)
+- 📦 Deploying FactoryTalk® Optix™ Applications on Docker containers [Documentation](https://github.com/FactoryTalk-Optix/Optix_Docker_FTOptixUpdateServer)
 
 ---
 
