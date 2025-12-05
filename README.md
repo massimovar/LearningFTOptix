@@ -44,6 +44,10 @@
 - 🚀 **Performance optimizations:** [Tips](./chapters/best_practice.md)
 - 😇 **General good practice** [Tips](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/good-practices.md)
 
+### FTOptix and Docker
+
+- [Deploying FactoryTalk® Optix™ Applications on Docker containers](https://github.com/FactoryTalk-Optix/Optix_Docker_FTOptixUpdateServer)
+
 ---
 
 ## Hardware Solutions
