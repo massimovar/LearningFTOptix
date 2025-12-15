@@ -31,7 +31,7 @@
 
 ### Learning Materials
 
-- 📚 **Complete Course:** [PDF](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix_Technical_training.pdf)
+- 📚 **Complete Course:** [PDF](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FactoryTalkOptix_TechnicalTraining.pdf)
 - 🎥 **Video Tutorials:** [Playlist](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Learning_material_Videos.md)
 - 📖 **More Learning Material:** [Collection](./chapters/Learning_material.md)
 
