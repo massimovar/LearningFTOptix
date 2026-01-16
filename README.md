@@ -56,8 +56,10 @@
 
 - 💻 **OptixPanels:** [Overview](./chapters/OptixPanels_and_co.md)
 - 🆕 🔥 **OptixEdge:** [Details](./chapters/OptixEdge.md)
-
+win11 dev mode
 ## Star History
+
+[![Star this repo](https://img.shields.io/github/stars/massimovar/LearningFTOptix?style=social)](https://github.com/massimovar/LearningFTOptix)
 
 [![Star History Chart](https://api.star-history.com/svg?repos=massimovar/LearningFTOptix&type=date&legend=top-left)](https://www.star-history.com/#massimovar/LearningFTOptix&type=date&legend=top-left)
 
