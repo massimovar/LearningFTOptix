@@ -43,6 +43,9 @@
 ### Develop like a pro
 
 - 🆕 🔥 **FTOptix Runtime Logs parser**: [Parser](https://asem-applicationsoftwareengineers.github.io/OptixRuntimeLogsParser/index.html)
+  - ⚠️ before start working with the logs parser
+    - [Enable debug-level-logs](https://support.rockwellautomation.com/app/answers/answer_view/a_id/1157693/loc/en_US)
+    - before deploy in production: make sure to restore them after setting the level because it will flood your logs making it impossible to find issues later
 - 🚀 **Performance optimizations:** [Tips](./chapters/best_practice.md)
 - 😇 **General good practice** [Tips](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/good-practices.md)
 
