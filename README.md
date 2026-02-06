@@ -37,7 +37,7 @@
 
 ### Examples
 
-- 🛠️ **100 Project Examples:** [Repository](https://github.com/FactoryTalk-Optix)
+- 🛠️ **120+ Project Examples:** [Repository](https://github.com/FactoryTalk-Optix)
 - 💻 **Ready-to-Use Scripts:** [Scripts](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Ready_to_use_scripts.md)
 
 ### Develop like a pro
