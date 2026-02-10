@@ -19,7 +19,7 @@
     &middot;
     <a href="https://github.com/massimovar/LearningFTOptix/blob/main/chapters/FTOptix_overview.md#latest-releases">New releases! ✨</a>
     &middot;
-    <a href="https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix Public Outlook and Roadmap July 2025">What’s next? 👀</a>
+    <a href="https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix Public Outlook and Roadmap July 2025.pdf">What’s next? 👀</a>
     &middot;
   </p>
 </div>
