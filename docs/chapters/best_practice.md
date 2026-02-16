@@ -1,3 +1,7 @@
+---
+layout: dark
+---
+
 # 🚀 Performance optimizations
 
 *just some unofficial notes*

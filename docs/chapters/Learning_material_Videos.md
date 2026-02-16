@@ -1,3 +1,7 @@
+---
+layout: dark
+---
+
 ## FT Optix Essentials (ITA)
 ### ASEM tutorials -> [Link](https://www.asem.it/it/pagina/36/risorse-video.html)
 

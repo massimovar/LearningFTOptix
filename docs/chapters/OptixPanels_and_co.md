@@ -1,3 +1,7 @@
+---
+layout: dark
+---
+
 ## 💻 OptixPanels & co
 
 ### Optix Panel

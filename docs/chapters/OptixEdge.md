@@ -1,3 +1,7 @@
+---
+layout: dark
+---
+
 # OptixEdge
 
 - 📚 Optix Edge Standard User Manual → [Link](https://literature.rockwellautomation.com/idc/groups/literature/documents/um/2800e-um001_-en-p.pdf)

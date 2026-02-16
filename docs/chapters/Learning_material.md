@@ -1,3 +1,7 @@
+---
+layout: dark
+---
+
 ## 📚 Training material
 
 - 📘 Basic course [Introduction to FTOptix Studio and Hands on lab PDF](https://massimovar.github.io/LearningFTOptix/pdf/Introduction_to_FactoryTalk_Optix_Visualization_Platform_Hands_On_Lab.pdf)

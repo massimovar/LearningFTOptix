@@ -1,3 +1,7 @@
+---
+layout: dark
+---
+
 ## 🚀 Download, install, start!
 
 - 📜 [System requirements and ports configuration](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/release-notes-ditamap/system/system-requirements.html)

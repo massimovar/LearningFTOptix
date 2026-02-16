@@ -1,3 +1,7 @@
+---
+layout: dark
+---
+
 ## 👾 Ready to use scripts
 
 - [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
