@@ -19,7 +19,7 @@
     &middot;
     <a href="https://github.com/massimovar/LearningFTOptix/blob/main/chapters/FTOptix_overview.md#latest-releases">New releases! ✨</a>
     &middot;
-    <a href="https://rockwellautomation.sharepoint.com/sites/ASEMMARKETING350/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FASEMMARKETING350%2FShared%20Documents%2FSales%20Kit%2FPresentations%2FEN%2FOptix%20Internal%20Outlook%20and%20Roadmap%2EPDF&parent=%2Fsites%2FASEMMARKETING350%2FShared%20Documents%2FSales%20Kit%2FPresentations%2FEN">What’s new in the next release? 👀</a>
+    <a href="https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix Public Outlook and Roadmap July 2025.pdf">What’s next? 👀</a>
     &middot;
   </p>
 </div>
@@ -37,12 +37,14 @@
 
 ### Examples
 
-- 🛠️ **100 Project Examples:** [Repository](https://github.com/FactoryTalk-Optix)
+- 🛠️ **120+ Project Examples:** [Repository](https://github.com/FactoryTalk-Optix)
 - 💻 **Ready-to-Use Scripts:** [Scripts](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Ready_to_use_scripts.md)
 
 ### Develop like a pro
 
 - 🆕 🔥 **FTOptix Runtime Logs parser**: [Parser](https://asem-applicationsoftwareengineers.github.io/OptixRuntimeLogsParser/index.html)
+  - ⚠️ before start working with the logs parser
+    - [Enable debug-level-logs](https://support.rockwellautomation.com/app/answers/answer_view/a_id/1157693/loc/en_US) _before deploy in production: make sure to restore them after setting the level because it will flood your logs making it impossible to find issues later_
 - 🚀 **Performance optimizations:** [Tips](./chapters/best_practice.md)
 - 😇 **General good practice** [Tips](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/good-practices.md)
 

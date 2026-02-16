@@ -3,6 +3,8 @@
 - [Cheat sheet](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet)
 - [Other super useful C# snippets](https://gist.github.com/AlessioForafo)
 
+## 📚 Third-party .NET libraries? 
+- [Read here!](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/extending-projects/netlogic/manage-third-party-dot-net-libraries.html)
 
 ## 🧑🏻‍💻 How to write scripts in FTOptix
 
