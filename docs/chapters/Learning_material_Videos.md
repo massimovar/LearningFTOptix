@@ -146,7 +146,7 @@ layout: default
 </tr>
 <tr>
   <td>Rockwell</td>
-  <td><a href="https://www.rockwellautomation.com/en-us/events/webinars/revitalize-your-hmi-operations-webinar-series.html">Webinar Series: Revitalize Your HMI Operations</a></td>
+  <td><a href="https://www.rockwellautomation.com/en-us/events/webinars.html">Webinar Series: Revitalize Your HMI Operations</a></td>
   <td></td>
 </tr>
 <tr>
