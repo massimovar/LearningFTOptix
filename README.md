@@ -29,14 +29,6 @@
 | 📦 **FTOptix & Docker** | Deploying Optix apps on Docker containers |
 | 💻 **Hardware Solutions** | OptixPanels and OptixEdge overviews |
 
-## Quick links
-
-- 📄 [What is FTOptix?](https://massimovar.github.io/LearningFTOptix/pdf/FTOptix%20Overview.pdf)
-- ✨ [Latest releases](https://massimovar.github.io/LearningFTOptix/chapters/FTOptix_overview.html#latest-releases)
-- 🎥 [Video Tutorials](https://massimovar.github.io/LearningFTOptix/chapters/Learning_material_Videos.html)
-- 💻 [Ready-to-Use Scripts](https://massimovar.github.io/LearningFTOptix/chapters/Ready_to_use_scripts.html)
-- 🔥 [Runtime Logs Parser](https://asem-applicationsoftwareengineers.github.io/OptixRuntimeLogsParser/index.html)
-
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=massimovar/LearningFTOptix&type=date&legend=top-left)](https://www.star-history.com/#massimovar/LearningFTOptix&type=date&legend=top-left)
