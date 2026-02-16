@@ -1,63 +1,41 @@
-<!-- PROJECT LOGO -->
-<br />
+﻿<!-- PROJECT LOGO -->
 <div align="center">
-  <a href="https://massimovar.github.io/LearningFTOptix/README.md">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://massimovar.github.io/LearningFTOptix/">
+    <img src="docs/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h1 align="center">Learning FactoryTalk® Optix™</h1>
+  <h1>Learning FactoryTalk® Optix™</h1>
 
-  <p align="center">
-    A set of resources in order to become an FTOptix power user
-    <br />
-    (unofficial repo)
-    <br />
-    <a href="https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html"><strong>Resources, by Rockwell Automation »</strong></a>
-    <br />
-    <br />
-    <a href="https://massimovar.github.io/LearningFTOptix/pdf/FTOptix Overview.pdf">What is FTOptix?</a>
-    &middot;
-    <a href="https://massimovar.github.io/LearningFTOptix/chapters/FTOptix_overview.md#latest-releases">New releases! ✨</a>
-    &middot;
-    <a href="https://massimovar.github.io/LearningFTOptix/pdf/FTOptix Public Outlook and Roadmap July 2025.pdf">What’s next? 👀</a>
-    &middot;
+  <p>
+    A curated set of resources to become an FTOptix power user<br>
+    <em>(unofficial repo)</em>
   </p>
+
+  <h3>
+    👉 <a href="https://massimovar.github.io/LearningFTOptix/">Browse the full site on GitHub Pages</a> 👈
+  </h3>
 </div>
-
-### Getting Started
-
-- 🌱 **Download, Install, Start:** [Guide](./chapters/Download_install_start.md)
-- 💲 **License Management (ITA):** [YouTube Video](https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.)
-
-### Learning Materials
-
-- 📚 **Complete Course:** [PDF](https://massimovar.github.io/LearningFTOptix/pdf/FactoryTalkOptix_TechnicalTraining.pdf)
-- 🎥 **Video Tutorials:** [Playlist](https://massimovar.github.io/LearningFTOptix/chapters/Learning_material_Videos.md)
-- 📖 **More Learning Material:** [Collection](./chapters/Learning_material.md)
-
-### Examples
-
-- 🛠️ **120+ Project Examples:** [Repository](https://github.com/FactoryTalk-Optix)
-- 💻 **Ready-to-Use Scripts:** [Scripts](https://massimovar.github.io/LearningFTOptix/chapters/Ready_to_use_scripts.md)
-
-### Develop like a pro
-
-- 🆕 🔥 **FTOptix Runtime Logs parser**: [Parser](https://asem-applicationsoftwareengineers.github.io/OptixRuntimeLogsParser/index.html)
-  - ⚠️ before start working with the logs parser
-    - [Enable debug-level-logs](https://support.rockwellautomation.com/app/answers/answer_view/a_id/1157693/loc/en_US) _before deploy in production: make sure to restore them after setting the level because it will flood your logs making it impossible to find issues later_
-- 🚀 **Performance optimizations:** [Tips](./chapters/best_practice.md)
-- 😇 **General good practice** [Tips](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/good-practices.md)
-
-### FTOptix and Docker
-
-- 📦 Deploying FactoryTalk® Optix™ Applications on Docker containers [Documentation](https://github.com/FactoryTalk-Optix/Optix_Docker_FTOptixUpdateServer)
 
 ---
 
-## Hardware Solutions
+## What's inside
 
-- 💻 **OptixPanels:** [Overview](./chapters/OptixPanels_and_co.md)
-- 🆕 🔥 **OptixEdge:** [Details](./chapters/OptixEdge.md)
+| Section | Description |
+|---------|-------------|
+| 🌱 **Getting Started** | Download, install, and first steps with FTOptix |
+| 📚 **Learning Materials** | Complete training PDFs, video tutorials (searchable & sortable), and more |
+| 🛠️ **Examples & Scripts** | 120+ project examples and ready-to-use C# scripts |
+| 🚀 **Develop Like a Pro** | Runtime logs parser, performance tips, and best practices |
+| 📦 **FTOptix & Docker** | Deploying Optix apps on Docker containers |
+| 💻 **Hardware Solutions** | OptixPanels and OptixEdge overviews |
+
+## Quick links
+
+- 📄 [What is FTOptix?](https://massimovar.github.io/LearningFTOptix/pdf/FTOptix%20Overview.pdf)
+- ✨ [Latest releases](https://massimovar.github.io/LearningFTOptix/chapters/FTOptix_overview.md#latest-releases)
+- 🎥 [Video Tutorials](https://massimovar.github.io/LearningFTOptix/chapters/Learning_material_Videos.md)
+- 💻 [Ready-to-Use Scripts](https://massimovar.github.io/LearningFTOptix/chapters/Ready_to_use_scripts.md)
+- 🔥 [Runtime Logs Parser](https://asem-applicationsoftwareengineers.github.io/OptixRuntimeLogsParser/index.html)
 
 ## Star History
 
@@ -65,6 +43,6 @@
 
 ---
 
-#### Are you also looking for information about Ubiquity / FTRA? -> [Link](https://github.com/massimovar/LearningUbiquityX/)
+#### Are you also looking for information about Ubiquity / FTRA? → [Link](https://github.com/massimovar/LearningUbiquityX/)
 
 ---
