@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/massimovar/LearningFTOptix/blob/main/README.md">
+  <a href="https://massimovar.github.io/LearningFTOptix/README.md">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -15,11 +15,11 @@
     <a href="https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html"><strong>Resources, by Rockwell Automation »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix Overview.pdf">What is FTOptix?</a>
+    <a href="https://massimovar.github.io/LearningFTOptix/pdf/FTOptix Overview.pdf">What is FTOptix?</a>
     &middot;
-    <a href="https://github.com/massimovar/LearningFTOptix/blob/main/chapters/FTOptix_overview.md#latest-releases">New releases! ✨</a>
+    <a href="https://massimovar.github.io/LearningFTOptix/chapters/FTOptix_overview.md#latest-releases">New releases! ✨</a>
     &middot;
-    <a href="https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FTOptix Public Outlook and Roadmap July 2025.pdf">What’s next? 👀</a>
+    <a href="https://massimovar.github.io/LearningFTOptix/pdf/FTOptix Public Outlook and Roadmap July 2025.pdf">What’s next? 👀</a>
     &middot;
   </p>
 </div>
@@ -31,14 +31,14 @@
 
 ### Learning Materials
 
-- 📚 **Complete Course:** [PDF](https://github.com/massimovar/LearningFTOptix/blob/main/pdf/FactoryTalkOptix_TechnicalTraining.pdf)
-- 🎥 **Video Tutorials:** [Playlist](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Learning_material_Videos.md)
+- 📚 **Complete Course:** [PDF](https://massimovar.github.io/LearningFTOptix/pdf/FactoryTalkOptix_TechnicalTraining.pdf)
+- 🎥 **Video Tutorials:** [Playlist](https://massimovar.github.io/LearningFTOptix/chapters/Learning_material_Videos.md)
 - 📖 **More Learning Material:** [Collection](./chapters/Learning_material.md)
 
 ### Examples
 
 - 🛠️ **120+ Project Examples:** [Repository](https://github.com/FactoryTalk-Optix)
-- 💻 **Ready-to-Use Scripts:** [Scripts](https://github.com/massimovar/LearningFTOptix/blob/main/chapters/Ready_to_use_scripts.md)
+- 💻 **Ready-to-Use Scripts:** [Scripts](https://massimovar.github.io/LearningFTOptix/chapters/Ready_to_use_scripts.md)
 
 ### Develop like a pro
 
