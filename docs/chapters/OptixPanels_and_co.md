@@ -1,5 +1,5 @@
 ---
-layout: dark
+layout: default
 ---
 
 ## 💻 OptixPanels & co

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: #ffffff; color: #1f2328; line-height: 1.7; }
+    .wrapper { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
+
+    /* Back link */
+    .back { display: inline-block; margin-bottom: 20px; color: #0969da; text-decoration: none; font-size: 14px; }
+    .back:hover { text-decoration: underline; }
+
+    /* Typography */
+    h1, h2, h3, h4 { color: #1f2328; margin-top: 24px; margin-bottom: 12px; }
+    h1 { font-size: 26px; border-bottom: 1px solid #d0d7de; padding-bottom: 8px; }
+    h2 { font-size: 22px; border-bottom: 1px solid #d0d7de; padding-bottom: 6px; }
+    h3 { font-size: 18px; }
+    h4 { font-size: 16px; }
+    p { margin-bottom: 12px; color: #1f2328; }
+    ul, ol { margin: 8px 0 12px 24px; color: #1f2328; }
+    li { margin-bottom: 4px; }
+
+    /* Links */
+    a { color: #0969da; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Code */
+    code { background: #f6f8fa; color: #0550ae; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+    pre { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 8px; padding: 16px; overflow-x: auto; margin: 12px 0; }
+    pre code { background: none; padding: 0; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { padding: 8px 12px; border: 1px solid #d0d7de; text-align: left; }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:hover td { background: #f6f8fa; }
+
+    /* Blockquotes */
+    blockquote { border-left: 3px solid #0969da; padding: 8px 16px; margin: 12px 0; color: #656d76; background: #f6f8fa; border-radius: 0 6px 6px 0; }
+
+    /* Horizontal rule */
+    hr { border: none; border-top: 1px solid #d0d7de; margin: 24px 0; }
+
+    /* Inline tags */
+    .tag { background: #ddf4ff; color: #0969da; padding: 2px 7px; border-radius: 12px; font-size: 12px; margin: 1px 2px; display: inline-block; }
+
+    /* Search box (for Videos page) */
+    .search-box { width: 100%; padding: 10px 14px; margin-bottom: 12px; border: 1px solid #d0d7de; border-radius: 8px; font-size: 15px; background: #ffffff; color: #1f2328; outline: none; box-sizing: border-box; }
+    .search-box:focus { border-color: #0969da; box-shadow: 0 0 0 3px rgba(9,105,218,.15); }
+
+    /* Video table */
+    .vid-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+    .vid-table th, .vid-table td { padding: 8px 10px; border: 1px solid #d0d7de; text-align: left; }
+    .vid-table th { background: #f6f8fa; cursor: pointer; user-select: none; white-space: nowrap; }
+    .vid-table th:hover { background: #eaeef2; }
+    .vid-table th .arrow { font-size: 11px; margin-left: 4px; opacity: .4; }
+    .vid-table th.sorted .arrow { opacity: 1; }
+    .vid-table tr:hover td { background: #f6f8fa; }
+    .vid-table td:nth-child(1) { text-align: center; width: 30px; }
+    .vid-table td:nth-child(4) { text-align: center; white-space: nowrap; }
+    .no-results { text-align: center; padding: 16px; color: #656d76; font-style: italic; }
+
+    /* Footer */
+    .page-footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #d0d7de; text-align: center; color: #656d76; font-size: 13px; }
+    .page-footer a { color: #0969da; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <a class="back" href="{{ '/' | relative_url }}">← Back to Home</a>
+    {{ content }}
+    <div class="page-footer">
+      <a href="{{ '/' | relative_url }}">Home</a> · <a href="https://github.com/massimovar/LearningFTOptix">GitHub Repo</a>
+    </div>
+  </div>
+</body>
+</html>

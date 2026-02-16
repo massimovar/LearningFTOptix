@@ -1,5 +1,5 @@
 ---
-layout: dark
+layout: default
 ---
 
 ## FT Optix Essentials (ITA)

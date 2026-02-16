@@ -1,5 +1,5 @@
 ---
-layout: dark
+layout: default
 ---
 
 ## 👾 Ready to use scripts

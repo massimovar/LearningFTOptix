@@ -4,4 +4,4 @@ defaults:
   - scope:
       path: ""
     values:
-      layout: dark
+      layout: default
