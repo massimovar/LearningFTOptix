@@ -32,9 +32,9 @@
 ## Quick links
 
 - 📄 [What is FTOptix?](https://massimovar.github.io/LearningFTOptix/pdf/FTOptix%20Overview.pdf)
-- ✨ [Latest releases](https://massimovar.github.io/LearningFTOptix/chapters/FTOptix_overview.md#latest-releases)
-- 🎥 [Video Tutorials](https://massimovar.github.io/LearningFTOptix/chapters/Learning_material_Videos.md)
-- 💻 [Ready-to-Use Scripts](https://massimovar.github.io/LearningFTOptix/chapters/Ready_to_use_scripts.md)
+- ✨ [Latest releases](https://massimovar.github.io/LearningFTOptix/chapters/FTOptix_overview.html#latest-releases)
+- 🎥 [Video Tutorials](https://massimovar.github.io/LearningFTOptix/chapters/Learning_material_Videos.html)
+- 💻 [Ready-to-Use Scripts](https://massimovar.github.io/LearningFTOptix/chapters/Ready_to_use_scripts.html)
 - 🔥 [Runtime Logs Parser](https://asem-applicationsoftwareengineers.github.io/OptixRuntimeLogsParser/index.html)
 
 ## Star History
