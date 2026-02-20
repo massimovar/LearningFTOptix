@@ -2,15 +2,60 @@
 layout: default
 ---
 
+<style>
+  .section-intro { color: #656d76; font-size: 15px; margin-bottom: 20px; }
+  .hw-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 24px 0; }
+  .hw-card { border: 1px solid #d0d7de; border-radius: 10px; padding: 20px; background: #f6f8fa; box-shadow: 0 1px 3px rgba(0,0,0,.08); transition: .15s; }
+  .hw-card:hover { border-color: #0969da; box-shadow: 0 2px 8px rgba(9,105,218,.15); }
+  .hw-card h3 { font-size: 16px; margin: 0 0 12px; border: none; padding: 0; }
+  .hw-card ul { list-style: none; margin: 0; padding: 0; }
+  .hw-card li { margin-bottom: 8px; font-size: 14px; }
+  .hw-card a { color: #0969da; text-decoration: none; }
+  .hw-card a:hover { text-decoration: underline; }
+  .hw-card .label { display: block; color: #656d76; font-size: 12px; margin-bottom: 2px; text-transform: uppercase; letter-spacing: .5px; font-weight: 600; }
+</style>
+
 ## 📚 Training material
 
-- 📘 Basic course [Introduction to FTOptix Studio and Hands on lab PDF](https://massimovar.github.io/LearningFTOptix/pdf/Introduction_to_FactoryTalk_Optix_Visualization_Platform_Hands_On_Lab.pdf)
-- 📗 Complete course [Technical training PDF](https://massimovar.github.io/LearningFTOptix/pdf/FTOptix_Technical_training.pdf)
-- 🌐 [FTOptix Online Help](https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html)
-- ❓ [FAQs](https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1141346/loc/en_US)
+<p class="section-intro">Courses, official documentation, and community resources to level up your FTOptix skills.</p>
 
-## 📂 Other resources
+<div class="hw-grid">
 
-- 👼 **Good practices for creating your projects** → [Link](https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/good-practices.md)
-- 🔒 **21 CFR Part 11 Regulation** → [Link](https://literature.rockwellautomation.com/idc/groups/literature/documents/um/optix-um001_-en-p.pdf)
-- [RA Knowledge base](https://rockwellautomation.custhelp.com/app/home)
+  <div class="hw-card">
+    <h3>📘 Courses</h3>
+    <ul>
+      <li>
+        <span class="label">Beginner</span>
+        <a href="https://massimovar.github.io/LearningFTOptix/pdf/Introduction_to_FactoryTalk_Optix_Visualization_Platform_Hands_On_Lab.pdf">Introduction to FTOptix — Hands-On Lab</a>
+      </li>
+      <li>
+        <span class="label">Complete</span>
+        <a href="https://massimovar.github.io/LearningFTOptix/pdf/FTOptix_Technical_training.pdf">Technical Training PDF</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="hw-card">
+    <h3>🌐 Official Resources</h3>
+    <ul>
+      <li><a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html">FTOptix Online Help</a></li>
+      <li><a href="https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1141346/loc/en_US">FAQs</a></li>
+      <li><a href="https://rockwellautomation.custhelp.com/app/home">RA Knowledge Base</a></li>
+    </ul>
+  </div>
+
+  <div class="hw-card">
+    <h3>📂 Other resources</h3>
+    <ul>
+      <li>
+        <span class="label">Best practices</span>
+        <a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/good-practices.md">Good practices for project creation</a>
+      </li>
+      <li>
+        <span class="label">Compliance</span>
+        <a href="https://literature.rockwellautomation.com/idc/groups/literature/documents/um/optix-um001_-en-p.pdf">21 CFR Part 11 Regulation</a>
+      </li>
+    </ul>
+  </div>
+
+</div>
