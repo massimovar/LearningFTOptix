@@ -1,136 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Learning FactoryTalk® Optix™</title>
   <style>
     :root {
-      --bg: #ffffff; --text: #1f2328; --muted: #656d76; --border: #d0d7de;
-      --accent: #0969da; --accent-light: #ddf4ff; --surface: #f6f8fa;
-      --card-shadow: 0 1px 3px rgba(0,0,0,.08);
+      --bg: #ffffff;
+      --text: #1f2328;
+      --muted: #656d76;
+      --border: #d0d7de;
+      --accent: #0969da;
+      --accent-light: #ddf4ff;
+      --surface: #f6f8fa;
+      --card-shadow: 0 1px 3px rgba(0, 0, 0, .08);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-    .container { max-width: 960px; margin: 0 auto; padding: 32px 20px; }
-    
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+
     /* Header */
-    .hero { text-align: center; margin-bottom: 32px; }
-    .hero img { width: 80px; height: 80px; margin-bottom: 12px; }
-    .hero h1 { font-size: 28px; margin-bottom: 4px; }
-    .hero p { color: var(--muted); font-size: 16px; }
-    .hero .subtitle { margin-top: 8px; }
-    .hero .links { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-    .hero .links a { color: var(--accent); text-decoration: none; padding: 4px 12px; border: 1px solid var(--border); border-radius: 20px; font-size: 14px; transition: .15s; }
-    .hero .links a:hover { background: var(--accent-light); border-color: var(--accent); }
+    .hero {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .hero img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: 28px;
+      margin-bottom: 4px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .hero .subtitle {
+      margin-top: 8px;
+    }
+
+    .hero .links {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .hero .links a {
+      color: var(--accent);
+      text-decoration: none;
+      padding: 4px 12px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 14px;
+      transition: .15s;
+    }
+
+    .hero .links a:hover {
+      background: var(--accent-light);
+      border-color: var(--accent);
+    }
 
     /* Navigation cards */
-    .nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 40px; }
-    .nav-card { border: 1px solid var(--border); border-radius: 10px; padding: 20px; background: var(--surface); box-shadow: var(--card-shadow); transition: .15s; }
-    .nav-card:hover { border-color: var(--accent); box-shadow: 0 2px 8px rgba(9,105,218,.15); }
-    .nav-card h3 { font-size: 16px; margin-bottom: 10px; }
-    .nav-card ul { list-style: none; padding: 0; }
-    .nav-card li { margin-bottom: 6px; }
-    .nav-card a { color: var(--accent); text-decoration: none; font-size: 14px; }
-    .nav-card a:hover { text-decoration: underline; }
-    .nav-card .desc { color: var(--muted); font-size: 13px; }
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .nav-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      background: var(--surface);
+      box-shadow: var(--card-shadow);
+      transition: .15s;
+    }
+
+    .nav-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 8px rgba(9, 105, 218, .15);
+    }
+
+    .nav-card h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .nav-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .nav-card li {
+      margin-bottom: 6px;
+    }
+
+    .nav-card a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .nav-card a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-card .desc {
+      color: var(--muted);
+      font-size: 13px;
+    }
 
     /* Section separator */
-    hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 32px 0;
+    }
+
+    /* Star CTA — top-right fixed */
+    .star-cta {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      z-index: 100;
+    }
+
+    .star-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #ffffff;
+      background: linear-gradient(135deg, #0969da 0%, #0550ae 100%);
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(9, 105, 218, .3);
+      transition: transform .2s cubic-bezier(.4, 0, .2, 1), box-shadow .2s cubic-bezier(.4, 0, .2, 1);
+      cursor: pointer;
+    }
+
+    .star-btn:hover {
+      transform: translateY(-1px) scale(1.04);
+      box-shadow: 0 6px 20px rgba(9, 105, 218, .35), 0 0 0 3px rgba(9, 105, 218, .15);
+    }
+
+    .star-btn:active {
+      transform: translateY(0) scale(.97);
+    }
+
+    .star-btn svg {
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse-ring {
+      0% {
+        box-shadow: 0 2px 8px rgba(9, 105, 218, .3), 0 0 0 0 rgba(9, 105, 218, .25);
+      }
+
+      70% {
+        box-shadow: 0 2px 8px rgba(9, 105, 218, .3), 0 0 0 8px rgba(9, 105, 218, 0);
+      }
+
+      100% {
+        box-shadow: 0 2px 8px rgba(9, 105, 218, .3), 0 0 0 0 rgba(9, 105, 218, 0);
+      }
+    }
+
+    .star-btn {
+      animation: pulse-ring 2.5s ease-out 1;
+    }
 
     /* Footer */
-    .footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 40px; }
-    .footer a { color: var(--accent); text-decoration: none; }
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 40px;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
   </style>
 </head>
+
 <body>
 
-<div class="container">
-
-  <!-- Hero -->
-  <div class="hero">
-    <img src="images/logo.png" alt="Logo">
-    <h1>Learning FactoryTalk® Optix™</h1>
-    <p>A set of resources to become an FTOptix power user <em>(unofficial repo)</em></p>
-    <p class="subtitle">
-      <a href="https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html" style="color:var(--accent)">
-        <strong>Resources, by Rockwell Automation »</strong>
-      </a>
-    </p>
-    <div class="links">
-      <a href="pdf/FTOptix%20Overview.pdf">What is FTOptix?</a>
-      <a href="chapters/FTOptix_overview.html#latest-releases">New releases ✨</a>
-      <a href="pdf/FTOptix%20Public%20Outlook%20and%20Roadmap%20July%202025.pdf">What's next? 👀</a>
-    </div>
+  <!-- Star CTA — top-right -->
+  <div class="star-cta">
+    <a class="star-btn" href="https://github.com/massimovar/LearningFTOptix" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/></svg>
+      Star on GitHub
+    </a>
   </div>
 
-  <hr>
+  <div class="container">
 
-  <!-- Navigation Grid -->
-  <div class="nav-grid">
-
-    <div class="nav-card">
-      <h3>🌱 Getting Started</h3>
-      <ul>
-        <li>📥 <a href="chapters/Download_install_start.html">Download, Install, Start</a></li>
-        <li>💲 <a href="https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.">License Management (ITA)</a></li>
-      </ul>
+    <!-- Hero -->
+    <div class="hero">
+      <img src="images/logo.png" alt="Logo">
+      <h1>Learning FactoryTalk® Optix™</h1>
+      <p>A set of resources to become an FTOptix power user <em>(unofficial repo)</em></p>
+      <p class="subtitle">
+        <a href="https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html"
+          style="color:var(--accent)">
+          <strong>Resources, by Rockwell Automation »</strong>
+        </a>
+      </p>
+      <div class="links">
+        <a href="pdf/FTOptix%20Overview.pdf">What is FTOptix?</a>
+        <a href="chapters/FTOptix_overview.html#latest-releases">New releases ✨</a>
+        <a href="pdf/FTOptix%20Public%20Outlook%20and%20Roadmap%20July%202025.pdf">What's next? 👀</a>
+      </div>
     </div>
 
-    <div class="nav-card">
-      <h3>📚 Learning Materials</h3>
-      <ul>
-        <li>📖 <a href="pdf/FactoryTalkOptix_TechnicalTraining.pdf">Complete Course (PDF)</a></li>
-        <li>🎥 <a href="chapters/Learning_material_Videos.html">Video Tutorials</a></li>
-        <li>📝 <a href="chapters/Learning_material.html">More Learning Material</a></li>
-      </ul>
+    <hr>
+
+    <!-- Navigation Grid -->
+    <div class="nav-grid">
+
+      <div class="nav-card">
+        <h3>🌱 Getting Started</h3>
+        <ul>
+          <li>📥 <a href="chapters/Download_install_start.html">Download, Install, Start</a></li>
+          <li>💲 <a href="https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.">License Management
+              (ITA)</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-card">
+        <h3>📚 Learning Materials</h3>
+        <ul>
+          <li>📖 <a href="pdf/FactoryTalkOptix_TechnicalTraining.pdf">Complete Course (PDF)</a></li>
+          <li>🎥 <a href="chapters/Learning_material_Videos.html">Video Tutorials</a></li>
+          <li>📝 <a href="chapters/Learning_material.html">More Learning Material</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-card">
+        <h3>🛠️ Examples & Scripts</h3>
+        <ul>
+          <li>🧩 <a href="https://github.com/orgs/FactoryTalk-Optix/repositories">120+ Project Examples</a></li>
+          <li>📋 <a href="chapters/Ready_to_use_scripts.html">Ready-to-Use Scripts</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-card">
+        <h3>🚀 Develop Like a Pro</h3>
+        <ul>
+          <li>🔥 <a href="https://asem-applicationsoftwareengineers.github.io/OptixRuntimeLogsParser/index.html">Runtime
+              Logs Parser</a></li>
+          <li>⚡ <a href="chapters/best_practice.html">Performance Optimizations</a></li>
+          <li>✅ <a
+              href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/good-practices.md">General
+              Good Practices</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-card">
+        <h3>📦 FTOptix &amp; Docker</h3>
+        <ul>
+          <li>🐳 <a href="https://github.com/FactoryTalk-Optix/Optix_Docker_FTOptixUpdateServer">Docker Deployment
+              Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-card">
+        <h3>💻 Hardware Solutions</h3>
+        <ul>
+          <li>🖥️ <a href="chapters/OptixPanels_and_co.html">OptixPanels Overview</a></li>
+          <li>⚙️ <a href="chapters/OptixEdge.html">OptixEdge Details</a></li>
+        </ul>
+      </div>
+
     </div>
 
-    <div class="nav-card">
-      <h3>🛠️ Examples & Scripts</h3>
-      <ul>
-        <li>🧩 <a href="https://github.com/orgs/FactoryTalk-Optix/repositories">120+ Project Examples</a></li>
-        <li>📋 <a href="chapters/Ready_to_use_scripts.html">Ready-to-Use Scripts</a></li>
-      </ul>
-    </div>
+    <hr>
 
-    <div class="nav-card">
-      <h3>🚀 Develop Like a Pro</h3>
-      <ul>
-        <li>🔥 <a href="https://asem-applicationsoftwareengineers.github.io/OptixRuntimeLogsParser/index.html">Runtime Logs Parser</a></li>
-        <li>⚡ <a href="chapters/best_practice.html">Performance Optimizations</a></li>
-        <li>✅ <a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/good-practices.md">General Good Practices</a></li>
-      </ul>
-    </div>
-
-    <div class="nav-card">
-      <h3>📦 FTOptix &amp; Docker</h3>
-      <ul>
-        <li>🐳 <a href="https://github.com/FactoryTalk-Optix/Optix_Docker_FTOptixUpdateServer">Docker Deployment Guide</a></li>
-      </ul>
-    </div>
-
-    <div class="nav-card">
-      <h3>💻 Hardware Solutions</h3>
-      <ul>
-        <li>🖥️ <a href="chapters/OptixPanels_and_co.html">OptixPanels Overview</a></li>
-        <li>⚙️ <a href="chapters/OptixEdge.html">OptixEdge Details</a></li>
-      </ul>
+    <div class="footer">
+      <p>
+        <a href="https://github.com/massimovar/LearningFTOptix">⭐ GitHub Repository</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com/massimovar/LearningUbiquityX/">⭐ Ubiquity / FTRA</a>
+      </p>
     </div>
 
   </div>
-
-  <hr>
-
-  <div class="footer">
-    <p>
-      <a href="https://github.com/massimovar/LearningFTOptix">⭐ GitHub Repository</a>
-      &nbsp;·&nbsp;
-      <a href="https://github.com/massimovar/LearningUbiquityX/">⭐ Ubiquity / FTRA</a>
-    </p>
-  </div>
-
-</div>
 
 </body>
+
 </html>
