@@ -93,6 +93,107 @@
       margin-bottom: 40px;
     }
 
+    /* News block */
+    .news-section {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+      padding: 20px;
+      border: 1px solid #c8ddff;
+      border-left: 5px solid var(--accent);
+      border-radius: 12px;
+      background: linear-gradient(135deg, #eef6ff 0%, #f6f8fa 65%, #ffffff 100%);
+      box-shadow: var(--card-shadow);
+    }
+
+    .news-section::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      top: -80px;
+      right: -70px;
+      background: radial-gradient(circle, rgba(9, 105, 218, .16) 0%, rgba(9, 105, 218, 0) 70%);
+      pointer-events: none;
+    }
+
+    .news-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .news-section h2 {
+      font-size: 18px;
+      margin-bottom: 0;
+    }
+
+    .news-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .4px;
+      color: #0550ae;
+      background: #ddf4ff;
+      border: 1px solid #9ecbff;
+    }
+
+    .news-section p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .news-list {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    .news-list li {
+      margin-bottom: 10px;
+      padding: 10px 12px;
+      border: 1px solid #d0d7de;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .8);
+      font-size: 14px;
+    }
+
+    .news-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .news-item-title {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .news-item-link {
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    .news-list a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .news-list a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .news-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
     .nav-card {
       border: 1px solid var(--border);
       border-radius: 10px;
@@ -249,6 +350,26 @@
 
     <hr>
 
+    <section class="news-section" aria-labelledby="news-heading">
+      <div class="news-header">
+        <h2 id="news-heading">News</h2>
+        <span class="news-tag">LATEST</span>
+      </div>
+      <p>Latest updates and newly added resources:</p>
+      <ul class="news-list">
+        <li>
+          <span class="news-item-title">Added feature details for FTOptix release 1.7</span>
+          Discover what is new in the latest release notes and highlights.
+          <a class="news-item-link" href="chapters/FTOptix_overview.html#latest-releases">See latest releases</a>
+        </li>
+        <li>
+          <span class="news-item-title">Added official Best practices reference</span>
+          New direct access to Rockwell Automation guidance for stronger project design.
+          <a class="news-item-link" href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices.html">Open best practices</a>
+        </li>
+      </ul>
+    </section>
+
     <!-- Navigation Grid -->
     <div class="nav-grid">
 
@@ -267,6 +388,8 @@
           <li>📖 <a href="pdf/FactoryTalkOptix_TechnicalTraining.pdf">Complete Course (PDF)</a></li>
           <li>🎥 <a href="chapters/Learning_material_Videos.html">Video Tutorials</a></li>
           <li>📝 <a href="chapters/Learning_material.html">More Learning Material</a></li>
+          <li>✅ <a
+              href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices.html">Best practices</a></li>
         </ul>
       </div>
 
