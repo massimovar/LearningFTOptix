@@ -3,39 +3,64 @@ layout: default
 ---
 
 <style>
-  .hw-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 24px 0; }
-  .hw-card { border: 1px solid #d0d7de; border-radius: 10px; padding: 20px; background: #f6f8fa; box-shadow: 0 1px 3px rgba(0,0,0,.08); transition: .15s; }
-  .hw-card:hover { border-color: #0969da; box-shadow: 0 2px 8px rgba(9,105,218,.15); }
-  .hw-card h3 { font-size: 16px; margin: 0 0 12px; border: none; padding: 0; }
-  .hw-card ul { list-style: none; margin: 0; padding: 0; }
-  .hw-card li { margin-bottom: 8px; font-size: 14px; }
-  .hw-card a { color: #0969da; text-decoration: none; }
-  .hw-card a:hover { text-decoration: underline; }
-  .section-intro { color: #656d76; font-size: 15px; margin-bottom: 20px; }
+  .section-intro { color: var(--muted); font-size: 15px; margin-bottom: 24px; }
+  .hw-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin: 28px 0; }
+  .hw-card { 
+    border: 1px solid var(--border); 
+    border-radius: var(--radius); 
+    padding: 24px; 
+    background: var(--bg-card); 
+    box-shadow: var(--card-shadow); 
+    transition: var(--transition-smooth); 
+  }
+  .hw-card:hover { 
+    border-color: var(--accent); 
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+  }
+  .hw-card h3 { 
+    font-size: 15px; 
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    margin: 0 0 16px; 
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hw-card ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  .hw-card li { font-size: 14px; }
+  .hw-card a { 
+    color: var(--text); 
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition-fast);
+  }
+  .hw-card a:hover { color: var(--accent); }
 </style>
 
-## ⚙️ OptixEdge
+## OptixEdge
 
 <p class="section-intro">The headless edge computing platform for FactoryTalk Optix — documentation, presentations, and container support.</p>
 
 <div class="hw-grid">
 
   <div class="hw-card">
-    <h3>📚 User Manual</h3>
+    <h3>User Manual</h3>
     <ul>
       <li><a href="https://literature.rockwellautomation.com/idc/groups/literature/documents/um/2800e-um001_-en-p.pdf">OptixEdge Standard User Manual</a></li>
     </ul>
   </div>
 
   <div class="hw-card">
-    <h3>📊 Technical Presentation</h3>
+    <h3>Technical Presentation</h3>
     <ul>
       <li><a href="https://massimovar.github.io/LearningFTOptix/pdf/OptixEdge_Technical_Presentation.pdf">OptixEdge Technical Overview</a></li>
     </ul>
   </div>
 
   <div class="hw-card">
-    <h3>🐳 Docker Integration</h3>
+    <h3>Docker Integration</h3>
     <ul>
       <li><a href="https://massimovar.github.io/LearningFTOptix/pdf/OptixEdgeAndDockerContainers.pdf">OptixEdge & Docker Containers</a></li>
     </ul>

@@ -7,14 +7,41 @@
   <title>Learning FactoryTalk® Optix™</title>
   <style>
     :root {
-      --bg: #ffffff;
-      --text: #1f2328;
-      --muted: #656d76;
-      --border: #d0d7de;
-      --accent: #0969da;
-      --accent-light: #ddf4ff;
-      --surface: #f6f8fa;
-      --card-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+      --bg: #fafbfc;
+      --bg-card: #ffffff;
+      --text: #1a1a2e;
+      --text-secondary: #4a5568;
+      --muted: #718096;
+      --border: #e2e8f0;
+      --accent: #0066cc;
+      --accent-hover: #0052a3;
+      --accent-light: #e6f2ff;
+      --accent-glow: rgba(0, 102, 204, 0.12);
+      --surface: #f7fafc;
+      --card-shadow: 0 1px 3px rgba(0, 0, 0, .04), 0 1px 2px rgba(0, 0, 0, .06);
+      --card-shadow-hover: 0 10px 40px rgba(0, 0, 0, .08), 0 2px 8px rgba(0, 0, 0, .04);
+      --transition-fast: 0.15s ease;
+      --transition-smooth: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1117;
+        --bg-card: #161b22;
+        --text: #e6edf3;
+        --text-secondary: #8b949e;
+        --muted: #8b949e;
+        --border: #30363d;
+        --accent: #58a6ff;
+        --accent-hover: #79b8ff;
+        --accent-light: #1a3a5c;
+        --accent-glow: rgba(88, 166, 255, 0.15);
+        --surface: #21262d;
+        --card-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+        --card-shadow-hover: 0 10px 40px rgba(0, 0, 0, .3);
+      }
     }
 
     * {
@@ -23,34 +50,55 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Helvetica, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Page fade-in animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .container {
-      max-width: 960px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 32px 20px;
+      padding: 48px 24px;
+      animation: fadeIn 0.5s ease-out;
     }
 
     /* Header */
     .hero {
       text-align: center;
-      margin-bottom: 32px;
+      margin-bottom: 40px;
     }
 
     .hero img {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 12px;
+      width: 88px;
+      height: 88px;
+      margin-bottom: 16px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
     }
 
     .hero h1 {
-      font-size: 28px;
-      margin-bottom: 4px;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, var(--text) 0%, var(--text-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .hero p {
@@ -59,61 +107,75 @@
     }
 
     .hero .subtitle {
-      margin-top: 8px;
+      margin-top: 12px;
+    }
+
+    .hero .subtitle a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition-fast);
+    }
+
+    .hero .subtitle a:hover {
+      color: var(--accent-hover);
     }
 
     .hero .links {
-      margin-top: 12px;
+      margin-top: 20px;
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 10px;
       justify-content: center;
     }
 
     .hero .links a {
       color: var(--accent);
       text-decoration: none;
-      padding: 4px 12px;
+      padding: 8px 16px;
       border: 1px solid var(--border);
-      border-radius: 20px;
+      border-radius: 24px;
       font-size: 14px;
-      transition: .15s;
+      font-weight: 500;
+      background: var(--bg-card);
+      transition: var(--transition-smooth);
     }
 
     .hero .links a:hover {
       background: var(--accent-light);
       border-color: var(--accent);
+      transform: translateY(-1px);
     }
 
     /* Navigation cards */
     .nav-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-      margin-bottom: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 48px;
     }
 
     /* News block */
     .news-section {
       position: relative;
       overflow: hidden;
-      margin-bottom: 24px;
-      padding: 20px;
-      border: 1px solid #c8ddff;
-      border-left: 5px solid var(--accent);
-      border-radius: 12px;
-      background: linear-gradient(135deg, #eef6ff 0%, #f6f8fa 65%, #ffffff 100%);
+      margin-bottom: 32px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--bg-card);
       box-shadow: var(--card-shadow);
     }
 
     .news-section::before {
       content: "";
       position: absolute;
-      width: 180px;
-      height: 180px;
-      top: -80px;
-      right: -70px;
-      background: radial-gradient(circle, rgba(9, 105, 218, .16) 0%, rgba(9, 105, 218, 0) 70%);
+      width: 200px;
+      height: 200px;
+      top: -100px;
+      right: -80px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -121,66 +183,85 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 10px;
+      gap: 12px;
+      margin-bottom: 12px;
     }
 
     .news-section h2 {
       font-size: 18px;
+      font-weight: 600;
       margin-bottom: 0;
     }
 
     .news-tag {
       display: inline-block;
-      padding: 3px 10px;
+      padding: 4px 12px;
       border-radius: 999px;
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: .4px;
-      color: #0550ae;
-      background: #ddf4ff;
-      border: 1px solid #9ecbff;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      border: 1px solid transparent;
     }
 
-    .news-section p {
+    .news-section > p {
       color: var(--muted);
       font-size: 14px;
-      margin-bottom: 10px;
+      margin-bottom: 16px;
     }
 
     .news-list {
       list-style: none;
       margin-left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
     .news-list li {
-      margin-bottom: 10px;
-      padding: 10px 12px;
-      border: 1px solid #d0d7de;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, .8);
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
       font-size: 14px;
+      transition: var(--transition-fast);
     }
 
-    .news-list li:last-child {
-      margin-bottom: 0;
+    .news-list li:hover {
+      border-color: var(--accent);
+      background: var(--accent-light);
     }
 
     .news-item-title {
       display: block;
       font-weight: 600;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
+      color: var(--text);
     }
 
     .news-item-link {
-      display: inline-block;
-      margin-top: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+
+    .news-item-link::after {
+      content: "→";
+      transition: transform var(--transition-fast);
+    }
+
+    .news-item-link:hover::after {
+      transform: translateX(3px);
     }
 
     .news-list a {
       color: var(--accent);
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
     }
 
     .news-list a:hover {
@@ -194,110 +275,120 @@
       }
     }
 
+    /* Card styling */
     .nav-card {
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
-      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 24px;
+      background: var(--bg-card);
       box-shadow: var(--card-shadow);
-      transition: .15s;
+      transition: var(--transition-smooth);
+      position: relative;
     }
 
     .nav-card:hover {
       border-color: var(--accent);
-      box-shadow: 0 2px 8px rgba(9, 105, 218, .15);
+      box-shadow: var(--card-shadow-hover);
+      transform: translateY(-2px);
     }
 
     .nav-card h3 {
-      font-size: 16px;
-      margin-bottom: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
     }
 
     .nav-card ul {
       list-style: none;
       padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .nav-card li {
-      margin-bottom: 6px;
-    }
-
-    .nav-card a {
-      color: var(--accent);
-      text-decoration: none;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
       font-size: 14px;
     }
 
-    .nav-card a:hover {
-      text-decoration: underline;
+    .nav-card a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition-fast);
+      position: relative;
     }
 
-    .nav-card .desc {
-      color: var(--muted);
-      font-size: 13px;
+    .nav-card a::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width var(--transition-smooth);
+    }
+
+    .nav-card a:hover {
+      color: var(--accent);
+    }
+
+    .nav-card a:hover::after {
+      width: 100%;
     }
 
     /* Section separator */
     hr {
       border: none;
-      border-top: 1px solid var(--border);
-      margin: 32px 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+      margin: 40px 0;
     }
 
     /* Star CTA — top-right fixed */
     .star-cta {
       position: fixed;
-      top: 16px;
-      right: 20px;
+      top: 20px;
+      right: 24px;
       z-index: 100;
     }
 
     .star-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 8px 18px;
+      gap: 8px;
+      padding: 10px 20px;
       font-size: 13px;
       font-weight: 600;
       color: #ffffff;
-      background: linear-gradient(135deg, #0969da 0%, #0550ae 100%);
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
       border: none;
-      border-radius: 10px;
+      border-radius: var(--radius-sm);
       text-decoration: none;
-      box-shadow: 0 2px 8px rgba(9, 105, 218, .3);
-      transition: transform .2s cubic-bezier(.4, 0, .2, 1), box-shadow .2s cubic-bezier(.4, 0, .2, 1);
+      box-shadow: 0 4px 14px rgba(0, 102, 204, .3);
+      transition: var(--transition-smooth);
       cursor: pointer;
     }
 
     .star-btn:hover {
-      transform: translateY(-1px) scale(1.04);
-      box-shadow: 0 6px 20px rgba(9, 105, 218, .35), 0 0 0 3px rgba(9, 105, 218, .15);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(0, 102, 204, .35);
     }
 
     .star-btn:active {
-      transform: translateY(0) scale(.97);
+      transform: translateY(0) scale(0.98);
     }
 
     .star-btn svg {
       flex-shrink: 0;
-    }
-
-    @keyframes pulse-ring {
-      0% {
-        box-shadow: 0 2px 8px rgba(9, 105, 218, .3), 0 0 0 0 rgba(9, 105, 218, .25);
-      }
-
-      70% {
-        box-shadow: 0 2px 8px rgba(9, 105, 218, .3), 0 0 0 8px rgba(9, 105, 218, 0);
-      }
-
-      100% {
-        box-shadow: 0 2px 8px rgba(9, 105, 218, .3), 0 0 0 0 rgba(9, 105, 218, 0);
-      }
-    }
-
-    .star-btn {
-      animation: pulse-ring 2.5s ease-out 1;
     }
 
     /* Footer */
@@ -305,12 +396,50 @@
       text-align: center;
       color: var(--muted);
       font-size: 13px;
-      margin-top: 40px;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
     }
 
     .footer a {
       color: var(--accent);
       text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition-fast);
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Focus states for accessibility */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .container {
+        padding: 32px 16px;
+      }
+
+      .hero h1 {
+        font-size: 26px;
+      }
+
+      .nav-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .star-cta {
+        position: static;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 24px;
+      }
     }
   </style>
 </head>
@@ -336,15 +465,14 @@
       <h1>Learning FactoryTalk® Optix™</h1>
       <p>A set of resources to become an FTOptix power user <em>(unofficial repo)</em></p>
       <p class="subtitle">
-        <a href="https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html"
-          style="color:var(--accent)">
-          <strong>Resources, by Rockwell Automation »</strong>
+        <a href="https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html">
+          Resources by Rockwell Automation →
         </a>
       </p>
       <div class="links">
         <a href="pdf/FTOptix%20Overview.pdf">What is FTOptix?</a>
-        <a href="chapters/FTOptix_overview.html#latest-releases">New releases ✨</a>
-        <a href="pdf/FTOptix%20Public%20Outlook%20and%20Roadmap%20July%202025.pdf">What's next? 👀</a>
+        <a href="chapters/FTOptix_overview.html#latest-releases">New releases</a>
+        <a href="pdf/FTOptix%20Public%20Outlook%20and%20Roadmap%20July%202025.pdf">What's next?</a>
       </div>
     </div>
 
@@ -353,7 +481,7 @@
     <section class="news-section" aria-labelledby="news-heading">
       <div class="news-header">
         <h2 id="news-heading">News</h2>
-        <span class="news-tag">LATEST</span>
+        <span class="news-tag">Latest</span>
       </div>
       <p>Latest updates and newly added resources:</p>
       <ul class="news-list">
@@ -374,58 +502,53 @@
     <div class="nav-grid">
 
       <div class="nav-card">
-        <h3>🌱 Getting Started</h3>
+        <h3>Getting Started</h3>
         <ul>
-          <li>📥 <a href="chapters/Download_install_start.html">Download, Install, Start</a></li>
-          <li>💲 <a href="https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.">License Management
-              (ITA)</a></li>
+          <li><a href="chapters/Download_install_start.html">Download, Install, Start</a></li>
+          <li><a href="https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.">License Management</a></li>
         </ul>
       </div>
 
       <div class="nav-card">
-        <h3>📚 Learning Materials</h3>
+        <h3>Learning Materials</h3>
         <ul>
-          <li>📖 <a href="pdf/FactoryTalkOptix_TechnicalTraining.pdf">Complete Course (PDF)</a></li>
-          <li>🎥 <a href="chapters/Learning_material_Videos.html">Video Tutorials</a></li>
-          <li>📝 <a href="chapters/Learning_material.html">More Learning Material</a></li>
-          <li>✅ <a
-              href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices.html">Best practices</a></li>
+          <li><a href="pdf/FactoryTalkOptix_TechnicalTraining.pdf">Complete Course</a></li>
+          <li><a href="chapters/Learning_material_Videos.html">Video Tutorials</a></li>
+          <li><a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html">Online Help</a></li>
+          <li><a href="https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1141346/loc/en_US">FAQs (need RA login)</a></li>
+          <li><a href="https://rockwellautomation.custhelp.com/app/home">RA Knowledge Base (need RA login)</a></li>
         </ul>
       </div>
 
       <div class="nav-card">
-        <h3>🛠️ Examples & Scripts</h3>
+        <h3>Develop Like a Pro</h3>
         <ul>
-          <li>🧩 <a href="https://github.com/orgs/FactoryTalk-Optix/repositories">120+ Project Examples</a></li>
-          <li>📋 <a href="chapters/Ready_to_use_scripts.html">Ready-to-Use Scripts</a></li>
+          <li><a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices.html">Best Practices</a></li>
+          <li><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet?tab=readme-ov-file#netlogic-cheat-sheet-mcp-server">Make your AI agent know how to write NetLogics</a></li>
+          <li><a href="https://asem-applicationsoftwareengineers.github.io/OptixRuntimeLogsParser/index.html">Runtime Logs Parser</a></li>
         </ul>
       </div>
 
       <div class="nav-card">
-        <h3>🚀 Develop Like a Pro</h3>
+        <h3>Examples & Scripts</h3>
         <ul>
-          <li>🔥 <a href="https://asem-applicationsoftwareengineers.github.io/OptixRuntimeLogsParser/index.html">Runtime
-              Logs Parser</a></li>
-          <li>⚡ <a href="chapters/best_practice.html">Performance Optimizations</a></li>
-          <li>✅ <a
-              href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/good-practices.md">General
-              Good Practices</a></li>
+          <li><a href="https://github.com/orgs/FactoryTalk-Optix/repositories">120+ Project Examples</a></li>
+          <li><a href="chapters/Ready_to_use_scripts.html">Ready-to-Use Scripts</a></li>
         </ul>
       </div>
 
       <div class="nav-card">
-        <h3>📦 FTOptix &amp; Docker</h3>
+        <h3>FTOptix & Docker</h3>
         <ul>
-          <li>🐳 <a href="https://github.com/FactoryTalk-Optix/Optix_Docker_FTOptixUpdateServer">Docker Deployment
-              Guide</a></li>
+          <li><a href="https://github.com/FactoryTalk-Optix/Optix_Docker_FTOptixUpdateServer">Docker Deployment Guide</a></li>
         </ul>
       </div>
 
       <div class="nav-card">
-        <h3>💻 Hardware Solutions</h3>
+        <h3>Hardware Solutions</h3>
         <ul>
-          <li>🖥️ <a href="chapters/OptixPanels_and_co.html">OptixPanels Overview</a></li>
-          <li>⚙️ <a href="chapters/OptixEdge.html">OptixEdge Details</a></li>
+          <li><a href="chapters/OptixPanels_and_co.html">OptixPanels Overview</a></li>
+          <li><a href="chapters/OptixEdge.html">OptixEdge Details</a></li>
         </ul>
       </div>
 
@@ -435,9 +558,9 @@
 
     <div class="footer">
       <p>
-        <a href="https://github.com/massimovar/LearningFTOptix">⭐ GitHub Repository</a>
+        <a href="https://github.com/massimovar/LearningFTOptix">GitHub Repository</a>
         &nbsp;·&nbsp;
-        <a href="https://github.com/massimovar/LearningUbiquityX/">⭐ Ubiquity / FTRA</a>
+        <a href="https://github.com/massimovar/LearningUbiquityX/">Ubiquity / FTRA</a>
       </p>
     </div>
 
