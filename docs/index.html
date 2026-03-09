@@ -44,15 +44,8 @@
       }
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Helvetica, Arial, sans-serif;
@@ -60,13 +53,11 @@
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Page fade-in animation */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     .container {
@@ -76,382 +67,237 @@
       animation: fadeIn 0.5s ease-out;
     }
 
-    /* Header */
+    /* ── Hero ── */
     .hero {
       text-align: center;
       margin-bottom: 40px;
     }
-
     .hero img {
-      width: 88px;
-      height: 88px;
+      width: 88px; height: 88px;
       margin-bottom: 16px;
       border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
     }
-
     .hero h1 {
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 8px;
+      font-size: 32px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px;
       background: linear-gradient(135deg, var(--text) 0%, var(--text-secondary) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 16px;
-    }
-
-    .hero .subtitle {
-      margin-top: 12px;
-    }
-
-    .hero .subtitle a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-      transition: var(--transition-fast);
-    }
-
-    .hero .subtitle a:hover {
-      color: var(--accent-hover);
-    }
-
+    .hero p { color: var(--muted); font-size: 16px; }
+    .hero .subtitle { margin-top: 12px; }
+    .hero .subtitle a { color: var(--accent); text-decoration: none; font-weight: 600; transition: var(--transition-fast); }
+    .hero .subtitle a:hover { color: var(--accent-hover); }
     .hero .links {
       margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
     }
-
     .hero .links a {
-      color: var(--accent);
-      text-decoration: none;
-      padding: 8px 16px;
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      font-size: 14px;
-      font-weight: 500;
-      background: var(--bg-card);
+      color: var(--accent); text-decoration: none;
+      padding: 8px 16px; border: 1px solid var(--border); border-radius: 24px;
+      font-size: 14px; font-weight: 500; background: var(--bg-card);
       transition: var(--transition-smooth);
     }
+    .hero .links a:hover { background: var(--accent-light); border-color: var(--accent); transform: translateY(-1px); }
 
-    .hero .links a:hover {
-      background: var(--accent-light);
-      border-color: var(--accent);
-      transform: translateY(-1px);
-    }
-
-    /* Navigation cards */
-    .nav-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      margin-bottom: 48px;
-    }
-
-    /* News block */
-    .news-section {
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 32px;
-      padding: 24px;
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--accent);
-      border-radius: var(--radius);
-      background: var(--bg-card);
-      box-shadow: var(--card-shadow);
-    }
-
-    .news-section::before {
-      content: "";
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      top: -100px;
-      right: -80px;
-      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .news-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    .news-section h2 {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 0;
-    }
-
-    .news-tag {
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: var(--accent);
-      background: var(--accent-light);
-      border: 1px solid transparent;
-    }
-
-    .news-section > p {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 16px;
-    }
-
-    .news-list {
-      list-style: none;
-      margin-left: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .news-list li {
-      padding: 14px 16px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      background: var(--surface);
-      font-size: 14px;
-      transition: var(--transition-fast);
-    }
-
-    .news-list li:hover {
-      border-color: var(--accent);
-      background: var(--accent-light);
-    }
-
-    .news-item-title {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: var(--text);
-    }
-
-    .news-item-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      margin-top: 8px;
-      font-weight: 500;
-    }
-
-    .news-item-link::after {
-      content: "→";
-      transition: transform var(--transition-fast);
-    }
-
-    .news-item-link:hover::after {
-      transform: translateX(3px);
-    }
-
-    .news-list a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .news-list a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 600px) {
-      .news-header {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-    }
-
-    /* Card styling */
-    .nav-card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px;
-      background: var(--bg-card);
-      box-shadow: var(--card-shadow);
-      transition: var(--transition-smooth);
-      position: relative;
-    }
-
-    .nav-card:hover {
-      border-color: var(--accent);
-      box-shadow: var(--card-shadow-hover);
-      transform: translateY(-2px);
-    }
-
-    .nav-card h3 {
-      font-size: 15px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--text-secondary);
-      margin-bottom: 16px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-card ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .nav-card li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 14px;
-    }
-
-    .nav-card a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 500;
-      transition: var(--transition-fast);
-      position: relative;
-    }
-
-    .nav-card a::after {
-      content: "";
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width var(--transition-smooth);
-    }
-
-    .nav-card a:hover {
-      color: var(--accent);
-    }
-
-    .nav-card a:hover::after {
-      width: 100%;
-    }
-
-    /* Section separator */
+    /* ── Separator ── */
     hr {
-      border: none;
-      height: 1px;
+      border: none; height: 1px;
       background: linear-gradient(to right, transparent, var(--border), transparent);
       margin: 40px 0;
     }
 
-    /* Star CTA — top-right fixed */
-    .star-cta {
-      position: fixed;
-      top: 20px;
-      right: 24px;
-      z-index: 100;
+    /* ── News block — single-tile carousel ── */
+    .news-section {
+      position: relative; overflow: hidden;
+      margin-bottom: 32px; padding: 24px;
+      border: 1px solid var(--border); border-left: 4px solid var(--accent);
+      border-radius: var(--radius); background: var(--bg-card); box-shadow: var(--card-shadow);
+    }
+    .news-section::before {
+      content: ""; position: absolute;
+      width: 200px; height: 200px; top: -100px; right: -80px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .news-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+    .news-header-left { display: flex; align-items: center; gap: 10px; }
+    .news-section h2 { font-size: 18px; font-weight: 600; }
+    .news-tag {
+      display: inline-block; padding: 4px 12px; border-radius: 999px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+      color: var(--accent); background: var(--accent-light); border: 1px solid transparent;
+    }
+    /* nav arrows */
+    .news-nav { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .news-nav-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; border: 1px solid var(--border); border-radius: 50%;
+      background: var(--bg-card); color: var(--text-secondary);
+      font-size: 14px; cursor: pointer; transition: var(--transition-fast);
+      font-family: inherit; line-height: 1;
+    }
+    .news-nav-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+    .news-counter { font-size: 12px; color: var(--muted); font-weight: 600; min-width: 32px; text-align: center; }
+    /* single card */
+    .news-card {
+      padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm);
+      background: var(--surface); font-size: 14px;
+      animation: fadeIn 0.25s ease-out;
+    }
+    .news-item-title { display: block; font-weight: 600; margin-bottom: 4px; color: var(--text); }
+    .news-item-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; font-weight: 500; }
+    .news-item-link::after { content: "→"; transition: transform var(--transition-fast); }
+    .news-item-link:hover::after { transform: translateX(3px); }
+    .news-card a { color: var(--accent); text-decoration: none; font-weight: 500; }
+    .news-card a:hover { text-decoration: underline; }
+    @media (max-width: 600px) { .news-header { align-items: flex-start; flex-direction: column; } }
+
+    /* ══════════════════════════════════════════
+       TAB NAV — Apple-style platter
+       ══════════════════════════════════════════ */
+    .section-panel {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      margin-bottom: 48px;
     }
 
-    .star-btn {
+    /* Sticky tab bar at the top of the panel */
+    .tab-nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px 0;
+    }
+
+    .tab-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 4px;
+      width: fit-content;
+      max-width: 100%;
+      margin-bottom: 0;
+    }
+
+    .tab-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #ffffff;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+      gap: 6px;
+      padding: 7px 16px;
       border: none;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      box-shadow: 0 4px 14px rgba(0, 102, 204, .3);
-      transition: var(--transition-smooth);
-      cursor: pointer;
-    }
-
-    .star-btn:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 8px 25px rgba(0, 102, 204, .35);
-    }
-
-    .star-btn:active {
-      transform: translateY(0) scale(0.98);
-    }
-
-    .star-btn svg {
-      flex-shrink: 0;
-    }
-
-    /* Footer */
-    .footer {
-      text-align: center;
+      border-radius: 7px;
+      background: transparent;
       color: var(--muted);
       font-size: 13px;
-      margin-top: 48px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      font-family: inherit;
+      letter-spacing: 0.1px;
     }
-
-    .footer a {
+    .tab-btn:hover { color: var(--text); background: rgba(0,0,0,.04); }
+    .tab-btn.active {
       color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-      transition: var(--transition-fast);
+      background: var(--bg-card);
+      box-shadow: 0 1px 6px rgba(0,0,0,.08), 0 0 0 1px var(--border);
+    }
+    @media (prefers-color-scheme: dark) {
+      .tab-btn:hover { background: rgba(255,255,255,.05); }
     }
 
-    .footer a:hover {
-      text-decoration: underline;
+    /* Tab panels */
+    .tab-panel { display: none; padding: 28px 24px 24px; }
+    .tab-panel.active { display: block; animation: fadeIn 0.2s ease-out; }
+
+    /* ── Nav card grid inside tab panels ── */
+    .nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
     }
 
-    /* Focus states for accessibility */
-    a:focus-visible,
-    button:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
+    .nav-card {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 20px; background: var(--surface);
+      box-shadow: var(--card-shadow); transition: var(--transition-smooth); position: relative;
     }
+    .nav-card:hover { border-color: var(--accent); box-shadow: var(--card-shadow-hover); transform: translateY(-2px); }
+    .nav-card h3 {
+      font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+      color: var(--text-secondary); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
+    }
+    .nav-card ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+    .nav-card li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; }
+    .nav-card a {
+      color: var(--text); text-decoration: none; font-weight: 500;
+      transition: var(--transition-fast); position: relative;
+    }
+    .nav-card a::after {
+      content: ""; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 2px; background: var(--accent); transition: width var(--transition-smooth);
+    }
+    .nav-card a:hover { color: var(--accent); }
+    .nav-card a:hover::after { width: 100%; }
 
-    /* Responsive adjustments */
+    /* Debugging card — accent highlight */
+    .nav-card.card-debug {
+      border-color: var(--accent);
+      background: var(--accent-light);
+    }
+    .nav-card.card-debug h3 { color: var(--accent); border-color: rgba(0,102,204,.2); }
+
+    /* ── Star CTA ── */
+    .star-cta { position: fixed; top: 20px; right: 24px; z-index: 100; }
+    .star-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px; font-size: 13px; font-weight: 600; color: #ffffff;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+      border: none; border-radius: var(--radius-sm); text-decoration: none;
+      box-shadow: 0 4px 14px rgba(0,102,204,.3); transition: var(--transition-smooth); cursor: pointer;
+    }
+    .star-btn:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 8px 25px rgba(0,102,204,.35); }
+    .star-btn:active { transform: translateY(0) scale(0.98); }
+    .star-btn svg { flex-shrink: 0; }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center; color: var(--muted); font-size: 13px;
+      margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--accent); text-decoration: none; font-weight: 500; transition: var(--transition-fast); }
+    .footer a:hover { text-decoration: underline; }
+
+    /* Focus */
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* Responsive */
     @media (max-width: 768px) {
-      .container {
-        padding: 32px 16px;
-      }
-
-      .hero h1 {
-        font-size: 26px;
-      }
-
-      .nav-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-
-      .star-cta {
-        position: static;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 24px;
-      }
+      .container { padding: 32px 16px; }
+      .hero h1 { font-size: 26px; }
+      .nav-grid { grid-template-columns: 1fr; gap: 12px; }
+      .star-cta { position: static; display: flex; justify-content: center; margin-bottom: 24px; }
+      .tab-nav { flex-wrap: wrap; }
+      .tab-btn { font-size: 12px; padding: 6px 12px; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Star CTA — top-right -->
+  <!-- Star CTA -->
   <div class="star-cta">
     <a class="star-btn" href="https://github.com/massimovar/LearningFTOptix" target="_blank" rel="noopener">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-        <path
-          d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z" />
+        <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/>
       </svg>
       Star on GitHub
     </a>
@@ -478,87 +324,144 @@
 
     <hr>
 
+    <!-- News — single-tile carousel -->
     <section class="news-section" aria-labelledby="news-heading">
       <div class="news-header">
-        <h2 id="news-heading">News</h2>
-        <span class="news-tag">Latest</span>
+        <div class="news-header-left">
+          <h2 id="news-heading">News</h2>
+          <span class="news-tag">Latest</span>
+        </div>
+        <div class="news-nav" aria-label="News navigation">
+          <button class="news-nav-btn" id="newsPrev" aria-label="Previous news" onclick="newsStep(-1)">&#8592;</button>
+          <span class="news-counter" id="newsCounter">1 / 4</span>
+          <button class="news-nav-btn" id="newsNext" aria-label="Next news" onclick="newsStep(1)">&#8594;</button>
+        </div>
       </div>
-      <p>Latest updates and newly added resources:</p>
-      <ul class="news-list">
-        <li>
-          <span class="news-item-title">Added NetLogic lifecycle reference</span>
-          Learn the complete lifecycle of NetLogics including initialization, execution, and disposal phases.
-          <a class="news-item-link" href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/netlogic-lifecycle.md">View NetLogic lifecycle</a>
-        </li>
-        <li>
-          <span class="news-item-title">Added feature details for FTOptix release 1.7</span>
-          Discover what is new in the latest release notes and highlights.
-          <a class="news-item-link" href="chapters/FTOptix_overview.html#latest-releases">See latest releases</a>
-        </li>
-        <li>
-          <span class="news-item-title">Added official Best practices reference</span>
-          New direct access to Rockwell Automation guidance for stronger project design.
-          <a class="news-item-link" href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices.html">Open best practices</a>
-        </li>
-      </ul>
+      <div id="newsCard" class="news-card" role="region" aria-live="polite"></div>
     </section>
 
-    <!-- Navigation Grid -->
-    <div class="nav-grid">
+    <!-- ═══════════════════════════════════════════════
+         SINGLE SECTION WITH TAB NAVIGATION
+         ═══════════════════════════════════════════════ -->
+    <div class="section-panel" role="region" aria-label="Resource categories">
 
-      <div class="nav-card">
-        <h3>Getting Started</h3>
-        <ul>
-          <li><a href="chapters/Download_install_start.html">Download, Install, Start</a></li>
-          <li><a href="https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.">License Management</a></li>
-        </ul>
+      <!-- Tab bar -->
+      <div class="tab-nav-wrap">
+        <nav class="tab-nav" role="tablist" aria-label="Resource categories">
+          <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="tab-start"   onclick="switchTab(this,'tab-start')">🚀 Getting Started</button>
+          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-learn"   onclick="switchTab(this,'tab-learn')">📚 Learning</button>
+          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-dev"     onclick="switchTab(this,'tab-dev')">⚙️ Develop Like a Pro</button>
+          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-debug"   onclick="switchTab(this,'tab-debug')">🔍 Debugging</button>
+          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-examples" onclick="switchTab(this,'tab-examples')">💡 Examples</button>
+          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-docker"  onclick="switchTab(this,'tab-docker')">🐳 FTOptix &amp; Docker</button>
+          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-hw"      onclick="switchTab(this,'tab-hw')">🖥️ OptixPanel &amp; OptixEdge</button>
+        </nav>
       </div>
 
-      <div class="nav-card">
-        <h3>Learning Materials</h3>
-        <ul>
-          <li><a href="pdf/FactoryTalkOptix_TechnicalTraining.pdf">Complete Course</a></li>
-          <li><a href="chapters/Learning_material_Videos.html">Video Tutorials</a></li>
-          <li><a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html">Online Help</a></li>
-          <li><a href="https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1141346/loc/en_US">FAQs (need RA login)</a></li>
-          <li><a href="https://rockwellautomation.custhelp.com/app/home">RA Knowledge Base (need RA login)</a></li>
-        </ul>
+      <!-- ── Panel: Getting Started ── -->
+      <div id="tab-start" class="tab-panel active" role="tabpanel">
+        <div class="nav-grid">
+          <div class="nav-card">
+            <h3>Getting Started</h3>
+            <ul>
+              <li><a href="chapters/Download_install_start.html">Download, Install, Start</a></li>
+              <li><a href="https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.">License Management</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <div class="nav-card">
-        <h3>Develop Like a Pro</h3>
-        <ul>
-          <li><a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices.html">Best Practices</a></li>
-          <li><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/netlogic-lifecycle.md">NetLogic lifecycle</a></li>
-          <li><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet?tab=readme-ov-file#netlogic-cheat-sheet-mcp-server">Make your AI agent know how to write NetLogics</a></li>
-          <li><a href="https://asem-applicationsoftwareengineers.github.io/OptixRuntimeLogsParser/index.html">Runtime Logs Parser</a></li>
-        </ul>
+      <!-- ── Panel: FTOptix & Docker ── -->
+      <div id="tab-docker" class="tab-panel" role="tabpanel">
+        <div class="nav-grid">
+          <div class="nav-card">
+            <h3>FTOptix &amp; Docker</h3>
+            <ul>
+              <li><a href="https://github.com/FactoryTalk-Optix/Optix_Docker_FTOptixUpdateServer">Docker Deployment Guide</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <div class="nav-card">
-        <h3>Examples & Scripts</h3>
-        <ul>
-          <li><a href="https://github.com/orgs/FactoryTalk-Optix/repositories">120+ Project Examples</a></li>
-          <li><a href="chapters/Ready_to_use_scripts.html">Ready-to-Use Scripts</a></li>
-        </ul>
+      <!-- ── Panel: Learning Materials ── -->
+      <div id="tab-learn" class="tab-panel" role="tabpanel">
+        <div class="nav-grid">
+          <div class="nav-card">
+            <h3>Learning Materials</h3>
+            <ul>
+              <li><a href="pdf/FactoryTalkOptix_TechnicalTraining.pdf">Complete Course</a></li>
+              <li><a href="chapters/Learning_material_Videos.html">Video Tutorials</a></li>
+              <li><a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html">Online Help</a></li>
+              <li><a href="https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1141346/loc/en_US">FAQs (need RA login)</a></li>
+              <li><a href="https://rockwellautomation.custhelp.com/app/home">RA Knowledge Base (need RA login)</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <div class="nav-card">
-        <h3>FTOptix & Docker</h3>
-        <ul>
-          <li><a href="https://github.com/FactoryTalk-Optix/Optix_Docker_FTOptixUpdateServer">Docker Deployment Guide</a></li>
-        </ul>
+      <!-- ── Panel: Develop Like a Pro ── -->
+      <div id="tab-dev" class="tab-panel" role="tabpanel">
+        <div class="nav-grid">
+          <div class="nav-card">
+            <h3>Develop Like a Pro</h3>
+            <ul>
+              <li><a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices.html">Best Practices</a></li>
+              <li><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/netlogic-lifecycle.md">NetLogic lifecycle</a></li>
+              <li><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet?tab=readme-ov-file#netlogic-cheat-sheet-mcp-server">Make your AI agent know how to write NetLogics</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <div class="nav-card">
-        <h3>Hardware Solutions</h3>
-        <ul>
-          <li><a href="chapters/OptixPanels_and_co.html">OptixPanels Overview</a></li>
-          <li><a href="chapters/OptixEdge.html">OptixEdge Details</a></li>
-        </ul>
+      <!-- ── Panel: Debugging ── -->
+      <div id="tab-debug" class="tab-panel" role="tabpanel">
+        <div class="nav-grid">
+          <div class="nav-card card-debug">
+            <h3>Debugging &amp; Performance</h3>
+            <ul>
+              <li><a href="chapters/Debugging.html">UI Performance Checklist</a></li>
+              <li><a href="chapters/Debugging.html#tab-netlogic">NetLogic Lifecycle Reference</a></li>
+              <li><a href="chapters/Debugging.html#tab-tools">Diagnostic Tools</a></li>
+            </ul>
+          </div>
+          <div class="nav-card">
+            <h3>Diagnostic Tools</h3>
+            <ul>
+              <li><a href="https://asem-applicationsoftwareengineers.github.io/OptixRuntimeLogsParser/index.html">Runtime Logs Parser</a></li>
+              <li><a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices/statistics/nodes_counter_dialog.html">Nodes Counter Dialog</a></li>
+              <li><a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices/statistics/project_information.html">Project Information</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-    </div>
+      <!-- ── Panel: Examples & Scripts ── -->
+      <div id="tab-examples" class="tab-panel" role="tabpanel">
+        <div class="nav-grid">
+          <div class="nav-card">
+            <h3>Examples &amp; Scripts</h3>
+            <ul>
+              <li><a href="https://github.com/orgs/FactoryTalk-Optix/repositories">120+ Project Examples</a></li>
+              <li><a href="chapters/Ready_to_use_scripts.html">Ready-to-Use Scripts</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Panel: Hardware ── -->
+      <div id="tab-hw" class="tab-panel" role="tabpanel">
+        <div class="nav-grid">
+          <div class="nav-card">
+            <h3>Hardware Solutions</h3>
+            <ul>
+              <li><a href="chapters/OptixPanels_and_co.html">OptixPanels Overview</a></li>
+              <li><a href="chapters/OptixEdge.html">OptixEdge Details</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /section-panel -->
 
     <hr>
 
@@ -571,6 +474,87 @@
     </div>
 
   </div>
+
+  <script>
+    // ── Tab navigation ──
+    function switchTab(btn, panelId) {
+      btn.closest('.tab-nav').querySelectorAll('.tab-btn').forEach(function(b) {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.closest('.section-panel').querySelectorAll('.tab-panel').forEach(function(p) {
+        p.classList.remove('active');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      document.getElementById(panelId).classList.add('active');
+    }
+
+    // Open "Debugging" tab if URL hash targets it
+    (function() {
+      if (window.location.hash === '#debugging') {
+        var btn = document.querySelector('[aria-controls="tab-debug"]');
+        if (btn) switchTab(btn, 'tab-debug');
+      }
+    })();
+
+    // ── News carousel ──
+    var newsItems = [
+      {
+        title: 'Added UI Performance Checklist',
+        body: 'New step-by-step debugging guide to diagnose and fix slow UI loading — covering NetLogic bottlenecks, node count, DynamicLinks, and rendering.',
+        linkText: 'Open Debugging &amp; Performance',
+        linkHref: 'chapters/Debugging.html'
+      },
+      {
+        title: 'Added NetLogic lifecycle reference',
+        body: 'Learn the complete lifecycle of NetLogics including initialization, execution, and disposal phases.',
+        linkText: 'View NetLogic lifecycle',
+        linkHref: 'https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/netlogic-lifecycle.md'
+      },
+      {
+        title: 'Added feature details for FTOptix release 1.7',
+        body: 'Discover what is new in the latest release notes and highlights.',
+        linkText: 'See latest releases',
+        linkHref: 'chapters/FTOptix_overview.html#latest-releases'
+      },
+      {
+        title: 'Added official Best practices reference',
+        body: 'New direct access to Rockwell Automation guidance for stronger project design.',
+        linkText: 'Open best practices',
+        linkHref: 'https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices.html'
+      }
+    ];
+
+    var newsIndex = 0;
+    var newsTimer;
+
+    function renderNews() {
+      var item = newsItems[newsIndex];
+      var card = document.getElementById('newsCard');
+      card.innerHTML =
+        '<span class="news-item-title">' + item.title + '</span>' +
+        item.body +
+        '<br><a class="news-item-link" href="' + item.linkHref + '">' + item.linkText + '</a>';
+      document.getElementById('newsCounter').textContent = (newsIndex + 1) + ' / ' + newsItems.length;
+    }
+
+    function newsStep(dir) {
+      newsIndex = (newsIndex + dir + newsItems.length) % newsItems.length;
+      renderNews();
+      resetNewsTimer();
+    }
+
+    function resetNewsTimer() {
+      clearInterval(newsTimer);
+      newsTimer = setInterval(function() { newsStep(1); }, 6000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      renderNews();
+      resetNewsTimer();
+    });
+  </script>
 
 </body>
 

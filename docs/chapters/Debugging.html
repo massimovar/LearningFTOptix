@@ -1,0 +1,851 @@
+---
+layout: default
+---
+
+<style>
+  /* ── Page layout ── */
+  .page-header {
+    margin-bottom: 32px;
+  }
+  .page-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .page-header p {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 640px;
+  }
+
+  /* ── Tab navigation (Apple-style platter) ── */
+  .tab-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 5px;
+    margin-bottom: 36px;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+    font-family: inherit;
+  }
+
+  .tab-btn:hover {
+    color: var(--text);
+    background: var(--bg-card);
+  }
+
+  .tab-btn.active {
+    color: var(--accent);
+    background: var(--bg-card);
+    box-shadow: 0 1px 6px rgba(0,0,0,.08), 0 0 0 1px var(--border);
+  }
+
+  /* ── Tab panels ── */
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── Checklist sections ── */
+  .checklist-section {
+    margin-bottom: 36px;
+  }
+
+  .checklist-section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .checklist-section-header h2 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .section-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  .badge-red    { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+  .badge-amber  { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
+  .badge-green  { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+  .badge-blue   { background: var(--accent-light); color: var(--accent); border: 1px solid transparent; }
+  .badge-purple { background: #faf5ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+
+  @media (prefers-color-scheme: dark) {
+    .badge-red    { background: #450a0a; color: #fca5a5; border-color: #7f1d1d; }
+    .badge-amber  { background: #431e02; color: #fcd34d; border-color: #78350f; }
+    .badge-green  { background: #052e16; color: #86efac; border-color: #166534; }
+    .badge-purple { background: #2e1065; color: #d8b4fe; border-color: #4c1d95; }
+  }
+
+  /* ── Checklist items ── */
+  .checklist {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .checklist-item {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .checklist-item:hover {
+    border-color: var(--accent);
+    box-shadow: 0 2px 10px var(--accent-glow);
+  }
+
+  .checklist-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 1px;
+    accent-color: var(--accent);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .item-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .item-detail {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+    display: block;
+  }
+
+  .item-detail code {
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 1px 6px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+
+  .item-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .item-link:hover { text-decoration: underline; }
+  .item-link::after { content: "→"; }
+
+  /* ── Warning callout ── */
+  .callout {
+    display: flex;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    border-left: 4px solid;
+    margin-bottom: 20px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .callout-warn {
+    background: var(--warning-bg, #fffbeb);
+    border-color: #f59e0b;
+    color: var(--text);
+  }
+  .callout-info {
+    background: var(--accent-light);
+    border-color: var(--accent);
+    color: var(--text);
+  }
+  .callout-icon { font-size: 16px; flex-shrink: 0; }
+
+  /* ── Progress bar ── */
+  .progress-bar-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    height: 8px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), #38bdf8);
+    border-radius: 999px;
+    transition: width 0.4s ease;
+  }
+  .progress-label {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .progress-count {
+    color: var(--accent);
+  }
+
+  /* ── Tools card ── */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .tool-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    background: var(--bg-card);
+    box-shadow: var(--card-shadow);
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+  .tool-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+  }
+  .tool-card h3 {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+  }
+  .tool-card p {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  .tool-card a {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .tool-card a:hover { text-decoration: underline; }
+</style>
+
+<div class="page-header">
+  <h1>Debugging &amp; Performance</h1>
+  <p>Step-by-step checklists to diagnose and fix slow UI loading, unresponsive pages, and NetLogic bottlenecks in FTOptix projects.</p>
+</div>
+
+<!-- ── Tab navigation ── -->
+<div class="tab-nav" role="tablist" aria-label="Debugging topics">
+  <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="tab-checklist"  onclick="switchTab(this,'tab-checklist')">
+    ✅ UI Performance Checklist
+  </button>
+  <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-netlogic"   onclick="switchTab(this,'tab-netlogic')">
+    ⚙️ NetLogic Lifecycle
+  </button>
+  <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-tools"      onclick="switchTab(this,'tab-tools')">
+    🔧 Diagnostic Tools
+  </button>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PANEL 1 — UI Performance Checklist
+     ══════════════════════════════════════════════════════════ -->
+<div id="tab-checklist" class="tab-panel active" role="tabpanel">
+
+  <div class="callout callout-info">
+    <span class="callout-icon">ℹ️</span>
+    <span>Work through each phase in order. Tick off each item as you verify or fix it. The most impactful checks are marked
+    <strong>Critical</strong>. Sources: <a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices/performance_optimization.html" target="_blank" rel="noopener">RA Performance Optimization docs</a> and <a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/netlogic-lifecycle.md" target="_blank" rel="noopener">NetLogic Lifecycle CheatSheet</a>.</span>
+  </div>
+
+  <!-- Progress indicator -->
+  <div class="progress-bar-wrap" id="progressBar"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div>
+  <p class="progress-label"><span class="progress-count" id="progressText">0 / 0</span> items checked</p>
+
+  <!-- ── Phase 1: Measure First ── -->
+  <div class="checklist-section">
+    <div class="checklist-section-header">
+      <span class="section-badge badge-blue">Phase 1</span>
+      <h2>Measure First — Get Baseline Data</h2>
+    </div>
+    <ul class="checklist">
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Check the FTOptix Runtime Logs</span>
+          <span class="item-detail">Open the runtime log output. Look for <code>Start method on &lt;NodeName&gt; took too long to execute</code> warnings — each is a hard bottleneck. Note every node name reported.</span>
+          <a class="item-link" href="https://asem-applicationsoftwareengineers.github.io/OptixRuntimeLogsParser/index.html" target="_blank" rel="noopener">Open Runtime Logs Parser</a>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Check project-level node count</span>
+          <span class="item-detail">In FTOptix Studio: <strong>Tools → Project Information</strong>. Record total node count. High node counts directly increase startup and page-load times.</span>
+          <a class="item-link" href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices/statistics/project_information.html" target="_blank" rel="noopener">Project Information docs</a>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Use the Nodes Counter Dialog on the slow page</span>
+          <span class="item-detail">Add the <strong>Nodes Counter Dialog</strong> widget (Library → Widgets) to the page. Link <code>AliasNode</code> to the page or PanelLoader. At runtime, open the dialog and note the node count for the affected page. If you link to a NavigationPanel, the counter updates on every navigation.</span>
+          <a class="item-link" href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices/statistics/nodes_counter_dialog.html" target="_blank" rel="noopener">Nodes Counter Dialog docs</a>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Isolate which page is slow</span>
+          <span class="item-detail">Navigate to each page individually and time how long the UI becomes responsive. This identifies the culprit before you start optimizing.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ── Phase 2: NetLogic Start() ── -->
+  <div class="checklist-section">
+    <div class="checklist-section-header">
+      <span class="section-badge badge-red">Phase 2 · Critical</span>
+      <h2>NetLogic Start() — Blocking the Behavior Thread</h2>
+    </div>
+    <div class="callout callout-warn">
+      <span class="callout-icon">⚠️</span>
+      <span>All <code>Start()</code> methods run <strong>sequentially</strong> on a single behavior thread. A single slow <code>Start()</code> blocks every other NetLogic that follows it in the queue. On a page with 10 NetLogics each blocking for 300 ms, total startup delay = <strong>3 seconds</strong>.</span>
+    </div>
+    <ul class="checklist">
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Identify all NetLogics on the slow page</span>
+          <span class="item-detail">In the Project tree, expand the affected page and list every NetLogic node. They start deepest-first (most nested starts first, page-level starts last).</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Check for blocking operations inside Start()</span>
+          <span class="item-detail">In each NetLogic, review <code>Start()</code> for: file I/O, database queries, network calls, <code>Thread.Sleep()</code>, long loops, or synchronous waits. Any of these block the entire behavior thread.</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Move heavy initialization to LongRunningTask</span>
+          <span class="item-detail">Replace blocking code in <code>Start()</code> with a <code>LongRunningTask</code>. Register observers and set up fast state immediately; defer slow work:
+          <br><code>initTask = new LongRunningTask(HeavyInit, LogicObject); initTask.Start();</code></span>
+          <a class="item-link" href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/netlogic-lifecycle.md" target="_blank" rel="noopener">NetLogic Lifecycle — LongRunningTask pattern</a>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Check for node tree modifications inside Start() (Runtime NetLogics)</span>
+          <span class="item-detail">A Runtime NetLogic <code>Start()</code> must NOT add or remove nodes from the page tree. Doing so causes unpredictable loading behavior. Move dynamic tree modifications to the page type definition or use a <code>DelayedTask</code>.</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Count total NetLogics on the page — reduce if excessive</span>
+          <span class="item-detail">Even if each <code>Start()</code> is fast, many NetLogics accumulate overhead. Consolidate logic into fewer NetLogics where possible.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ── Phase 3: Dynamic Links & Node Count ── -->
+  <div class="checklist-section">
+    <div class="checklist-section-header">
+      <span class="section-badge badge-red">Phase 3 · Critical</span>
+      <h2>Dynamic Links &amp; Node Count</h2>
+    </div>
+    <div class="callout callout-warn">
+      <span class="callout-icon">⚠️</span>
+      <span>Each Dynamic Link adds at least <strong>+3 nodes</strong>. A Complex Dynamic Link (with expression converters, key-value maps) adds far more. Node count directly determines page load time.</span>
+    </div>
+    <ul class="checklist">
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Identify and count all DynamicLinks on the slow page</span>
+          <span class="item-detail">In FTOptix Studio, expand the page tree or use <strong>Find in Project</strong> to search for <code>DynamicLink</code> nodes. Note how many exist — a page with hundreds of DynamicLinks is a key suspect.</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Identify Complex DynamicLinks (converters, expressions)</span>
+          <span class="item-detail">Complex DynamicLinks with expression-based converters, key-value converters, or nested links multiply node count significantly. List every Complex DynamicLink and assess whether the converter is truly needed at runtime.</span>
+          <a class="item-link" href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices/performance_optimization/model_complexity_and_node_count.html" target="_blank" rel="noopener">Model complexity docs</a>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Replace design-time-only DynamicLinks with static values</span>
+          <span class="item-detail">If a DynamicLink only configures a property at design time (the value never changes at runtime), remove the link and set the property to a static value. The link is redundant and wastes nodes.</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Replace Complex DynamicLinks with Stylesheets where possible</span>
+          <span class="item-detail">Use <strong>Stylesheets</strong> to drive appearance (color, state styles) instead of per-property Complex DynamicLinks. A single DynamicLink to a stylesheet replaces many individual property links — drastically reducing node count.</span>
+          <a class="item-link" href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/creating-projects/graphic-objects/predefined-objects/style-sheets.html" target="_blank" rel="noopener">Stylesheets docs</a>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Replace Complex DynamicLinks with NetLogic scripts (central processing)</span>
+          <span class="item-detail">When multiple objects share transformation logic, move the calculation into a NetLogic script that populates a variable. Bind objects to that variable with a simple DynamicLink instead of giving each object its own Complex DynamicLink.</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Aggregate shared variables using Enumerations or Converters</span>
+          <span class="item-detail">If multiple objects need the same transformed value, create one shared variable or enumeration and link all objects to it — instead of replicating the converter on each object.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ── Phase 4: UI Object Structure ── -->
+  <div class="checklist-section">
+    <div class="checklist-section-header">
+      <span class="section-badge badge-amber">Phase 4</span>
+      <h2>UI Object Structure &amp; Hierarchy</h2>
+    </div>
+    <ul class="checklist">
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Check for excessive nesting depth</span>
+          <span class="item-detail">Deep object hierarchies increase node traversal time. Flatten the tree where objects can be placed at a shallower level without losing layout requirements.</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Remove redundant or empty containers</span>
+          <span class="item-detail">Every Panel or Group object adds nodes even when it contains only one child. Merge containers that serve no structural purpose.</span>
+          <a class="item-link" href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices/ui_objects.html" target="_blank" rel="noopener">UI objects best practices</a>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Verify reusable Types (not inline copies)</span>
+          <span class="item-detail">Ensure repeated widgets (buttons, indicators) are defined as a <strong>Type</strong> and instantiated — not duplicated inline. Instances inherit from the type, keeping the individual node count low for each instance.</span>
+          <a class="item-link" href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices/performance_optimization/optimize_object_structure_to_reduce_node_count.html" target="_blank" rel="noopener">Optimize Types docs</a>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Minimize optional overridden properties on instances</span>
+          <span class="item-detail">Each property overridden on an instance materializes an extra node. Keep instance-level overrides to the minimum required; let inherited values from the Type do the rest.</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Check for heavy widgets (DataGrid, large Trends)</span>
+          <span class="item-detail">Heavy widgets (DataGrids populating from a database, Trend controls with large datasets) are rendered on the UI thread. Multiple heavy widgets on one page cause cascading delays before NetLogics start. Consider lazy-loading or pagination.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ── Phase 5: Graphic Rendering ── -->
+  <div class="checklist-section">
+    <div class="checklist-section-header">
+      <span class="section-badge badge-amber">Phase 5</span>
+      <h2>Graphic Rendering &amp; Assets</h2>
+    </div>
+    <ul class="checklist">
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Prefer SVG over PNG for icons and graphics</span>
+          <span class="item-detail">SVG is vector-based (resolution-independent) and can be dynamically tinted or resized at runtime. Use SVG for all icons, symbols, and diagrams. Reserve PNG for photographic content only.</span>
+          <a class="item-link" href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices/performance_optimization/graphic_rendering_impact.html" target="_blank" rel="noopener">Graphic rendering docs</a>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Compress PNG images used in the project</span>
+          <span class="item-detail">Large or uncompressed PNGs slow rasterization. Run all PNGs through a compression tool (e.g., TinyPNG, oxipng) before importing them. Check the <code>MediaLibrary</code> folder for any file above 200 KB.</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Audit SVG complexity</span>
+          <span class="item-detail">Complex SVGs with excessive paths, filters, or gradients also impact render time. Simplify SVGs exported from drawing tools — remove hidden layers, reduce path segments, and strip metadata.</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Look for images loaded dynamically from paths (file I/O)</span>
+          <span class="item-detail">If images are loaded from disk paths at runtime inside a NetLogic, ensure the operation is in a <code>LongRunningTask</code>, not in <code>Start()</code>. Disk reads from slow or network-mounted paths can freeze the behavior thread.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ── Phase 6: ExportMethod & UI Thread ── -->
+  <div class="checklist-section">
+    <div class="checklist-section-header">
+      <span class="section-badge badge-red">Phase 6 · Critical</span>
+      <h2>ExportMethod &amp; UI Thread Freezes</h2>
+    </div>
+    <div class="callout callout-warn">
+      <span class="callout-icon">⚠️</span>
+      <span>An <code>[ExportMethod]</code> called from a <strong>button click</strong> runs on the UI thread. Any blocking code (file I/O, database, <code>Thread.Sleep</code>) freezes the entire UI until it returns.</span>
+    </div>
+    <ul class="checklist">
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Identify all [ExportMethod]s triggered by UI interactions</span>
+          <span class="item-detail">In each NetLogic, list methods decorated with <code>[ExportMethod]</code>. Note which ones are called from button clicks, mouse events, or UI commands — these run on the UI thread.</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Ensure UI-triggered ExportMethods return immediately</span>
+          <span class="item-detail">Move any work that takes more than a few milliseconds into a <code>LongRunningTask</code> started inside the ExportMethod. The ExportMethod itself must return within milliseconds to release the UI thread.</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Check PeriodicTask interval vs. work duration</span>
+          <span class="item-detail">If a <code>PeriodicTask</code>'s work takes longer than its interval, tasks pile up. Ensure the work inside the task always finishes well within the interval period.</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Dispose all tasks and observers in Stop()</span>
+          <span class="item-detail">Failing to dispose <code>LongRunningTask</code>, <code>PeriodicTask</code>, and <code>RemoteVariableSynchronizer</code> in <code>Stop()</code> leaves background threads running after navigation. This leaks resources and degrades long-session performance:
+          <br><code>myTask?.Dispose(); myObserver?.Dispose();</code></span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ── Phase 7: Project Setup ── -->
+  <div class="checklist-section">
+    <div class="checklist-section-header">
+      <span class="section-badge badge-green">Phase 7</span>
+      <h2>Project Setup &amp; Architecture</h2>
+    </div>
+    <ul class="checklist">
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Review page navigation model (PanelLoader vs. full page)</span>
+          <span class="item-detail">Loading a large page in a small PanelLoader area on every navigation adds unnecessary overhead. Consider splitting very large pages into smaller sub-pages loaded on demand.</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Avoid loading the same large page repeatedly</span>
+          <span class="item-detail">If a page is navigated back to often, consider keeping it resident (avoid tearing it down and reloading it). Check if the navigation pattern causes repeated Start()/Stop() cycles unnecessarily.</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Check target hardware CPU and RAM against project complexity</span>
+          <span class="item-detail">FTOptix performance thresholds depend on the device. A project that runs fluently on a PC may be slow on an OptixPanel with limited CPU. No universal node count limit exists — measure on the target hardware.</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox">
+        <div class="item-body">
+          <span class="item-title">Verify no DesignTime NetLogic is deployed to runtime</span>
+          <span class="item-detail">DesignTime NetLogics reload their assembly from disk on every ExportMethod call. They must not appear in deployed projects. Remove or confirm exclusion before deployment.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div><!-- /tab-checklist -->
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PANEL 2 — NetLogic Lifecycle Reference
+     ══════════════════════════════════════════════════════════ -->
+<div id="tab-netlogic" class="tab-panel" role="tabpanel">
+
+  <div class="callout callout-info">
+    <span class="callout-icon">ℹ️</span>
+    <span>Full reference: <a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/netlogic-lifecycle.md" target="_blank" rel="noopener">NetLogic Lifecycle CheatSheet on GitHub</a>. This summary highlights the runtime behaviors most likely to cause UI loading issues.</span>
+  </div>
+
+  <div class="checklist-section">
+    <div class="checklist-section-header">
+      <span class="section-badge badge-blue">Threads</span>
+      <h2>Two Independent Execution Threads</h2>
+    </div>
+    <ul class="checklist">
+      <li class="checklist-item">
+        <input type="checkbox" style="visibility:hidden">
+        <div class="item-body">
+          <span class="item-title">UI thread</span>
+          <span class="item-detail">Renders all graphical objects and handles user input. Blocked by ExportMethods called from UI interactions and by heavy widget rendering.</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox" style="visibility:hidden">
+        <div class="item-body">
+          <span class="item-title">Behavior / Core thread</span>
+          <span class="item-detail">Calls <code>Start()</code> and <code>Stop()</code> on all behaviors sequentially. Blocked by any slow <code>Start()</code> method. Both threads are independent — UI can render while NetLogics initialize.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="checklist-section">
+    <div class="checklist-section-header">
+      <span class="section-badge badge-red">Start()</span>
+      <h2>Start() Execution Order &amp; 2-second Rule</h2>
+    </div>
+    <div class="callout callout-warn">
+      <span class="callout-icon">⚠️</span>
+      <span>If <code>Start()</code> takes longer than <strong>2000 ms</strong>, the runtime logs: <code>Start method on &lt;NodeName&gt; took too long to execute</code>. The runtime still waits for it — but every subsequent behavior is blocked until it completes.</span>
+    </div>
+    <ul class="checklist">
+      <li class="checklist-item">
+        <input type="checkbox" style="visibility:hidden">
+        <div class="item-body">
+          <span class="item-title">Execution order: deepest nodes first</span>
+          <span class="item-detail">The most deeply nested NetLogic on a page starts first. The page-level NetLogic starts last. If multiple NetLogics share the same depth, order follows the project tree (top to bottom), but this is non-deterministic — do not rely on it.</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox" style="visibility:hidden">
+        <div class="item-body">
+          <span class="item-title">Cascading delay: 10 × 300 ms = 3 seconds of freeze</span>
+          <span class="item-detail">Even moderate blocking in <code>Start()</code> compounds across many NetLogics. The correct fix is always to move heavy work to a <code>LongRunningTask</code> and return from <code>Start()</code> within milliseconds.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="checklist-section">
+    <div class="checklist-section-header">
+      <span class="section-badge badge-amber">Tasks</span>
+      <h2>Task Types — When to Use Which</h2>
+    </div>
+    <div style="overflow-x:auto; margin-bottom: 16px;">
+      <table style="width:100%; border-collapse:collapse; font-size:13px;">
+        <thead>
+          <tr style="background:var(--surface); border-bottom: 2px solid var(--border);">
+            <th style="padding:10px 12px; text-align:left; font-weight:700; color:var(--text-secondary);">Task type</th>
+            <th style="padding:10px 12px; text-align:left; font-weight:700; color:var(--text-secondary);">New thread?</th>
+            <th style="padding:10px 12px; text-align:left; font-weight:700; color:var(--text-secondary);">Info model safe?</th>
+            <th style="padding:10px 12px; text-align:left; font-weight:700; color:var(--text-secondary);">Use for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding:10px 12px;"><code>LongRunningTask</code></td>
+            <td style="padding:10px 12px; color: #15803d;">✅ Yes</td>
+            <td style="padding:10px 12px; color: #15803d;">✅ Yes</td>
+            <td style="padding:10px 12px; color:var(--muted);">Long / blocking operations</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding:10px 12px;"><code>PeriodicTask</code></td>
+            <td style="padding:10px 12px; color: #15803d;">✅ Yes</td>
+            <td style="padding:10px 12px; color: #15803d;">✅ Yes</td>
+            <td style="padding:10px 12px; color:var(--muted);">Recurring work: polling, watchdog</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding:10px 12px;"><code>DelayedTask</code></td>
+            <td style="padding:10px 12px; color: #15803d;">✅ Yes</td>
+            <td style="padding:10px 12px; color: #15803d;">✅ Yes</td>
+            <td style="padding:10px 12px; color:var(--muted);">One-shot deferred action</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;"><code>async/await (C# native)</code></td>
+            <td style="padding:10px 12px; color: #b91c1c;">⚠️ ThreadPool</td>
+            <td style="padding:10px 12px; color: #b91c1c;">❌ No</td>
+            <td style="padding:10px 12px; color:var(--muted);">Pure computation / I/O without node access</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout callout-warn">
+      <span class="callout-icon">⚠️</span>
+      <span>Never use native C# <code>async/await</code> or <code>Task.Run()</code> to access FTOptix project nodes. Only <code>LongRunningTask</code>, <code>PeriodicTask</code>, and <code>DelayedTask</code> are information-model-safe.</span>
+    </div>
+  </div>
+
+  <div class="checklist-section">
+    <div class="checklist-section-header">
+      <span class="section-badge badge-purple">Stop()</span>
+      <h2>Stop() &amp; Resource Disposal</h2>
+    </div>
+    <ul class="checklist">
+      <li class="checklist-item">
+        <input type="checkbox" style="visibility:hidden">
+        <div class="item-body">
+          <span class="item-title">Stop() is called in exact reverse order of Start()</span>
+          <span class="item-detail">This is guaranteed by the runtime. Exceptions inside <code>Stop()</code> are caught and logged — they do not interrupt the stop sequence of other behaviors.</span>
+        </div>
+      </li>
+      <li class="checklist-item">
+        <input type="checkbox" style="visibility:hidden">
+        <div class="item-body">
+          <span class="item-title">Always dispose all owned resources in Stop()</span>
+          <span class="item-detail">Pattern: <code>myPeriodicTask?.Dispose(); myLongRunningTask?.Dispose(); myVariableObserver?.Dispose();</code> — failing to do this leaks threads and observers across page navigations, causing cumulative slowdown.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div><!-- /tab-netlogic -->
+
+
+<!-- ══════════════════════════════════════════════════════════
+     PANEL 3 — Diagnostic Tools
+     ══════════════════════════════════════════════════════════ -->
+<div id="tab-tools" class="tab-panel" role="tabpanel">
+
+  <div class="callout callout-info">
+    <span class="callout-icon">ℹ️</span>
+    <span>These tools help you measure, locate, and fix performance issues in FTOptix projects. Use them in the order listed — measure first, then fix.</span>
+  </div>
+
+  <div class="tools-grid">
+
+    <div class="tool-card">
+      <h3>Runtime Logs Parser</h3>
+      <p>Parse FTOptix runtime log files to find warnings like <em>"Start method took too long"</em>. Highlights bottlenecks by node name and timestamp.</p>
+      <a href="https://asem-applicationsoftwareengineers.github.io/OptixRuntimeLogsParser/index.html" target="_blank" rel="noopener">Open Runtime Logs Parser →</a>
+    </div>
+
+    <div class="tool-card">
+      <h3>Nodes Counter Dialog</h3>
+      <p>Built-in FTOptix widget (Library → Widgets). Add to any page, link to a page or PanelLoader via <code>AliasNode</code>, and read live node count at runtime.</p>
+      <a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices/statistics/nodes_counter_dialog.html" target="_blank" rel="noopener">Nodes Counter docs →</a>
+    </div>
+
+    <div class="tool-card">
+      <h3>Project Information</h3>
+      <p>FTOptix Studio: <strong>Tools → Project Information</strong>. Shows total project node count and other project-level metrics at design time.</p>
+      <a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices/statistics/project_information.html" target="_blank" rel="noopener">Project Information docs →</a>
+    </div>
+
+    <div class="tool-card">
+      <h3>NetLogic Lifecycle CheatSheet</h3>
+      <p>Comprehensive reference for thread safety, execution order, task types, ExportMethod behavior, and disposal patterns.</p>
+      <a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/netlogic-lifecycle.md" target="_blank" rel="noopener">Open CheatSheet →</a>
+    </div>
+
+    <div class="tool-card">
+      <h3>Performance Optimization Docs</h3>
+      <p>Official Rockwell Automation guide covering node count factors, strategies to reduce DynamicLinks, and graphic rendering impact.</p>
+      <a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices/performance_optimization.html" target="_blank" rel="noopener">Open RA Performance docs →</a>
+    </div>
+
+    <div class="tool-card">
+      <h3>NetLogic CheatSheet MCP Server</h3>
+      <p>Make your AI agent (Copilot, Cursor, Claude) aware of how to write correct NetLogics by connecting the MCP server.</p>
+      <a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet?tab=readme-ov-file#netlogic-cheat-sheet-mcp-server" target="_blank" rel="noopener">Setup MCP Server →</a>
+    </div>
+
+  </div>
+
+</div><!-- /tab-tools -->
+
+
+<script>
+  function switchTab(btn, panelId) {
+    // Update buttons
+    document.querySelectorAll('.tab-btn').forEach(function(b) {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+
+    // Update panels
+    document.querySelectorAll('.tab-panel').forEach(function(p) {
+      p.classList.remove('active');
+    });
+    document.getElementById(panelId).classList.add('active');
+  }
+
+  // ── Live progress bar (checklist only) ──
+  function updateProgress() {
+    var checkboxes = document.querySelectorAll('#tab-checklist input[type="checkbox"]');
+    var total   = checkboxes.length;
+    var checked = 0;
+    checkboxes.forEach(function(cb) { if (cb.checked) checked++; });
+    var pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressText').textContent = checked + ' / ' + total;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    updateProgress();
+    document.querySelectorAll('#tab-checklist input[type="checkbox"]').forEach(function(cb) {
+      cb.addEventListener('change', updateProgress);
+    });
+  });
+</script>
