@@ -255,6 +255,24 @@ layout: default
   .tip-compact .code-block {
     margin-top: 8px;
   }
+  .tips-section {
+    margin: 0 0 16px;
+  }
+  .tips-section > h4 {
+    margin: 0 0 8px;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  @media (max-width: 768px) {
+    .tips-grid { grid-template-columns: 1fr; }
+  }
 </style>
 
 <p class="section-intro">The headless edge computing platform for FactoryTalk Optix — documentation, presentations, and container support.</p>
@@ -297,6 +315,42 @@ layout: default
     Open <code>https://optix_edge_ip_address</code>, sign in, go to <strong>Docker</strong>, enable <strong>Docker Engine</strong> under <strong>Services</strong>, then reboot OptixEdge.
     <br><br>
     <strong>Best practice:</strong> define CPU and memory limits in your <code>docker-compose.yaml</code> to avoid resource contention. This is even more important when an <strong>FTOptix</strong> application is running on the same OptixEdge device.
+  </div>
+
+  <div class="tips-section" aria-label="Tips">
+    <h4>Tips</h4>
+    <div class="tips-grid">
+      <div class="path tip-compact">
+        <h4>CPU and memory limits</h4>
+        <p>Limit container resources to keep FTOptix responsive on the same device.</p>
+        <span class="code-label">Minimal example</span>
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>services:
+  app:
+    image: your-image:latest
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: "256M"</pre>
+        </div>
+      </div>
+
+      <div class="path tip-compact">
+        <h4>Docker logging tip</h4>
+        <p>Set log rotation in each service to avoid filling local storage.</p>
+        <span class="code-label">Minimal example</span>
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>logging:
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "3"</pre>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="deploy-grid">
@@ -548,19 +602,6 @@ volumes:
     </div>
   </div>
 
-  <div class="path tip-compact">
-    <h4>Docker logging tip</h4>
-    <p>Set log rotation in each service to avoid filling local storage.</p>
-    <span class="code-label">Minimal example</span>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>logging:
-  driver: "json-file"
-  options:
-    max-size: "10m"
-    max-file: "3"</pre>
-    </div>
-  </div>
 </section>
 
 <script>
