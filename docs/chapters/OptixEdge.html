@@ -171,8 +171,9 @@ layout: default
 <section class="tutorial-wrap">
   <h2 class="tutorial-title">Deploy your first container on your OptixEdge</h2>
   <p class="tutorial-subtitle">
-    This quick tutorial summarizes the first Docker workflow on OptixEdge (from the
-    <a href="https://massimovar.github.io/LearningFTOptix/pdf/OptixEdgeAndDockerContainers.pdf">OptixEdge & Docker Containers presentation</a>, page 42 onward), using an MQTT Mosquitto example.
+    Follow this tutorial to deploy your first MQTT broker on OptixEdge using Docker.
+    The procedure is based on the
+    <a href="https://massimovar.github.io/LearningFTOptix/pdf/OptixEdgeAndDockerContainers.pdf">OptixEdge & Docker Containers presentation</a> (page 42 onward).
   </p>
 
   <div class="tutorial-note">
@@ -183,15 +184,15 @@ layout: default
   <div class="deploy-grid">
     <div class="deploy-card">
       <h3>Path 1: USB Import</h3>
-      <p>Prepare the image and compose file on your PC, copy both to the USB root, then import from System Manager.</p>
+      <p>Prepare the image and compose file on your PC, copy both files to the USB root, then import from System Manager.</p>
     </div>
     <div class="deploy-card">
       <h3>Path 2: Portainer Stack</h3>
-      <p>Enable Portainer CE on OptixEdge and deploy the same compose content from the Portainer web UI.</p>
+      <p>Enable Portainer CE on OptixEdge and deploy the same compose file content from the Portainer web interface.</p>
     </div>
     <div class="deploy-card">
       <h3>Path 3: Docker CLI</h3>
-      <p>Enable remote management and control the OptixEdge Docker engine directly from your local Docker CLI.</p>
+      <p>Enable remote management and control the OptixEdge Docker Engine directly from your local Docker CLI.</p>
     </div>
   </div>
 
@@ -234,7 +235,7 @@ docker save -o mosquitto.tar eclipse-mosquitto:2</pre>
       <li>Open <code>https://optix_edge_ip_address:9443</code> and trust the self-signed certificate.</li>
       <li>Set the admin password at first login.</li>
       <li>Select the <strong>local</strong> environment, open <strong>Stacks</strong>, then click <strong>Add stack</strong>.</li>
-      <li>Paste the same compose content shown above and deploy the stack.</li>
+      <li>Paste the same <code>docker-compose.yaml</code> content shown above and deploy the stack.</li>
     </ol>
   </div>
 
@@ -246,11 +247,43 @@ docker save -o mosquitto.tar eclipse-mosquitto:2</pre>
       <li>Run standard Docker CLI commands against OptixEdge, then unset the variable to restore local behavior.</li>
     </ol>
 
-    <span class="code-label">Example</span>
+    <span class="code-label">Linux shell example</span>
     <div class="code-block">
-      <pre>export DOCKER_HOST=optix_edge_ip:2375
+      <pre>export DOCKER_HOST=tcp://optix_edge_ip:2375
 docker ps
 unset DOCKER_HOST</pre>
+    </div>
+
+    <span class="code-label">Windows PowerShell example</span>
+    <div class="code-block">
+      <pre>$env:DOCKER_HOST = "tcp://optix_edge_ip:2375"
+docker ps
+Remove-Item Env:DOCKER_HOST</pre>
+    </div>
+  </div>
+
+  <div class="path">
+    <h4>4) Verify the MQTT broker</h4>
+    <ol>
+      <li>Confirm that the container is running and port <code>1883</code> is published.</li>
+      <li>From a client machine with <code>mosquitto-clients</code>, subscribe to a test topic.</li>
+      <li>Publish one message to the same topic.</li>
+      <li>Verify that the subscriber receives the message.</li>
+    </ol>
+
+    <span class="code-label">Subscriber terminal</span>
+    <div class="code-block">
+      <pre>mosquitto_sub -h optix_edge_ip_address -p 1883 -t demo/edge/test</pre>
+    </div>
+
+    <span class="code-label">Publisher terminal</span>
+    <div class="code-block">
+      <pre>mosquitto_pub -h optix_edge_ip_address -p 1883 -t demo/edge/test -m "optixedge mqtt ok"</pre>
+    </div>
+
+    <span class="code-label">Expected output on subscriber</span>
+    <div class="code-block">
+      <pre>optixedge mqtt ok</pre>
     </div>
   </div>
 </section>
