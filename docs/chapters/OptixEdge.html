@@ -75,11 +75,20 @@ layout: default
     box-shadow: var(--card-shadow);
     padding: 22px;
     transition: var(--transition-smooth);
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
   }
   .deploy-card:hover {
     border-color: var(--accent);
     box-shadow: var(--card-shadow-hover);
     transform: translateY(-2px);
+  }
+  .deploy-card.is-active {
+    border-color: var(--accent);
+    box-shadow: var(--card-shadow-hover);
   }
   .deploy-card h3 {
     margin: 0 0 10px;
@@ -97,6 +106,8 @@ layout: default
     padding: 18px;
     background: var(--bg-card);
   }
+  .path-panel { display: none; }
+  .path-panel.is-visible { display: block; }
   .path h4 {
     margin: 0 0 10px;
     font-size: 16px;
@@ -182,21 +193,21 @@ layout: default
   </div>
 
   <div class="deploy-grid">
-    <div class="deploy-card">
+    <button class="deploy-card deploy-toggle" data-target="path-1" aria-expanded="false" aria-controls="path-1" type="button">
       <h3>Path 1: USB Import</h3>
       <p>Prepare the image and compose file on your PC, copy both files to the USB root, then import from System Manager.</p>
-    </div>
-    <div class="deploy-card">
+    </button>
+    <button class="deploy-card deploy-toggle" data-target="path-2" aria-expanded="false" aria-controls="path-2" type="button">
       <h3>Path 2: Portainer Stack</h3>
       <p>Enable Portainer CE on OptixEdge and deploy the same compose file content from the Portainer web interface.</p>
-    </div>
-    <div class="deploy-card">
+    </button>
+    <button class="deploy-card deploy-toggle" data-target="path-3" aria-expanded="false" aria-controls="path-3" type="button">
       <h3>Path 3: Docker CLI</h3>
       <p>Enable remote management and control the OptixEdge Docker Engine directly from your local Docker CLI.</p>
-    </div>
+    </button>
   </div>
 
-  <div class="path">
+  <div class="path path-panel" id="path-1">
     <h4>1) Load from USB key</h4>
     <ol>
       <li>Use a USB key formatted as <code>FAT32</code>, <code>exFAT</code>, or <code>ext4</code>.</li>
@@ -227,7 +238,7 @@ docker save -o mosquitto.tar eclipse-mosquitto:2</pre>
     </div>
   </div>
 
-  <div class="path">
+  <div class="path path-panel" id="path-2">
     <h4>2) Deploy with Portainer</h4>
     <ol>
       <li>In System Manager, go to <strong>Docker</strong> and enable <strong>Portainer CE</strong> under <strong>Services</strong>.</li>
@@ -239,7 +250,7 @@ docker save -o mosquitto.tar eclipse-mosquitto:2</pre>
     </ol>
   </div>
 
-  <div class="path">
+  <div class="path path-panel" id="path-3">
     <h4>3) Deploy with Docker CLI remote management</h4>
     <ol>
       <li>In System Manager, under <strong>Docker &gt; Remote Management</strong>, choose the connection type and allowed network interfaces.</li>
@@ -287,3 +298,35 @@ Remove-Item Env:DOCKER_HOST</pre>
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var toggles = document.querySelectorAll(".deploy-toggle");
+    var panels = document.querySelectorAll(".path-panel");
+
+    function hideAllPanels() {
+      panels.forEach(function (panel) {
+        panel.classList.remove("is-visible");
+      });
+      toggles.forEach(function (toggle) {
+        toggle.classList.remove("is-active");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    }
+
+    toggles.forEach(function (toggle) {
+      toggle.addEventListener("click", function () {
+        var panelId = toggle.getAttribute("data-target");
+        var panel = document.getElementById(panelId);
+        var isOpen = toggle.classList.contains("is-active");
+
+        hideAllPanels();
+        if (!isOpen && panel) {
+          toggle.classList.add("is-active");
+          toggle.setAttribute("aria-expanded", "true");
+          panel.classList.add("is-visible");
+        }
+      });
+    });
+  });
+</script>
