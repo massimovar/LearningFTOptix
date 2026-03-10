@@ -208,7 +208,7 @@ layout: default
   </div>
 
   <div class="path path-panel" id="path-1">
-    <h4>1) Load from USB key</h4>
+    <h4>Load from USB key</h4>
     <ol>
       <li>Use a USB key formatted as <code>FAT32</code>, <code>exFAT</code>, or <code>ext4</code>.</li>
       <li>Pull the container image for <code>linux/arm64</code>.</li>
@@ -239,7 +239,7 @@ docker save -o mosquitto.tar eclipse-mosquitto:2</pre>
   </div>
 
   <div class="path path-panel" id="path-2">
-    <h4>2) Deploy with Portainer</h4>
+    <h4>Deploy with Portainer</h4>
     <ol>
       <li>In System Manager, go to <strong>Docker</strong> and enable <strong>Portainer CE</strong> under <strong>Services</strong>.</li>
       <li>Reboot OptixEdge.</li>
@@ -251,7 +251,7 @@ docker save -o mosquitto.tar eclipse-mosquitto:2</pre>
   </div>
 
   <div class="path path-panel" id="path-3">
-    <h4>3) Deploy with Docker CLI remote management</h4>
+    <h4>Deploy with Docker CLI remote management</h4>
     <ol>
       <li>In System Manager, under <strong>Docker &gt; Remote Management</strong>, choose the connection type and allowed network interfaces.</li>
       <li>On your local machine, set <code>DOCKER_HOST</code> to target OptixEdge.</li>
@@ -274,7 +274,7 @@ Remove-Item Env:DOCKER_HOST</pre>
   </div>
 
   <div class="path">
-    <h4>4) Verify the MQTT broker</h4>
+    <h4>Verify the MQTT broker</h4>
     <ol>
       <li>Confirm that the container is running and port <code>1883</code> is published.</li>
       <li>From a client machine with <code>mosquitto-clients</code>, subscribe to a test topic.</li>
