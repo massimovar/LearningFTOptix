@@ -193,7 +193,7 @@ layout: default
   </div>
 
   <div class="deploy-grid">
-    <button class="deploy-card deploy-toggle" data-target="path-1" aria-expanded="false" aria-controls="path-1" type="button">
+    <button class="deploy-card deploy-toggle is-active" data-target="path-1" aria-expanded="true" aria-controls="path-1" type="button">
       <h3>Path 1: USB Import</h3>
       <p>Prepare the image and compose file on your PC, copy both files to the USB root, then import from System Manager.</p>
     </button>
@@ -207,7 +207,7 @@ layout: default
     </button>
   </div>
 
-  <div class="path path-panel" id="path-1">
+  <div class="path path-panel is-visible" id="path-1">
     <h4>Load from USB key</h4>
     <ol>
       <li>Use a USB key formatted as <code>FAT32</code>, <code>exFAT</code>, or <code>ext4</code>.</li>
