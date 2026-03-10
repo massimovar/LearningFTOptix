@@ -64,9 +64,15 @@ layout: default
   .tutorial-note a { color: var(--accent); font-weight: 600; }
   .deploy-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
     margin: 20px 0 10px;
+  }
+  @media (max-width: 1200px) {
+    .deploy-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 768px) {
+    .deploy-grid { grid-template-columns: 1fr; }
   }
   .deploy-card {
     border: 1px solid var(--border);
@@ -89,15 +95,6 @@ layout: default
   .deploy-card.is-active {
     border-color: var(--accent);
     box-shadow: var(--card-shadow-hover);
-  }
-  .deploy-card-ideas {
-    background: #fff6db;
-    border-color: #f5cf70;
-  }
-  .deploy-card-ideas:hover,
-  .deploy-card-ideas.is-active {
-    border-color: #e3ad24;
-    box-shadow: 0 12px 28px rgba(227, 173, 36, 0.25);
   }
   .deploy-card h3 {
     margin: 0 0 10px;
@@ -188,6 +185,52 @@ layout: default
     letter-spacing: 0.4px;
     text-transform: uppercase;
   }
+  .gb-tabs-wrap {
+    margin-top: 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    overflow: hidden;
+  }
+  .gb-tabs-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 8px;
+  }
+  .gb-tab-btn {
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+  }
+  .gb-tab-btn:hover {
+    color: var(--text);
+    background: rgba(0, 0, 0, 0.04);
+  }
+  .gb-tab-btn.is-active {
+    color: var(--accent);
+    background: var(--bg-card);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08), 0 0 0 1px var(--border);
+  }
+  .gb-tab-panel {
+    display: none;
+    padding: 16px;
+  }
+  .gb-tab-panel.is-visible { display: block; }
+  .gb-tab-panel p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
 </style>
 
 <p class="section-intro">The headless edge computing platform for FactoryTalk Optix — documentation, presentations, and container support.</p>
@@ -243,7 +286,7 @@ layout: default
       <h3>Path 3: Docker CLI</h3>
       <p>Enable remote management and control the OptixEdge Docker Engine directly from your local Docker CLI.</p>
     </button>
-    <button class="deploy-card deploy-toggle deploy-card-ideas" data-target="path-4" aria-expanded="false" aria-controls="path-4" type="button">
+    <button class="deploy-card deploy-toggle" data-target="path-4" aria-expanded="false" aria-controls="path-4" type="button">
       <h3>Go Beyond</h3>
       <p>Try additional ideas with ready-to-paste compose examples for Portainer stacks.</p>
     </button>
@@ -336,16 +379,19 @@ layout: default
 
   <div class="path path-panel" id="path-4">
     <h4>Go Beyond: more exercise ideas</h4>
-    <ol>
-      <li><strong>Kuma container:</strong> run Uptime Kuma to monitor service uptime with a simple web dashboard.</li>
-      <li><strong>MySQL + phpMyAdmin:</strong> deploy a database plus a web UI to practice persistence and service linking.</li>
-      <li><strong>Gemma 3 (1B):</strong> run Ollama with the smallest Gemma 3 model for lightweight local AI experiments.</li>
-    </ol>
+    <div class="gb-tabs-wrap">
+      <div class="gb-tabs-nav" role="tablist" aria-label="Go Beyond examples">
+        <button class="gb-tab-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="gb-kuma" data-gb-target="gb-kuma">Kuma</button>
+        <button class="gb-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="gb-mysql" data-gb-target="gb-mysql">MySQL + phpMyAdmin</button>
+        <button class="gb-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="gb-gemma" data-gb-target="gb-gemma">Gemma 3 1B</button>
+      </div>
 
-    <span class="code-label">1) Uptime Kuma stack (Portainer)</span>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>version: '3.8'
+      <div class="gb-tab-panel is-visible" id="gb-kuma" role="tabpanel">
+        <p><strong>Kuma container:</strong> run Uptime Kuma to monitor service uptime with a simple web dashboard.</p>
+        <span class="code-label">Portainer stack</span>
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>version: '3.8'
 
 services:
   kuma:
@@ -359,12 +405,15 @@ services:
 
 volumes:
   kuma_data:</pre>
-    </div>
+        </div>
+      </div>
 
-    <span class="code-label">2) MySQL + phpMyAdmin stack (Portainer)</span>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>version: '3.8'
+      <div class="gb-tab-panel" id="gb-mysql" role="tabpanel">
+        <p><strong>MySQL + phpMyAdmin:</strong> deploy a database plus a web UI to practice persistence and service linking.</p>
+        <span class="code-label">Portainer stack</span>
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>version: '3.8'
 
 services:
   mysql:
@@ -396,12 +445,15 @@ services:
 
 volumes:
   mysql_data:</pre>
-    </div>
+        </div>
+      </div>
 
-    <span class="code-label">3) Ollama + Gemma 3 1B stack (Portainer)</span>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>version: '3.8'
+      <div class="gb-tab-panel" id="gb-gemma" role="tabpanel">
+        <p><strong>Gemma 3 (1B):</strong> run Ollama with the smallest Gemma 3 model for lightweight local AI experiments.</p>
+        <span class="code-label">Portainer stack</span>
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>version: '3.8'
 
 services:
   ollama:
@@ -420,10 +472,12 @@ services:
 
 volumes:
   ollama_data:</pre>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="path">
+  <div class="path" id="mqtt-verify-panel">
     <h4>Verify the MQTT broker</h4>
     <ol>
       <li>Confirm that the container is running and port <code>1883</code> is published.</li>
@@ -473,6 +527,12 @@ volumes:
   document.addEventListener("DOMContentLoaded", function () {
     var toggles = document.querySelectorAll(".deploy-toggle");
     var panels = document.querySelectorAll(".path-panel");
+    var verifyPanel = document.getElementById("mqtt-verify-panel");
+
+    function updateVerifyPanel(panelId) {
+      if (!verifyPanel) return;
+      verifyPanel.style.display = (panelId === "path-1" || panelId === "path-2") ? "block" : "none";
+    }
 
     function hideAllPanels() {
       panels.forEach(function (panel) {
@@ -495,7 +555,37 @@ volumes:
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
           panel.classList.add("is-visible");
+          updateVerifyPanel(panelId);
         }
+      });
+    });
+
+    var activeToggle = document.querySelector(".deploy-toggle.is-active");
+    updateVerifyPanel(activeToggle ? activeToggle.getAttribute("data-target") : "path-1");
+
+    document.querySelectorAll(".gb-tabs-wrap").forEach(function (tabsWrap) {
+      var tabButtons = tabsWrap.querySelectorAll(".gb-tab-btn");
+      var tabPanels = tabsWrap.querySelectorAll(".gb-tab-panel");
+
+      tabButtons.forEach(function (tabButton) {
+        tabButton.addEventListener("click", function () {
+          var targetId = tabButton.getAttribute("data-gb-target");
+          var targetPanel = tabsWrap.querySelector("#" + targetId);
+
+          tabButtons.forEach(function (btn) {
+            btn.classList.remove("is-active");
+            btn.setAttribute("aria-selected", "false");
+          });
+          tabPanels.forEach(function (panel) {
+            panel.classList.remove("is-visible");
+          });
+
+          tabButton.classList.add("is-active");
+          tabButton.setAttribute("aria-selected", "true");
+          if (targetPanel) {
+            targetPanel.classList.add("is-visible");
+          }
+        });
       });
     });
 
