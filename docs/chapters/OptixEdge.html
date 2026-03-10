@@ -37,6 +37,108 @@ layout: default
     transition: var(--transition-fast);
   }
   .hw-card a:hover { color: var(--accent); }
+
+  .tutorial-wrap {
+    margin-top: 44px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+  }
+  .tutorial-title {
+    margin: 0 0 10px;
+    font-size: 24px;
+  }
+  .tutorial-subtitle {
+    color: var(--muted);
+    font-size: 15px;
+    margin: 0 0 20px;
+    max-width: 900px;
+  }
+  .tutorial-note {
+    border: 1px solid var(--warning-border);
+    border-radius: var(--radius);
+    background: var(--warning-bg);
+    padding: 16px 18px;
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  .tutorial-note a { color: var(--accent); font-weight: 600; }
+  .deploy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 20px 0 10px;
+  }
+  .deploy-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    box-shadow: var(--card-shadow);
+    padding: 22px;
+    transition: var(--transition-smooth);
+  }
+  .deploy-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+  }
+  .deploy-card h3 {
+    margin: 0 0 10px;
+    font-size: 17px;
+  }
+  .deploy-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .path {
+    margin-top: 18px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    background: var(--bg-card);
+  }
+  .path h4 {
+    margin: 0 0 10px;
+    font-size: 16px;
+  }
+  .path ol {
+    margin: 0;
+    padding-left: 18px;
+  }
+  .path li {
+    margin: 7px 0;
+    font-size: 14px;
+  }
+  .path code {
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 2px 7px;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+  .code-block {
+    margin-top: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #0e1218;
+    color: #d9e1ee;
+    overflow: auto;
+  }
+  .code-block pre {
+    margin: 0;
+    padding: 14px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .code-label {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
 </style>
 
 <p class="section-intro">The headless edge computing platform for FactoryTalk Optix — documentation, presentations, and container support.</p>
@@ -65,3 +167,90 @@ layout: default
   </div>
 
 </div>
+
+<section class="tutorial-wrap">
+  <h2 class="tutorial-title">Deploy your first container on your OptixEdge</h2>
+  <p class="tutorial-subtitle">
+    This quick tutorial summarizes the first Docker workflow on OptixEdge (from the
+    <a href="https://massimovar.github.io/LearningFTOptix/pdf/OptixEdgeAndDockerContainers.pdf">OptixEdge & Docker Containers presentation</a>, page 42 onward), using an MQTT Mosquitto example.
+  </p>
+
+  <div class="tutorial-note">
+    <strong>Before loading any container:</strong> enable <strong>Docker Engine</strong> from System Manager.
+    Open <code>https://optix_edge_ip_address</code>, sign in, go to <strong>Docker</strong>, enable <strong>Docker Engine</strong> under <strong>Services</strong>, then reboot OptixEdge.
+  </div>
+
+  <div class="deploy-grid">
+    <div class="deploy-card">
+      <h3>Path 1: USB Import</h3>
+      <p>Prepare the image and compose file on your PC, copy both to the USB root, then import from System Manager.</p>
+    </div>
+    <div class="deploy-card">
+      <h3>Path 2: Portainer Stack</h3>
+      <p>Enable Portainer CE on OptixEdge and deploy the same compose content from the Portainer web UI.</p>
+    </div>
+    <div class="deploy-card">
+      <h3>Path 3: Docker CLI</h3>
+      <p>Enable remote management and control the OptixEdge Docker engine directly from your local Docker CLI.</p>
+    </div>
+  </div>
+
+  <div class="path">
+    <h4>1) Load from USB key</h4>
+    <ol>
+      <li>Use a USB key formatted as <code>FAT32</code>, <code>exFAT</code>, or <code>ext4</code>.</li>
+      <li>Pull the container image for <code>linux/arm64</code>.</li>
+      <li>Export the image as a <code>.tar</code> file.</li>
+      <li>Create a <code>docker-compose.yaml</code> that defines startup options.</li>
+      <li>Copy both files to the USB key root directory.</li>
+      <li>Plug the USB key into OptixEdge.</li>
+      <li>In System Manager, open <strong>Docker</strong> and click <strong>Import docker image via USB</strong> in the <strong>Containers</strong> area.</li>
+    </ol>
+
+    <span class="code-label">On your machine</span>
+    <div class="code-block">
+      <pre>docker pull --platform linux/arm64 eclipse-mosquitto:2
+docker save -o mosquitto.tar eclipse-mosquitto:2</pre>
+    </div>
+
+    <span class="code-label">docker-compose.yaml</span>
+    <div class="code-block">
+      <pre>services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    restart: unless-stopped</pre>
+    </div>
+  </div>
+
+  <div class="path">
+    <h4>2) Deploy with Portainer</h4>
+    <ol>
+      <li>In System Manager, go to <strong>Docker</strong> and enable <strong>Portainer CE</strong> under <strong>Services</strong>.</li>
+      <li>Reboot OptixEdge.</li>
+      <li>Open <code>https://optix_edge_ip_address:9443</code> and trust the self-signed certificate.</li>
+      <li>Set the admin password at first login.</li>
+      <li>Select the <strong>local</strong> environment, open <strong>Stacks</strong>, then click <strong>Add stack</strong>.</li>
+      <li>Paste the same compose content shown above and deploy the stack.</li>
+    </ol>
+  </div>
+
+  <div class="path">
+    <h4>3) Deploy with Docker CLI remote management</h4>
+    <ol>
+      <li>In System Manager, under <strong>Docker &gt; Remote Management</strong>, choose the connection type and allowed network interfaces.</li>
+      <li>On your local machine, set <code>DOCKER_HOST</code> to target OptixEdge.</li>
+      <li>Run standard Docker CLI commands against OptixEdge, then unset the variable to restore local behavior.</li>
+    </ol>
+
+    <span class="code-label">Example</span>
+    <div class="code-block">
+      <pre>export DOCKER_HOST=optix_edge_ip:2375
+docker ps
+unset DOCKER_HOST</pre>
+    </div>
+  </div>
+</section>
