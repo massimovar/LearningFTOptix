@@ -461,7 +461,6 @@ layout: default
       <div class="gb-tabs-nav" role="tablist" aria-label="Go Beyond examples">
         <button class="gb-tab-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="gb-kuma" data-gb-target="gb-kuma">Kuma</button>
         <button class="gb-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="gb-mysql" data-gb-target="gb-mysql">MySQL + phpMyAdmin</button>
-        <button class="gb-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="gb-gemma" data-gb-target="gb-gemma">Gemma 3 1B</button>
       </div>
 
       <div class="gb-tab-panel is-visible" id="gb-kuma" role="tabpanel">
@@ -523,33 +522,6 @@ services:
 
 volumes:
   mysql_data:</pre>
-        </div>
-      </div>
-
-      <div class="gb-tab-panel" id="gb-gemma" role="tabpanel">
-        <p><strong>Gemma 3 (1B):</strong> run Ollama with the smallest Gemma 3 model for lightweight local AI experiments.</p>
-        <span class="code-label">Portainer stack</span>
-        <div class="code-block">
-          <button class="copy-btn" type="button">Copy</button>
-          <pre>version: '3.8'
-
-services:
-  ollama:
-    image: docker.io/ollama/ollama:latest
-    container_name: ollama-gemma3-1b
-    ports:
-      - "11434:11434"
-    volumes:
-      - ollama_data:/root/.ollama
-    command: >
-      /bin/sh -c "ollama serve &
-      sleep 5;
-      ollama list | grep -q 'gemma3:1b' || ollama pull gemma3:1b;
-      wait"
-    restart: unless-stopped
-
-volumes:
-  ollama_data:</pre>
         </div>
       </div>
     </div>
