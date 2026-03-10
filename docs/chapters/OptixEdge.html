@@ -461,6 +461,7 @@ layout: default
       <div class="gb-tabs-nav" role="tablist" aria-label="Go Beyond examples">
         <button class="gb-tab-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="gb-kuma" data-gb-target="gb-kuma">Kuma</button>
         <button class="gb-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="gb-mysql" data-gb-target="gb-mysql">MySQL + phpMyAdmin</button>
+        <button class="gb-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="gb-prometheus" data-gb-target="gb-prometheus">Prometheus</button>
       </div>
 
       <div class="gb-tab-panel is-visible" id="gb-kuma" role="tabpanel">
@@ -522,6 +523,108 @@ services:
 
 volumes:
   mysql_data:</pre>
+        </div>
+      </div>
+
+      <div class="gb-tab-panel" id="gb-prometheus" role="tabpanel">
+        <p><strong>Prometheus + Node Exporter:</strong> monitor CPU and RAM usage of the OptixEdge device.</p>
+        <span class="code-label">Portainer stack</span>
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>version: '3.8'
+
+services:
+
+  # --- INIT CONTAINER ---
+  # This tiny container runs once at startup to create the Prometheus
+  # configuration file. It writes the config into a shared volume,
+  # then exits. This is needed because Prometheus needs a config file
+  # to know which services to monitor (called "scrape targets").
+  prometheus-init:
+    image: busybox:latest              # Minimal Linux image (~1MB), used only to write a file
+    container_name: prometheus-init
+    volumes:
+      - prometheus_config:/config      # Shared volume where the config file will be written
+    entrypoint: ["/bin/sh", "-c"]      # Run a shell command
+    command:
+      - |
+        cat > /config/prometheus.yml << 'EOF'
+        global:
+          scrape_interval: 5s          # How often Prometheus collects metrics (every 5 seconds)
+        scrape_configs:
+          - job_name: prometheus        # Prometheus monitors itself
+            static_configs:
+              - targets: ['localhost:9090']
+          - job_name: node_exporter     # Node Exporter provides device metrics (CPU, RAM, disk, etc.)
+            static_configs:
+              - targets: ['node-exporter:9100']
+        EOF
+    restart: "no"                      # Run only once, do not restart after exiting
+
+  # --- PROMETHEUS ---
+  # The metrics database. It periodically collects (scrapes) metrics
+  # from the targets defined in the config file, stores them, and
+  # provides a web UI to query and graph them.
+  # Web UI available at: http://&lt;device-ip&gt;:9090
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    depends_on:
+      prometheus-init:
+        condition: service_completed_successfully  # Wait for the config file to be created first
+    ports:
+      - "9090:9090"                    # Expose Prometheus web UI on port 9090
+    command:
+      - --config.file=/config/prometheus.yml       # Path to the config created by the init container
+      - --storage.tsdb.path=/prometheus            # Where to store collected metrics data
+      - --web.listen-address=0.0.0.0:9090          # Listen on all network interfaces
+    volumes:
+      - prometheus_data:/prometheus                 # Persistent storage for metrics history
+      - prometheus_config:/config:ro                # Read the config file (read-only)
+    restart: unless-stopped            # Auto-restart unless manually stopped
+
+  # --- NODE EXPORTER ---
+  # A lightweight agent that reads system metrics from the device
+  # (CPU usage, RAM, disk space, network traffic, etc.) and exposes
+  # them on port 9100 for Prometheus to collect.
+  # Raw metrics visible at: http://&lt;device-ip&gt;:9100/metrics
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    ports:
+      - "9100:9100"                    # Expose metrics endpoint on port 9100
+    restart: unless-stopped
+
+# --- VOLUMES ---
+# Named volumes persist data across container restarts and recreations.
+volumes:
+  prometheus_data:                     # Stores Prometheus metrics history
+  prometheus_config:                   # Stores the generated config file</pre>
+        </div>
+
+        <h4>Check RAM and CPU in Prometheus</h4>
+        <ol>
+          <li>Open <code>http://optix_edge_ip_address:9090</code>.</li>
+          <li>In the <strong>Expression</strong> field, paste one query and click <strong>Execute</strong>.</li>
+          <li>Use <strong>Graph</strong> view to see trends over time.</li>
+        </ol>
+
+        <span class="code-label">CPU usage (%)</span>
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>100 - (avg by (instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)</pre>
+        </div>
+
+        <span class="code-label">RAM usage (%)</span>
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>(1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100</pre>
+        </div>
+
+        <span class="code-label">Disk usage (%)</span>
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>100 - ((node_filesystem_avail_bytes{mountpoint="/",fstype!~"tmpfs|overlay"} * 100) / node_filesystem_size_bytes{mountpoint="/",fstype!~"tmpfs|overlay"})</pre>
         </div>
       </div>
     </div>
