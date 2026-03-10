@@ -231,6 +231,30 @@ layout: default
     color: var(--muted);
     font-size: 14px;
   }
+  .tip-compact {
+    margin-top: 14px;
+    padding: 14px 16px;
+    border-left: 3px solid var(--border);
+    background: var(--surface);
+  }
+  .tip-compact h4 {
+    margin: 0 0 6px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+  .tip-compact p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .tip-compact .code-label {
+    margin-top: 8px;
+    font-size: 11px;
+  }
+  .tip-compact .code-block {
+    margin-top: 8px;
+  }
 </style>
 
 <p class="section-intro">The headless edge computing platform for FactoryTalk Optix — documentation, presentations, and container support.</p>
@@ -519,6 +543,20 @@ volumes:
     <div class="code-block">
       <button class="copy-btn" type="button">Copy</button>
       <pre>optixedge mqtt ok</pre>
+    </div>
+  </div>
+
+  <div class="path tip-compact">
+    <h4>Docker logging tip</h4>
+    <p>Set log rotation in each service to avoid filling local storage.</p>
+    <span class="code-label">Minimal example</span>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>logging:
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "3"</pre>
     </div>
   </div>
 </section>
