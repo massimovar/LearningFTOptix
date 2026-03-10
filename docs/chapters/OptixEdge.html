@@ -277,10 +277,25 @@ Remove-Item Env:DOCKER_HOST</pre>
     <h4>Verify the MQTT broker</h4>
     <ol>
       <li>Confirm that the container is running and port <code>1883</code> is published.</li>
+      <li>
+        On Windows, install the Mosquitto client tools from
+        <a href="https://mosquitto.org/download/">https://mosquitto.org/download/</a>
+        and open two PowerShell terminals in the Mosquitto installation directory.
+      </li>
       <li>From a client machine with <code>mosquitto-clients</code>, subscribe to a test topic.</li>
       <li>Publish one message to the same topic.</li>
       <li>Verify that the subscriber receives the message.</li>
     </ol>
+
+    <span class="code-label">Windows PowerShell (subscriber)</span>
+    <div class="code-block">
+      <pre>.\mosquitto_sub.exe -h optix_edge_ip_address -p 1883 -t demo/edge/test</pre>
+    </div>
+
+    <span class="code-label">Windows PowerShell (publisher)</span>
+    <div class="code-block">
+      <pre>.\mosquitto_pub.exe -h optix_edge_ip_address -p 1883 -t demo/edge/test -m "optixedge mqtt ok"</pre>
+    </div>
 
     <span class="code-label">Subscriber terminal</span>
     <div class="code-block">
