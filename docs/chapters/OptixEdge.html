@@ -134,12 +134,41 @@ layout: default
     background: #0e1218;
     color: #d9e1ee;
     overflow: auto;
+    position: relative;
   }
   .code-block pre {
     margin: 0;
-    padding: 14px;
+    padding: 14px 72px 14px 14px;
     font-size: 13px;
     line-height: 1.5;
+  }
+  .copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: 1px solid #4a5568;
+    border-radius: 4px;
+    color: #8898aa;
+    font-size: 11px;
+    padding: 3px 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+    z-index: 1;
+  }
+  .copy-btn:hover {
+    background: #1e2530;
+    color: #d9e1ee;
+    border-color: #8898aa;
+  }
+  .copy-btn.copied {
+    color: #68d391;
+    border-color: #68d391;
   }
   .code-label {
     display: inline-block;
@@ -221,12 +250,17 @@ layout: default
 
     <span class="code-label">On your machine</span>
     <div class="code-block">
-      <pre>docker pull --platform linux/arm64 eclipse-mosquitto:2
-docker save -o mosquitto.tar eclipse-mosquitto:2</pre>
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>docker pull --platform linux/arm64 eclipse-mosquitto:2</pre>
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>docker save -o mosquitto.tar eclipse-mosquitto:2</pre>
     </div>
 
     <span class="code-label">docker-compose.yaml</span>
     <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
       <pre>services:
   mosquitto:
     image: eclipse-mosquitto:2
@@ -260,16 +294,30 @@ docker save -o mosquitto.tar eclipse-mosquitto:2</pre>
 
     <span class="code-label">Linux shell example</span>
     <div class="code-block">
-      <pre>export DOCKER_HOST=tcp://optix_edge_ip:2375
-docker ps
-unset DOCKER_HOST</pre>
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>export DOCKER_HOST=tcp://optix_edge_ip:2375</pre>
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>docker ps</pre>
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>unset DOCKER_HOST</pre>
     </div>
 
     <span class="code-label">Windows PowerShell example</span>
     <div class="code-block">
-      <pre>$env:DOCKER_HOST = "tcp://optix_edge_ip:2375"
-docker ps
-Remove-Item Env:DOCKER_HOST</pre>
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>$env:DOCKER_HOST = "tcp://optix_edge_ip:2375"</pre>
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>docker ps</pre>
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>Remove-Item Env:DOCKER_HOST</pre>
     </div>
   </div>
 
@@ -289,26 +337,31 @@ Remove-Item Env:DOCKER_HOST</pre>
 
     <span class="code-label">Windows PowerShell (subscriber)</span>
     <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
       <pre>.\mosquitto_sub.exe -h optix_edge_ip_address -p 1883 -t demo/edge/test</pre>
     </div>
 
     <span class="code-label">Windows PowerShell (publisher)</span>
     <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
       <pre>.\mosquitto_pub.exe -h optix_edge_ip_address -p 1883 -t demo/edge/test -m "optixedge mqtt ok"</pre>
     </div>
 
     <span class="code-label">Subscriber terminal</span>
     <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
       <pre>mosquitto_sub -h optix_edge_ip_address -p 1883 -t demo/edge/test</pre>
     </div>
 
     <span class="code-label">Publisher terminal</span>
     <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
       <pre>mosquitto_pub -h optix_edge_ip_address -p 1883 -t demo/edge/test -m "optixedge mqtt ok"</pre>
     </div>
 
     <span class="code-label">Expected output on subscriber</span>
     <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
       <pre>optixedge mqtt ok</pre>
     </div>
   </div>
@@ -341,6 +394,21 @@ Remove-Item Env:DOCKER_HOST</pre>
           toggle.setAttribute("aria-expanded", "true");
           panel.classList.add("is-visible");
         }
+      });
+    });
+
+    document.querySelectorAll(".copy-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var pre = btn.parentElement.querySelector("pre");
+        if (!pre) return;
+        navigator.clipboard.writeText(pre.textContent.trim()).then(function () {
+          btn.textContent = "Copied!";
+          btn.classList.add("copied");
+          setTimeout(function () {
+            btn.textContent = "Copy";
+            btn.classList.remove("copied");
+          }, 1500);
+        });
       });
     });
   });
