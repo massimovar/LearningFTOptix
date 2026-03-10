@@ -621,11 +621,6 @@ volumes:
           <pre>(1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100</pre>
         </div>
 
-        <span class="code-label">Disk usage (%)</span>
-        <div class="code-block">
-          <button class="copy-btn" type="button">Copy</button>
-          <pre>100 - ((node_filesystem_avail_bytes{mountpoint="/",fstype!~"tmpfs|overlay"} * 100) / node_filesystem_size_bytes{mountpoint="/",fstype!~"tmpfs|overlay"})</pre>
-        </div>
       </div>
     </div>
   </div>
