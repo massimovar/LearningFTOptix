@@ -90,6 +90,15 @@ layout: default
     border-color: var(--accent);
     box-shadow: var(--card-shadow-hover);
   }
+  .deploy-card-ideas {
+    background: #fff6db;
+    border-color: #f5cf70;
+  }
+  .deploy-card-ideas:hover,
+  .deploy-card-ideas.is-active {
+    border-color: #e3ad24;
+    box-shadow: 0 12px 28px rgba(227, 173, 36, 0.25);
+  }
   .deploy-card h3 {
     margin: 0 0 10px;
     font-size: 17px;
@@ -234,6 +243,10 @@ layout: default
       <h3>Path 3: Docker CLI</h3>
       <p>Enable remote management and control the OptixEdge Docker Engine directly from your local Docker CLI.</p>
     </button>
+    <button class="deploy-card deploy-toggle deploy-card-ideas" data-target="path-4" aria-expanded="false" aria-controls="path-4" type="button">
+      <h3>Go Beyond</h3>
+      <p>Try additional ideas with ready-to-paste compose examples for Portainer stacks.</p>
+    </button>
   </div>
 
   <div class="path path-panel is-visible" id="path-1">
@@ -318,6 +331,95 @@ layout: default
     <div class="code-block">
       <button class="copy-btn" type="button">Copy</button>
       <pre>Remove-Item Env:DOCKER_HOST</pre>
+    </div>
+  </div>
+
+  <div class="path path-panel" id="path-4">
+    <h4>Go Beyond: more exercise ideas</h4>
+    <ol>
+      <li><strong>Kuma container:</strong> run Uptime Kuma to monitor service uptime with a simple web dashboard.</li>
+      <li><strong>MySQL + phpMyAdmin:</strong> deploy a database plus a web UI to practice persistence and service linking.</li>
+      <li><strong>Gemma 3 (1B):</strong> run Ollama with the smallest Gemma 3 model for lightweight local AI experiments.</li>
+    </ol>
+
+    <span class="code-label">1) Uptime Kuma stack (Portainer)</span>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>version: '3.8'
+
+services:
+  kuma:
+    image: docker.io/louislam/uptime-kuma:1
+    container_name: kuma
+    ports:
+      - "3001:3001"
+    volumes:
+      - kuma_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  kuma_data:</pre>
+    </div>
+
+    <span class="code-label">2) MySQL + phpMyAdmin stack (Portainer)</span>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql-retention
+    environment:
+      MYSQL_ROOT_PASSWORD: Password01 # Change to a strong password
+      MYSQL_DATABASE: example_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: Password01 # Change to a strong password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: Password01 # Keep in sync with MYSQL_ROOT_PASSWORD
+    ports:
+      - "8090:80"
+    restart: unless-stopped
+
+volumes:
+  mysql_data:</pre>
+    </div>
+
+    <span class="code-label">3) Ollama + Gemma 3 1B stack (Portainer)</span>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>version: '3.8'
+
+services:
+  ollama:
+    image: docker.io/ollama/ollama:latest
+    container_name: ollama-gemma3-1b
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    command: >
+      /bin/sh -c "ollama serve &
+      sleep 5;
+      ollama list | grep -q 'gemma3:1b' || ollama pull gemma3:1b;
+      wait"
+    restart: unless-stopped
+
+volumes:
+  ollama_data:</pre>
     </div>
   </div>
 
