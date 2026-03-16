@@ -353,12 +353,12 @@ layout: default
 
   <div class="deploy-grid">
     <button class="deploy-card deploy-toggle is-active" data-target="path-1" aria-expanded="true" aria-controls="path-1" type="button">
-      <h3>Path 1: USB Import</h3>
-      <p>Prepare the image and compose file on your PC, copy both files to the USB root, then import from System Manager.</p>
+      <h3>Path 1: Portainer Stack</h3>
+      <p>Enable Embedded Portainer CE on OptixEdge and deploy the same compose file content from the Portainer web interface.</p>
     </button>
     <button class="deploy-card deploy-toggle" data-target="path-2" aria-expanded="false" aria-controls="path-2" type="button">
-      <h3>Path 2: Portainer Stack</h3>
-      <p>Enable Portainer CE on OptixEdge and deploy the same compose file content from the Portainer web interface.</p>
+      <h3>Path 2: USB Import</h3>
+      <p>Prepare the image and compose file on your PC, copy both files to the USB root, then import from System Manager.</p>
     </button>
     <button class="deploy-card deploy-toggle" data-target="path-3" aria-expanded="false" aria-controls="path-3" type="button">
       <h3>Path 3: Docker CLI</h3>
@@ -371,6 +371,31 @@ layout: default
   </div>
 
   <div class="path path-panel is-visible" id="path-1">
+    <h4>Deploy with Portainer</h4>
+    <ol>
+      <li>In System Manager, go to <strong>Docker</strong> and enable <strong>Embedded Portainer CE</strong> under <strong>Services</strong>.</li>
+      <li>Reboot OptixEdge.</li>
+      <li>Open <code>https://optix_edge_ip_address:9443</code> and trust the self-signed certificate.</li>
+      <li>Set the admin password at first login.</li>
+      <li>Select the <strong>local</strong> environment, open <strong>Stacks</strong>, then click <strong>Add stack</strong>.</li>
+      <li>Paste the <code>docker-compose.yaml</code> content and deploy the stack.</li>
+    </ol>
+
+    <span class="code-label">docker-compose.yaml</span>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    restart: unless-stopped</pre>
+    </div>
+  </div>
+
+  <div class="path path-panel" id="path-2">
     <h4>Load from USB key</h4>
     <ol>
       <li>Use a USB key formatted as <code>FAT32</code>, <code>exFAT</code>, or <code>ext4</code>.</li>
@@ -404,18 +429,6 @@ layout: default
       - "9001:9001"
     restart: unless-stopped</pre>
     </div>
-  </div>
-
-  <div class="path path-panel" id="path-2">
-    <h4>Deploy with Portainer</h4>
-    <ol>
-      <li>In System Manager, go to <strong>Docker</strong> and enable <strong>Portainer CE</strong> under <strong>Services</strong>.</li>
-      <li>Reboot OptixEdge.</li>
-      <li>Open <code>https://optix_edge_ip_address:9443</code> and trust the self-signed certificate.</li>
-      <li>Set the admin password at first login.</li>
-      <li>Select the <strong>local</strong> environment, open <strong>Stacks</strong>, then click <strong>Add stack</strong>.</li>
-      <li>Paste the <code>docker-compose.yaml</code> content from <strong>Path 1</strong> and deploy the stack.</li>
-    </ol>
   </div>
 
   <div class="path path-panel" id="path-3">
