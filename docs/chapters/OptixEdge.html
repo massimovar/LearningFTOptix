@@ -317,15 +317,15 @@ layout: default
 
   <div class="deploy-grid">
     <button class="deploy-card deploy-toggle is-active" data-target="path-1" aria-expanded="true" aria-controls="path-1" type="button">
-      <h3>Path 1: Portainer Stack</h3>
-      <p>Enable Embedded Portainer CE on OptixEdge and deploy the same compose file content from the Portainer web interface.</p>
+      <h3>Path 1</n>Portainer Stack</h3>
+      <p>Enable Embedded Portainer CE on OptixEdge and deploy from the Portainer web interface.</p>
     </button>
     <button class="deploy-card deploy-toggle" data-target="path-2" aria-expanded="false" aria-controls="path-2" type="button">
-      <h3>Path 2: USB Import</h3>
+      <h3>Path 2</n>USB Import</h3>
       <p>Prepare the image and compose file on your PC, copy both files to the USB root, then import from System Manager.</p>
     </button>
     <button class="deploy-card deploy-toggle" data-target="path-3" aria-expanded="false" aria-controls="path-3" type="button">
-      <h3>Path 3: Docker CLI</h3>
+      <h3>Path 3</n>Docker CLI</h3>
       <p>Enable remote management and control the OptixEdge Docker Engine directly from your local Docker CLI.</p>
     </button>
     <button class="deploy-card deploy-toggle" data-target="path-4" aria-expanded="false" aria-controls="path-4" type="button">
@@ -347,13 +347,10 @@ layout: default
       <li>Set the admin password at first login.</li>
       <li>Select the <strong>local</strong> environment, open <strong>Stacks</strong>, then click <strong>Add stack</strong>.</li>
       <li>Name the stack (e.g., <code>my_sql_stack</code>).</li>
-      <li>Paste the <code>docker-compose.yaml</code> content and deploy the stack.</li>
-    </ol>
-
-    <span class="code-label">docker-compose.yaml</span>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>services:
+      <li>Paste the following content into the web editor and click <strong>Deploy the stack</strong>:
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>services:
   mysql:
     image: mysql:8
     container_name: mysql-retention
@@ -383,43 +380,40 @@ layout: default
 
 volumes:
   mysql_data:</pre>
-    </div>
+        </div>
+      </li>
+      <li>Wait for both containers to show as <strong>running</strong> in the Portainer dashboard.</li>
+    </ol>
   </div>
 
   <div class="path path-panel" id="path-2">
     <h4>Load from USB key</h4>
     <ol>
       <li>Use a USB key formatted as <code>FAT32</code>, <code>exFAT</code>, or <code>ext4</code>.</li>
-      <li>Pull the container images for <code>linux/arm64</code>.</li>
-      <li>Export each image as a <code>.tar</code> file.</li>
-      <li>Create a <code>docker-compose.yaml</code> that defines startup options.</li>
-      <li>Copy all files to the USB key root directory.</li>
-      <li>Plug the USB key into OptixEdge.</li>
-      <li>In System Manager, open <strong>Docker</strong> and click <strong>Import docker image via USB</strong> in the <strong>Containers</strong> area.</li>
-    </ol>
-
-    <span class="code-label">On your machine</span>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>docker pull --platform linux/arm64 mysql:8</pre>
-    </div>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>docker pull --platform linux/arm64 phpmyadmin:latest</pre>
-    </div>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>docker save -o mysql.tar mysql:8</pre>
-    </div>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>docker save -o phpmyadmin.tar phpmyadmin:latest</pre>
-    </div>
-
-    <span class="code-label">docker-compose.yaml</span>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>services:
+      <li>On your PC, open a terminal and pull the container images for <code>linux/arm64</code>:
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>docker pull --platform linux/arm64 mysql:8</pre>
+        </div>
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>docker pull --platform linux/arm64 phpmyadmin:latest</pre>
+        </div>
+      </li>
+      <li>Export each image as a <code>.tar</code> file:
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>docker save -o mysql.tar mysql:8</pre>
+        </div>
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>docker save -o phpmyadmin.tar phpmyadmin:latest</pre>
+        </div>
+      </li>
+      <li>Create a file named <code>docker-compose.yaml</code> with this content:
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>services:
   mysql:
     image: mysql:8
     container_name: mysql-retention
@@ -449,44 +443,50 @@ volumes:
 
 volumes:
   mysql_data:</pre>
-    </div>
+        </div>
+      </li>
+      <li>Copy the three files (<code>mysql.tar</code>, <code>phpmyadmin.tar</code>, <code>docker-compose.yaml</code>) to the USB key root directory.</li>
+      <li>Plug the USB key into OptixEdge.</li>
+      <li>In System Manager, open <strong>Docker</strong> and click <strong>Import docker image via USB</strong> in the <strong>Containers</strong> area.</li>
+    </ol>
   </div>
 
   <div class="path path-panel" id="path-3">
     <h4>Deploy with Docker CLI remote management</h4>
     <ol>
       <li>In System Manager, under <strong>Docker &gt; Remote Management</strong>, choose the connection type and allowed network interfaces.</li>
-      <li>On your local machine, set <code>DOCKER_HOST</code> to target OptixEdge.</li>
-      <li>Run standard Docker CLI commands against OptixEdge, then unset the variable to restore local behavior.</li>
+      <li>On your local machine, point the Docker CLI at OptixEdge.
+        <span class="code-label">Linux / macOS</span>
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>export DOCKER_HOST=tcp://optix_edge_ip:2375</pre>
+        </div>
+        <span class="code-label">Windows PowerShell</span>
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>$env:DOCKER_HOST = "tcp://optix_edge_ip:2375"</pre>
+        </div>
+      </li>
+      <li>Verify the connection by listing running containers:
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>docker ps</pre>
+        </div>
+      </li>
+      <li>Run any Docker command as if you were on the OptixEdge device (e.g., <code>docker compose up -d</code>).</li>
+      <li>When finished, restore your local Docker context:
+        <span class="code-label">Linux / macOS</span>
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>unset DOCKER_HOST</pre>
+        </div>
+        <span class="code-label">Windows PowerShell</span>
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>Remove-Item Env:DOCKER_HOST</pre>
+        </div>
+      </li>
     </ol>
-
-    <span class="code-label">Linux shell example</span>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>export DOCKER_HOST=tcp://optix_edge_ip:2375</pre>
-    </div>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>docker ps</pre>
-    </div>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>unset DOCKER_HOST</pre>
-    </div>
-
-    <span class="code-label">Windows PowerShell example</span>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>$env:DOCKER_HOST = "tcp://optix_edge_ip:2375"</pre>
-    </div>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>docker ps</pre>
-    </div>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>Remove-Item Env:DOCKER_HOST</pre>
-    </div>
   </div>
 
   <div class="path path-panel" id="path-4">
