@@ -64,7 +64,7 @@ layout: default
   .tutorial-note a { color: var(--accent); font-weight: 600; }
   .deploy-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 20px;
     margin: 20px 0 10px;
   }
@@ -315,42 +315,6 @@ layout: default
     Open <code>https://optix_edge_ip_address</code>, sign in, go to <strong>Docker</strong>, enable <strong>Docker Engine</strong> under <strong>Services</strong>, then reboot OptixEdge.
   </div>
 
-  <div class="tips-section" aria-label="Tips">
-    <h4>Tips</h4>
-    <div class="tips-grid">
-      <div class="path tip-compact">
-        <h4>CPU and memory limits</h4>
-        <p>Limit container resources to keep FTOptix responsive on the same device.</p>
-        <span class="code-label">Minimal example</span>
-        <div class="code-block">
-          <button class="copy-btn" type="button">Copy</button>
-          <pre>services:
-  app:
-    image: your-image:latest
-    deploy:
-      resources:
-        limits:
-          cpus: "0.50"
-          memory: "256M"</pre>
-        </div>
-      </div>
-
-      <div class="path tip-compact">
-        <h4>Docker logging tip</h4>
-        <p>Set log rotation in each service to avoid filling local storage.</p>
-        <span class="code-label">Minimal example</span>
-        <div class="code-block">
-          <button class="copy-btn" type="button">Copy</button>
-          <pre>logging:
-  driver: "json-file"
-  options:
-    max-size: "10m"
-    max-file: "3"</pre>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="deploy-grid">
     <button class="deploy-card deploy-toggle is-active" data-target="path-1" aria-expanded="true" aria-controls="path-1" type="button">
       <h3>Path 1: Portainer Stack</h3>
@@ -367,6 +331,10 @@ layout: default
     <button class="deploy-card deploy-toggle" data-target="path-4" aria-expanded="false" aria-controls="path-4" type="button">
       <h3>Go Beyond</h3>
       <p>Try additional ideas with ready-to-paste compose examples for Portainer stacks.</p>
+    </button>
+    <button class="deploy-card deploy-toggle" data-target="path-5" aria-expanded="false" aria-controls="path-5" type="button">
+      <h3>Tips</h3>
+      <p>Best practices for resource limits and log rotation in your compose files.</p>
     </button>
   </div>
 
@@ -666,6 +634,72 @@ volumes:
         </div>
 
       </div>
+    </div>
+  </div>
+
+  <div class="path path-panel" id="path-5">
+    <h4>Tips for production-ready compose files</h4>
+
+    <h4>CPU and memory limits</h4>
+    <p style="margin:0 0 8px; font-size:14px; color:var(--muted);">Add a <code>deploy.resources.limits</code> block to each service to prevent a container from consuming all device resources and affecting FTOptix performance.</p>
+    <span class="code-label">Example: MySQL service with resource limits</span>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>services:
+  mysql:
+    image: mysql:8
+    container_name: mysql-retention
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: "256M"</pre>
+    </div>
+
+    <h4 style="margin-top:20px;">Log rotation</h4>
+    <p style="margin:0 0 8px; font-size:14px; color:var(--muted);">Add a <code>logging</code> block to each service to cap log file size and count, preventing local storage from filling up.</p>
+    <span class="code-label">Example: MySQL service with log rotation</span>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>services:
+  mysql:
+    image: mysql:8
+    container_name: mysql-retention
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"</pre>
+    </div>
+
+    <h4 style="margin-top:20px;">Both combined</h4>
+    <p style="margin:0 0 8px; font-size:14px; color:var(--muted);">A complete service definition with both resource limits and log rotation applied.</p>
+    <span class="code-label">Full example</span>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>services:
+  mysql:
+    image: mysql:8
+    container_name: mysql-retention
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: "256M"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"</pre>
     </div>
   </div>
 
