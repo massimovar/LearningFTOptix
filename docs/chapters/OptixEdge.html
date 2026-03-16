@@ -508,7 +508,6 @@ volumes:
       <div class="gb-tabs-nav" role="tablist" aria-label="Go Beyond examples">
         <button class="gb-tab-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="gb-kuma" data-gb-target="gb-kuma">Kuma</button>
         <button class="gb-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="gb-mosquitto" data-gb-target="gb-mosquitto">Mosquitto</button>
-        <button class="gb-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="gb-chromium" data-gb-target="gb-chromium">Chromium</button>
         <button class="gb-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="gb-prometheus" data-gb-target="gb-prometheus">Prometheus</button>
       </div>
 
@@ -548,26 +547,6 @@ services:
     ports:
       - "1883:1883"
       - "9001:9001"
-    restart: unless-stopped</pre>
-        </div>
-      </div>
-
-      <div class="gb-tab-panel" id="gb-chromium" role="tabpanel">
-        <p><strong>Chromium (KasmWeb):</strong> run a full Chromium browser inside a container, accessible via VNC in your browser at <code>https://optix_edge_ip_address:6901</code>. Useful for browsing Portainer, phpMyAdmin, or any web UI directly from OptixEdge without needing a separate machine.</p>
-        <span class="code-label">Portainer stack</span>
-        <div class="code-block">
-          <button class="copy-btn" type="button">Copy</button>
-          <pre>version: '3.8'
-
-services:
-  chromium:
-    image: kasmweb/chromium:1.15.0
-    platform: linux/arm64
-    shm_size: "2g"
-    ports:
-      - "6901:6901"
-    environment:
-      - VNC_PW=password
     restart: unless-stopped</pre>
         </div>
       </div>
