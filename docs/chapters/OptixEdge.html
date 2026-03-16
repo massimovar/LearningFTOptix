@@ -313,7 +313,7 @@ layout: default
   <div class="tutorial-note">
     <strong>Before loading any container:</strong>
     <ol style="margin:8px 0 0; padding-left:18px;">
-      <li>Install <strong>Docker</strong> (or <strong>Docker Desktop</strong>) on your PC or virtual machine.</li>
+      <li>Install <strong><a href="https://docs.docker.com/get-started/get-docker/">Docker</a></strong> (or <strong>Docker Desktop</strong>) on your PC or virtual machine.</li>
       <li>Open <code>https://optix_edge_ip_address</code>, sign in, go to <strong>Docker</strong>, enable <strong>Docker Engine</strong> under <strong>Services</strong>, then reboot OptixEdge.</li>
       <li><strong>Storage choice:</strong> containers can run on the internal eMMC or on an external Micro SD. To change, go to <strong>Docker &gt; Container Storage</strong> and set <strong>Data Root</strong> from <em>Internal</em> to <em>Micro SD</em>.</li>
     </ol>
@@ -398,26 +398,21 @@ volumes:
 
   <div class="path path-panel" id="path-2">
     <h4>Load from USB key</h4>
+    <div class="tutorial-note" style="margin-bottom:18px;">
+      <strong>Note:</strong> Currently the USB import supports only <strong>one <code>.tar</code> image</strong> and a <code>docker-compose.yaml</code> that references <strong>a single image</strong>. For multi-container stacks, use the Portainer or Docker CLI paths instead.
+    </div>
     <ol>
       <li>Use a USB key formatted as <code>FAT32</code>, <code>exFAT</code>, or <code>ext4</code>.</li>
-      <li>On your PC, open a terminal and pull the container images for <code>linux/arm64</code>:
+      <li>On your PC, open a terminal and pull the container image for <code>linux/arm64</code>:
         <div class="code-block">
           <button class="copy-btn" type="button">Copy</button>
           <pre>docker pull --platform linux/arm64 mysql:8</pre>
         </div>
-        <div class="code-block">
-          <button class="copy-btn" type="button">Copy</button>
-          <pre>docker pull --platform linux/arm64 phpmyadmin:latest</pre>
-        </div>
       </li>
-      <li>Export each image as a <code>.tar</code> file:
+      <li>Export the image as a <code>.tar</code> file:
         <div class="code-block">
           <button class="copy-btn" type="button">Copy</button>
           <pre>docker save -o mysql.tar mysql:8</pre>
-        </div>
-        <div class="code-block">
-          <button class="copy-btn" type="button">Copy</button>
-          <pre>docker save -o phpmyadmin.tar phpmyadmin:latest</pre>
         </div>
       </li>
       <li>Create a file named <code>docker-compose.yaml</code> with this content:
@@ -438,29 +433,14 @@ volumes:
       - mysql_data:/var/lib/mysql
     restart: unless-stopped
 
-  phpmyadmin:
-    image: phpmyadmin:latest
-    container_name: phpmyadmin
-    depends_on:
-      - mysql
-    environment:
-      PMA_HOST: mysql
-      PMA_PORT: 3306
-      MYSQL_ROOT_PASSWORD: Password01 # Keep in sync with MYSQL_ROOT_PASSWORD
-    ports:
-      - "8090:80"
-    restart: unless-stopped
-
 volumes:
   mysql_data:</pre>
         </div>
       </li>
-      <li>Copy the three files (<code>mysql.tar</code>, <code>phpmyadmin.tar</code>, <code>docker-compose.yaml</code>) to the USB key root directory.</li>
+      <li>Copy the two files (<code>mysql.tar</code>, <code>docker-compose.yaml</code>) to the USB key root directory.</li>
       <li>Plug the USB key into OptixEdge.</li>
       <li>In System Manager, open <strong>Docker</strong> and click <strong>Import docker image via USB</strong> in the <strong>Containers</strong> area.</li>
-      <li>Open <code>http://optix_edge_ip_address:8090</code> in your browser.</li>
-      <li>Log in with user <code>root</code> and password <code>Password01</code> (or with user <code>user</code> and the same password).</li>
-      <li>Verify that the <code>example_db</code> database is listed in the left panel.</li>
+      <li>Verify that the container is <strong>running</strong> and MySQL is accepting connections on port <code>3306</code>.</li>
     </ol>
   </div>
 
