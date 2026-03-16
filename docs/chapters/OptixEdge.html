@@ -320,7 +320,7 @@ layout: default
   </div>
 
   <div class="deploy-grid">
-    <button class="deploy-card deploy-toggle is-active" data-target="path-1" aria-expanded="true" aria-controls="path-1" type="button">
+    <button class="deploy-card deploy-toggle" data-target="path-1" aria-expanded="false" aria-controls="path-1" type="button">
       <h3>Path 1<br>Portainer Stack</h3>
       <p>Enable Embedded Portainer CE on OptixEdge and deploy from the Portainer web interface.</p>
     </button>
@@ -342,7 +342,7 @@ layout: default
     </button>
   </div>
 
-  <div class="path path-panel is-visible" id="path-1">
+  <div class="path path-panel" id="path-1">
     <div class="tutorial-note" style="margin-bottom:18px;">
       <strong>Tip:</strong> Portainer doesn't have to run on the OptixEdge itself. You can install Portainer on any machine and add one or more OptixEdge devices as remote <strong>environments</strong>. In Portainer, an <em>environment</em> is a Docker endpoint you manage — local or remote — so a single Portainer instance can control multiple OptixEdge units from one dashboard.
     </div>
