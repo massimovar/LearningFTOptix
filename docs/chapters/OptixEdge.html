@@ -383,6 +383,9 @@ volumes:
         </div>
       </li>
       <li>Wait for both containers to show as <strong>running</strong> in the Portainer dashboard.</li>
+      <li>Open <code>http://optix_edge_ip_address:8090</code> in your browser.</li>
+      <li>Log in with user <code>root</code> and password <code>Password01</code> (or with user <code>user</code> and the same password).</li>
+      <li>Verify that the <code>example_db</code> database is listed in the left panel.</li>
     </ol>
   </div>
 
@@ -448,6 +451,9 @@ volumes:
       <li>Copy the three files (<code>mysql.tar</code>, <code>phpmyadmin.tar</code>, <code>docker-compose.yaml</code>) to the USB key root directory.</li>
       <li>Plug the USB key into OptixEdge.</li>
       <li>In System Manager, open <strong>Docker</strong> and click <strong>Import docker image via USB</strong> in the <strong>Containers</strong> area.</li>
+      <li>Open <code>http://optix_edge_ip_address:8090</code> in your browser.</li>
+      <li>Log in with user <code>root</code> and password <code>Password01</code> (or with user <code>user</code> and the same password).</li>
+      <li>Verify that the <code>example_db</code> database is listed in the left panel.</li>
     </ol>
   </div>
 
@@ -703,28 +709,12 @@ volumes:
     </div>
   </div>
 
-  <div class="path" id="mqtt-verify-panel">
-    <h4>Verify MySQL + phpMyAdmin</h4>
-    <ol>
-      <li>Confirm that both containers are running (<code>mysql-retention</code> and <code>phpmyadmin</code>).</li>
-      <li>Open <code>http://optix_edge_ip_address:8090</code> in your browser.</li>
-      <li>Log in with user <code>root</code> and password <code>Password01</code> (or with user <code>user</code> and the same password).</li>
-      <li>Verify that the <code>example_db</code> database is listed in the left panel.</li>
-    </ol>
-  </div>
-
 </section>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     var toggles = document.querySelectorAll(".deploy-toggle");
     var panels = document.querySelectorAll(".path-panel");
-    var verifyPanel = document.getElementById("mqtt-verify-panel");
-
-    function updateVerifyPanel(panelId) {
-      if (!verifyPanel) return;
-      verifyPanel.style.display = (panelId === "path-1" || panelId === "path-2") ? "block" : "none";
-    }
 
     function hideAllPanels() {
       panels.forEach(function (panel) {
@@ -747,13 +737,9 @@ volumes:
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
           panel.classList.add("is-visible");
-          updateVerifyPanel(panelId);
         }
       });
     });
-
-    var activeToggle = document.querySelector(".deploy-toggle.is-active");
-    updateVerifyPanel(activeToggle ? activeToggle.getAttribute("data-target") : "path-1");
 
     document.querySelectorAll(".gb-tabs-wrap").forEach(function (tabsWrap) {
       var tabButtons = tabsWrap.querySelectorAll(".gb-tab-btn");
