@@ -305,7 +305,7 @@ layout: default
 <section class="tutorial-wrap">
   <h2 class="tutorial-title">Deploy your first container on your OptixEdge</h2>
   <p class="tutorial-subtitle">
-    Follow this tutorial to deploy your first MQTT broker on OptixEdge using Docker.
+    Follow this tutorial to deploy a MySQL database with phpMyAdmin on OptixEdge using Docker.
     The procedure is based on the
     <a href="https://massimovar.github.io/LearningFTOptix/pdf/OptixEdgeAndDockerContainers.pdf">OptixEdge & Docker Containers presentation</a> (page 42 onward).
   </p>
@@ -378,6 +378,7 @@ layout: default
       <li>Open <code>https://optix_edge_ip_address:9443</code> and trust the self-signed certificate.</li>
       <li>Set the admin password at first login.</li>
       <li>Select the <strong>local</strong> environment, open <strong>Stacks</strong>, then click <strong>Add stack</strong>.</li>
+      <li>Name the stack (e.g., <code>my_sql_stack</code>).</li>
       <li>Paste the <code>docker-compose.yaml</code> content and deploy the stack.</li>
     </ol>
 
@@ -385,13 +386,35 @@ layout: default
     <div class="code-block">
       <button class="copy-btn" type="button">Copy</button>
       <pre>services:
-  mosquitto:
-    image: eclipse-mosquitto:2
-    container_name: mosquitto
+  mysql:
+    image: mysql:8
+    container_name: mysql-retention
+    environment:
+      MYSQL_ROOT_PASSWORD: Password01 # Change to a strong password
+      MYSQL_DATABASE: example_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: Password01 # Change to a strong password
     ports:
-      - "1883:1883"
-      - "9001:9001"
-    restart: unless-stopped</pre>
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: Password01 # Keep in sync with MYSQL_ROOT_PASSWORD
+    ports:
+      - "8090:80"
+    restart: unless-stopped
+
+volumes:
+  mysql_data:</pre>
     </div>
   </div>
 
@@ -399,10 +422,10 @@ layout: default
     <h4>Load from USB key</h4>
     <ol>
       <li>Use a USB key formatted as <code>FAT32</code>, <code>exFAT</code>, or <code>ext4</code>.</li>
-      <li>Pull the container image for <code>linux/arm64</code>.</li>
-      <li>Export the image as a <code>.tar</code> file.</li>
+      <li>Pull the container images for <code>linux/arm64</code>.</li>
+      <li>Export each image as a <code>.tar</code> file.</li>
       <li>Create a <code>docker-compose.yaml</code> that defines startup options.</li>
-      <li>Copy both files to the USB key root directory.</li>
+      <li>Copy all files to the USB key root directory.</li>
       <li>Plug the USB key into OptixEdge.</li>
       <li>In System Manager, open <strong>Docker</strong> and click <strong>Import docker image via USB</strong> in the <strong>Containers</strong> area.</li>
     </ol>
@@ -410,24 +433,54 @@ layout: default
     <span class="code-label">On your machine</span>
     <div class="code-block">
       <button class="copy-btn" type="button">Copy</button>
-      <pre>docker pull --platform linux/arm64 eclipse-mosquitto:2</pre>
+      <pre>docker pull --platform linux/arm64 mysql:8</pre>
     </div>
     <div class="code-block">
       <button class="copy-btn" type="button">Copy</button>
-      <pre>docker save -o mosquitto.tar eclipse-mosquitto:2</pre>
+      <pre>docker pull --platform linux/arm64 phpmyadmin:latest</pre>
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>docker save -o mysql.tar mysql:8</pre>
+    </div>
+    <div class="code-block">
+      <button class="copy-btn" type="button">Copy</button>
+      <pre>docker save -o phpmyadmin.tar phpmyadmin:latest</pre>
     </div>
 
     <span class="code-label">docker-compose.yaml</span>
     <div class="code-block">
       <button class="copy-btn" type="button">Copy</button>
       <pre>services:
-  mosquitto:
-    image: eclipse-mosquitto:2
-    container_name: mosquitto
+  mysql:
+    image: mysql:8
+    container_name: mysql-retention
+    environment:
+      MYSQL_ROOT_PASSWORD: Password01 # Change to a strong password
+      MYSQL_DATABASE: example_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: Password01 # Change to a strong password
     ports:
-      - "1883:1883"
-      - "9001:9001"
-    restart: unless-stopped</pre>
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: Password01 # Keep in sync with MYSQL_ROOT_PASSWORD
+    ports:
+      - "8090:80"
+    restart: unless-stopped
+
+volumes:
+  mysql_data:</pre>
     </div>
   </div>
 
@@ -473,7 +526,7 @@ layout: default
     <div class="gb-tabs-wrap">
       <div class="gb-tabs-nav" role="tablist" aria-label="Go Beyond examples">
         <button class="gb-tab-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="gb-kuma" data-gb-target="gb-kuma">Kuma</button>
-        <button class="gb-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="gb-mysql" data-gb-target="gb-mysql">MySQL + phpMyAdmin</button>
+        <button class="gb-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="gb-mosquitto" data-gb-target="gb-mosquitto">Mosquitto</button>
         <button class="gb-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="gb-prometheus" data-gb-target="gb-prometheus">Prometheus</button>
       </div>
 
@@ -499,43 +552,21 @@ volumes:
         </div>
       </div>
 
-      <div class="gb-tab-panel" id="gb-mysql" role="tabpanel">
-        <p><strong>MySQL + phpMyAdmin:</strong> deploy a database plus a web UI to practice persistence and service linking.</p>
+      <div class="gb-tab-panel" id="gb-mosquitto" role="tabpanel">
+        <p><strong>Mosquitto:</strong> deploy an MQTT broker for lightweight messaging between devices and services.</p>
         <span class="code-label">Portainer stack</span>
         <div class="code-block">
           <button class="copy-btn" type="button">Copy</button>
           <pre>version: '3.8'
 
 services:
-  mysql:
-    image: mysql:8
-    container_name: mysql-retention
-    environment:
-      MYSQL_ROOT_PASSWORD: Password01 # Change to a strong password
-      MYSQL_DATABASE: example_db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: Password01 # Change to a strong password
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: mosquitto
     ports:
-      - "3306:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-    restart: unless-stopped
-
-  phpmyadmin:
-    image: phpmyadmin:latest
-    container_name: phpmyadmin
-    depends_on:
-      - mysql
-    environment:
-      PMA_HOST: mysql
-      PMA_PORT: 3306
-      MYSQL_ROOT_PASSWORD: Password01 # Keep in sync with MYSQL_ROOT_PASSWORD
-    ports:
-      - "8090:80"
-    restart: unless-stopped
-
-volumes:
-  mysql_data:</pre>
+      - "1883:1883"
+      - "9001:9001"
+    restart: unless-stopped</pre>
         </div>
       </div>
 
@@ -639,48 +670,13 @@ volumes:
   </div>
 
   <div class="path" id="mqtt-verify-panel">
-    <h4>Verify the MQTT broker</h4>
+    <h4>Verify MySQL + phpMyAdmin</h4>
     <ol>
-      <li>Confirm that the container is running and port <code>1883</code> is published.</li>
-      <li>
-        On Windows, install the Mosquitto client tools from
-        <a href="https://mosquitto.org/download/">https://mosquitto.org/download/</a>
-        and open two PowerShell terminals in the Mosquitto installation directory.
-      </li>
-      <li>From a client machine with <code>mosquitto-clients</code>, subscribe to a test topic.</li>
-      <li>Publish one message to the same topic.</li>
-      <li>Verify that the subscriber receives the message.</li>
+      <li>Confirm that both containers are running (<code>mysql-retention</code> and <code>phpmyadmin</code>).</li>
+      <li>Open <code>http://optix_edge_ip_address:8090</code> in your browser.</li>
+      <li>Log in with user <code>root</code> and password <code>Password01</code> (or with user <code>user</code> and the same password).</li>
+      <li>Verify that the <code>example_db</code> database is listed in the left panel.</li>
     </ol>
-
-    <span class="code-label">Windows PowerShell (subscriber)</span>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>.\mosquitto_sub.exe -h optix_edge_ip_address -p 1883 -t demo/edge/test</pre>
-    </div>
-
-    <span class="code-label">Windows PowerShell (publisher)</span>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>.\mosquitto_pub.exe -h optix_edge_ip_address -p 1883 -t demo/edge/test -m "optixedge mqtt ok"</pre>
-    </div>
-
-    <span class="code-label">Subscriber terminal</span>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>mosquitto_sub -h optix_edge_ip_address -p 1883 -t demo/edge/test</pre>
-    </div>
-
-    <span class="code-label">Publisher terminal</span>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>mosquitto_pub -h optix_edge_ip_address -p 1883 -t demo/edge/test -m "optixedge mqtt ok"</pre>
-    </div>
-
-    <span class="code-label">Expected output on subscriber</span>
-    <div class="code-block">
-      <button class="copy-btn" type="button">Copy</button>
-      <pre>optixedge mqtt ok</pre>
-    </div>
   </div>
 
 </section>
