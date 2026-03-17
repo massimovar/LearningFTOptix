@@ -413,8 +413,8 @@ layout: default
   </nav>
 
   <!-- Progress indicator -->
-  <div class="progress-bar-wrap" id="progressBar"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div>
-  <p class="progress-label"><span class="progress-count" id="progressText">0 / 0</span> items checked (<span id="progressPct">0%</span>)</p>
+  <div class="progress-bar-wrap" id="progressBar" role="progressbar" aria-label="Checklist completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div>
+  <p class="progress-label" aria-live="polite"><span class="progress-count" id="progressText">0 / 0</span> items checked (<span id="progressPct">0%</span>)</p>
 
   <!-- ── Phase 1: Baseline and scope ── -->
   <div id="phase-1" class="checklist-section" data-critical="false">
@@ -734,9 +734,9 @@ layout: default
       <li class="checklist-item">
         <input type="checkbox">
         <div class="item-body">
-          <span class="item-title">Verify Stop() cleanup for every observer and task instance</span>
-          <span class="item-detail">Ensure every created task/observer has a matching <code>Dispose()</code> in <code>Stop()</code>.</span>
-          <a class="item-link" href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/netlogic-lifecycle.md#stop-lifecycle" target="_blank" rel="noopener">Source: Stop() lifecycle</a>
+          <span class="item-title">Account for Stop()/Start() overlap during page navigation</span>
+          <span class="item-detail">Do not assume the previous page has fully completed <code>Stop()</code> before the next page begins <code>Start()</code>. For shared resources, release as early as possible in <code>Stop()</code>, acquire as late as possible in <code>Start()</code>, and use a handoff flag when strict sequencing is required.</span>
+          <a class="item-link" href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/netlogic-lifecycle.md#stop-ordering-during-page-navigation" target="_blank" rel="noopener">Source: Stop() ordering during page navigation</a>
         </div>
       </li>
     </ul>
@@ -836,6 +836,8 @@ layout: default
 
     document.getElementById('filterAll').classList.toggle('active', mode === 'all');
     document.getElementById('filterCritical').classList.toggle('active', mode === 'critical');
+    document.getElementById('filterAll').setAttribute('aria-pressed', mode === 'all' ? 'true' : 'false');
+    document.getElementById('filterCritical').setAttribute('aria-pressed', mode === 'critical' ? 'true' : 'false');
   }
 
   // ── Live progress bar ──
@@ -852,6 +854,7 @@ layout: default
 
     var pct = total > 0 ? Math.round((checked / total) * 100) : 0;
     document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressBar').setAttribute('aria-valuenow', String(pct));
     document.getElementById('progressText').textContent = checked + ' / ' + total;
     document.getElementById('progressPct').textContent = pct + '%';
     document.getElementById('totalCount').textContent = total;
@@ -865,6 +868,14 @@ layout: default
     restoreState();
     updateProgress();
     applyFilter('all');
+
+    getCheckboxes().forEach(function(cb) {
+      var item = cb.closest('.checklist-item');
+      var title = item ? item.querySelector('.item-title') : null;
+      if (title) {
+        cb.setAttribute('aria-label', title.textContent.trim());
+      }
+    });
 
     getCheckboxes().forEach(function(cb) {
       cb.addEventListener('change', function() {

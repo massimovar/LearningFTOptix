@@ -775,9 +775,31 @@ POSTGRES_PASSWORD=YourSecurePassword</pre>
     var toggles = document.querySelectorAll(".deploy-toggle");
     var panels = document.querySelectorAll(".path-panel");
 
+    function handleGbTabKeydown(event, buttons, activateTab) {
+      var currentIndex = buttons.indexOf(event.currentTarget);
+      var targetIndex = currentIndex;
+
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+        targetIndex = (currentIndex + 1) % buttons.length;
+      } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+        targetIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+      } else if (event.key === "Home") {
+        targetIndex = 0;
+      } else if (event.key === "End") {
+        targetIndex = buttons.length - 1;
+      } else {
+        return;
+      }
+
+      event.preventDefault();
+      buttons[targetIndex].focus();
+      activateTab(buttons[targetIndex]);
+    }
+
     function hideAllPanels() {
       panels.forEach(function (panel) {
         panel.classList.remove("is-visible");
+        panel.setAttribute("hidden", "hidden");
       });
       toggles.forEach(function (toggle) {
         toggle.classList.remove("is-active");
@@ -785,7 +807,14 @@ POSTGRES_PASSWORD=YourSecurePassword</pre>
       });
     }
 
+    hideAllPanels();
+
     toggles.forEach(function (toggle) {
+      var heading = toggle.querySelector("h3");
+      if (heading) {
+        toggle.setAttribute("aria-label", heading.textContent.replace(/\s+/g, " ").trim());
+      }
+
       toggle.addEventListener("click", function () {
         var panelId = toggle.getAttribute("data-target");
         var panel = document.getElementById(panelId);
@@ -796,37 +825,61 @@ POSTGRES_PASSWORD=YourSecurePassword</pre>
           toggle.classList.add("is-active");
           toggle.setAttribute("aria-expanded", "true");
           panel.classList.add("is-visible");
+          panel.removeAttribute("hidden");
         }
       });
     });
 
     document.querySelectorAll(".gb-tabs-wrap").forEach(function (tabsWrap) {
-      var tabButtons = tabsWrap.querySelectorAll(".gb-tab-btn");
+      var tabButtons = Array.from(tabsWrap.querySelectorAll(".gb-tab-btn"));
       var tabPanels = tabsWrap.querySelectorAll(".gb-tab-panel");
 
-      tabButtons.forEach(function (tabButton) {
-        tabButton.addEventListener("click", function () {
-          var targetId = tabButton.getAttribute("data-gb-target");
-          var targetPanel = tabsWrap.querySelector("#" + targetId);
+      function activateTab(tabButton) {
+        var targetId = tabButton.getAttribute("data-gb-target");
+        var targetPanel = tabsWrap.querySelector("#" + targetId);
 
-          tabButtons.forEach(function (btn) {
-            btn.classList.remove("is-active");
-            btn.setAttribute("aria-selected", "false");
-          });
-          tabPanels.forEach(function (panel) {
-            panel.classList.remove("is-visible");
-          });
-
-          tabButton.classList.add("is-active");
-          tabButton.setAttribute("aria-selected", "true");
-          if (targetPanel) {
-            targetPanel.classList.add("is-visible");
-          }
+        tabButtons.forEach(function (btn) {
+          btn.classList.remove("is-active");
+          btn.setAttribute("aria-selected", "false");
+          btn.setAttribute("tabindex", "-1");
         });
+        tabPanels.forEach(function (panel) {
+          panel.classList.remove("is-visible");
+          panel.setAttribute("hidden", "hidden");
+        });
+
+        tabButton.classList.add("is-active");
+        tabButton.setAttribute("aria-selected", "true");
+        tabButton.setAttribute("tabindex", "0");
+        if (targetPanel) {
+          targetPanel.classList.add("is-visible");
+          targetPanel.removeAttribute("hidden");
+        }
+      }
+
+      tabButtons.forEach(function (tabButton) {
+        if (!tabButton.classList.contains("is-active")) {
+          tabButton.setAttribute("tabindex", "-1");
+        }
+
+        tabButton.addEventListener("click", function () {
+          activateTab(tabButton);
+        });
+
+        tabButton.addEventListener("keydown", function (event) {
+          handleGbTabKeydown(event, tabButtons, activateTab);
+        });
+      });
+
+      tabPanels.forEach(function (panel) {
+        if (!panel.classList.contains("is-visible")) {
+          panel.setAttribute("hidden", "hidden");
+        }
       });
     });
 
     document.querySelectorAll(".copy-btn").forEach(function (btn) {
+      btn.setAttribute("aria-label", "Copy code sample");
       btn.addEventListener("click", function () {
         var pre = btn.parentElement.querySelector("pre");
         if (!pre) return;

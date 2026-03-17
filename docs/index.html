@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
   <title>Learning FactoryTalk® Optix™</title>
   <style>
     :root {
@@ -24,6 +25,7 @@
       --transition-smooth: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       --radius: 12px;
       --radius-sm: 8px;
+      --selection: rgba(0, 102, 204, 0.18);
     }
 
     @media (prefers-color-scheme: dark) {
@@ -41,17 +43,59 @@
         --surface: #21262d;
         --card-shadow: 0 1px 3px rgba(0, 0, 0, .2);
         --card-shadow-hover: 0 10px 40px rgba(0, 0, 0, .3);
+        --selection: rgba(88, 166, 255, 0.22);
       }
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      color-scheme: light dark;
+    }
+
+    ::selection {
+      background: var(--selection);
+      color: var(--text);
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      transform: translateY(-160%);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: var(--card-shadow);
+      text-decoration: none;
+      z-index: 1000;
+      transition: transform var(--transition-fast);
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Helvetica, Arial, sans-serif;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at top, var(--accent-glow) 0%, transparent 30%),
+        var(--bg);
       color: var(--text);
       line-height: 1.6;
+      font-size: 16px;
+      text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -83,7 +127,7 @@
       background: linear-gradient(135deg, var(--text) 0%, var(--text-secondary) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-    .hero p { color: var(--muted); font-size: 16px; }
+    .hero p { color: var(--muted); font-size: 16px; max-width: 62ch; margin: 0 auto; }
     .hero .subtitle { margin-top: 12px; }
     .hero .subtitle a { color: var(--accent); text-decoration: none; font-weight: 600; transition: var(--transition-fast); }
     .hero .subtitle a:hover { color: var(--accent-hover); }
@@ -143,6 +187,7 @@
       padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm);
       background: var(--surface); font-size: 14px;
       animation: fadeIn 0.25s ease-out;
+      line-height: 1.7;
     }
     .news-item-title { display: block; font-weight: 600; margin-bottom: 4px; color: var(--text); }
     .news-item-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; font-weight: 500; }
@@ -240,6 +285,7 @@
     .nav-card a {
       color: var(--text); text-decoration: none; font-weight: 500;
       transition: var(--transition-fast); position: relative;
+      line-height: 1.55;
     }
     .nav-card a::after {
       content: ""; position: absolute; bottom: -2px; left: 0;
@@ -277,7 +323,7 @@
     .footer a:hover { text-decoration: underline; }
 
     /* Focus */
-    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 
     /* Responsive */
     @media (max-width: 768px) {
@@ -288,10 +334,22 @@
       .tab-nav { flex-wrap: wrap; }
       .tab-btn { font-size: 12px; padding: 6px 12px; }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
   </style>
 </head>
 
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <!-- Star CTA -->
   <div class="star-cta">
@@ -306,8 +364,8 @@
   <div class="container">
 
     <!-- Hero -->
-    <div class="hero">
-      <img src="images/logo.png" alt="Logo">
+    <header class="hero" role="banner">
+      <img src="images/logo.png" alt="Learning FactoryTalk Optix logo">
       <h1>Learning FactoryTalk® Optix™</h1>
       <p>A set of resources to become an FTOptix power user <em>(unofficial repo)</em></p>
       <p class="subtitle">
@@ -320,7 +378,9 @@
         <a href="chapters/FTOptix_overview.html#latest-releases">New releases</a>
         <a href="pdf/FTOptix%20Public%20Outlook%20and%20Roadmap%20July%202025.pdf">What's next?</a>
       </div>
-    </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
 
     <hr>
 
@@ -348,18 +408,18 @@
       <!-- Tab bar -->
       <div class="tab-nav-wrap">
         <nav class="tab-nav" role="tablist" aria-label="Resource categories">
-          <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="tab-start"   onclick="switchTab(this,'tab-start')">🚀 Getting Started</button>
-          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-learn"   onclick="switchTab(this,'tab-learn')">📚 Learning</button>
-          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-dev"     onclick="switchTab(this,'tab-dev')">⚙️ Develop Like a Pro</button>
-          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-debug"   onclick="switchTab(this,'tab-debug')">🔍 Debugging</button>
-          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-examples" onclick="switchTab(this,'tab-examples')">💡 Examples</button>
-          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-docker"  onclick="switchTab(this,'tab-docker')">🐳 Docker</button>
-          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-hw"      onclick="switchTab(this,'tab-hw')">🖥️ Hardware</button>
+          <button id="tab-button-start" class="tab-btn active" role="tab" aria-selected="true" tabindex="0" aria-controls="tab-start" onclick="switchTab(this,'tab-start')">🚀 Getting Started</button>
+          <button id="tab-button-learn" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-learn" onclick="switchTab(this,'tab-learn')">📚 Learning</button>
+          <button id="tab-button-dev" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-dev" onclick="switchTab(this,'tab-dev')">⚙️ Develop Like a Pro</button>
+          <button id="tab-button-debug" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-debug" onclick="switchTab(this,'tab-debug')">🔍 Debugging</button>
+          <button id="tab-button-examples" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-examples" onclick="switchTab(this,'tab-examples')">💡 Examples</button>
+          <button id="tab-button-docker" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-docker" onclick="switchTab(this,'tab-docker')">🐳 Docker</button>
+          <button id="tab-button-hw" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-hw" onclick="switchTab(this,'tab-hw')">🖥️ Hardware</button>
         </nav>
       </div>
 
       <!-- ── Panel: Getting Started ── -->
-      <div id="tab-start" class="tab-panel active" role="tabpanel">
+      <div id="tab-start" class="tab-panel active" role="tabpanel" tabindex="0" aria-labelledby="tab-button-start">
         <div class="nav-grid">
           <div class="nav-card">
             <h3>Getting Started</h3>
@@ -372,7 +432,7 @@
       </div>
 
       <!-- ── Panel: FTOptix & Docker ── -->
-      <div id="tab-docker" class="tab-panel" role="tabpanel">
+      <div id="tab-docker" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-button-docker" hidden>
         <div class="nav-grid">
           <div class="nav-card">
             <h3>FTOptix &amp; Docker</h3>
@@ -384,7 +444,7 @@
       </div>
 
       <!-- ── Panel: Learning Materials ── -->
-      <div id="tab-learn" class="tab-panel" role="tabpanel">
+      <div id="tab-learn" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-button-learn" hidden>
         <div class="nav-grid">
           <div class="nav-card">
             <h3>Learning Materials</h3>
@@ -405,7 +465,7 @@
       </div>
 
       <!-- ── Panel: Develop Like a Pro ── -->
-      <div id="tab-dev" class="tab-panel" role="tabpanel">
+      <div id="tab-dev" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-button-dev" hidden>
         <div class="nav-grid">
           <div class="nav-card">
             <h3>Develop Like a Pro</h3>
@@ -419,7 +479,7 @@
       </div>
 
       <!-- ── Panel: Debugging ── -->
-      <div id="tab-debug" class="tab-panel" role="tabpanel">
+      <div id="tab-debug" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-button-debug" hidden>
         <div class="nav-grid">
           <div class="nav-card">
             <h3>UI Performance Checklist</h3>
@@ -439,7 +499,7 @@
       </div>
 
       <!-- ── Panel: Examples & Scripts ── -->
-      <div id="tab-examples" class="tab-panel" role="tabpanel">
+      <div id="tab-examples" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-button-examples" hidden>
         <div class="nav-grid">
           <div class="nav-card">
             <h3>Examples &amp; Scripts</h3>
@@ -453,7 +513,7 @@
       </div>
 
       <!-- ── Panel: Hardware ── -->
-      <div id="tab-hw" class="tab-panel" role="tabpanel">
+      <div id="tab-hw" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-button-hw" hidden>
         <div class="nav-grid">
           <div class="nav-card">
             <h3>Optix Panel</h3>
@@ -474,13 +534,15 @@
 
     <hr>
 
-    <div class="footer">
+    <footer class="footer">
       <p>
         <a href="https://github.com/massimovar/LearningFTOptix">GitHub Repository</a>
         &nbsp;·&nbsp;
         <a href="https://github.com/massimovar/LearningUbiquityX/">Ubiquity / FTRA</a>
       </p>
-    </div>
+    </footer>
+
+    </main>
 
   </div>
 
@@ -490,13 +552,40 @@
       btn.closest('.tab-nav').querySelectorAll('.tab-btn').forEach(function(b) {
         b.classList.remove('active');
         b.setAttribute('aria-selected', 'false');
+        b.setAttribute('tabindex', '-1');
       });
       btn.closest('.section-panel').querySelectorAll('.tab-panel').forEach(function(p) {
         p.classList.remove('active');
+        p.setAttribute('hidden', 'hidden');
       });
       btn.classList.add('active');
       btn.setAttribute('aria-selected', 'true');
-      document.getElementById(panelId).classList.add('active');
+      btn.setAttribute('tabindex', '0');
+      var panel = document.getElementById(panelId);
+      panel.classList.add('active');
+      panel.removeAttribute('hidden');
+    }
+
+    function handleTabKeydown(event) {
+      var tabs = Array.from(document.querySelectorAll('.tab-nav .tab-btn'));
+      var currentIndex = tabs.indexOf(event.currentTarget);
+      var targetIndex = currentIndex;
+
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+        targetIndex = (currentIndex + 1) % tabs.length;
+      } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+        targetIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+      } else if (event.key === 'Home') {
+        targetIndex = 0;
+      } else if (event.key === 'End') {
+        targetIndex = tabs.length - 1;
+      } else {
+        return;
+      }
+
+      event.preventDefault();
+      tabs[targetIndex].focus();
+      switchTab(tabs[targetIndex], tabs[targetIndex].getAttribute('aria-controls'));
     }
 
     // Open "Debugging" tab if URL hash targets it
@@ -556,10 +645,22 @@
 
     function resetNewsTimer() {
       clearInterval(newsTimer);
-      newsTimer = setInterval(function() { newsStep(1); }, 6000);
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        newsTimer = setInterval(function() { newsStep(1); }, 6000);
+      }
     }
 
     document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.tab-nav .tab-btn').forEach(function(tab) {
+        tab.addEventListener('keydown', handleTabKeydown);
+      });
+
+      var newsCard = document.getElementById('newsCard');
+      newsCard.addEventListener('mouseenter', function() { clearInterval(newsTimer); });
+      newsCard.addEventListener('mouseleave', resetNewsTimer);
+      newsCard.addEventListener('focusin', function() { clearInterval(newsTimer); });
+      newsCard.addEventListener('focusout', resetNewsTimer);
+
       renderNews();
       resetNewsTimer();
     });

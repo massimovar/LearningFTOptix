@@ -39,6 +39,23 @@ layout: default
     box-shadow: 0 0 0 3px var(--accent-glow);
     background: var(--bg-card);
   }
+  .sort-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-transform: inherit;
+    letter-spacing: inherit;
+    cursor: pointer;
+    text-align: left;
+  }
+  .sort-btn:hover {
+    color: var(--accent);
+  }
   .vid-table { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
   .vid-table th, .vid-table td { padding: 12px 14px; border: 1px solid var(--border); text-align: left; }
   .vid-table th { 
@@ -110,16 +127,17 @@ layout: default
 
 <br><br>
 
-<input type="text" class="search-box" id="videoSearch" placeholder="Search by title, section, tag..." oninput="filterTable('videoSearch','videosTable')">
+<label class="visually-hidden" for="videoSearch">Search FT Optix Essentials videos</label>
+<input type="search" class="search-box" id="videoSearch" placeholder="Search by title, section, tag..." oninput="filterTable('videoSearch','videosTable')" autocomplete="off">
 
 <table class="vid-table" id="videosTable">
 <thead>
 <tr>
-  <th onclick="sortTable('videosTable',0,'num')">#<span class="arrow">&#x25B2;&#x25BC;</span></th>
-  <th onclick="sortTable('videosTable',1,'text')">Section<span class="arrow">&#x25B2;&#x25BC;</span></th>
-  <th onclick="sortTable('videosTable',2,'text')">Video<span class="arrow">&#x25B2;&#x25BC;</span></th>
-  <th onclick="sortTable('videosTable',3,'num')">Duration<span class="arrow">&#x25B2;&#x25BC;</span></th>
-  <th>Tags</th>
+  <th scope="col" aria-sort="none"><button class="sort-btn" type="button" onclick="sortTable('videosTable',0,'num')" aria-label="Sort FT Optix Essentials by item number">#<span class="arrow">&#x25B2;&#x25BC;</span></button></th>
+  <th scope="col" aria-sort="none"><button class="sort-btn" type="button" onclick="sortTable('videosTable',1,'text')" aria-label="Sort FT Optix Essentials by section">Section<span class="arrow">&#x25B2;&#x25BC;</span></button></th>
+  <th scope="col" aria-sort="none"><button class="sort-btn" type="button" onclick="sortTable('videosTable',2,'text')" aria-label="Sort FT Optix Essentials by video title">Video<span class="arrow">&#x25B2;&#x25BC;</span></button></th>
+  <th scope="col" aria-sort="none"><button class="sort-btn" type="button" onclick="sortTable('videosTable',3,'num')" aria-label="Sort FT Optix Essentials by duration">Duration<span class="arrow">&#x25B2;&#x25BC;</span></button></th>
+  <th scope="col">Tags</th>
 </tr>
 </thead>
 <tbody>
@@ -218,14 +236,15 @@ layout: default
 
 <h3>Webinars</h3>
 
-<input type="text" class="search-box" id="webinarSearch" placeholder=" Search webinars..." oninput="filterTable('webinarSearch','webinarsTable')">
+<label class="visually-hidden" for="webinarSearch">Search webinars</label>
+<input type="search" class="search-box" id="webinarSearch" placeholder=" Search webinars..." oninput="filterTable('webinarSearch','webinarsTable')" autocomplete="off">
 
 <table class="vid-table" id="webinarsTable">
 <thead>
 <tr>
-  <th onclick="sortTable('webinarsTable',0,'text')">Source<span class="arrow">&#x25B2;&#x25BC;</span></th>
-  <th onclick="sortTable('webinarsTable',1,'text')">Webinar<span class="arrow">&#x25B2;&#x25BC;</span></th>
-  <th>Tags</th>
+  <th scope="col" aria-sort="none"><button class="sort-btn" type="button" onclick="sortTable('webinarsTable',0,'text')" aria-label="Sort webinars by source">Source<span class="arrow">&#x25B2;&#x25BC;</span></button></th>
+  <th scope="col" aria-sort="none"><button class="sort-btn" type="button" onclick="sortTable('webinarsTable',1,'text')" aria-label="Sort webinars by title">Webinar<span class="arrow">&#x25B2;&#x25BC;</span></button></th>
+  <th scope="col">Tags</th>
 </tr>
 </thead>
 <tbody>
@@ -292,8 +311,12 @@ function sortTable(tableId, colIdx, type) {
   const key = tableId + '_' + colIdx;
   sortState[key] = !sortState[key];
   const asc = sortState[key];
-  table.querySelectorAll('th').forEach(th => th.classList.remove('sorted'));
+  table.querySelectorAll('th').forEach(th => {
+    th.classList.remove('sorted');
+    th.setAttribute('aria-sort', 'none');
+  });
   table.querySelectorAll('th')[colIdx].classList.add('sorted');
+  table.querySelectorAll('th')[colIdx].setAttribute('aria-sort', asc ? 'ascending' : 'descending');
   rows.sort((a, b) => {
     let va = a.cells[colIdx].textContent.trim();
     let vb = b.cells[colIdx].textContent.trim();
