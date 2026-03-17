@@ -399,20 +399,21 @@ volumes:
   <div class="path path-panel" id="path-2">
     <h4>Load from USB key</h4>
     <div class="tutorial-note" style="margin-bottom:18px;">
-      <strong>Note:</strong> Currently the USB import supports only <strong>one <code>.tar</code> image</strong> and a <code>docker-compose.yaml</code> that references <strong>a single image</strong>. For multi-container stacks, use the Portainer or Docker CLI paths instead.
+      <strong>Note:</strong> USB import accepts <strong>one <code>.tar</code> file</strong> and one <code>docker-compose.yaml</code>. For multi-container deployments, include all required images in the same <code>.tar</code> bundle.
     </div>
     <ol>
       <li>Use a USB key formatted as <code>FAT32</code>, <code>exFAT</code>, or <code>ext4</code>.</li>
-      <li>On your PC, open a terminal and pull the container image for <code>linux/arm64</code>:
+      <li>On your PC, open a terminal and pull both images for <code>linux/arm64</code>:
         <div class="code-block">
           <button class="copy-btn" type="button">Copy</button>
-          <pre>docker pull --platform linux/arm64 mysql:8</pre>
+          <pre>docker pull --platform linux/arm64 mysql:8
+docker pull --platform linux/arm64 phpmyadmin:latest</pre>
         </div>
       </li>
-      <li>Export the image as a <code>.tar</code> file:
+      <li>Export both images into a single <code>.tar</code> file:
         <div class="code-block">
           <button class="copy-btn" type="button">Copy</button>
-          <pre>docker save -o mysql.tar mysql:8</pre>
+          <pre>docker save -o mysql_phpmyadmin.tar mysql:8 phpmyadmin:latest</pre>
         </div>
       </li>
       <li>Create a file named <code>docker-compose.yaml</code> with this content:
@@ -433,14 +434,27 @@ volumes:
       - mysql_data:/var/lib/mysql
     restart: unless-stopped
 
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: Password01 # Keep in sync with MYSQL_ROOT_PASSWORD
+    ports:
+      - "8090:80"
+    restart: unless-stopped
+
 volumes:
   mysql_data:</pre>
         </div>
       </li>
-      <li>Copy the two files (<code>mysql.tar</code>, <code>docker-compose.yaml</code>) to the USB key root directory.</li>
+      <li>Copy the two files (<code>mysql_phpmyadmin.tar</code>, <code>docker-compose.yaml</code>) to the USB key root directory.</li>
       <li>Plug the USB key into OptixEdge.</li>
       <li>In System Manager, open <strong>Docker</strong> and click <strong>Import docker image via USB</strong> in the <strong>Containers</strong> area.</li>
-      <li>Verify that the container is <strong>running</strong> and MySQL is accepting connections on port <code>3306</code>.</li>
+      <li>Verify that both containers are <strong>running</strong>, MySQL is listening on port <code>3306</code>, and phpMyAdmin is reachable at <code>http://optix_edge_ip_address:8090</code>.</li>
     </ol>
   </div>
 
