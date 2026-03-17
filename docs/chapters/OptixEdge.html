@@ -489,6 +489,7 @@ volumes:
         <button class="gb-tab-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="gb-kuma" data-gb-target="gb-kuma">Kuma</button>
         <button class="gb-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="gb-mosquitto" data-gb-target="gb-mosquitto">Mosquitto</button>
         <button class="gb-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="gb-prometheus" data-gb-target="gb-prometheus">Prometheus</button>
+        <button class="gb-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="gb-guacamole" data-gb-target="gb-guacamole">Guacamole</button>
       </div>
 
       <div class="gb-tab-panel is-visible" id="gb-kuma" role="tabpanel">
@@ -625,6 +626,77 @@ volumes:
           <button class="copy-btn" type="button">Copy</button>
           <pre>(1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100</pre>
         </div>
+
+      </div>
+
+      <div class="gb-tab-panel" id="gb-guacamole" role="tabpanel">
+        <p><strong>Apache Guacamole:</strong> deploy a clientless remote desktop gateway that supports VNC, RDP, and SSH protocols. Access remote desktops from any device using only a web browser — no client software required.</p>
+        <span class="code-label">Portainer stack</span>
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>services:
+  postgres:
+    image: docker.io/postgres:16-alpine
+    container_name: guac-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  guacd:
+    image: docker.io/guacamole/guacd:1.6.0
+    container_name: guac-guacd
+    restart: unless-stopped
+
+  guacamole:
+    image: docker.io/guacamole/guacamole:1.6.0
+    container_name: guac-web
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      guacd:
+        condition: service_started
+    environment:
+      GUACD_HOSTNAME: guacd
+      POSTGRESQL_HOSTNAME: postgres
+      POSTGRESQL_PORT: 5432
+      POSTGRESQL_DATABASE: ${POSTGRES_DB}
+      POSTGRESQL_USER: ${POSTGRES_USER}
+      POSTGRESQL_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRESQL_AUTO_CREATE_ACCOUNTS: "true"
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres_data:</pre>
+        </div>
+
+        <h4>Environment Variables</h4>
+        <p style="margin:0 0 8px; font-size:14px; color:var(--muted);">In Portainer, add these environment variables when deploying the stack:</p>
+        <div class="code-block">
+          <button class="copy-btn" type="button">Copy</button>
+          <pre>POSTGRES_DB=guacamole_db
+POSTGRES_USER=guacamole_user
+POSTGRES_PASSWORD=YourSecurePassword</pre>
+        </div>
+
+        <h4 style="margin-top:16px;">Access the Web UI</h4>
+        <ol>
+          <li>Open <code>http://optix_edge_ip_address:8080/guacamole</code> in your browser.</li>
+          <li>Log in with the default credentials: <code>guacadmin</code> / <code>guacadmin</code>.</li>
+          <li>Change the admin password immediately after first login.</li>
+          <li>Add connections to your VNC, RDP, or SSH targets via <strong>Settings &gt; Connections</strong>.</li>
+        </ol>
 
       </div>
     </div>
