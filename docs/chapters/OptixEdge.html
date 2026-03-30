@@ -421,25 +421,34 @@ volumes:
     <div class="tutorial-note" style="margin-bottom:18px;">
       <strong>Note:</strong> USB import accepts <strong>one <code>.tar</code> file</strong> and one <code>docker-compose.yaml</code>. For multi-container deployments, include all required images in the same <code>.tar</code> bundle.
     </div>
-    <ol>
-      <li>Use a USB key formatted as <code>FAT32</code>, <code>exFAT</code>, or <code>ext4</code>.</li>
-      <li>On your PC, open a terminal and pull both images for <code>linux/arm64</code>:
-        <div class="code-block">
-          <button class="copy-btn" type="button">Copy</button>
-          <pre>docker pull --platform linux/arm64 mysql:8
+
+    <div class="gb-tabs-wrap">
+      <div class="gb-tabs-nav" role="tablist" aria-label="USB import examples">
+        <button class="gb-tab-btn is-active" type="button" role="tab" aria-selected="true" aria-controls="usb-mysql" data-gb-target="usb-mysql">MySQL + phpMyAdmin</button>
+        <button class="gb-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="usb-mosquitto" data-gb-target="usb-mosquitto">Mosquitto</button>
+      </div>
+
+      <div class="gb-tab-panel is-visible" id="usb-mysql" role="tabpanel">
+        <p><strong>MySQL + phpMyAdmin:</strong> deploy a MySQL database with a phpMyAdmin web front-end.</p>
+        <ol>
+          <li>Use a USB key formatted as <code>FAT32</code>, <code>exFAT</code>, or <code>ext4</code>.</li>
+          <li>On your PC, open a terminal and pull both images for <code>linux/arm64</code>:
+            <div class="code-block">
+              <button class="copy-btn" type="button">Copy</button>
+              <pre>docker pull --platform linux/arm64 mysql:8
 docker pull --platform linux/arm64 phpmyadmin:latest</pre>
-        </div>
-      </li>
-      <li>Export both images into a single <code>.tar</code> file:
-        <div class="code-block">
-          <button class="copy-btn" type="button">Copy</button>
-          <pre>docker save -o mysql_phpmyadmin.tar mysql:8 phpmyadmin:latest</pre>
-        </div>
-      </li>
-      <li>Create a file named <code>docker-compose.yaml</code> with this content:
-        <div class="code-block">
-          <button class="copy-btn" type="button">Copy</button>
-          <pre>services:
+            </div>
+          </li>
+          <li>Export both images into a single <code>.tar</code> file:
+            <div class="code-block">
+              <button class="copy-btn" type="button">Copy</button>
+              <pre>docker save -o mysql_phpmyadmin.tar mysql:8 phpmyadmin:latest</pre>
+            </div>
+          </li>
+          <li>Create a file named <code>docker-compose.yaml</code> with this content:
+            <div class="code-block">
+              <button class="copy-btn" type="button">Copy</button>
+              <pre>services:
   mysql:
     image: mysql:8
     container_name: mysql-retention
@@ -469,13 +478,60 @@ docker pull --platform linux/arm64 phpmyadmin:latest</pre>
 
 volumes:
   mysql_data:</pre>
-        </div>
-      </li>
-      <li>Copy the two files (<code>mysql_phpmyadmin.tar</code>, <code>docker-compose.yaml</code>) to the USB key root directory.</li>
-      <li>Plug the USB key into OptixEdge.</li>
-      <li>In System Manager, open <strong>Docker</strong> and click <strong>Import docker image via USB</strong> in the <strong>Containers</strong> area.</li>
-      <li>Verify that both containers are <strong>running</strong>, MySQL is listening on port <code>3306</code>, and phpMyAdmin is reachable at <code>http://optix_edge_ip_address:8090</code>.</li>
-    </ol>
+            </div>
+          </li>
+          <li>Copy the two files (<code>mysql_phpmyadmin.tar</code>, <code>docker-compose.yaml</code>) to the USB key root directory.</li>
+          <li>Plug the USB key into OptixEdge.</li>
+          <li>In System Manager, open <strong>Docker</strong> and click <strong>Import docker image via USB</strong> in the <strong>Containers</strong> area.</li>
+          <li>Verify that both containers are <strong>running</strong>, MySQL is listening on port <code>3306</code>, and phpMyAdmin is reachable at <code>http://optix_edge_ip_address:8090</code>.</li>
+        </ol>
+      </div>
+
+      <div class="gb-tab-panel" id="usb-mosquitto" role="tabpanel">
+        <p><strong>Mosquitto:</strong> deploy an Eclipse Mosquitto MQTT broker for lightweight messaging between devices and services.</p>
+        <ol>
+          <li>Use a USB key formatted as <code>FAT32</code>, <code>exFAT</code>, or <code>ext4</code>.</li>
+          <li>On your PC, open a terminal and pull the Mosquitto image for <code>linux/arm64</code>:
+            <div class="code-block">
+              <button class="copy-btn" type="button">Copy</button>
+              <pre>docker pull --platform linux/arm64 eclipse-mosquitto:2</pre>
+            </div>
+          </li>
+          <li>Export the image into a <code>.tar</code> file:
+            <div class="code-block">
+              <button class="copy-btn" type="button">Copy</button>
+              <pre>docker save -o mosquitto.tar eclipse-mosquitto:2</pre>
+            </div>
+          </li>
+          <li>Create a file named <code>docker-compose.yaml</code> with this content:
+            <div class="code-block">
+              <button class="copy-btn" type="button">Copy</button>
+              <pre>services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - mosquitto_config:/mosquitto/config
+      - mosquitto_data:/mosquitto/data
+      - mosquitto_log:/mosquitto/log
+    restart: unless-stopped
+
+volumes:
+  mosquitto_config:
+  mosquitto_data:
+  mosquitto_log:</pre>
+            </div>
+          </li>
+          <li>Copy the two files (<code>mosquitto.tar</code>, <code>docker-compose.yaml</code>) to the USB key root directory.</li>
+          <li>Plug the USB key into OptixEdge.</li>
+          <li>In System Manager, open <strong>Docker</strong> and click <strong>Import docker image via USB</strong> in the <strong>Containers</strong> area.</li>
+          <li>Verify that the container is <strong>running</strong> and Mosquitto is listening on port <code>1883</code> (MQTT) and port <code>9001</code> (WebSockets).</li>
+        </ol>
+      </div>
+    </div>
   </div>
 
   <div class="path path-panel" id="path-3">
