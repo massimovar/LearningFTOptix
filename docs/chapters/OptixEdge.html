@@ -3,6 +3,26 @@ layout: default
 ---
 
 <style>
+  :root {
+    --code-bg: #f6f8fa;
+    --code-text: #24292f;
+    --code-btn-border: #d0d7de;
+    --code-btn-text: #656d76;
+    --code-btn-hover-bg: #f3f4f6;
+    --code-btn-hover-text: #24292f;
+    --code-btn-hover-border: #656d76;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --code-bg: #0e1218;
+      --code-text: #d9e1ee;
+      --code-btn-border: #4a5568;
+      --code-btn-text: #8898aa;
+      --code-btn-hover-bg: #1e2530;
+      --code-btn-hover-text: #d9e1ee;
+      --code-btn-hover-border: #8898aa;
+    }
+  }
   .section-intro { color: var(--muted); font-size: 15px; margin-bottom: 24px; }
   .hw-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin: 28px 0; }
   .hw-card { 
@@ -137,8 +157,8 @@ layout: default
     margin-top: 12px;
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    background: #0e1218;
-    color: #d9e1ee;
+    background: var(--code-bg);
+    color: var(--code-text);
     overflow: auto;
     position: relative;
   }
@@ -153,9 +173,9 @@ layout: default
     top: 8px;
     right: 8px;
     background: transparent;
-    border: 1px solid #4a5568;
+    border: 1px solid var(--code-btn-border);
     border-radius: 4px;
-    color: #8898aa;
+    color: var(--code-btn-text);
     font-size: 11px;
     padding: 3px 8px;
     cursor: pointer;
@@ -168,9 +188,9 @@ layout: default
     z-index: 1;
   }
   .copy-btn:hover {
-    background: #1e2530;
-    color: #d9e1ee;
-    border-color: #8898aa;
+    background: var(--code-btn-hover-bg);
+    color: var(--code-btn-hover-text);
+    border-color: var(--code-btn-hover-border);
   }
   .copy-btn.copied {
     color: #68d391;
@@ -352,7 +372,7 @@ layout: default
       <li>Reboot OptixEdge.</li>
       <li>Open <code>https://optix_edge_ip_address:9443</code> and trust the self-signed certificate.</li>
       <li>Set the admin password at first login.</li>
-      <li>Select the <strong>local</strong> environment, open <strong>Stacks</strong>, then click <strong>Add stack</strong>.</li>
+      <li>Go to "Home" and select the <strong>local</strong> environment, open <strong>Stacks</strong>, then click <strong>Add stack</strong>.</li>
       <li>Name the stack (e.g., <code>my_sql_stack</code>).</li>
       <li>Paste the following content into the web editor and click <strong>Deploy the stack</strong>:
         <div class="code-block">
