@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore Checklist NIS2 - ASEM</title>
+    <style>
+        /* --- REGOLE BASE E ANIMAZIONI --- */
+        html { scroll-behavior: smooth; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeIn 1.0s ease-out forwards; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* --- CONTENITORI PRINCIPALI --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto 30px auto; 
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .checklist-container { display: none; }
+        h1 { color: #0056b3; text-align: center; margin-bottom: 20px; }
+
+        /* --- SELETTORE LINGUA TOP-RIGHT --- */
+        .lang-switcher {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        .lang-switcher button {
+            background: #eef2f5;
+            border: 1px solid #ccc;
+            padding: 5px 12px;
+            margin-left: 5px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #555;
+            transition: all 0.3s ease;
+        }
+        .lang-switcher button:hover {
+            background: #dfe6eb;
+        }
+        .lang-switcher button.active {
+            background: #0056b3;
+            color: #fff;
+            border-color: #0056b3;
+        }
+
+        /* --- SEZIONE FORM (INPUT UTENTE) --- */
+        .form-section {
+            background: #eef2f5;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+        .form-group { margin-bottom: 15px; }
+        .form-group > label { font-weight: bold; display: block; margin-bottom: 16px; }
+        
+        /* Layout per i radio button e checkbox in alto */
+        .radio-group, .checkbox-group { 
+            display: flex; gap: 20px; flex-wrap: wrap; margin-left: 150px;
+        }
+        .radio-group label, .checkbox-group label { 
+            font-weight: normal; display: flex; align-items: center; cursor: pointer; margin-bottom: 0; 
+        }
+        input[type="radio"], input[type="checkbox"] { 
+            margin-right: 8px; cursor: pointer; 
+        }
+
+        /* --- BOTTONI --- */
+        .btn-generate, .btn-print {
+            display: block;
+            margin: 0 auto;
+            background: #0056b3;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-generate { margin-top: 24px; width: 40%; }
+        .btn-generate:hover { background: #004494; }
+        .btn-print { width: 40%; margin-top: 40px; }
+        .btn-print:hover { background: #218838; }
+
+        /* --- BOX INFORMATIVI E HEADER REPORT --- */
+        .disclaimer {
+            background-color: #e8f4fd;
+            color: #2c3e50;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            border-left: 4px solid #31708f;
+            line-height: 1.5;
+        }
+
+        /* --- STILI DELLE CATEGORIE --- */
+        .category {
+            margin-bottom: 35px;
+            border-left: 4px solid #0056b3;
+            padding-left: 20px;
+            background: #fff;
+        }
+        .category h3 {
+            margin-top: 0;
+            color: #0056b3;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* --- I BOX NORMA E ASEM --- */
+        .info-box {
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        .norma-box { 
+            background-color: #f0f7ff; 
+            border-left: 3px solid #66a3ff; 
+        }
+        .asem-box { 
+            background-color: #f4f4f4; 
+            border-left: 3px solid #888; 
+        }
+        .asem-box ul { margin-top: 8px; margin-bottom: 0; padding-left: 20px; }
+        .asem-box li { margin-bottom: 8px; }
+
+        /* --- CHECKLIST --- */
+        .checklist-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        .check-item { 
+            display: flex; 
+            align-items: flex-start; 
+            padding-left: 20px; 
+            margin-bottom: 10px; 
+        }
+        .check-item input { 
+            margin-top: 5px; 
+            margin-right: 12px; 
+            cursor: pointer; 
+            flex-shrink: 0; 
+        }
+        .check-item label { 
+            font-weight: normal; 
+            margin-bottom: 0; 
+            cursor: pointer; 
+            display: block; 
+        }
+        .check-item span { 
+            line-height: 1.5; 
+            font-size: 0.95em; 
+        }
+
+        /* --- REGOLE DI STAMPA IN PDF --- */
+        @media print {
+            body { background-color: #fff; }
+            .container { box-shadow: none; margin: 0; padding: 0; max-width: 100%; }
+            .form-section, .btn-print, .btn-generate, .screen-only { display: none !important; }
+            
+            .norma-box, .asem-box, .disclaimer, .report-header > div { 
+                -webkit-print-color-adjust: exact !important; 
+                print-color-adjust: exact !important; 
+            }
+            
+            a { text-decoration: none !important; color: inherit !important; }
+            
+            .category, .info-box, .asem-box ul, .asem-box li { page-break-inside: auto; break-inside: auto; }
+            .check-item { page-break-inside: avoid; break-inside: avoid; }
+            h3, .checklist-title { page-break-after: avoid; break-after: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container screen-only">
+    
+    <div class="lang-switcher screen-only">
+        <button id="btn-it" class="active" onclick="setLanguage('IT')">IT</button>
+        <button id="btn-en" onclick="setLanguage('EN')">EN</button>
+    </div>
+
+    <h1 id="ui-title"></h1>
+
+    <div class="disclaimer screen-only">
+        <strong id="ui-disc-title"></strong><br><br>
+        <span id="ui-disc-text"></span>
+    </div>  
+    
+    <div class="form-section">
+        <div class="form-group">
+            <label id="ui-hw-label"></label>
+            <div class="radio-group">
+                <label><input type="radio" name="hw" value="RK2" onchange="updateUI()"> Router RK2x</label>
+                <label><input type="radio" name="hw" value="EDGE" onchange="updateUI()"> OptixEdge</label>
+                <label><input type="radio" name="hw" value="PANEL" onchange="updateUI()"> OptixPanel</label>
+                <label><input type="radio" name="hw" value="PC" onchange="updateUI()"> ASEM 6300 iPC</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label id="ui-sw-label"></label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" id="sw-ubiquity" value="UBIQUITY" onchange="hideResults()"> UBIQUITY</label>
+                <label><input type="checkbox" id="sw-optix" value="OPTIX" onchange="hideResults()"> FactoryTalk Optix</label>
+            </div>
+        </div>
+
+        <button class="btn-generate" id="ui-btn-generate" onclick="generateChecklist()"></button>
+    </div>
+</div>
+    
+<div id="checklist-result" class="container checklist-container"></div>
+    
+<script>
+
+    let currentLang = 'IT'; // Stato globale della lingua
+
+    const UILabels = {
+        IT: {
+            title: "Guida e Checklist NIS2 - Soluzioni ASEM",
+            discTitle: "Perché questa guida?",
+            discText: `La <a href="https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32022L2555" target="_blank" style="color: #0056b3; text-decoration: underline;">Direttiva (UE) 2022/2555</a> denominata Direttiva NIS2 non prevede una "certificazione di prodotto", ma richiede di dimostrare un approccio strutturato alla gestione del rischio cyber. Quando un cliente ti chiede se la tua fornitura è "NIS2 compliant", ti sta chiedendo come hai mitigato quel rischio.<br><br>Questo strumento ti permette di generare in pochi clic un report di mitigazione da consegnare al cliente. Selezionando l'hardware e il software ASEM utilizzati nel tuo progetto, il sistema mapperà le tecnologie <em>Secure-by-Design</em> già integrate e ti fornirà l'elenco esatto delle configurazioni a tuo carico, coprendo i 4 pilastri fondamentali della sicurezza.`,
+            hwLabel: "Seleziona l'hardware:",
+            swLabel: "Seleziona i software:",
+            btnGenerate: "Genera Guida e Checklist"
+        },
+        EN: {
+            title: "NIS2 Guide and Checklist - ASEM Solutions",
+            discTitle: "Why this guide?",
+            discText: `The <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32022L2555" target="_blank" style="color: #0056b3; text-decoration: underline;">Directive (EU) 2022/2555</a>, known as the NIS2 Directive, does not mandate a "product certification," but requires demonstrating a structured approach to cyber risk management. When a customer asks if your supply is "NIS2 compliant," they are asking how you mitigated that risk.<br><br>This tool allows you to generate a mitigation report for your customer in just a few clicks. By selecting the ASEM hardware and software used in your project, the system will map the integrated <em>Secure-by-Design</em> technologies and provide you with the exact list of configurations you are responsible for, covering the 4 fundamental pillars of security.`,
+            hwLabel: "Select the hardware:",
+            swLabel: "Select the software:",
+            btnGenerate: "Generate Guide and Checklist"
+        }
+    };
+
+    const Labels = {
+        IT: {
+            ReportTitle: "Report di Mitigazione del Rischio Cyber",
+            IntroTitle: "Contesto Operativo e Normativo",
+            IntroText: "In ottemperanza al <em>Risk-Based Approach</em> e ai requisiti di sicurezza della Supply Chain richiesti dalla Direttiva (UE) 2022/2555 (NIS2), il presente documento mappa le misure tecniche, i processi e le configurazioni adottate per garantire l'integrità e la resilienza della soluzione fornita.<br><br>L'architettura fa affidamento su componenti hardware e software sviluppati secondo logiche <em>Secure-by-Design</em>. Di seguito sono documentate le difese implementate nativamente dal produttore (ASEM - RA) e le policy di <em>hardening</em> applicate in fase di integrazione tecnica, ripartite sulle quattro aree nevralgiche dell'infrastruttura.",
+            NormaTitle: "Cosa dice la norma NIS2:",
+            AsemTitle: "Security Baseline - cosa fa ASEM:",
+            ChecklistTitle: "Checklist per l'OEM/Integratore:",
+            LegalTitle: "Nota Legale e Limitazione di Responsabilità:",
+            LegalText: "Il presente report viene generato sulla base delle selezioni effettuate dall'utente e dei dati tecnici forniti da ASEM. <br>Lo strumento ha scopo esclusivamente informativo e di supporto tecnico per agevolare l'analisi dei rischi e l'implementazione di misure di sicurezza nell'ambito della Direttiva (UE) 2022/2555 (NIS2).<br>La selezione dei componenti, la loro corretta configurazione e l'integrazione nel perimetro di sicurezza restano di esclusiva responsabilità dell'utente. <br>L'utilizzo di tecnologie <em>Secure-by-Design</em> rappresenta un elemento abilitante, ma non garantisce di per sé la conformità totale del sistema finale. <br>La responsabilità ultima della conformità normativa ricade in capo al soggetto identificato come \"Essenziale\" o \"Importante\" ai sensi della normativa vigente.",
+            BtnPrint: "Stampa / Salva in PDF"
+        },
+        EN: {
+            ReportTitle: "Cyber Risk Mitigation Report",
+            IntroTitle: "Operational and Regulatory Context",
+            IntroText: "In compliance with the <em>Risk-Based Approach</em> and Supply Chain security requirements of Directive (EU) 2022/2555 (NIS2), this document maps the technical measures, processes, and configurations adopted to ensure the integrity and resilience of the provided solution.<br><br>The architecture relies on hardware and software components developed according to <em>Secure-by-Design</em> principles. The defenses natively implemented by the manufacturer (ASEM - RA) and the <em>hardening</em> policies applied during technical integration are documented below, divided into the four core areas of the infrastructure.",
+            NormaTitle: "What the NIS2 directive says:",
+            AsemTitle: "Security Baseline - what ASEM does:",
+            ChecklistTitle: "Checklist for the OEM/System Integrator:",
+            LegalTitle: "Legal Notice and Limitation of Liability:",
+            LegalText: "This report is generated based on user selections and technical data provided by ASEM. <br>The tool is for informational and technical support purposes only, to facilitate risk analysis and the implementation of security measures under Directive (EU) 2022/2555 (NIS2).<br>The selection of components, their correct configuration, and integration into the security perimeter remain the exclusive responsibility of the user. <br>The use of <em>Secure-by-Design</em> technologies is an enabling element, but does not in itself guarantee full compliance of the final system. <br>Ultimate responsibility for regulatory compliance rests with the entity identified as \"Essential\" or \"Important\" under current legislation.",
+            BtnPrint: "Print / Save as PDF"
+        }
+    };
+    
+    const NormTitles = {
+        IT: {
+            Norm1: "1. Sicurezza della Supply Chain e dello Sviluppo Software",
+            Norm2: "2. Hardening di Sistema, Controllo degli Accessi e Cifratura dei Dati",
+            Norm3: "3. Gestione Vulnerabilità e Risposta agli Incidenti",
+            Norm4: "4. Monitoraggio, Audit e Continuità Operativa"
+        },
+        EN: {
+            Norm1: "1. Supply Chain and Software Development Security",
+            Norm2: "2. System Hardening, Access Control and Data Encryption",
+            Norm3: "3. Vulnerability Management and Incident Response",
+            Norm4: "4. Monitoring, Audit and Business Continuity"
+        }
+    };
+
+    const Statement = {
+        IT: {
+            Norm1: "La direttiva, agli Art. <em>21.2.d</em> e <em>21.2.e</em> impone di garantire la sicurezza lungo l'intera catena di approvvigionamento, richiedendo di valutare rigorosamente sia l'affidabilità dei fornitori sia la qualità dei processi di sviluppo e acquisizione dei prodotti ICT.",
+            Norm2: "La direttiva, agli Art. <em>21.2.g</em>, <em>21.2.h</em>, <em>21.2.i</em> e <em>21.2.j</em> richiede di mettere in sicurezza le reti industriali imponendo rigorose politiche di controllo degli accessi logici e fisici agli asset. Questo include l'uso di soluzioni di autenticazione a più fattori (MFA), solide pratiche di igiene informatica e l'impiego della crittografia per garantire l'integrità dei dati.",
+            Norm3: "La direttiva all'Art. <em>23</em> e agli Art. <em>21.2.b</em> e <em>21.2.e</em> richiede la predisposizione di procedure chiare per la prevenzione, il rilevamento e la gestione degli incidenti, includendo la segnalazione tempestiva delle vulnerabilità significative.",
+            Norm4: "La direttiva agli Art. <em>21.2.a</em>, <em>21.2.c</em> e <em>21.2.f</em>, impone di garantire la resilienza delle attività aziendali attraverso l'analisi dei rischi, il monitoraggio continuo dei sistemi, l'implementazione di piani di ripristino in caso di disastro e procedure per valutare regolarmente l'efficacia delle misure di sicurezza adottate."
+        },
+        EN: {
+            Norm1: "The directive, in Articles <em>21.2.d</em> and <em>21.2.e</em>, requires ensuring security throughout the supply chain, strictly assessing both the reliability of suppliers and the quality of ICT product development and acquisition processes.",
+            Norm2: "The directive, in Articles <em>21.2.g</em>, <em>21.2.h</em>, <em>21.2.i</em> and <em>21.2.j</em>, requires securing industrial networks by enforcing strict logical and physical access control policies. This includes the use of multi-factor authentication (MFA) solutions, solid cyber hygiene practices, and the use of encryption to ensure data integrity.",
+            Norm3: "The directive in Article <em>23</em> and Articles <em>21.2.b</em> and <em>21.2.e</em> requires the establishment of clear procedures for the prevention, detection, and handling of incidents, including the timely reporting of significant vulnerabilities.",
+            Norm4: "The directive in Articles <em>21.2.a</em>, <em>21.2.c</em> and <em>21.2.f</em>, requires ensuring the resilience of business operations through risk analysis, continuous system monitoring, implementation of disaster recovery plans, and procedures to regularly assess the effectiveness of adopted security measures."
+        }
+    };
+
+    const SecBase = {
+        GenProcessCertf: {
+            IT: "Certificazione di Processo: ASEM sviluppa secondo il Rockwell Automation Product Lifecycle Process, che integra il Rockwell Automation Secure Development Lifecycle (SDL), certificato secondo lo standard IEC 62443-4-1:2018 con Maturity Level 4 (Improving). <br><em>Rif.: RA Secure Development Lifecycle Process Overview, RA IEC 62443-4-1</em>.",
+            EN: "Process Certification: ASEM develops according to the Rockwell Automation Product Lifecycle Process, which integrates the Rockwell Automation Secure Development Lifecycle (SDL), certified to the IEC 62443-4-1:2018 standard with Maturity Level 4 (Improving). <br><em>Ref.: RA Secure Development Lifecycle Process Overview, RA IEC 62443-4-1</em>."
+        },
+        GenPsirtFramwrk: {
+            IT: "Framework PSIRT: Rockwell Automation mette a disposizione il team RA PSIRT per la notifica, la valutazione, il contenimento e la rimediazione di eventuali vulnerabilità che coinvolgono prodotti, soluzioni o servizi. <br><em>Rif.: RA Product Security Incident Response Framework, RA Security Advisories</em>.",
+            EN: "PSIRT Framework: Rockwell Automation provides the RA PSIRT team for the notification, evaluation, containment, and remediation of any vulnerabilities involving products, solutions, or services. <br><em>Ref.: RA Product Security Incident Response Framework, RA Security Advisories</em>."
+        },
+        GenSocMonitorng: {
+            IT: "Monitoraggio Continuo (SOC): ASEM si affida alle capacità di monitoraggio di Rockwell Automation, che mantiene un Security Operations Center (SOC) attivo 24x7 e utilizza soluzioni SIEM per il rilevamento di incidenti di sicurezza. <br><em>Rif.: RA Security Governance Overview</em>.",
+            EN: "Continuous Monitoring (SOC): ASEM relies on Rockwell Automation's monitoring capabilities, which maintains a 24x7 active Security Operations Center (SOC) and utilizes SIEM solutions for security incident detection. <br><em>Ref.: RA Security Governance Overview</em>."
+        },
+        GenVulnAnalysis: {
+            IT: "Analisi delle Vulnerabilità in fase di Sviluppo: Il Secure Development Lifecycle di Rockwell Automation prevede attività di verifica multilivello, che includono code review, static analysis e Software Composition Analysis (SCA) per l’identificazione di vulnerabilità e componenti open source. <br><em>Rif.: RA Secure Development Lifecycle Process Overview</em>.",
+            EN: "Vulnerability Analysis during Development: Rockwell Automation's Secure Development Lifecycle includes multi-level verification activities, including code review, static analysis, and Software Composition Analysis (SCA) to identify vulnerabilities and open source components. <br><em>Ref.: RA Secure Development Lifecycle Process Overview</em>."
+        },
+        GenVulnManagemt: {
+            IT: "Gestione Vulnerabilità: Ogni vulnerabilità rilevata attiva processi di gestione e divulgazione responsabile allineati agli standard ISO/IEC 29147 e ISO/IEC 30111. <br><em>Rif.: RA Product Security Incident Response Framework, RA Security Advisories</em>.",
+            EN: "Vulnerability Management: Every detected vulnerability triggers responsible disclosure and management processes aligned with ISO/IEC 29147 and ISO/IEC 30111 standards. <br><em>Ref.: RA Product Security Incident Response Framework, RA Security Advisories</em>."
+        },
+        EmbFactoryReset: {
+            IT: "Factory Reset: Per garantire la continuità operativa, il sistema supporta il ripristino istantaneo ai dati di fabbrica. Di fronte a malfunzionamenti gravi o configurazioni corrotte, l'operatore può forzare l'azzeramento del dispositivo, ripartendo da un'impostazione di base integra e pulita e semplificando così le procedure di emergenza.",
+            EN: "Factory Reset: To ensure business continuity, the system supports an instant reset to factory defaults. In the face of critical malfunctions or corrupted configurations, the operator can force the device reset, starting from a clean and intact baseline setting, thereby simplifying emergency procedures."
+        },
+        EmbAntiTamperng: {
+            IT: "Anti-Tampering: Il meccanismo di Secure Boot funge da misura preventiva contro il caricamento di firmware compromessi, agendo come primo livello di rilevamento di manomissioni hardware o software.",
+            EN: "Anti-Tampering: The Secure Boot mechanism acts as a preventive measure against loading compromised firmware, serving as the first line of detection for hardware or software tampering."
+        },
+        EmbHwReliabilty: {
+            IT: "Affidabilità Hardware: Il dispositivo è progettato per l’uso in ambienti industriali, con specifiche ambientali ed elettriche definite per supportare l’operatività in condizioni gravose.",
+            EN: "Hardware Reliability: The device is designed for use in industrial environments, with defined environmental and electrical specifications to support operation under harsh conditions."
+        },
+        EmbSystemManagr: {
+            IT: "Gestione Accessi in System Manager: L’interfaccia System Manager consente di gestire separatamente le funzioni di configurazione e le operazioni di utilizzo, supportando profili con diversi livelli di privilegio (ad esempio Admin e User) e la possibilità di limitare o disabilitare l’accesso all’interfaccia dopo la messa in servizio.",
+            EN: "Access Management in System Manager: The System Manager interface allows for separate management of configuration functions and operational tasks, supporting profiles with different privilege levels (e.g., Admin and User) and the ability to limit or disable access to the interface after commissioning."
+        },
+        EmbFirmwareUpdt: {
+            IT: "Aggiornamenti Firmware Sicuri: Il sistema supporta l’aggiornamento del firmware tramite pacchetti ufficiali distribuiti attraverso il portale Rockwell <a href=\"https://compatibility.rockwellautomation.com\" target=\"_blank\" style=\"color: #0056b3; text-decoration: underline;\">Product Compatibility and Download Center (PCDC)</a>, installabili localmente sul dispositivo. I pacchetti sono firmati e distribuiti in modo sicuro, consentendo la verifica dell’autenticità e dell’integrità del firmware installato.",
+            EN: "Secure Firmware Updates: The system supports firmware updates via official packages distributed through the Rockwell <a href=\"https://compatibility.rockwellautomation.com\" target=\"_blank\" style=\"color: #0056b3; text-decoration: underline;\">Product Compatibility and Download Center (PCDC)</a>, which can be installed locally on the device. Packages are signed and securely distributed, allowing verification of the authenticity and integrity of the installed firmware."
+        },
+        EmbSecureBootRt: {
+            IT: "Secure Boot e Root of Trust: I dispositivi embedded di ASEM utilizzano un meccanismo di Secure Boot ancorato a una \"Root of Trust\" hardware. Questo processo verifica l'autenticità e l'integrità del firmware prima dell'esecuzione, assicurando che sul dispositivo giri solo software autorizzato dal produttore.",
+            EN: "Secure Boot and Root of Trust: ASEM embedded devices utilize a Secure Boot mechanism anchored to a hardware \"Root of Trust\". This process verifies the authenticity and integrity of the firmware prior to execution, ensuring that only manufacturer-authorized software runs on the device."
+        },
+        PcsHwRootOfTrst: {
+            IT: "Sicurezza dell'Hardware (Root of Trust): I PC della serie 6300 integrano funzionalità di sicurezza basate su hardware, inclusa la tecnologia Intel Boot Guard e il supporto al Measured Boot, che creano una catena di fiducia dall'accensione fino al caricamento del sistema operativo. <br><em>Rif.: Security Design Guidelines for ASEM 6300</em>.",
+            EN: "Hardware Security (Root of Trust): The 6300 series PCs integrate hardware-based security features, including Intel Boot Guard technology and Measured Boot support, establishing a chain of trust from power-on through operating system loading. <br><em>Ref.: Security Design Guidelines for ASEM 6300</em>."
+        },
+        PcsTpmSecureHdw: {
+            IT: "Piattaforma Hardware Sicura (TPM 2.0): I PC ASEM integrano un modulo TPM 2.0 (Trusted Platform Module) che fornisce un archivio sicuro per chiavi crittografiche, certificati e password. Questa funzionalità hardware è fondamentale per abilitare la cifratura del disco (es. BitLocker) e l'autenticazione sicura a livello di sistema operativo. <br><em>Rif.: Security Design Guidelines for ASEM 6300</em>.",
+            EN: "Secure Hardware Platform (TPM 2.0): ASEM PCs integrate a TPM 2.0 (Trusted Platform Module) providing secure storage for cryptographic keys, certificates, and passwords. This hardware feature is essential for enabling full disk encryption (e.g., BitLocker) and secure OS-level authentication. <br><em>Ref.: Security Design Guidelines for ASEM 6300</em>."
+        },
+        PcsUefiBootProt: {
+            IT: "Protezione del Boot (UEFI Secure Boot): L'hardware supporta lo standard UEFI Secure Boot, che assicura che il sistema carichi solo bootloader e driver firmati digitalmente e autorizzati, prevenendo l'esecuzione di malware o firmware contraffatti durante l'avvio. <br><em>Rif.: Security Design Guidelines for ASEM 6300</em>.",
+            EN: "Boot Protection (UEFI Secure Boot): The hardware supports the UEFI Secure Boot standard, ensuring the system loads only digitally signed and authorized bootloaders and drivers, preventing the execution of malware or counterfeit firmware during startup. <br><em>Ref.: Security Design Guidelines for ASEM 6300</em>."
+        },
+        PcsLocalAuthPwd: {
+            IT: "Autorizzazione Locale: Nelle installazioni di PC industriali ASEM, il controllo locale dell'accesso e l'integrità del sistema sono garantiti dalle funzionalità hardware integrate, come il supporto al Secure Boot e la protezione del BIOS tramite password, che permettono di prevenire l'esecuzione di software non autorizzato o modifiche alla configurazione hardware di base. <br><em>Rif.: Security Design Guidelines for ASEM 6300</em>.",
+            EN: "Local Authorization: In ASEM industrial PC installations, local access control and system integrity are guaranteed by built-in hardware features, such as Secure Boot support and BIOS password protection, which prevent unauthorized software execution or basic hardware configuration modifications. <br><em>Ref.: Security Design Guidelines for ASEM 6300</em>."
+        },
+        PcsSyslogMonitr: {
+            IT: "Monitoraggio Eventi di Sicurezza: I sistemi supportano l'invio di log tramite protocollo standard Syslog verso server centralizzati per generare, archiviare e analizzare eventi legati alla sicurezza, facilitando il rilevamento tempestivo di anomalie. <br><em>Rif.: Security Design Guidelines for ASEM 6300</em>.",
+            EN: "Security Event Monitoring: The systems support log forwarding via standard Syslog protocol to centralized servers to generate, store, and analyze security-related events, facilitating the timely detection of anomalies. <br><em>Ref.: Security Design Guidelines for ASEM 6300</em>."
+        },
+        PcsHwReliabilty: {
+            IT: "Affidabilità Hardware: Il dispositivo è progettato per l’uso in ambienti industriali, con specifiche ambientali ed elettriche definite per supportare l’operatività in condizioni gravose. <br><em>Rif.: Security Design Guidelines for ASEM 6300</em>.",
+            EN: "Hardware Reliability: The device is designed for use in industrial environments, with defined environmental and electrical specifications to support operation under harsh conditions. <br><em>Ref.: Security Design Guidelines for ASEM 6300</em>."
+        },
+        UbqCodeIntegrty: {
+            IT: "Integrità del Codice: I binari delle applicazioni UBIQUITY sono firmati con una chiave privata per consentire la convalida dell'autenticità e dell'integrità. <br><em>Rif.: UBIQUITY Security Architecture White Paper</em>.",
+            EN: "Code Integrity: UBIQUITY application binaries are signed with a private key to allow validation of authenticity and integrity. <br><em>Ref.: UBIQUITY Security Architecture White Paper</em>."
+        },
+        UbqRuntimeIntgr: {
+            IT: "Integrità del Runtime: Poiché il runtime di UBIQUITY è integrato nel firmware, esso beneficia delle medesime protezioni di integrità e firma digitale applicate all'intero stack software del dispositivo. <br><em>Rif.: UBIQUITY Security Architecture White Paper</em>.",
+            EN: "Runtime Integrity: Because the UBIQUITY runtime is integrated into the firmware, it benefits from the same integrity and digital signature protections applied to the device's entire software stack. <br><em>Ref.: UBIQUITY Security Architecture White Paper</em>."
+        },
+        UbqOutboundArch: {
+            IT: "Architettura Outbound: UBIQUITY opera esclusivamente con connessioni in uscita (porta TCP 443 di default), eliminando la necessità di aprire porte in ingresso nei firewall dei clienti. Il Runtime non abilita alcun servizio sulla porta WAN e richiede solo una connessione in uscita verso i server di UBIQUITY non esponendo superfici d'attacco dirette dall'esterno. <br><em>Rif.: UBIQUITY Security Architecture White Paper</em>.",
+            EN: "Outbound Architecture: UBIQUITY operates exclusively with outbound connections (TCP port 443 by default), eliminating the need to open inbound ports on customer firewalls. The Runtime does not enable any services on the WAN port and only requires an outbound connection to UBIQUITY servers, exposing no direct external attack surfaces. <br><em>Ref.: UBIQUITY Security Architecture White Paper</em>."
+        },
+        UbqE2eEncrypton: {
+            IT: "Cifratura End-to-End: in UBIQUITY la connessione tra Client e Runtime è protetta da cifratura AES-256 con chiavi scambiate in modo sicuro; il Relay Server non partecipa all'handshake e non può decodificare il traffico. <br><em>Rif.: UBIQUITY Security Architecture White Paper</em>.",
+            EN: "End-to-End Encryption: In UBIQUITY, the connection between Client and Runtime is protected by AES-256 encryption with securely exchanged keys; the Relay Server does not participate in the handshake and cannot decrypt the traffic. <br><em>Ref.: UBIQUITY Security Architecture White Paper</em>."
+        },
+        UbqIntgrFirewal: {
+            IT: "Firewall VPN Integrato: UBIQUITY include un firewall integrato che permette di definire regole di accesso basate su MAC address, IP e protocolli, limitando il traffico remoto esclusivamente a quanto necessario per l'operatività della macchina. <br><em>Rif.: UBIQUITY Security Architecture White Paper, UBIQUITY Online Help</em>.",
+            EN: "Integrated VPN Firewall: UBIQUITY includes a built-in firewall allowing the definition of access rules based on MAC address, IP, and protocols, restricting remote traffic strictly to what is necessary for machine operation. <br><em>Ref.: UBIQUITY Security Architecture White Paper, UBIQUITY Online Help</em>."
+        },
+        UbqBrutForcePrt: {
+            IT: "Rilevamento Brute Force: UBIQUITY rileva e blocca automaticamente gli indirizzi IP che effettuano tentativi di login falliti ripetuti, rendendo inefficaci gli attacchi di scoperta password. <br><em>Rif.: UBIQUITY Security Architecture White Paper</em>.",
+            EN: "Brute Force Detection: UBIQUITY automatically detects and blocks IP addresses that perform repeated failed login attempts, rendering password discovery attacks ineffective. <br><em>Ref.: UBIQUITY Security Architecture White Paper</em>."
+        },
+        UbqAuditLogImmt: {
+            IT: "Audit Log Immutabili: in UBIQUITY le attività di teleassistenza e amministrazione remota vengono registrate in log centralizzati non modificabili, garantendo la tracciabilità di chi ha effettuato l'accesso e quali operazioni sono state eseguite. <br><em>Rif.: UBIQUITY Security Architecture White Paper</em>.",
+            EN: "Immutable Audit Logs: In UBIQUITY, remote assistance and administration activities are recorded in unalterable centralized logs, guaranteeing traceability of who accessed the system and what operations were performed. <br><em>Ref.: UBIQUITY Security Architecture White Paper</em>."
+        },
+        UbqMfaRemoteAcc: {
+            IT: "Autenticazione Forte (MFA) per l'accesso remoto: UBIQUITY supporta l'autenticazione a due fattori (2FA) basata sull'algoritmo TOTP (RFC 6238), compatibile con le principali applicazioni di autenticazione (es. Google o Microsoft Authenticator). <br><em>Rif.: UBIQUITY Security Architecture White Paper</em>.",
+            EN: "Strong Authentication (MFA) for remote access: UBIQUITY supports two-factor authentication (2FA) based on the TOTP algorithm (RFC 6238), compatible with major authenticator applications (e.g., Google or Microsoft Authenticator). <br><em>Ref.: UBIQUITY Security Architecture White Paper</em>."
+        },
+        UbqCloudResilnc: {
+            IT: "Hosting e Resilienza Cloud: l’infrastruttura server di UBIQUITY (Access Server, Relay Server e Web API) è ospitata su Microsoft Azure, piattaforma cloud certificata ISO/IEC 27001, che mette a disposizione meccanismi nativi di alta disponibilità, ridondanza geografica e protezione dei dati. I servizi di database utilizzano le funzionalità di backup e ripristino offerte dalla piattaforma cloud sottostante, incluse capacità di ripristino puntuale (Point‑in‑Time Restore), per supportare la resilienza operativa dell’infrastruttura <br><em>Rif.: UBIQUITY Security Architecture White Paper</em>.",
+            EN: "Cloud Hosting and Resilience: The UBIQUITY server infrastructure (Access Server, Relay Server, and Web API) is hosted on Microsoft Azure, an ISO/IEC 27001 certified cloud platform providing native mechanisms for high availability, geographic redundancy, and data protection. Database services utilize backup and recovery features offered by the underlying cloud platform, including Point-in-Time Restore capabilities, to support operational infrastructure resilience. <br><em>Ref.: UBIQUITY Security Architecture White Paper</em>."
+        },
+        UbqLocalApprvSw: {
+            IT: "Autorizzazione Locale: UBIQUITY implementa la funzionalità denominata \"Approva accesso remoto\" che consente all'operatore locale di accettare o meno il collegamento da remoto tramite una notifica gestita dal Runtime di UBIQUITY.",
+            EN: "Local Authorization: UBIQUITY implements the \"Approve remote access\" feature, allowing the local operator to explicitly accept or deny remote connections via a notification managed by the UBIQUITY Runtime."
+        },
+        UbqLocalApprvHw: {
+            IT: "Autorizzazione Locale: il dispositivo è dotato di ingressi ed uscite digitali (DI/O) che permettono di gestire il collegamento alla rete UBIQUITY (es. tramite un selettore a chiave locale), sapere lo stato della connessione alla rete UBIQUTY e l’eventuale accesso remoto attivo.",
+            EN: "Local Authorization: The device is equipped with digital inputs and outputs (DI/O) allowing the management of the connection to the UBIQUITY network (e.g., via a local key selector) and indicating the connection status to the UBIQUITY network and any active remote access."
+        },
+        UbqPermissnMngt: {
+            IT: "Gestione dei permessi: UBIQUITY Fornisce un modello di autorizzazione gerarchico che permette di applicare regole di permesso a singole risorse, cartelle o gruppi di utenti, garantendo che ogni operatore acceda solo a ciò che gli compete. <br>I domini UBIQUITY possono essere configurati per utilizzare un Identity Provider (IdP) esterno tramite il protocollo OpenID Connect (OIDC), come Azure Entra ID o Auth0. Questa integrazione permette di delegare l'autenticazione all'infrastruttura IT aziendale, ereditando policy di sicurezza centralizzate e Single Sign-On (SSO). <br><em>Rif.: UBIQUITY Security Architecture White Paper, UBIQUITY Online Help</em>.",
+            EN: "Permission Management: UBIQUITY provides a hierarchical authorization model allowing permission rules to be applied to individual resources, folders, or user groups, ensuring each operator accesses only what is necessary. <br>UBIQUITY domains can be configured to use an external Identity Provider (IdP) via the OpenID Connect (OIDC) protocol, such as Azure Entra ID or Auth0. This integration delegates authentication to the corporate IT infrastructure, inheriting centralized security policies and Single Sign-On (SSO). <br><em>Ref.: UBIQUITY Security Architecture White Paper, UBIQUITY Online Help</em>."
+        },
+        UbqPcsIdentBkup: {
+            IT: "Disaster Recovery (Identità Software): Per garantire la continuità operativa in caso di guasto del PC, è possibile salvaguardare l'identità del dispositivo eseguendo il backup del file di identità firmato (denominato auth.bin nell’Help) e del file di configurazione del Runtime. Questo file contiene il certificato UID che permette di ripristinare il collegamento al dominio sullo stesso hardware senza dover ripetere la registrazione manuale. <br><em>Rif.: UBIQUITY Security Architecture White Paper, UBIQUITY Online Help</em>.",
+            EN: "Disaster Recovery (Software Identity): To ensure business continuity in the event of PC failure, the device identity can be safeguarded by backing up the signed identity file (referred to as auth.bin in the Help) and the Runtime configuration file. This file contains the UID certificate, enabling the restoration of the domain connection on the same hardware without repeating manual registration. <br><em>Ref.: UBIQUITY Security Architecture White Paper, UBIQUITY Online Help</em>."
+        },
+        UbqPcsUpdatePrt: {
+            IT: "Aggiornamenti Protetti: il sistema permette l'aggiornamento del runtime attraverso pacchetti ufficiali, disponibili presso il portale ubiquity.asem.it, che possono essere installati localmente. UBIQUITY permette la distribuzione degli aggiornamenti ai dispositivi remoti tramite tecnologia Over-the-Air (OTA), programmati dall'amministratore tramite l'interfaccia di gestione consentendo di pianificare e lanciare gli update in modo sicuro e centralizzato. <br><em>Rif.: UBIQUITY Security Architecture White Paper, UBIQUITY Online Help</em>.",
+            EN: "Protected Updates: The system allows runtime updating via official packages, available on the ubiquity.asem.it portal, which can be installed locally. UBIQUITY enables Over-the-Air (OTA) update distribution to remote devices, scheduled by the administrator via the management interface, allowing secure and centralized update deployment. <br><em>Ref.: UBIQUITY Security Architecture White Paper, UBIQUITY Online Help</em>."
+        },
+        UbqDomainPrtect: {
+            IT: "Controllo e Protezione dell'Asset: in UBIQUITY, il dispositivo è ancorato al dominio al quale è registrato e un semplice ripristino ai dati di fabbrica non è sufficiente per scollegarlo. Per spostare o registrare l'hardware su un dominio diverso è indispensabile che un amministratore lo rimuova esplicitamente dal dominio originario. Questo garantisce il controllo esclusivo sui propri nodi di teleassistenza, prevenendo furti o riutilizzi non autorizzati. <br><em>Rif.: UBIQUITY Online Help</em>.",
+            EN: "Asset Control and Protection: In UBIQUITY, the device is anchored to its registered domain, and a simple factory data reset is insufficient to disconnect it. Moving or registering the hardware to a different domain strictly requires an administrator to explicitly remove it from the original domain. This guarantees exclusive control over teleassistance nodes, preventing unauthorized theft or reuse. <br><em>Ref.: UBIQUITY Online Help</em>."
+        },
+        UbqOtaUpdateRem: {
+            IT: "Aggiornamenti OTA: UBIQUITY permette la distribuzione degli aggiornamenti ai dispositivi remoti tramite tecnologia Over-the-Air (OTA), programmati dall'amministratore tramite l'interfaccia di gestione consentendo di pianificare e lanciare gli update in modo sicuro e centralizzato. <br><em>Rif.: UBIQUITY Online Help</em>.",
+            EN: "OTA Updates: UBIQUITY enables Over-the-Air (OTA) update distribution to remote devices, scheduled by the administrator via the management interface, allowing secure and centralized update deployment. <br><em>Ref.: UBIQUITY Online Help</em>."
+        },
+        OpxMfaAuthentic: {
+            IT: "Autenticazione Forte (MFA) nell'HMI: All'interno dell'applicazione FactoryTalk Optix, è possibile implementare logiche di Multi-Factor Authentication avanzate sfruttando le capacità di scripting e l'integrazione di pacchetti .NET. Questo consente di generare codici QR e validare One-Time Passcodes (OTP) per proteggere operazioni critiche direttamente a bordo macchina. <br><em>Rif.: FactoryTalk Optix Help, Repository GitHub FactoryTalk-Optix</em>.",
+            EN: "Strong Authentication (MFA) in HMI: Within the FactoryTalk Optix application, advanced Multi-Factor Authentication logic can be implemented utilizing scripting capabilities and .NET package integration. This allows QR code generation and One-Time Passcode (OTP) validation to protect critical operations directly on the machine. <br><em>Ref.: FactoryTalk Optix Help, FactoryTalk-Optix GitHub Repository</em>."
+        },
+        OpxPermissnMngt: {
+            IT: "Gestione permessi nell'HMI: Il runtime di FactoryTalk Optix supporta l'integrazione con server LDAP/AD e OAuth2 per l'autenticazione degli utenti. Questa funzione permette di mappare i gruppi definiti nel server IT direttamente ai ruoli e ai permessi del progetto HMI a runtime, assicurando una gestione centralizzata della sicurezza (RBAC).",
+            EN: "Permission Management in HMI: The FactoryTalk Optix runtime supports integration with LDAP/AD and OAuth2 servers for user authentication. This function allows mapping groups defined in the IT server directly to HMI project roles and permissions at runtime, ensuring centralized security management (RBAC)."
+        },
+        OpxDisasterRecv: {
+            IT: "Gestione Configurazione Optix: Il runtime di FactoryTalk Optix permette di gestire il backup e il ripristino dell’applicativo tramite supporti esterni (USB/SD), facilitando il disaster recovery dell'interfaccia HMI.",
+            EN: "Optix Configuration Management: The FactoryTalk Optix runtime allows application backup and restore via external media (USB/SD), facilitating HMI interface disaster recovery."
+        }
+    };
+    
+    const SecCheck = {
+        GenProcessCertf: {
+            IT: "Verifica certificazioni: Fornire al cliente finale il certificato IEC 62443-4-1 per dimostrare l'uso di componenti \"secure-by-design\".",
+            EN: "Certification Verification: Provide the end customer with the IEC 62443-4-1 certificate to demonstrate the use of \"secure-by-design\" components."
+        },
+        GenSecurityAlrt: {
+            IT: "Iscrizione Alert: Monitorare regolarmente la pagina <a href=\"https://www.rockwellautomation.com/en-us/trust-center/security-advisories.html\" target=\"_blank\" style=\"color: #0056b3; text-decoration: underline;\">Security Advisories</a> o iscriversi agli alert disponibili sul portale Rockwell Automation Trust Center per ricevere notifiche su vulnerabilità o patch.",
+            EN: "Alert Subscription: Regularly monitor the <a href=\"https://www.rockwellautomation.com/en-us/trust-center/security-advisories.html\" target=\"_blank\" style=\"color: #0056b3; text-decoration: underline;\">Security Advisories</a> page or subscribe to alerts available on the Rockwell Automation Trust Center portal to receive notifications about vulnerabilities or patches."
+        },
+        GenIncidentRepo: {
+            IT: "Canale di segnalazione: Definire una procedura interna per informare l'end-user in caso di incidente rilevato sulla piattaforma.",
+            EN: "Reporting Channel: Define an internal procedure to inform the end-user in case an incident is detected on the platform."
+        },
+        GenPointContact: {
+            IT: "Punto di Contatto: Inserire <em>secure@ra.rockwell.com</em> nelle procedure aziendali come riferimento per segnalare problemi di sicurezza.",
+            EN: "Point of Contact: Include <em>secure@ra.rockwell.com</em> in corporate procedures as the reference point for reporting security issues."
+        },
+        GenLocalRespPln: {
+            IT: "Piano di risposta locale: Documentare come isolare il dispositivo dalla rete in caso di rilevamento di attività sospette.",
+            EN: "Local Response Plan: Document how to isolate the device from the network if suspicious activity is detected."
+        },
+        GenDisasterRecv: {
+            IT: "Piano di Disaster Recovery: Documentare la procedura di sostituzione rapida del dispositivo per minimizzare i tempi di fermo macchina, includendo i passaggi per ripristinare eventuali backup e recuperare la connettività di rete.",
+            EN: "Disaster Recovery Plan: Document the rapid device replacement procedure to minimize machine downtime, including steps to restore any backups and recover network connectivity."
+        },
+        EmbSystemManagr: {
+            IT: "Configurazione System Manager: Cambiare le password di default per entrambi i profili (Admin/User) e utilizzare il profilo con privilegi ridotti per le normali attività di manutenzione in campo. Valutare la disattivazione totale dell'accesso a System Manager una volta terminata la messa in servizio per prevenire manomissioni non autorizzate",
+            EN: "System Manager Configuration: Change default passwords for both profiles (Admin/User) and use the lower-privileged profile for standard field maintenance activities. Consider fully disabling System Manager access once commissioning is complete to prevent unauthorized tampering."
+        },
+        EmbFirmwareUpdt: {
+            IT: "Policy di aggiornamento: Definire un piano periodico per la verifica e l'installazione dei nuovi aggiornamenti, manualmente o via OTA se disponibile, minimizzando i tempi di esposizione a vulnerabilità note.",
+            EN: "Update Policy: Define a periodic plan for checking and installing new updates, manually or via OTA if available, minimizing exposure time to known vulnerabilities."
+        },
+        UbqMfaRemoteAcc: {
+            IT: "Abilitazione MFA: in UBIQUITY forzare l'uso della 2FA per tutti gli account amministrativi e tecnici che hanno accesso remoto ai dispositivi.",
+            EN: "MFA Enablement: In UBIQUITY, force the use of 2FA for all administrative and technical accounts with remote access to devices."
+        },
+        UbqPermissnMngt: {
+            IT: "Minimo Privilegio: in UBIQUITY sfruttare la struttura gerarchica per assegnare permessi granulari, limitando la visibilità dei dispositivi in base al ruolo dell'utente.",
+            EN: "Least Privilege: In UBIQUITY, utilize the hierarchical structure to assign granular permissions, limiting device visibility based on user roles."
+        },
+        UbqIntgrFirewal: {
+            IT: "Configurazione Firewall: in UBIQUITY definire le regole del firewall integrato (Whitelist) per bloccare tutto il traffico VPN non strettamente necessario ai protocolli di automazione e restringere l'accesso remoto solo ai dispositivi OT necessari, bloccando il resto della sottorete.",
+            EN: "Firewall Configuration: In UBIQUITY, define integrated firewall rules (Whitelist) to block all VPN traffic not strictly necessary for automation protocols and restrict remote access only to required OT devices, blocking the rest of the subnet."
+        },
+        UbqAuditLogImmt: {
+            IT: "Revisione Log: Programmare una revisione periodica degli Audit Log forniti da UBIQUITY per monitorare attività sospette.",
+            EN: "Log Review: Schedule a periodic review of the Audit Logs provided by UBIQUITY to monitor suspicious activity."
+        },
+        UbqCloudResilnc: {
+            IT: "Continuità Operativa: Documentare le procedure di emergenza per l'assistenza alle macchine in caso di indisponibilità temporanea dei servizi cloud.",
+            EN: "Business Continuity: Document emergency procedures for machine assistance in the event of temporary cloud service unavailability."
+        },
+        UbqLocalApprvSw: {
+            IT: "Autorizzazione Locale: Implementare la funzionalità \"Approva accesso remoto\" di UBIQUITY per permettere all'operatore locale il controllo esplicito sull'apertura del canale di assistenza.",
+            EN: "Local Authorization: Implement the UBIQUITY \"Approve remote access\" feature to give the local operator explicit control over opening the assistance channel."
+        },
+        UbqLocalApprvHw: {
+            IT: "Autorizzazione Locale: Implementare l'uso dei Digital Input per dare all'end-user il controllo fisico finale sull'apertura del canale di assistenza di UBIQUITY.",
+            EN: "Local Authorization: Implement the use of Digital Inputs to give the end-user ultimate physical control over opening the UBIQUITY assistance channel."
+        },
+        UbqPcsFileInteg: {
+            IT: "Integrità file: Fornire agli end-user solo pacchetti software scaricati dai canali ufficiali e firmati digitalmente.",
+            EN: "File Integrity: Provide end-users exclusively with software packages downloaded from official channels and digitally signed."
+        },
+        UbqDomainPrtect: {
+            IT: "Binding del dispositivo: Assicurarsi che il dispositivo sia correttamente registrato nel dominio UBIQUITY per attivare il controllo e la protezione dell'asset.",
+            EN: "Device Binding: Ensure the device is properly registered in the UBIQUITY domain to activate asset control and protection."
+        },
+        UbqPcsIdentBkup: {
+            IT: "Backup dell'Identità: Salvare e conservare in un luogo sicuro il file auth.bin e la configurazione del runtime UBIQUITY, per ridurre i tempi di ripristino.",
+            EN: "Identity Backup: Save and securely store the auth.bin file and the UBIQUITY runtime configuration to reduce recovery times."
+        },
+        PcsFirmwareUpdt: {
+            IT: "Piano di aggiornamento: Definire un piano periodico per la verifica e l'installazione dei nuovi aggiornamenti BIOS/UEFI e dei driver forniti ufficialmente da ASEM per garantire la protezione contro minacce a livello hardware.",
+            EN: "Update Plan: Define a periodic plan for checking and installing new BIOS/UEFI updates and drivers officially provided by ASEM to ensure protection against hardware-level threats."
+        },
+        PcsSystemHarden: {
+            IT: "Hardening del Sistema Operativo: Implementare policy di controllo accessi robuste (MFA, password complesse) a livello di OS per proteggere l'accesso locale al PC.",
+            EN: "OS Hardening: Implement robust access control policies (MFA, complex passwords) at the OS level to protect local access to the PC."
+        },
+        PcsDataEncryptn: {
+            IT: "Cifratura Dati: Sfruttare il modulo TPM 2.0 integrato per abilitare la crittografia completa delle unità disco e proteggere i dati a riposo.",
+            EN: "Data Encryption: Leverage the integrated TPM 2.0 module to enable full disk encryption and protect data at rest."
+        },
+        PcsUpdateMonitr: {
+            IT: "Monitoraggio Update: Verificare regolarmente la disponibilità di patch per driver o vulnerabilità hardware segnalate tramite i canali di supporto ASEM.",
+            EN: "Update Monitoring: Regularly verify the availability of patches for drivers or hardware vulnerabilities reported via ASEM support channels."
+        },
+        PcsLogManagemnt: {
+            IT: "Gestione Log: Configurare l'inoltro degli eventi di sicurezza del sistema operativo (es. tramite Syslog o Event Forwarding) verso un server centrale per il monitoraggio continuo.",
+            EN: "Log Management: Configure the forwarding of operating system security events (e.g., via Syslog or Event Forwarding) to a central server for continuous monitoring."
+        },
+        PcsHwMonitoring: {
+            IT: "Monitoraggio Hardware: Utilizzare strumenti di diagnostica hardware per prevenire guasti improvvisi che potrebbero compromettere la disponibilità.",
+            EN: "Hardware Monitoring: Use hardware diagnostic tools to prevent sudden failures that could compromise availability."
+        },
+        OpxAppValidaton: {
+            IT: "Validazione applicativo Optix: Verificare che l'applicazione sviluppata in FactoryTalk Optix sia distribuita tramite canali protetti, sfruttando le funzioni di firma digitale previste dall'ambiente di sviluppo.",
+            EN: "Optix Application Validation: Verify that the application developed in FactoryTalk Optix is distributed through secure channels, leveraging the digital signature features provided by the development environment."
+        },
+        OpxPermissnMngt: {
+            IT: "Autorizzazione Applicativa: Configurare il mapping dei ruoli tramite LDAP o OAuth2 in Optix per eliminare l'uso di credenziali condivise a bordo macchina.",
+            EN: "Application Authorization: Configure role mapping via LDAP or OAuth2 in Optix to eliminate the use of shared credentials on the machine."
+        },
+        OpxAppBackupPrj: {
+            IT: "Backup applicativo: Mantenere una copia aggiornata del progetto FactoryTalk Optix in un luogo sicuro e ridondato, esterno al dispositivo.",
+            EN: "Application Backup: Maintain an up-to-date copy of the FactoryTalk Optix project in a secure, redundant location external to the device."
+        },
+        OpxHmiRestorePr: {
+            IT: "Ripristino HMI: Documentare la procedura di caricamento del progetto Optix per minimizzare i tempi di fermo macchina.",
+            EN: "HMI Restoration: Document the Optix project loading procedure to minimize machine downtime."
+        }
+    };
+
+    const docLinks = {
+        "RA IEC 62443-4-1": "https://literature.rockwellautomation.com/idc/groups/literature/documents/ct/csm-ct001_-en-e.pdf",
+        "RA Product Security Incident Response Framework": "https://literature.rockwellautomation.com/idc/groups/literature/documents/wp/ra-wp004_-en-p.pdf",
+        "RA Security Governance Overview": "https://literature.rockwellautomation.com/idc/groups/literature/documents/wp/ra-wp003_-en-p.pdf",
+        "RA Secure Development Lifecycle Process Overview": "https://literature.rockwellautomation.com/idc/groups/literature/documents/ct/qms-ct027_-en-e.pdf",		
+        "RA Security Advisories": "https://www.rockwellautomation.com/en-us/trust-center/security-advisories.html",
+        "UBIQUITY Security Architecture White Paper": "https://ubiquity.asem.it/downloads/Documents/UbiquitySecurityArchitecture.pdf",
+        "UBIQUITY Online Help": "https://ubiquity.asem.it/Help/it/",
+        "OptixPanel Standard User Manual": "https://literature.rockwellautomation.com/idc/groups/literature/documents/um/2800s-um001_-en-p.pdf",
+        "OptixPanel Technical Data": "https://literature.rockwellautomation.com/idc/groups/literature/documents/td/2800-td001_-en-p.pdf",
+        "OptixEdge User Manual": "https://literature.rockwellautomation.com/idc/groups/literature/documents/um/2800e-um001_-en-p.pdf",
+        "OptixEdge Technical Data": "https://literature.rockwellautomation.com/idc/groups/literature/documents/td/2800e-td001_-en-p.pdf",
+        "RK2x System Manager User Guide": "https://literature.rockwellautomation.com/idc/groups/literature/documents/um/2800e-um007_-en-p.pdf",
+        "RK2x User Manual": "https://www.asem.it/api/drive/get-file?id_file=3510&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhbHYiOiJzY3JpcHQiLCJpYXQiOjE3NDM2NjU5MjIsIm5iZiI6MTc0MzY2NTkyMn0.6Z1xQATh0pEnEbUREcr-ZsPDgUnL-Fm7tbhtzak6J_I",
+        "FactoryTalk Optix Help": "https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html",
+        "Repository GitHub FactoryTalk-Optix": "https://github.com/factorytalk-optix",
+        "Security Design Guidelines for ASEM 6300": "https://literature.rockwellautomation.com/idc/groups/literature/documents/rm/secure-rm001_-en-p.pdf"
+    };
+    
+    // --- LETTURA AUTOMATICA VERSIONE E DATA DAL FILE ---
+    function getFileInfo() {
+        try {
+            const filename = decodeURIComponent(window.location.pathname.split('/').pop());
+            const match = filename.match(/v\d+(?:\.\d+)?/i); 
+            const ver = match ? match[0] : "vX";
+            const date = new Date(document.lastModified).toLocaleDateString('it-IT');
+            return { ver, date };
+        } catch (e) {
+            return { ver: "vX", date: "N/D" };
+        }
+    }
+    const fileInfo = getFileInfo();
+    
+    
+    function hideResults() {
+        const resultContainer = document.getElementById('checklist-result');
+        resultContainer.style.display = 'none';
+        resultContainer.innerHTML = '';
+    }
+
+    // --- CAMBIO LINGUA UI ---
+    function setLanguage(lang) {
+        currentLang = lang;
+        document.getElementById('btn-it').classList.toggle('active', lang === 'IT');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'EN');        
+        document.getElementById('ui-title').innerHTML = UILabels[lang].title;
+        document.getElementById('ui-disc-title').innerHTML = UILabels[lang].discTitle;
+        document.getElementById('ui-disc-text').innerHTML = UILabels[lang].discText;
+        document.getElementById('ui-hw-label').innerHTML = UILabels[lang].hwLabel;
+        document.getElementById('ui-sw-label').innerHTML = UILabels[lang].swLabel;
+        document.getElementById('ui-btn-generate').innerHTML = UILabels[lang].btnGenerate;
+        hideResults();
+    }
+
+    function updateUI() {
+        const hwRadio = document.querySelector('input[name="hw"]:checked');
+        if (!hwRadio) return;
+        
+        const hwSelected = hwRadio.value;
+        const swUbiquity = document.getElementById('sw-ubiquity');
+        const swOptix = document.getElementById('sw-optix');
+
+        swUbiquity.disabled = false;
+        swOptix.disabled = false;
+        swUbiquity.checked = false;
+        swOptix.checked = false;
+
+        hideResults();
+
+        if (hwSelected === 'RK2') {
+            swUbiquity.checked = true;
+            swUbiquity.disabled = true;
+            swOptix.disabled = true;
+        } else if (hwSelected === 'PANEL') {
+            swOptix.checked = true;
+            swOptix.disabled = true;
+        }
+    }
+
+    function applyStyles(text) {
+        let formatted = text.replace(/^([^:]+?)\s*:\s*/, '<strong>$1:</strong> ');
+        formatted = formatted.replace(/<em>(?:Rif\.|Ref\.):\s*(.*?)<\/em>/g, function(match, docsContent) {
+            let linkedDocs = docsContent.split(',').map(doc => {
+                let docName = doc.trim();
+                let url = docLinks[docName]; 
+                if (url && url !== "") {
+                    return `<a href="${url}" target="_blank" style="color: #0056b3; text-decoration: underline;">${docName}</a>`;
+                } else {
+                    return docName;
+                }
+            }).join(', ');
+            let prefix = match.includes('Rif.') ? 'Rif.' : 'Ref.';
+            return `<em>${prefix}: ${linkedDocs}</em>`;
+        });
+        return formatted;
+    }
+
+    // ==========================================
+    // CAPABILITY-BASED COMPOSITION ENGINE
+    // ==========================================
+    const normsCapabilities = {
+    
+        // ================== Norm 1 =====================
+        Norm1: [
+            { reqHw: 'ALL', 
+                SecurityBaseline: [SecBase.GenProcessCertf, SecBase.GenVulnAnalysis], 
+                SecurityChecklist: [SecCheck.GenProcessCertf] 
+            },
+            { reqHw: ['PC'], 
+                SecurityBaseline: [SecBase.PcsHwRootOfTrst], 
+                SecurityChecklist: [SecCheck.PcsFirmwareUpdt] 
+            },
+            { reqHw: ['PANEL', 'EDGE'], 
+                SecurityBaseline: [(hw, lang) => `${SecBase.EmbFirmwareUpdt[lang]} <br><em>${lang === 'IT' ? 'Rif.' : 'Ref.'}: ${hw === 'PANEL' ? 'OptixPanel Standard User Manual' : 'OptixEdge User Manual'}</em>.`], 
+                SecurityChecklist: [SecCheck.EmbFirmwareUpdt] 
+            },
+            { reqHw: ['RK2'], 
+                SecurityBaseline: [SecBase.EmbSecureBootRt], 
+                SecurityChecklist: [SecCheck.EmbFirmwareUpdt] 
+            },
+            { reqSw: ['UBIQUITY'], 
+                reqHw: 'ALL', 
+                SecurityBaseline: [SecBase.UbqCodeIntegrty] 
+            },
+            { reqSw: ['UBIQUITY'], 
+                reqHw: ['PC'], 
+                SecurityBaseline: [SecBase.UbqPcsUpdatePrt], 
+                SecurityChecklist: [SecCheck.UbqPcsFileInteg] 
+            },
+            { reqSw: ['UBIQUITY'], 
+                reqHw: ['PANEL', 'EDGE', 'RK2'], 
+                SecurityBaseline: [SecBase.UbqRuntimeIntgr, SecBase.UbqOtaUpdateRem], 
+                SecurityChecklist: [] 
+            },
+            { reqSw: ['UBIQUITY'], 
+                reqHw: ['PANEL', 'EDGE'], 
+                SecurityBaseline: [SecBase.EmbSecureBootRt] 
+            },
+            { reqSw: ['OPTIX'], 
+                reqHw: ['PC', 'PANEL', 'EDGE'], 
+                SecurityChecklist: [SecCheck.OpxAppValidaton] 
+            }
+        ],
+
+        // ================== Norm 2 =====================
+        Norm2: [
+            { reqHw: ['PC'], 
+                SecurityBaseline: [SecBase.PcsTpmSecureHdw, SecBase.PcsUefiBootProt, SecBase.PcsLocalAuthPwd], 
+                SecurityChecklist: [SecCheck.PcsSystemHarden, SecCheck.PcsDataEncryptn] 
+            },
+            { reqHw: ['PANEL', 'EDGE', 'RK2'], 
+                SecurityBaseline: [(hw, lang) => `${SecBase.EmbSystemManagr[lang]} <br><em>${lang === 'IT' ? 'Rif.' : 'Ref.'}: ${hw === 'PANEL' ? 'OptixPanel Standard User Manual' : hw === 'EDGE' ? 'OptixEdge User Manual' : 'RK2x System Manager User Guide'}</em>.`], 
+                SecurityChecklist: [SecCheck.EmbSystemManagr] 
+            },
+            { reqSw: ['UBIQUITY'], 
+                reqHw: 'ALL', 
+                SecurityBaseline: [SecBase.UbqMfaRemoteAcc, SecBase.UbqPermissnMngt, SecBase.UbqIntgrFirewal, SecBase.UbqOutboundArch, SecBase.UbqE2eEncrypton], 
+                SecurityChecklist: [SecCheck.UbqMfaRemoteAcc, SecCheck.UbqPermissnMngt, SecCheck.UbqIntgrFirewal] 
+            },
+            { reqSw: ['UBIQUITY'], 
+                reqHw: ['PC', 'PANEL'], 
+                SecurityBaseline: [(hw, lang) => `${SecBase.UbqLocalApprvSw[lang]} <br><em>${lang === 'IT' ? 'Rif.' : 'Ref.'}: UBIQUITY Online Help${hw === 'PANEL' ? ', FactoryTalk Optix Help' : ''}</em>.`], 
+                SecurityChecklist: [SecCheck.UbqLocalApprvSw] 
+            },
+            { reqSw: ['UBIQUITY'], 
+                reqHw: ['EDGE', 'RK2'], 
+                SecurityBaseline: [(hw, lang) => `${SecBase.UbqLocalApprvHw[lang]} <br><em>${lang === 'IT' ? 'Rif.' : 'Ref.'}: UBIQUITY Online Help, ${hw === 'EDGE' ? 'OptixEdge User Manual' : 'RK2x User Manual'}</em>.`], 
+                SecurityChecklist: [SecCheck.UbqLocalApprvHw] 
+            },
+            { reqSw: ['UBIQUITY'], 
+                reqHw: ['PANEL', 'EDGE', 'RK2'], 
+                SecurityBaseline: [SecBase.UbqDomainPrtect], 
+                SecurityChecklist: [SecCheck.UbqDomainPrtect] 
+            },
+            { reqSw: ['OPTIX'], 
+                reqHw: ['PC', 'PANEL', 'EDGE'], 
+                SecurityBaseline: [SecBase.OpxMfaAuthentic, (hw, lang) => `${SecBase.OpxPermissnMngt[lang]} <br><em>${lang === 'IT' ? 'Rif.' : 'Ref.'}: ${hw === 'PANEL' ? 'OptixPanel Standard User Manual' : hw === 'EDGE' ? 'OptixEdge User Manual' : 'FactoryTalk Optix Help'}</em>.`], 
+                SecurityChecklist: [SecCheck.OpxPermissnMngt] 
+            }
+        ],
+
+        // ================== Norm 3 =====================
+        Norm3: [
+            { reqHw: 'ALL', 
+                SecurityBaseline: [SecBase.GenPsirtFramwrk] 
+            },
+            { reqHw: ['PC', 'PANEL', 'EDGE'], 
+                SecurityBaseline: [SecBase.GenVulnManagemt] 
+            },
+            { reqHw: ['PANEL', 'EDGE', 'RK2'], 
+                SecurityBaseline: [(hw, lang) => `${SecBase.EmbAntiTamperng[lang]} <br><em>${lang === 'IT' ? 'Rif.' : 'Ref.'}: ${hw === 'PANEL' ? 'OptixPanel Standard User Manual' : hw === 'EDGE' ? 'OptixEdge User Manual' : 'RK2x User Manual'}</em>.`], 
+                SecurityChecklist: [SecCheck.GenSecurityAlrt, SecCheck.GenIncidentRepo, SecCheck.GenPointContact, SecCheck.GenLocalRespPln] 
+            },
+            { reqHw: ['PC'], 
+                SecurityChecklist: [SecCheck.PcsUpdateMonitr, SecCheck.GenPointContact] 
+            },
+            { reqSw: ['UBIQUITY'], reqHw: 'ALL', 
+                SecurityBaseline: [SecBase.GenSocMonitorng, SecBase.UbqBrutForcePrt] 
+            }
+        ],
+
+        // ================== Norm 4 =====================
+        Norm4: [
+            { reqHw: ['PC'], 
+                SecurityBaseline: [SecBase.PcsHwReliabilty, SecBase.PcsSyslogMonitr], 
+                SecurityChecklist: [SecCheck.GenDisasterRecv, SecCheck.PcsLogManagemnt, SecCheck.PcsHwMonitoring] 
+            },
+            { reqHw: ['PANEL', 'EDGE', 'RK2'], 
+                SecurityBaseline: [
+                    (hw, lang) => `${SecBase.EmbHwReliabilty[lang]} <br><em>${lang === 'IT' ? 'Rif.' : 'Ref.'}: ${hw === 'PANEL' ? 'OptixPanel Technical Data' : hw === 'EDGE' ? 'OptixEdge Technical Data' : 'UBIQUITY Online Help, RK2x User Manual'}</em>.`, 
+                    (hw, lang) => `${SecBase.EmbFactoryReset[lang]} <br><em>${lang === 'IT' ? 'Rif.' : 'Ref.'}: ${hw === 'PANEL' ? 'OptixPanel Standard User Manual' : hw === 'EDGE' ? 'OptixEdge User Manual' : 'RK2x User Manual'}</em>.`
+                ], 
+                SecurityChecklist: [SecCheck.GenDisasterRecv] 
+            },
+            { reqSw: ['UBIQUITY'], 
+                reqHw: 'ALL', 
+                SecurityBaseline: [SecBase.UbqAuditLogImmt, SecBase.UbqCloudResilnc], 
+                SecurityChecklist: [SecCheck.UbqAuditLogImmt, SecCheck.UbqCloudResilnc] 
+            },
+            { reqSw: ['UBIQUITY'], 
+                reqHw: ['PC'], 
+                SecurityBaseline: [SecBase.UbqPcsIdentBkup], 
+                SecurityChecklist: [SecCheck.UbqPcsIdentBkup] 
+            },
+            { reqSw: ['OPTIX'], 
+                reqHw: ['PC', 'PANEL', 'EDGE'], 
+                SecurityBaseline: [(hw, lang) => `${SecBase.OpxDisasterRecv[lang]} <br><em>${lang === 'IT' ? 'Rif.' : 'Ref.'}: ${hw === 'PANEL' ? 'OptixPanel Standard User Manual' : hw === 'EDGE' ? 'OptixEdge User Manual' : 'FactoryTalk Optix Help'}</em>.`], 
+                SecurityChecklist: [SecCheck.OpxAppBackupPrj, SecCheck.OpxHmiRestorePr] 
+            }
+        ]   
+    };
+    
+    function buildDataObj(hwSelected, swSelected, lang) {
+        const dataObj = {
+            Norm1: { title: NormTitles[lang].Norm1, norma: Statement[lang].Norm1, SecurityBaseline: [], SecurityChecklist: [] },
+            Norm2: { title: NormTitles[lang].Norm2, norma: Statement[lang].Norm2, SecurityBaseline: [], SecurityChecklist: [] },
+            Norm3: { title: NormTitles[lang].Norm3, norma: Statement[lang].Norm3, SecurityBaseline: [], SecurityChecklist: [] },
+            Norm4: { title: NormTitles[lang].Norm4, norma: Statement[lang].Norm4, SecurityBaseline: [], SecurityChecklist: [] }
+        };
+
+        for (const [categoryKey, rules] of Object.entries(normsCapabilities)) {
+            rules.forEach(rule => {
+                const matchHw = rule.reqHw === 'ALL' || rule.reqHw.includes(hwSelected);
+                const matchSw = !rule.reqSw || rule.reqSw.every(sw => swSelected.includes(sw));
+
+                if (matchHw && matchSw) {
+                    if (rule.SecurityBaseline) {
+                        rule.SecurityBaseline.forEach(item => {
+                            let text = typeof item === 'function' ? item(hwSelected, lang) : item[lang];
+                            dataObj[categoryKey].SecurityBaseline.push(text);
+                        });
+                    }
+                    if (rule.SecurityChecklist) {
+                        rule.SecurityChecklist.forEach(item => {
+                            let text = typeof item === 'function' ? item(hwSelected, lang) : item[lang];
+                            dataObj[categoryKey].SecurityChecklist.push(text);
+                        });
+                    }
+                }
+            });
+        }
+
+        return dataObj;
+    }
+
+    function generateChecklist() {
+        const lang = currentLang;
+
+        const hwRadio = document.querySelector('input[name="hw"]:checked');
+        const hwSelected = hwRadio.value;
+        const hwLabel = hwRadio.parentNode.textContent.trim();
+
+        const ubiqChecked = document.getElementById('sw-ubiquity').checked;
+        const optixChecked = document.getElementById('sw-optix').checked;
+        
+        const swSelected = [];
+        const swLabels = [];
+        if (ubiqChecked) { swSelected.push('UBIQUITY'); swLabels.push("UBIQUITY"); }
+        if (optixChecked) { swSelected.push('OPTIX'); swLabels.push("FactoryTalk Optix"); }
+
+        const dataObj = buildDataObj(hwSelected, swSelected, lang);
+        
+        let configText = hwLabel;
+        if (swLabels.length > 0) {
+            configText += " + " + swLabels.join(" + ");
+        }
+
+        const container = document.getElementById('checklist-result');
+        container.innerHTML = ''; 
+        
+        const headerDiv = document.createElement('div');
+        headerDiv.className = 'report-header';
+        headerDiv.innerHTML = `
+            <h2 style="color: #0056b3; margin-bottom: 25px; font-size: 1.6em; text-align: center;">
+                ${Labels[lang].ReportTitle}<br> ${configText}
+            </h2>
+            <div style="font-size: 0.95em; line-height: 1.5; text-align: justify; padding: 15px; border-left: 4px solid #0056b3; background-color: #f8f9fa; margin-bottom: 35px; border-radius: 6px;">
+                <strong>${Labels[lang].IntroTitle}</strong><br>
+                ${Labels[lang].IntroText}
+            </div>
+        `;
+        container.appendChild(headerDiv);
+
+        for (const [categoryKey, categoryData] of Object.entries(dataObj)) {
+            const catDiv = document.createElement('div');
+            catDiv.className = 'category';
+            
+            const title = document.createElement('h3');
+            title.textContent = categoryData.title;
+            catDiv.appendChild(title);
+
+            const normaDiv = document.createElement('div');
+            normaDiv.className = 'info-box norma-box';
+            normaDiv.innerHTML = `<strong>${Labels[lang].NormaTitle}</strong><br><span>${categoryData.norma}</span>`;
+            catDiv.appendChild(normaDiv);
+
+            const asemDiv = document.createElement('div');
+            asemDiv.className = 'info-box asem-box';
+            let asemHtml = `<strong>${Labels[lang].AsemTitle}</strong><ul>`;
+            categoryData.SecurityBaseline.forEach(point => {
+                asemHtml += `<li>${applyStyles(point)}</li>`;
+            });
+            asemHtml += `</ul>`;
+            asemDiv.innerHTML = asemHtml;
+            catDiv.appendChild(asemDiv);
+
+            const checkTitle = document.createElement('span');
+            checkTitle.className = 'checklist-title';
+            checkTitle.textContent = Labels[lang].ChecklistTitle;
+            catDiv.appendChild(checkTitle);
+
+            categoryData.SecurityChecklist.forEach((itemText, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'check-item';
+                
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = `chk-${categoryKey}-${index}`;
+
+                const label = document.createElement('label');
+                label.setAttribute('for', checkbox.id);
+                label.innerHTML = `<span>${applyStyles(itemText)}</span>`;
+
+                itemDiv.appendChild(checkbox);
+                itemDiv.appendChild(label);
+                catDiv.appendChild(itemDiv);
+            });
+
+            container.appendChild(catDiv);
+        }
+        
+        const footerDisclaimer = document.createElement('div');
+        footerDisclaimer.style.marginTop = "50px";
+        footerDisclaimer.style.paddingTop = "20px";
+        footerDisclaimer.style.borderTop = "1px solid #ccc";
+        footerDisclaimer.style.fontSize = "0.85em";
+        footerDisclaimer.style.color = "#666";
+        footerDisclaimer.style.lineHeight = "1.4";
+        footerDisclaimer.style.textAlign = "justify";
+        
+        footerDisclaimer.innerHTML = `
+            <strong>${Labels[lang].LegalTitle}</strong><br>
+            ${Labels[lang].LegalText}
+        `;
+        
+        container.appendChild(footerDisclaimer);
+
+        const versionFooter = document.createElement('div');
+        versionFooter.style.marginTop = "15px";
+        versionFooter.style.textAlign = "right"; 
+        versionFooter.style.fontSize = "0.85em";
+        versionFooter.style.color = "#888";
+        versionFooter.innerHTML = `${fileInfo.ver} - ${fileInfo.date}`;
+        container.appendChild(versionFooter);
+
+        const printBtn = document.createElement('button');
+        printBtn.className = 'btn-print';
+        printBtn.innerHTML = Labels[lang].BtnPrint;
+        printBtn.onclick = function() { window.print(); };
+        container.appendChild(printBtn);
+        
+        container.style.display = 'block';
+        container.classList.add('fade-in');
+        setTimeout(() => {
+            container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);    
+    }
+
+
+    window.onload = function() {
+        setLanguage('IT');
+        updateUI();
+    };
+</script>
+</body>
+</html>

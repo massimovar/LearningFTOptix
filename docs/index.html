@@ -105,7 +105,7 @@
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 48px 24px;
       animation: fadeIn 0.5s ease-out;
@@ -415,6 +415,7 @@
           <button id="tab-button-examples" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-examples" onclick="switchTab(this,'tab-examples')">💡 Examples</button>
           <button id="tab-button-docker" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-docker" onclick="switchTab(this,'tab-docker')">🐳 FTOptix on Docker</button>
           <button id="tab-button-hw" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-hw" onclick="switchTab(this,'tab-hw')">🖥️ Hardware</button>
+          <button id="tab-button-cyber" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-cyber" onclick="switchTab(this,'tab-cyber')">🔒 Cyber Security</button>
         </nav>
       </div>
 
@@ -531,6 +532,19 @@
             <h3>OptixEdge</h3>
             <ul>
               <li><a href="chapters/OptixEdge.html">OptixEdge deep dive</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Panel: Cyber Security ── -->
+      <div id="tab-cyber" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-button-cyber" hidden>
+        <div class="nav-grid">
+          <div class="nav-card">
+            <h3>Cyber Security Regulations</h3>
+            <ul>
+              <li><a href="pdf/Nuove_normative_CyberSecurity_Customer_v4.pdf">Cyber Security Regulations Overview</a><br><small>Summary of new cyber security regulations affecting industrial customers</small></li>
+              <li><a href="pdf/Nuove_normative_NI2_GuidaChecklist_v1.0.html">NIS2 Compliance Checklist</a><br><small>Step-by-step guide and checklist for NIS2 directive compliance</small></li>
             </ul>
           </div>
         </div>
