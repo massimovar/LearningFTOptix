@@ -150,52 +150,22 @@
       margin: 40px 0;
     }
 
-    /* ── News block — single-tile carousel ── */
-    .news-section {
-      position: relative; overflow: hidden;
+    /* ── Quick Links ── */
+    .quick-links {
       margin-bottom: 32px; padding: 24px;
       border: 1px solid var(--border); border-left: 4px solid var(--accent);
       border-radius: var(--radius); background: var(--bg-card); box-shadow: var(--card-shadow);
     }
-    .news-section::before {
-      content: ""; position: absolute;
-      width: 200px; height: 200px; top: -100px; right: -80px;
-      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-      pointer-events: none;
+    .quick-links h2 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+    .quick-links ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 12px; }
+    .quick-links li { display: inline-flex; }
+    .quick-links a {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 18px; border: 1px solid var(--border); border-radius: 24px;
+      background: var(--surface); color: var(--text); text-decoration: none;
+      font-size: 14px; font-weight: 500;
     }
-    .news-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
-    .news-header-left { display: flex; align-items: center; gap: 10px; }
-    .news-section h2 { font-size: 18px; font-weight: 600; }
-    .news-tag {
-      display: inline-block; padding: 4px 12px; border-radius: 999px;
-      font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
-      color: var(--accent); background: var(--accent-light); border: 1px solid transparent;
-    }
-    /* nav arrows */
-    .news-nav { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
-    .news-nav-btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 30px; height: 30px; border: 1px solid var(--border); border-radius: 50%;
-      background: var(--bg-card); color: var(--text-secondary);
-      font-size: 14px; cursor: pointer; transition: var(--transition-fast);
-      font-family: inherit; line-height: 1;
-    }
-    .news-nav-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
-    .news-counter { font-size: 12px; color: var(--muted); font-weight: 600; min-width: 32px; text-align: center; }
-    /* single card */
-    .news-card {
-      padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm);
-      background: var(--surface); font-size: 14px;
-      animation: fadeIn 0.25s ease-out;
-      line-height: 1.7;
-    }
-    .news-item-title { display: block; font-weight: 600; margin-bottom: 4px; color: var(--text); }
-    .news-item-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; font-weight: 500; }
-    .news-item-link::after { content: "→"; transition: transform var(--transition-fast); }
-    .news-item-link:hover::after { transform: translateX(3px); }
-    .news-card a { color: var(--accent); text-decoration: none; font-weight: 500; }
-    .news-card a:hover { text-decoration: underline; }
-    @media (max-width: 600px) { .news-header { align-items: flex-start; flex-direction: column; } }
+    .quick-links a:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
 
     /* ══════════════════════════════════════════
        TAB NAV — Apple-style platter
@@ -384,20 +354,14 @@
 
     <hr>
 
-    <!-- News — single-tile carousel -->
-    <section class="news-section" aria-labelledby="news-heading">
-      <div class="news-header">
-        <div class="news-header-left">
-          <h2 id="news-heading">News</h2>
-          <span class="news-tag">Latest</span>
-        </div>
-        <div class="news-nav" aria-label="News navigation">
-          <button class="news-nav-btn" id="newsPrev" aria-label="Previous news" onclick="newsStep(-1)">&#8592;</button>
-          <span class="news-counter" id="newsCounter">1 / 4</span>
-          <button class="news-nav-btn" id="newsNext" aria-label="Next news" onclick="newsStep(1)">&#8594;</button>
-        </div>
-      </div>
-      <div id="newsCard" class="news-card" role="region" aria-live="polite"></div>
+    <!-- Quick Links -->
+    <section class="quick-links" aria-labelledby="quick-links-heading">
+      <h2 id="quick-links-heading">Day-to-Day Essentials</h2>
+      <ul>
+        <li><a href="pdf/FactoryTalkOptix_TechnicalTraining.pdf">Complete Course</a></li>
+        <li><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet">NetLogic Cheat Sheet</a></li>
+        <li><a href="https://rockwellautomation.custhelp.com/app/home">RA Knowledge Base (need RA login)</a></li>
+      </ul>
     </section>
 
     <!-- ═══════════════════════════════════════════════
@@ -454,7 +418,7 @@
               <li><a href="pdf/FactoryTalkOptix_TechnicalTraining.pdf">Complete Course</a></li>
               <li><a href="chapters/Learning_material_Videos.html">Video Tutorials</a></li>
               <li><a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html">Online Help</a></li>
-              <li><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/netlogic-lifecycle.md">NetLogic lifecycle: master it for better performances.</a></li>
+              <li><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet">NetLogic Cheat Sheet</a></li>
             </ul>
           </div>
           <div class="nav-card">
@@ -647,73 +611,10 @@
       }
     })();
 
-    // ── News carousel ──
-    var newsItems = [
-      {
-        title: 'Added UI Performance Checklist',
-        body: 'New step-by-step debugging guide to diagnose and fix slow UI loading — covering NetLogic bottlenecks, node count, DynamicLinks, and rendering.',
-        linkText: 'Open Debugging &amp; Performance',
-        linkHref: 'chapters/Debugging.html'
-      },
-      {
-        title: 'Added NetLogic lifecycle reference',
-        body: 'Learn the complete lifecycle of NetLogics including initialization, execution, and disposal phases.',
-        linkText: 'View NetLogic lifecycle',
-        linkHref: 'https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/netlogic-lifecycle.md'
-      },
-      {
-        title: 'Added feature details for FTOptix release 1.7',
-        body: 'Discover what is new in the latest release notes and highlights.',
-        linkText: 'See latest releases',
-        linkHref: 'chapters/FTOptix_overview.html#latest-releases'
-      },
-      {
-        title: 'Added official Best practices reference',
-        body: 'New direct access to Rockwell Automation guidance for stronger project design.',
-        linkText: 'Open best practices',
-        linkHref: 'https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices.html'
-      }
-    ];
-
-    var newsIndex = 0;
-    var newsTimer;
-
-    function renderNews() {
-      var item = newsItems[newsIndex];
-      var card = document.getElementById('newsCard');
-      card.innerHTML =
-        '<span class="news-item-title">' + item.title + '</span>' +
-        item.body +
-        '<br><a class="news-item-link" href="' + item.linkHref + '">' + item.linkText + '</a>';
-      document.getElementById('newsCounter').textContent = (newsIndex + 1) + ' / ' + newsItems.length;
-    }
-
-    function newsStep(dir) {
-      newsIndex = (newsIndex + dir + newsItems.length) % newsItems.length;
-      renderNews();
-      resetNewsTimer();
-    }
-
-    function resetNewsTimer() {
-      clearInterval(newsTimer);
-      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        newsTimer = setInterval(function() { newsStep(1); }, 6000);
-      }
-    }
-
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.tab-nav .tab-btn').forEach(function(tab) {
         tab.addEventListener('keydown', handleTabKeydown);
       });
-
-      var newsCard = document.getElementById('newsCard');
-      newsCard.addEventListener('mouseenter', function() { clearInterval(newsTimer); });
-      newsCard.addEventListener('mouseleave', resetNewsTimer);
-      newsCard.addEventListener('focusin', function() { clearInterval(newsTimer); });
-      newsCard.addEventListener('focusout', resetNewsTimer);
-
-      renderNews();
-      resetNewsTimer();
     });
   </script>
 
