@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ubiquity New Releases</title>
+  <style>
+    :root {
+      --bg: #fafbfc; --bg-card: #ffffff; --text: #1a1a2e; --text-secondary: #4a5568;
+      --muted: #718096; --border: #e2e8f0; --accent: #0066cc; --accent-hover: #0052a3;
+      --accent-light: #e6f2ff; --surface: #f7fafc;
+      --card-shadow: 0 1px 3px rgba(0,0,0,.04), 0 1px 2px rgba(0,0,0,.06);
+      --radius: 12px; --radius-sm: 8px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1117; --bg-card: #161b22; --text: #e6edf3; --text-secondary: #8b949e;
+        --muted: #8b949e; --border: #30363d; --accent: #58a6ff; --accent-hover: #79b8ff;
+        --accent-light: #1a3a5c; --surface: #21262d;
+        --card-shadow: 0 1px 3px rgba(0,0,0,.2);
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7; font-size: 16px; padding: 48px 24px;
+    }
+    .container { max-width: 900px; margin: 0 auto; }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+    .subtitle { color: var(--muted); margin-bottom: 32px; }
+    .back-link { display: inline-block; margin-bottom: 24px; color: var(--accent); text-decoration: none; font-weight: 500; }
+    .back-link:hover { text-decoration: underline; }
+    .release { border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card);
+      padding: 24px; margin-bottom: 20px; box-shadow: var(--card-shadow); }
+    .release h2 { font-size: 20px; margin-bottom: 4px; color: var(--accent); }
+    .release .date { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+    .release ul { padding-left: 20px; }
+    .release li { margin-bottom: 6px; font-size: 14px; }
+    .release strong { color: var(--text); }
+    details { margin-top: 8px; }
+    summary { cursor: pointer; font-weight: 600; color: var(--accent); font-size: 14px; }
+    summary:hover { text-decoration: underline; }
+    .schedule { margin-top: 12px; padding: 12px; background: var(--surface); border-radius: var(--radius-sm); border: 1px solid var(--border); }
+    .schedule h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary); margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="back-link" href="../index.html">← Back to Home</a>
+    <h1>Ubiquity New Releases</h1>
+    <p class="subtitle">Release history for UBIQUITY secure remote access platform</p>
+
+    <!-- v14.4 -->
+    <div class="release">
+      <h2>v14.4</h2>
+      <div class="date">2026</div>
+      <details open>
+        <summary>Key Features &amp; Enhancements</summary>
+        <ul>
+          <li><strong>Local Web-Based Remote Desktop:</strong> Access and mirror HMI screens directly from any browser-enabled device on the local network without installing UBIQUITY Tools.</li>
+          <li><strong>Device Statistics Dashboard:</strong> Centralized visibility into device types, versions, and connection status for easier fleet monitoring.</li>
+          <li><strong>USB Device Configurator:</strong> Devices provisioned through USB using standardized System Manager JSON configuration files.</li>
+          <li><strong>Single Email, Multiple Domains:</strong> Authenticate across multiple domains using the same email account, including 2FA and external auth.</li>
+          <li><strong>Improved VPN Throughput:</strong> Enhanced virtual Ethernet adapter boosts VPN performance ~150% vs v14.3.</li>
+          <li><strong>Hidden Parent Folders:</strong> Subdomain users only see authorized resources.</li>
+          <li><strong>Improved MAC Address Handling:</strong> Physical MAC addresses consistently displayed, filtering out virtual/bridge interfaces.</li>
+          <li><strong>Infrastructure &amp; Scalability:</strong> Updated Access/Relay servers, migration to TLS 1.3.</li>
+          <li><strong>Kubernetes-Based Private Server:</strong> UBIQUITY Private Server now supports Kubernetes container architecture.</li>
+        </ul>
+      </details>
+    </div>
+
+    <!-- v14.3 -->
+    <div class="release">
+      <h2>v14.3</h2>
+      <div class="date">2025</div>
+      <details>
+        <summary>Key Features &amp; Enhancements</summary>
+        <ul>
+          <li><strong>VNC Support for Sub-devices:</strong> Integrated VNC client enables direct access to subdevices without external tools.</li>
+          <li><strong>User Invitation Enhancement:</strong> Invite users without UBIQUITY accounts; new management page.</li>
+          <li><strong>Least Privilege for Windows Runtime:</strong> Runtime operates with restricted privileges.</li>
+          <li><strong>Sub-device Copy/Paste:</strong> Duplicate sub-device configurations across runtime devices.</li>
+          <li><strong>Ethernet Interface Labels:</strong> IP addresses linked to Ethernet interfaces for clearer diagnostics.</li>
+          <li><strong>Quick Action Toolbar:</strong> Faster access to key functions, improved hover buttons and context menus.</li>
+          <li><strong>Member Of &amp; Show Permissions:</strong> Better visibility into user roles and permissions.</li>
+          <li><strong>French Language &amp; In-App News:</strong> French UI support and integrated news feed.</li>
+          <li><strong>SD/USB File Transfer on Embedded Devices:</strong> Explorer tab supports file management from SD/USB (fw 7.0+).</li>
+        </ul>
+        <div class="schedule">
+          <h4>Runtime Discontinuation Schedule</h4>
+          <ul>
+            <li><strong>May 2025:</strong> Runtimes &lt; 3 blocked</li>
+            <li><strong>Jun 2025:</strong> Warning for Runtimes &lt; 5</li>
+            <li><strong>Jul 2025:</strong> Control Center disconnects</li>
+            <li><strong>Mar 2026:</strong> Runtimes &lt; 5 blocked</li>
+            <li><strong>Apr 2026:</strong> Warning for Runtimes &lt; 8</li>
+            <li><strong>Oct 2026:</strong> Runtimes &lt; 8 blocked</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- v14.2 -->
+    <div class="release">
+      <h2>v14.2</h2>
+      <div class="date">2024</div>
+      <details>
+        <summary>Key Features &amp; Enhancements</summary>
+        <ul>
+          <li><strong>Infrastructure — Relay Servers:</strong> Improvements in relay server reliability and scaling.</li>
+          <li><strong>Platform — iOS App:</strong> New/updated Ubiquity iOS application with VPN feature.</li>
+          <li><strong>Platform — Localization:</strong> Added Italian, Spanish and German language support.</li>
+          <li><strong>Runtime — Least Privilege for Ubuntu22:</strong> Reduced runtime privileges for improved security.</li>
+          <li><strong>Runtime — Embedded Browser for Windows 10 IoT:</strong> Embedded browser support for Windows IoT.</li>
+          <li><strong>Runtime — Docker Container support:</strong> Dockerized runtime options for flexible deployment.</li>
+          <li><strong>Local Connection — UI Improvements:</strong> Better local connection experience.</li>
+          <li><strong>Ubiquity Manager — Login Improvement:</strong> Improved login flow and authentication handling.</li>
+        </ul>
+      </details>
+    </div>
+
+    <!-- v14.1 -->
+    <div class="release">
+      <h2>v14.1</h2>
+      <div class="date">2024</div>
+      <details>
+        <summary>Key Features &amp; Enhancements</summary>
+        <ul>
+          <li><strong>Web-Based Runtime UI:</strong> New UI for Windows/Linux with password protection.</li>
+          <li><strong>Windows 11 Support:</strong> Full compatibility with Windows 11.</li>
+          <li><strong>Local Connection on Ubuntu 22:</strong> LAN-based access now supported on Ubuntu 22.</li>
+          <li><strong>Chinese Localization:</strong> Chinese language added across Manager, Runtime, and Tools.</li>
+          <li><strong>Optimized Relay Server Selection:</strong> Improved VPN performance via smarter server selection.</li>
+          <li><strong>New SDK for VPN &amp; File Transfer:</strong> SDK + Web APIs enable secure remote access and file exchange.</li>
+        </ul>
+      </details>
+    </div>
+
+    <!-- v14 -->
+    <div class="release">
+      <h2>v14</h2>
+      <div class="date">2024</div>
+      <details>
+        <summary>Key Features &amp; Enhancements</summary>
+        <ul>
+          <li><strong>Sub-device Access:</strong> Manual definition and direct access to subnetwork devices via VPN and embedded browser.</li>
+          <li><strong>Invite User to Device:</strong> Invite domain users directly to devices with configurable expiration.</li>
+          <li><strong>UI Improvements:</strong> Reorganized contextual menus and enhanced search.</li>
+          <li><strong>.NET 8 Adoption:</strong> Manager, Tools, and Runtime updated to .NET 8.</li>
+          <li><strong>Mandatory Runtime Update:</strong> Devices running Runtime &lt; 3 blocked from server access.</li>
+        </ul>
+      </details>
+    </div>
+
+    <!-- v13.6 -->
+    <div class="release">
+      <h2>v13.6</h2>
+      <div class="date">2024</div>
+      <details>
+        <summary>Key Features &amp; Enhancements</summary>
+        <ul>
+          <li><strong>Device Discovery Tool:</strong> Simplified setup for RK2x routers and OptixPanels.</li>
+          <li><strong>Performance Enhancements:</strong> VPN throughput doubled for RK2x/RM2x and OptixPanel devices.</li>
+          <li><strong>Runtime Version Alerts:</strong> Administrators notified of runtimes older than 3.0.</li>
+          <li><strong>Online Help:</strong> Updated help system aligned with latest features.</li>
+        </ul>
+      </details>
+    </div>
+
+  </div>
+</body>
+</html>
