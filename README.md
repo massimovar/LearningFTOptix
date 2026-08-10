@@ -32,9 +32,3 @@
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=massimovar/LearningFTOptix&type=date&legend=top-left)](https://www.star-history.com/#massimovar/LearningFTOptix&type=date&legend=top-left)
-
----
-
-#### Are you also looking for information about Ubiquity / FTRA? → [Link](https://github.com/massimovar/LearningUbiquityX/)
-
----
