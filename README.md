@@ -31,4 +31,4 @@
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=massimovar/LearningFTOptix&type=date&legend=top-left)](https://www.star-history.com/#massimovar/LearningFTOptix&type=date&legend=top-left)
+[![Star History Chart](https://api.star-history.com/chart?repos=massimovar/LearningFTOptix&type=date&legend=top-left&sealed_token=wWfuQ_bzybWD5HYlr0Puku5CXkUdnSPH2RrXxl3WvmEVqdrNHFKFKr0TqhYPIvIlPPY08Y1S_E2cGZeMcx8mwQ-yoL0agSX_iF-nYe1GxcqD7mYO5vKcew)](https://www.star-history.com/?type=date&legend=top-left&repos=massimovar%2FLearningFTOptix)
