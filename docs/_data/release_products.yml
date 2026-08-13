@@ -1,0 +1,16 @@
+ftoptix:
+  name: FactoryTalk Optix
+  data_key: releases
+  query_param: release_q
+  version_param: release_version
+  anchor: latest-releases
+  overview_pdf: /pdf/ftoptix/FTOptix Overview.pdf
+  roadmap_pdf: /pdf/ftoptix/FTOptix Public Outlook and Roadmap July 2025.pdf
+
+ubiquity:
+  name: UBIQUITY
+  data_key: ubiquity_releases
+  query_param: ubiquity_q
+  version_param: ubiquity_version
+  anchor: latest-ubiquity-releases
+  overview_pdf: /pdf/ubiquity/UbiquityOverview.pdf

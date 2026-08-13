@@ -1,0 +1,107 @@
+---
+layout: resource
+title: Import OptixEdge Containers from USB
+description: Prepare ARM64 container images and a compose file, then import an offline deployment through System Manager.
+section: OptixEdge deployment
+audience: Users deploying without direct registry access
+last_reviewed: 2026-08-13
+---
+
+<div class="callout">
+  USB import accepts one image archive and one <code>docker-compose.yaml</code>. For a multi-container stack, save all required images into the same archive.
+</div>
+
+<h2>General workflow</h2>
+
+<ol>
+  <li>Use a USB drive formatted as <code>FAT32</code>, <code>exFAT</code>, or <code>ext4</code>.</li>
+  <li>Install Docker or Docker Desktop on the preparation computer.</li>
+  <li>Pull images explicitly for <code>linux/arm64</code>.</li>
+  <li>Save the images into one <code>.tar</code> archive.</li>
+  <li>Place the archive and <code>docker-compose.yaml</code> in the USB root.</li>
+  <li>Connect the drive to OptixEdge and choose <strong>Import docker image via USB</strong> in System Manager.</li>
+</ol>
+
+<h2>Example: MySQL and phpMyAdmin</h2>
+
+<h3>Prepare the image archive</h3>
+
+<div class="code-block">
+  <button class="copy-btn" type="button">Copy</button>
+  <pre><code>docker pull --platform linux/arm64 mysql:8.4
+docker pull --platform linux/arm64 phpmyadmin:5
+docker save -o mysql_phpmyadmin.tar mysql:8.4 phpmyadmin:5</code></pre>
+</div>
+
+<h3>Create <code>docker-compose.yaml</code></h3>
+
+<div class="code-block">
+  <button class="copy-btn" type="button">Copy</button>
+  <pre><code>services:
+  mysql:
+    image: mysql:8.4
+    container_name: mysql-lab
+    environment:
+      MYSQL_ROOT_PASSWORD: CHANGE_ME_ROOT_PASSWORD
+      MYSQL_DATABASE: example_db
+      MYSQL_USER: example_user
+      MYSQL_PASSWORD: CHANGE_ME_USER_PASSWORD
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin:5
+    container_name: phpmyadmin-lab
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    ports:
+      - "8090:80"
+    restart: unless-stopped
+
+volumes:
+  mysql_data:</code></pre>
+</div>
+
+<p>Copy <code>mysql_phpmyadmin.tar</code> and <code>docker-compose.yaml</code> to the USB root, import them, then verify phpMyAdmin at <code>http://optix_edge_ip_address:8090</code>.</p>
+
+<h2>Example: Mosquitto MQTT broker</h2>
+
+<div class="callout callout--warning">
+  The no-auth configuration below is suitable only for an isolated lab network. Configure authentication and TLS before using MQTT in production.
+</div>
+
+<div class="code-block">
+  <button class="copy-btn" type="button">Copy</button>
+  <pre><code>docker pull --platform linux/arm64 eclipse-mosquitto:2
+docker save -o mosquitto.tar eclipse-mosquitto:2</code></pre>
+</div>
+
+<div class="code-block">
+  <button class="copy-btn" type="button">Copy</button>
+  <pre><code>services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: mosquitto-lab
+    command: mosquitto -c /mosquitto-no-auth.conf
+    ports:
+      - "1883:1883"
+    volumes:
+      - mosquitto_data:/mosquitto/data
+      - mosquitto_log:/mosquitto/log
+    restart: unless-stopped
+
+volumes:
+  mosquitto_data:
+  mosquitto_log:</code></pre>
+</div>
+
+<p>After import, confirm the container is running and test port <code>1883</code> from an authorized client on the same trusted network.</p>
+
+<div class="next-steps">
+  <a class="button" href="{{ '/chapters/OptixEdge_remote_cli.html' | relative_url }}">Use remote Docker CLI</a>
+  <a class="button button--secondary" href="{{ '/chapters/OptixEdge.html' | relative_url }}">Back to OptixEdge</a>
+</div>

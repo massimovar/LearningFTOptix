@@ -3,15 +3,17 @@
 <head>
   {% include head.html %}
 </head>
-<body class="content-page-shell">
+<body class="resource-page-shell">
   <a class="skip-link" href="#main-content">{{ site.data.ui.site.skip_to_content }}</a>
   {% include site-header.html %}
   <div class="site-shell">
     <div class="content-shell">
       {% include breadcrumb.html %}
-      {% unless page.hide_page_header %}{% include page-header.html %}{% endunless %}
+      {% include page-header.html %}
       <main id="main-content" class="page-content" tabindex="-1">
-        {{ content }}
+        <article class="resource-page">
+          {{ content }}
+        </article>
       </main>
       {% include site-footer.html %}
     </div>

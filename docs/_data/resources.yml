@@ -1,0 +1,469 @@
+- title: FactoryTalk Optix Overview
+  summary: A concise PDF introduction to the platform, architecture, and primary capabilities.
+  url: /pdf/ftoptix/FTOptix Overview.pdf
+  topic: Product overview
+  journey: Start
+  level: Beginner
+  format: PDF
+  language: English
+  source: This site
+  external: false
+  requires_login: false
+  featured: true
+
+- title: Download, Install, and Start
+  summary: A three-step route through system requirements, installation, and the official quick-start tutorial.
+  url: /chapters/Download_install_start.html
+  topic: Getting started
+  journey: Start
+  level: Beginner
+  format: Guide
+  language: English
+  source: This site
+  external: false
+  requires_login: false
+  featured: true
+
+- title: FactoryTalk Optix Hands-On Lab
+  summary: A guided introductory lab for learning the core platform workflow through practical exercises.
+  url: /pdf/ftoptix/Introduction_to_FactoryTalk_Optix_Visualization_Platform_Hands_On_Lab.pdf
+  topic: Getting started
+  journey: Start
+  level: Beginner
+  format: Course
+  language: English
+  source: Rockwell Automation
+  external: false
+  requires_login: false
+  featured: false
+
+- title: Complete FactoryTalk Optix Course
+  summary: The current complete training course hosted in the Rockwell Automation Seismic learning environment.
+  url: https://eng2e.seismic.com/ls/5d78bc76-77f9-460a-a446-4685520db077/HRZbG6dVdtwIQipW#/content/9229e75b-dc4e-4165-bcc6-90450dc0fe4b
+  topic: Learning
+  journey: Learn
+  level: All levels
+  format: Course
+  language: English
+  source: Rockwell Automation
+  external: true
+  requires_login: true
+  featured: true
+
+- title: FactoryTalk Optix Video Tutorials
+  summary: Searchable tutorials and webinars covering UI, data, security, connectivity, NetLogic, and advanced workflows.
+  url: /chapters/Learning_material_Videos.html
+  topic: Learning
+  journey: Learn
+  level: All levels
+  format: Video library
+  language: Mixed
+  source: This site
+  external: false
+  requires_login: false
+  featured: true
+
+- title: FactoryTalk Optix Online Help
+  summary: Current official documentation for configuration, development, deployment, and platform features.
+  url: https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html
+  topic: Documentation
+  journey: Learn
+  level: All levels
+  format: Documentation
+  language: English
+  source: Rockwell Automation
+  external: true
+  requires_login: false
+  featured: true
+
+- title: FactoryTalk Optix Release Timeline
+  summary: Search the PDF-sourced timeline from version 1.3 through 1.7 by feature and release.
+  url: /chapters/FTOptix_overview.html
+  topic: Product releases
+  journey: Learn
+  level: All levels
+  format: Release notes
+  language: English
+  source: This site
+  external: false
+  requires_login: false
+  product_version: 1.7
+  featured: false
+
+- title: FactoryTalk Optix Public Outlook and Roadmap
+  summary: Product direction and roadmap presentation published in July 2025.
+  url: /pdf/ftoptix/FTOptix Public Outlook and Roadmap July 2025.pdf
+  topic: Product releases
+  journey: Learn
+  level: All levels
+  format: PDF
+  language: English
+  source: Rockwell Automation
+  external: false
+  requires_login: false
+  product_version: July 2025
+  featured: false
+
+- title: FactoryTalk Optix FAQs
+  summary: Official answers to frequently asked FactoryTalk Optix questions.
+  url: https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1141346/loc/en_US
+  topic: Documentation
+  journey: Learn
+  level: All levels
+  format: FAQ
+  language: English
+  source: Rockwell Automation
+  external: true
+  requires_login: true
+  featured: false
+
+- title: Rockwell Automation Knowledgebase
+  summary: Search technical notes, known issues, fixes, and product-support guidance.
+  url: https://rockwellautomation.custhelp.com/app/home
+  topic: Documentation
+  journey: Learn
+  level: All levels
+  format: Knowledgebase
+  language: English
+  source: Rockwell Automation
+  external: true
+  requires_login: true
+  featured: false
+
+- title: FactoryTalk Optix Best Practices
+  summary: Official guidance for project structure, performance, deployment, and maintainable application design.
+  url: https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices.html
+  topic: Best practices
+  journey: Build
+  level: Intermediate
+  format: Documentation
+  language: English
+  source: Rockwell Automation
+  external: true
+  requires_login: false
+  featured: true
+
+- title: NetLogic Cheat Sheet
+  summary: Practical API guidance, patterns, examples, and lifecycle advice for FactoryTalk Optix C# NetLogic.
+  url: https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet
+  topic: NetLogic
+  journey: Build
+  level: Intermediate
+  format: Repository
+  language: English
+  source: FactoryTalk Optix GitHub
+  external: true
+  requires_login: false
+  featured: true
+
+- title: Ready-to-Use NetLogic Scripts and Tools
+  summary: C# snippets, editor setup, third-party library guidance, and supporting development resources.
+  url: /chapters/Ready_to_use_scripts.html
+  topic: NetLogic
+  journey: Build
+  level: Intermediate
+  format: Guide
+  language: English
+  source: This site
+  external: false
+  requires_login: false
+  featured: false
+
+- title: FTOptix Expert Copilot Agent
+  summary: Install a Copilot custom agent focused on FactoryTalk Optix and NetLogic development.
+  url: /chapters/FTOptix_expert_agent.html
+  topic: AI tooling
+  journey: Build
+  level: Intermediate
+  format: Guide
+  language: English
+  source: This site
+  external: false
+  requires_login: false
+  featured: false
+
+- title: Debugging and Performance Checklist
+  summary: A stateful, source-linked workflow for diagnosing slow pages, blocking NetLogic, and project performance issues.
+  url: /chapters/Debugging.html
+  topic: Debugging
+  journey: Build
+  level: Advanced
+  format: Checklist
+  language: English
+  source: This site
+  external: false
+  requires_login: false
+  featured: true
+
+- title: FactoryTalk Optix Runtime Logs Parser
+  summary: Parse and inspect runtime logs to identify warnings, failures, and performance problems more quickly.
+  url: https://asem-applicationsoftwareengineers.github.io/OptixRuntimeLogsParser/index.html
+  topic: Debugging
+  journey: Build
+  level: Intermediate
+  format: Tool
+  language: English
+  source: ASEM
+  external: true
+  requires_login: false
+  featured: true
+
+- title: Nodes Counter Dialog
+  summary: Measure runtime node counts for pages and UI objects during performance analysis.
+  url: https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices/statistics/nodes_counter_dialog.html
+  topic: Debugging
+  journey: Build
+  level: Advanced
+  format: Documentation
+  language: English
+  source: Rockwell Automation
+  external: true
+  requires_login: false
+  featured: false
+
+- title: Project Information Statistics
+  summary: Review project-wide node counts and statistics before and after optimization work.
+  url: https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices/statistics/project_information.html
+  topic: Debugging
+  journey: Build
+  level: Advanced
+  format: Documentation
+  language: English
+  source: Rockwell Automation
+  external: true
+  requires_login: false
+  featured: false
+
+- title: FactoryTalk Optix Project Examples
+  summary: Browse more than 120 example repositories maintained by the FactoryTalk Optix GitHub organization.
+  url: https://github.com/orgs/FactoryTalk-Optix/repositories
+  topic: Examples
+  journey: Build
+  level: All levels
+  format: Repository
+  language: English
+  source: FactoryTalk Optix GitHub
+  external: true
+  requires_login: false
+  featured: true
+
+- title: FactoryTalk Optix Docker Deployment Guide
+  summary: Example project and guidance for deploying FactoryTalk Optix applications through Docker.
+  url: https://github.com/FactoryTalk-Optix/Optix_Docker_FTOptixUpdateServer
+  topic: Docker
+  journey: Deploy
+  level: Advanced
+  format: Repository
+  language: English
+  source: FactoryTalk Optix GitHub
+  external: true
+  requires_login: false
+  featured: false
+
+- title: OptixEdge Resources and Container Deployment
+  summary: Product references and practical procedures for deploying Docker workloads on OptixEdge.
+  url: /chapters/OptixEdge.html
+  topic: OptixEdge
+  journey: Deploy
+  level: Intermediate
+  format: Tutorial
+  language: English
+  source: This site
+  external: false
+  requires_login: false
+  featured: true
+
+- title: Deploy Your First OptixEdge Container
+  summary: Enable Docker and Portainer, deploy MySQL with phpMyAdmin, and verify the services.
+  url: /chapters/OptixEdge_first_container.html
+  topic: OptixEdge
+  journey: Deploy
+  level: Beginner
+  format: Tutorial
+  language: English
+  source: This site
+  external: false
+  requires_login: false
+  featured: false
+
+- title: Import OptixEdge Containers from USB
+  summary: Prepare ARM64 images and a compose file for an offline deployment through System Manager.
+  url: /chapters/OptixEdge_usb_import.html
+  topic: OptixEdge
+  journey: Deploy
+  level: Intermediate
+  format: Tutorial
+  language: English
+  source: This site
+  external: false
+  requires_login: false
+  featured: false
+
+- title: Manage OptixEdge with the Docker CLI
+  summary: Connect a local Docker CLI for controlled deployment and maintenance sessions.
+  url: /chapters/OptixEdge_remote_cli.html
+  topic: Docker
+  journey: Deploy
+  level: Advanced
+  format: Tutorial
+  language: English
+  source: This site
+  external: false
+  requires_login: false
+  featured: false
+
+- title: OptixEdge Container Examples
+  summary: Try ARM64-compatible examples for uptime monitoring, MQTT messaging, and Prometheus metrics.
+  url: /chapters/OptixEdge_container_examples.html
+  topic: Docker
+  journey: Deploy
+  level: Intermediate
+  format: Guide
+  language: English
+  source: This site
+  external: false
+  requires_login: false
+  featured: false
+
+- title: Production Hardening for OptixEdge Containers
+  summary: Apply resource, logging, credential, network, backup, and recovery controls.
+  url: /chapters/OptixEdge_production_tips.html
+  topic: Docker
+  journey: Deploy
+  level: Advanced
+  format: Checklist
+  language: English
+  source: This site
+  external: false
+  requires_login: false
+  featured: false
+
+- title: OptixEdge Wizard App
+  summary: FactoryTalk Optix example application for guiding OptixEdge setup and configuration.
+  url: https://github.com/FactoryTalk-Optix/OptixEdge_WizardApp
+  topic: OptixEdge
+  journey: Deploy
+  level: Intermediate
+  format: Repository
+  language: English
+  source: FactoryTalk Optix GitHub
+  external: true
+  requires_login: false
+  featured: false
+
+- title: OptixPanel and Hardware Resources
+  summary: Product information, firmware downloads, and manuals for OptixPanel and related hardware.
+  url: /chapters/OptixPanels_and_co.html
+  topic: Hardware
+  journey: Deploy
+  level: All levels
+  format: Guide
+  language: English
+  source: This site
+  external: false
+  requires_login: false
+  featured: true
+
+- title: UBIQUITY Overview
+  summary: Product presentation covering the UBIQUITY secure remote-access platform and key capabilities.
+  url: /pdf/ubiquity/UbiquityOverview.pdf
+  topic: UBIQUITY
+  journey: Deploy
+  level: Beginner
+  format: PDF
+  language: English
+  source: ASEM
+  external: false
+  requires_login: false
+  featured: false
+
+- title: UBIQUITY Release History
+  summary: Search PDF-sourced features, enhancements, and runtime lifecycle milestones from version 14.1 through 14.4.
+  url: /chapters/Ubiquity_releases.html
+  topic: UBIQUITY
+  journey: Deploy
+  level: All levels
+  format: Release notes
+  language: English
+  source: This site
+  external: false
+  requires_login: false
+  featured: false
+
+- title: UBIQUITY Web API
+  summary: API reference for integrating with UBIQUITY domains, devices, users, and services.
+  url: https://ubiquity.asem.it/api/index.html
+  topic: UBIQUITY
+  journey: Deploy
+  level: Advanced
+  format: API
+  language: English
+  source: ASEM
+  external: true
+  requires_login: false
+  featured: false
+
+- title: UBIQUITY Online Help
+  summary: Official administration and usage documentation for the UBIQUITY remote-access platform.
+  url: https://ubiquity.asem.it/Help/
+  topic: UBIQUITY
+  journey: Deploy
+  level: All levels
+  format: Documentation
+  language: English
+  source: ASEM
+  external: true
+  requires_login: false
+  featured: false
+
+- title: RK2 System Manager User Guide
+  summary: Official configuration and administration manual for RK2 devices and System Manager.
+  url: https://literature.rockwellautomation.com/idc/groups/literature/documents/um/2800e-um007_-en-p.pdf
+  topic: Hardware
+  journey: Deploy
+  level: Intermediate
+  format: Manual
+  language: English
+  source: Rockwell Automation
+  external: true
+  requires_login: false
+  featured: false
+
+- title: European Cybersecurity Regulations Overview
+  summary: Presentation summarizing new European cybersecurity regulations affecting industrial customers.
+  url: /pdf/cybersecurity/New_European_CyberSecurityRegulations_Customer_v6_EN.pdf
+  topic: Cybersecurity
+  journey: Deploy
+  level: Intermediate
+  format: PDF
+  language: English
+  source: This site
+  external: false
+  requires_login: false
+  featured: false
+
+- title: NIS2 Compliance Checklist
+  summary: A practical step-by-step checklist for understanding and preparing for NIS2 obligations.
+  url: /pdf/cybersecurity/New_European_CyberSecurityRegulations_NI2_Checklist_v2.0.html
+  topic: Cybersecurity
+  journey: Deploy
+  level: Intermediate
+  format: Checklist
+  language: English
+  source: This site
+  external: false
+  requires_login: false
+  featured: true
+
+- title: 21 CFR Part 11 Guidance
+  summary: Official FactoryTalk Optix guidance related to electronic records and signatures under 21 CFR Part 11.
+  url: https://literature.rockwellautomation.com/idc/groups/literature/documents/um/optix-um001_-en-p.pdf
+  topic: Compliance
+  journey: Deploy
+  level: Advanced
+  format: Manual
+  language: English
+  source: Rockwell Automation
+  external: true
+  requires_login: false
+  featured: false

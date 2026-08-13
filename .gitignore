@@ -1,0 +1,8 @@
+_site/
+.jekyll-site/
+.jekyll-serve/
+.jekyll-preview/
+.bundle/
+vendor/
+__pycache__/
+*.pyc

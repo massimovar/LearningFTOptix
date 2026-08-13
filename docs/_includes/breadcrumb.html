@@ -1,0 +1,9 @@
+{% assign breadcrumb_ui = site.data.ui %}
+{% assign breadcrumb_title = page.breadcrumb | default: page.title | default: site.title %}
+{% unless page.url == "/" %}
+  <nav class="breadcrumb" aria-label="{{ breadcrumb_ui.site.breadcrumb_label }}">
+    <a href="{{ '/' | relative_url }}">{{ breadcrumb_ui.site.home }}</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">{{ breadcrumb_title }}</span>
+  </nav>
+{% endunless %}

@@ -1,0 +1,18 @@
+{% assign ui = site.data.ui %}
+{% assign product = site.data.release_products[page.product_key] %}
+{% assign product_text = ui.products[page.product_key] %}
+{% assign releases = site.data[product.data_key] %}
+
+{% include release-history.html releases=releases ui=ui product=product text=product_text %}
+
+{% if product.roadmap_pdf %}
+  <section class="product-direction" aria-labelledby="product-direction-heading">
+    <div>
+      <h2 id="product-direction-heading">{{ product_text.looking_ahead_title }}</h2>
+      <p>{{ product_text.looking_ahead_text }}</p>
+    </div>
+    <a class="button button--secondary" href="{{ product.roadmap_pdf | relative_url }}" data-no-link-indicator>
+      {{ product_text.roadmap_button }}
+    </a>
+  </section>
+{% endif %}

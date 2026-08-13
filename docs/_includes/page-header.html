@@ -1,0 +1,12 @@
+{% assign page_header_ui = site.data.ui %}
+<header class="page-heading">
+  {% if page.section %}<p class="page-heading__eyebrow">{{ page.section }}</p>{% endif %}
+  <h1>{{ page.title }}</h1>
+  {% if page.description %}<p class="page-heading__summary">{{ page.description }}</p>{% endif %}
+  {% if page.audience or page.last_reviewed %}
+    <div class="page-heading__meta" aria-label="{{ page_header_ui.site.page_metadata_label }}">
+      {% if page.audience %}<span class="meta-badge">{{ page_header_ui.site.audience_prefix }} {{ page.audience }}</span>{% endif %}
+      {% if page.last_reviewed %}<span class="meta-badge">{{ page_header_ui.site.reviewed_prefix }} {{ page.last_reviewed | date: "%Y-%m-%d" }}</span>{% endif %}
+    </div>
+  {% endif %}
+</header>

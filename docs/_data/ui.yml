@@ -1,0 +1,56 @@
+site:
+  skip_to_content: Skip to main content
+  brand_home_label: Learning FTOptix home
+  nav_label: Day-to-Day Essentials
+  nav:
+    videos: Video tutorials
+    course: Complete Course
+    cheat_sheet: NetLogic Cheat Sheet
+    community: RA Community Forum
+    knowledge_base: RA Knowledge Base
+  breadcrumb_label: Breadcrumb
+  home: Home
+  page_metadata_label: Page metadata
+  audience_prefix: "For:"
+  reviewed_prefix: "Reviewed:"
+  footer_hub: Unofficial FactoryTalk Optix learning hub
+  repository: GitHub repository
+  last_reviewed: "Content last reviewed:"
+
+release:
+  version_history: Version history
+  find_title: Find a feature by release
+  keyword_label: Feature keyword
+  search_placeholder: Search documented features...
+  all_versions: All versions
+  version: Version
+  matches: Matching feature references
+  documented_changes: Documented changes
+  releases: Releases
+  clear_filters: Clear filters
+  current_release: Current release
+  resources_label: Release resources
+  release_pdf: Release PDF
+  video_summary: Video summary
+  key_changes: Key changes
+  view_all_changes: View all documented changes
+  pdf_source_prefix: PDF
+  empty_version: No documented feature matching “{query}” was found for {product} version {version}.
+  empty_all: No documented feature matching “{query}” was found in the available {product} releases.
+  jump_label: Jump to a release
+  open_pdf_aria: Open the {product} version {version} release PDF
+  watch_video_aria: Watch the {product} version {version} video summary
+
+products:
+  ftoptix:
+    history_title: Latest releases
+    finder_help: Search the complete feature inventory. Try terms such as MQTT, OAuth, recipe, alarms, Logix, or Docker.
+    version_label: FactoryTalk Optix version
+    looking_ahead_title: Looking ahead
+    looking_ahead_text: Review the public product outlook for planned direction beyond the released capabilities shown above.
+    roadmap_button: Open the public roadmap
+
+  ubiquity:
+    history_title: Latest UBIQUITY releases
+    finder_help: Search the complete feature inventory. Try terms such as VNC, VPN, Docker, TLS, invitations, permissions, or USB.
+    version_label: UBIQUITY version

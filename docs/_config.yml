@@ -1,5 +1,9 @@
 title: Learning FactoryTalk® Optix™
 description: A set of resources to become an FTOptix power user
+url: https://massimovar.github.io
+baseurl: /LearningFTOptix
+repository: massimovar/LearningFTOptix
+lang: en
 defaults:
   - scope:
       path: ""

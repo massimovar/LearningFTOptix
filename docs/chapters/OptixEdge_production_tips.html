@@ -1,0 +1,90 @@
+---
+layout: resource
+title: Production Hardening for OptixEdge Containers
+description: Apply practical resource, logging, image, credential, network, backup, and maintenance controls to OptixEdge workloads.
+section: OptixEdge deployment
+audience: Engineers preparing production deployments
+last_reviewed: 2026-08-13
+---
+
+<h2>Limit resource consumption</h2>
+
+<p>Set explicit CPU and memory limits so a third-party service cannot starve FactoryTalk Optix or other critical workloads.</p>
+
+<div class="code-block">
+  <button class="copy-btn" type="button">Copy</button>
+  <pre><code>services:
+  mysql:
+    image: mysql:8.4
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: "256M"</code></pre>
+</div>
+
+<div class="callout">
+  Confirm how the installed Docker Compose version enforces <code>deploy.resources</code>. Measure actual CPU and memory use on the target device rather than assuming the declared limits are active.
+</div>
+
+<h2>Rotate container logs</h2>
+
+<div class="code-block">
+  <button class="copy-btn" type="button">Copy</button>
+  <pre><code>services:
+  mysql:
+    image: mysql:8.4
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"</code></pre>
+</div>
+
+<h2>Pin image versions</h2>
+
+<p>Avoid <code>latest</code> in production. Pin a tested version or immutable digest, record the source registry, and define how updates will be approved and rolled back.</p>
+
+<h2>Protect credentials</h2>
+
+<ul>
+  <li>Do not commit passwords, tokens, or private keys in compose files.</li>
+  <li>Use the strongest credential mechanism supported by the deployment workflow.</li>
+  <li>Give each service a dedicated account with only the permissions it needs.</li>
+  <li>Rotate tutorial or commissioning credentials before the device enters service.</li>
+</ul>
+
+<h2>Reduce network exposure</h2>
+
+<ul>
+  <li>Publish only required ports and bind them to the intended interface where supported.</li>
+  <li>Keep Docker remote management disabled outside controlled maintenance sessions.</li>
+  <li>Place management interfaces behind an authenticated, encrypted access path.</li>
+  <li>Document every open port and the system that is expected to connect to it.</li>
+</ul>
+
+<h2>Plan storage, backup, and recovery</h2>
+
+<ul>
+  <li>Store persistent data on media sized for retention and write endurance.</li>
+  <li>Back up named volumes and configuration before upgrades.</li>
+  <li>Test restore procedures on representative hardware.</li>
+  <li>Monitor free space, log growth, database growth, and container restart loops.</li>
+</ul>
+
+<h2>Production readiness checklist</h2>
+
+<ul>
+  <li>Image versions and licenses reviewed.</li>
+  <li>CPU, memory, storage, and restart behavior tested under load.</li>
+  <li>Credentials changed and least privilege applied.</li>
+  <li>Published ports documented and restricted.</li>
+  <li>Logs bounded and monitored.</li>
+  <li>Backup, restore, update, and rollback tested.</li>
+  <li>Container failure does not prevent the primary HMI or edge workload from operating safely.</li>
+</ul>
+
+<div class="next-steps">
+  <a class="button" href="{{ '/chapters/OptixEdge_container_examples.html' | relative_url }}">Review container examples</a>
+  <a class="button button--secondary" href="{{ '/chapters/OptixEdge.html' | relative_url }}">Back to OptixEdge</a>
+</div>

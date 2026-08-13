@@ -1,0 +1,19 @@
+- id: start
+  title: Start with FTOptix
+  summary: Install the tools, understand the platform, and complete your first guided project.
+  action: Find beginner resources
+
+- id: learn
+  title: Learn a topic
+  summary: Browse courses, videos, documentation, release material, and trusted reference content.
+  action: Explore learning material
+
+- id: build
+  title: Build and troubleshoot
+  summary: Find NetLogic examples, development guidance, diagnostics, and performance checklists.
+  action: Find engineering resources
+
+- id: deploy
+  title: Deploy and manage
+  summary: Work with OptixPanel, OptixEdge, Docker, UBIQUITY, and industrial cybersecurity resources.
+  action: Explore deployment resources

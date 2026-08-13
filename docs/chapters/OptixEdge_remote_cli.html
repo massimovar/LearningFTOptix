@@ -1,0 +1,72 @@
+---
+layout: resource
+title: Manage OptixEdge with the Docker CLI
+description: Connect a local Docker CLI to OptixEdge, verify the endpoint, run commands, and safely restore the local context.
+section: OptixEdge deployment
+audience: Advanced OptixEdge and Docker users
+last_reviewed: 2026-08-13
+---
+
+<div class="callout callout--warning">
+  <strong>Security:</strong> Plain Docker TCP on port <code>2375</code> is not encrypted or authenticated. Enable it only on an isolated trusted network, restrict allowed interfaces, and disable remote management immediately after use.
+</div>
+
+<h2>Enable remote management</h2>
+
+<ol>
+  <li>In System Manager, open <strong>Docker &gt; Remote Management</strong>.</li>
+  <li>Select the connection type and only the network interface required for the maintenance session.</li>
+  <li>Record the OptixEdge IP address and confirm the preparation computer is on the intended trusted network.</li>
+</ol>
+
+<h2>Point the Docker CLI to OptixEdge</h2>
+
+<h3>Windows PowerShell</h3>
+
+<div class="code-block">
+  <button class="copy-btn" type="button">Copy</button>
+  <pre><code>$env:DOCKER_HOST = "tcp://optix_edge_ip:2375"
+docker version
+docker ps</code></pre>
+</div>
+
+<h3>Linux or macOS</h3>
+
+<div class="code-block">
+  <button class="copy-btn" type="button">Copy</button>
+  <pre><code>export DOCKER_HOST=tcp://optix_edge_ip:2375
+docker version
+docker ps</code></pre>
+</div>
+
+<p>If the server section in <code>docker version</code> identifies the OptixEdge engine, commands such as <code>docker compose up -d</code>, <code>docker logs</code>, and <code>docker inspect</code> now target the device.</p>
+
+<h2>End the maintenance session</h2>
+
+<h3>Windows PowerShell</h3>
+
+<div class="code-block">
+  <button class="copy-btn" type="button">Copy</button>
+  <pre><code>Remove-Item Env:DOCKER_HOST
+docker context show</code></pre>
+</div>
+
+<h3>Linux or macOS</h3>
+
+<div class="code-block">
+  <button class="copy-btn" type="button">Copy</button>
+  <pre><code>unset DOCKER_HOST
+docker context show</code></pre>
+</div>
+
+<ol>
+  <li>Disable Docker remote management in System Manager.</li>
+  <li>Verify the local CLI no longer reaches OptixEdge.</li>
+  <li>Review the deployed containers and published ports before returning the device to service.</li>
+</ol>
+
+<div class="next-steps">
+  <a class="button" href="{{ '/chapters/OptixEdge_container_examples.html' | relative_url }}">Explore container examples</a>
+  <a class="button button--secondary" href="{{ '/chapters/OptixEdge_production_tips.html' | relative_url }}">Production hardening tips</a>
+  <a class="button button--secondary" href="{{ '/chapters/OptixEdge.html' | relative_url }}">Back to OptixEdge</a>
+</div>

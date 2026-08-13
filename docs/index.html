@@ -1,3 +1,8 @@
+---
+layout: null
+title: Learning FactoryTalk Optix
+description: A curated learning hub for FactoryTalk Optix resources, tutorials, examples, release information, and practical engineering guidance.
+---
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +11,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light dark">
   <title>Learning FactoryTalk® Optix™</title>
+  <meta name="description" content="{{ page.description }}">
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
   <style>
     :root {
       --bg: #fafbfc;
@@ -150,11 +157,15 @@
       margin: 40px 0;
     }
 
-    /* ── Quick Links ── */
+    /* ── Day-to-Day Essentials ── */
     .quick-links {
-      margin-bottom: 32px; padding: 24px;
-      border: 1px solid var(--border); border-left: 4px solid var(--accent);
-      border-radius: var(--radius); background: var(--bg-card); box-shadow: var(--card-shadow);
+      margin-bottom: 32px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      box-shadow: var(--card-shadow);
     }
     .quick-links h2 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
     .quick-links ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 12px; }
@@ -321,10 +332,7 @@
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-
-
   <div class="container">
-
     <!-- Hero -->
     <header class="hero" role="banner">
       <img src="images/logo.png" alt="Learning FactoryTalk Optix logo">
@@ -336,9 +344,9 @@
         </a>
       </p>
       <div class="links">
-        <a href="pdf/FTOptix%20Overview.pdf">What is FTOptix?</a>
+        <a href="pdf/ftoptix/FTOptix%20Overview.pdf">What is FTOptix?</a>
         <a href="chapters/FTOptix_overview.html#latest-releases">New releases</a>
-        <a href="pdf/FTOptix%20Public%20Outlook%20and%20Roadmap%20July%202025.pdf">What's next?</a>
+        <a href="pdf/ftoptix/FTOptix%20Public%20Outlook%20and%20Roadmap%20July%202025.pdf">What's next?</a>
         <a class="star-btn" href="https://github.com/massimovar/LearningFTOptix" target="_blank" rel="noopener" title="Star this repo on GitHub">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/></svg>
           Helpful? Star it
@@ -350,7 +358,6 @@
 
     <hr>
 
-    <!-- Quick Links -->
     <section class="quick-links" aria-labelledby="quick-links-heading">
       <h2 id="quick-links-heading">Day-to-Day Essentials</h2>
       <ul>
@@ -508,7 +515,7 @@
           <div class="nav-card">
             <h3>Ubiquity Overview</h3>
             <ul>
-              <li><a href="pdf/UbiquityOverview.pdf">Ubiquity Overview (PDF)</a></li>
+              <li><a href="pdf/ubiquity/UbiquityOverview.pdf">Ubiquity Overview (PDF)</a></li>
               <li><a href="https://ubiquity.asem.it/api/index.html">Ubiquity Web API</a></li>
               <li><a href="https://ubiquity.asem.it/en/Index">Ubiquity Site</a></li>
             </ul>
@@ -536,8 +543,8 @@
           <div class="nav-card">
             <h3>Cyber Security Regulations</h3>
             <ul>
-              <li><a href="pdf/New_European_CyberSecurityRegulations_Customer_v6_EN.pdf">Cyber Security Regulations Overview</a><br><small>Summary of new cyber security regulations affecting industrial customers</small></li>
-              <li><a href="pdf/New_European_CyberSecurityRegulations_NI2_Checklist_v2.0.html">NIS2 Compliance Checklist</a><br><small>Step-by-step guide and checklist for NIS2 directive compliance</small></li>
+              <li><a href="pdf/cybersecurity/New_European_CyberSecurityRegulations_Customer_v6_EN.pdf">Cyber Security Regulations Overview</a><br><small>Summary of new cyber security regulations affecting industrial customers</small></li>
+              <li><a href="pdf/cybersecurity/New_European_CyberSecurityRegulations_NI2_Checklist_v2.0.html">NIS2 Compliance Checklist</a><br><small>Step-by-step guide and checklist for NIS2 directive compliance</small></li>
             </ul>
           </div>
         </div>
@@ -547,16 +554,12 @@
 
     <hr>
 
-    <footer class="footer">
-      <p>
-        <a href="https://github.com/massimovar/LearningFTOptix">GitHub Repository</a>
-      </p>
-    </footer>
-
     </main>
 
+    {% include site-footer.html %}
   </div>
 
+  <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
   <script>
     // ── Tab navigation ──
     function switchTab(btn, panelId) {

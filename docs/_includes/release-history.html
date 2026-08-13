@@ -1,0 +1,174 @@
+<section id="{{ include.product.anchor }}" class="release-history" aria-labelledby="release-history-heading">
+  <div class="release-history__heading">
+    <div>
+      <p class="page-heading__eyebrow">{{ include.ui.release.version_history }}</p>
+      <h2 id="release-history-heading">{{ include.text.history_title }}</h2>
+    </div>
+  </div>
+
+  <div
+    class="release-feature-finder"
+    data-release-finder
+    data-release-product="{{ include.product.name | escape }}"
+    data-release-query-param="{{ include.product.query_param }}"
+    data-release-version-param="{{ include.product.version_param }}"
+    data-release-anchor="{{ include.product.anchor }}"
+    data-label-matches="{{ include.ui.release.matches | escape }}"
+    data-label-changes="{{ include.ui.release.documented_changes | escape }}"
+    data-label-releases="{{ include.ui.release.releases | escape }}"
+    data-label-version="{{ include.ui.release.version | escape }}"
+    data-empty-version="{{ include.ui.release.empty_version | escape }}"
+    data-empty-all="{{ include.ui.release.empty_all | escape }}"
+    aria-labelledby="release-finder-heading">
+    <div class="release-feature-finder__header">
+      <div>
+        <h3 id="release-finder-heading">{{ include.ui.release.find_title }}</h3>
+        <p id="release-finder-help">{{ include.text.finder_help }}</p>
+      </div>
+    </div>
+    <div class="release-feature-finder__grid">
+      <div class="field">
+        <label for="release-feature-query">{{ include.ui.release.keyword_label }}</label>
+        <input
+          id="release-feature-query"
+          type="search"
+          placeholder="{{ include.ui.release.search_placeholder }}"
+          aria-describedby="release-finder-help"
+          autocomplete="off"
+          data-release-query>
+      </div>
+      <div class="field">
+        <label for="release-version-filter">{{ include.text.version_label }}</label>
+        <select id="release-version-filter" data-release-version-filter>
+          <option value="">{{ include.ui.release.all_versions }}</option>
+          {% for release in include.releases %}
+            <option value="{{ release.version }}">{{ include.ui.release.version }} {{ release.version }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="finder-status">
+      <span role="status" aria-live="polite" data-release-result-count></span>
+      <button class="text-button" type="button" data-release-reset>{{ include.ui.release.clear_filters }}</button>
+    </div>
+  </div>
+
+  <p class="empty-state release-empty-state" data-release-empty hidden></p>
+
+  <nav
+    class="release-jump"
+    aria-label="{{ include.ui.release.jump_label }}: {{ include.product.name }}"
+    data-release-jump>
+    {% for release in include.releases %}
+      {% if release.slug %}
+        {% assign release_id = release.slug %}
+      {% else %}
+        {% assign version_slug = release.version | replace: ".", "-" %}
+        {% capture release_id %}release-{{ version_slug }}{% endcapture %}
+      {% endif %}
+      <a
+        href="#{{ release_id }}"
+        data-release-jump-version="{{ release.version }}"
+        {% if release.current %}aria-current="true"{% endif %}>
+        v{{ release.version }}
+      </a>
+    {% endfor %}
+  </nav>
+
+  <ol class="release-timeline" data-release-timeline>
+    {% for release in include.releases %}
+      {% if release.slug %}
+        {% assign release_id = release.slug %}
+      {% else %}
+        {% assign version_slug = release.version | replace: ".", "-" %}
+        {% capture release_id %}release-{{ version_slug }}{% endcapture %}
+      {% endif %}
+
+      <li id="{{ release_id }}" class="release-entry" data-release-entry data-release-version="{{ release.version }}">
+        <time class="release-entry__date"{% if release.date_iso %} datetime="{{ release.date_iso }}"{% endif %}>{{ release.date }}</time>
+        <div class="release-entry__rail" aria-hidden="true">
+          <span class="release-entry__dot"></span>
+        </div>
+        <article class="release-entry__card{% if release.current %} release-entry__card--current{% endif %}" aria-labelledby="{{ release_id }}-heading">
+          <header class="release-entry__header">
+            <div>
+              <div class="release-entry__version">
+                <h3 id="{{ release_id }}-heading">{{ include.product.name }} v{{ release.version }}</h3>
+                {% if release.current %}<span class="meta-badge">{{ include.ui.release.current_release }}</span>{% endif %}
+              </div>
+              <p>{{ release.summary }}</p>
+            </div>
+            <div class="release-entry__actions" role="group" aria-label="{{ include.ui.release.resources_label }}">
+              {% assign pdf_aria = include.ui.release.open_pdf_aria | replace: "{product}", include.product.name | replace: "{version}", release.version %}
+              <a
+                class="button"
+                href="{{ release.pdf | relative_url }}"
+                aria-label="{{ pdf_aria }}"
+                data-no-link-indicator>
+                {{ include.ui.release.release_pdf }}
+              </a>
+              {% if release.video %}
+                {% assign video_aria = include.ui.release.watch_video_aria | replace: "{product}", include.product.name | replace: "{version}", release.version %}
+                <a
+                  class="button button--secondary"
+                  href="{{ release.video }}"
+                  aria-label="{{ video_aria }}">
+                  {{ include.ui.release.video_summary }}
+                </a>
+                {% if release.video_label %}<span class="release-entry__action-note">{{ release.video_label }}</span>{% endif %}
+              {% endif %}
+            </div>
+          </header>
+
+          <section class="release-highlights" aria-labelledby="{{ release_id }}-highlights" data-release-highlights>
+            <h4 id="{{ release_id }}-highlights">{{ include.ui.release.key_changes }}</h4>
+            <ul>
+              {% for highlight in release.highlights %}
+                <li
+                  data-release-highlight
+                  data-search="{{ highlight.title | append: " " | append: highlight.description | escape }}">
+                  <strong class="release-highlight__title">{{ highlight.title }}</strong>:
+                  <span class="release-highlight__description">{{ highlight.description }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          </section>
+
+          <details class="release-details" data-release-details>
+            <summary>{{ include.ui.release.view_all_changes }}</summary>
+            {% if release.notes %}
+              <div class="release-notes">
+                {% for note in release.notes %}<p>{{ note }}</p>{% endfor %}
+              </div>
+            {% endif %}
+            <div class="release-change-grid">
+              {% for category in release.categories %}
+                <section aria-labelledby="{{ release_id }}-category-{{ forloop.index }}" data-release-category>
+                  <h4 id="{{ release_id }}-category-{{ forloop.index }}">{{ category.name }}</h4>
+                  <ul>
+                    {% for item in category.items %}
+                      <li
+                        data-release-change
+                        data-search="{{ category.name | append: " " | append: item.title | append: " " | append: item.detail | append: " " | append: item.status | escape }}">
+                        {% if item.title %}
+                          <span class="release-change__title">{{ item.title }}</span>
+                          {% if item.status %}<span class="meta-badge meta-badge--warning">{{ item.status }}</span>{% endif %}
+                          {% if item.detail %}<span class="release-change__detail">{{ item.detail }}</span>{% endif %}
+                          {% if item.pages %}<span class="release-change__source">{{ include.ui.release.pdf_source_prefix }} {{ item.pages }}</span>{% endif %}
+                        {% else %}
+                          {{ item }}
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </section>
+              {% endfor %}
+            </div>
+          </details>
+
+          <p class="release-entry__source">{{ release.source_pages }}</p>
+        </article>
+      </li>
+    {% endfor %}
+  </ol>
+</section>

@@ -1,0 +1,10 @@
+{% assign footer_ui = site.data.ui %}
+<footer class="site-footer">
+  <p>
+    {{ footer_ui.site.footer_hub }} ·
+    <a href="https://github.com/{{ site.repository }}">{{ footer_ui.site.repository }}</a>
+  </p>
+  {% if page.last_reviewed %}
+    <p>{{ footer_ui.site.last_reviewed }} <time datetime="{{ page.last_reviewed | date: "%Y-%m-%d" }}">{{ page.last_reviewed | date: "%Y-%m-%d" }}</time></p>
+  {% endif %}
+</footer>

@@ -1,0 +1,257 @@
+- collection: essentials
+  number: 1
+  section: Getting Started
+  title: FactoryTalk Hub Introduction
+  url: https://youtu.be/BVXPn04wZ8M
+  duration: 36
+  source: ASEM
+  language: Italian
+  tags: [hub-login, entitlements, runtime-sizing, device-sizing, releases]
+
+- collection: essentials
+  number: 2
+  section: UI Design
+  title: "UI: Getting started"
+  url: https://youtu.be/JIms8gVz1Is
+  duration: 20
+  source: ASEM
+  language: Italian
+  tags: [navigation-panel, page-layout, panel-loader, navigation-menu, page-typing]
+
+- collection: essentials
+  number: 3
+  section: Getting Started
+  title: Create Project and top bar buttons
+  url: https://youtu.be/wO-IhBpm-S4
+  duration: 34
+  source: ASEM
+  language: Italian
+  tags: [project-creation, version-control, studio-toolbar, library-management, emulator, debugging-tools]
+
+- collection: essentials
+  number: 4
+  section: UI Design
+  title: Events and Commands
+  url: https://youtu.be/-RCv5g5qJOg
+  duration: 20
+  source: ASEM
+  language: Italian
+  tags: [native-events, custom-events, session-commands, dialog-box, user-login]
+
+- collection: essentials
+  number: 5
+  section: UI Design
+  title: Reusable Objects and Aliasing
+  url: https://youtu.be/fBJ2xfw6E6g
+  duration: 17
+  source: ASEM
+  language: Italian
+  tags: [alias, widget-reuse, dynamic-binding, dialog-box, motor-widget]
+
+- collection: essentials
+  number: 6
+  section: UI Design
+  title: FactoryTalk Optix Localization
+  url: https://youtu.be/i2S1QgnMweM
+  duration: 22
+  source: ASEM
+  language: Italian
+  tags: [language-switch, dictionaries, date-time-format, measurement-units, unit-mapping]
+
+- collection: essentials
+  number: 7
+  section: UI Design
+  title: FactoryTalk Optix Data Controls
+  url: https://youtu.be/hZxR-gdPwgg
+  duration: 25
+  source: ASEM
+  language: Italian
+  tags: [data-controls, combo-box, list-box, data-grid, queries, charts]
+
+- collection: essentials
+  number: 8
+  section: UI Design
+  title: FactoryTalk Optix ListView
+  url: https://youtu.be/hFEuru7Fo-8
+  duration: 24
+  source: ASEM
+  language: Italian
+  tags: [list-view, data-filtering, database-table, alarm-history, active-alarms, recipes]
+
+- collection: essentials
+  number: 9
+  section: Data and Monitoring
+  title: DataLogger Configuration
+  url: https://www.youtube.com/watch?v=gMJdRrsPy34&t=25s
+  duration: 17
+  source: ASEM
+  language: Italian
+  tags: [datalogger, embedded-database, grid-display, sampling-types, csv-export]
+
+- collection: essentials
+  number: 10
+  section: Data and Monitoring
+  title: Trend Configuration and Management
+  url: https://youtu.be/HNSS6cBPB0s?si=qx8HxO1EfYcGcGOk
+  duration: 16
+  source: ASEM
+  language: Italian
+  tags: [real-time-trend, y-axes, datalogger-trend, database-trend, emulation]
+
+- collection: essentials
+  number: 11
+  section: Data and Monitoring
+  title: Alarm Management, Visualization, and Configuration
+  url: https://youtu.be/UWi9UaxPYEg
+  duration: 27
+  source: ASEM
+  language: Italian
+  tags: [alarm-config, alarm-widgets, event-logger, csv-export, netlogic]
+
+- collection: essentials
+  number: 12
+  section: Security and Users
+  title: User, Groups, and Role Management
+  url: https://youtu.be/mqgBHsxT2MA?si=hpGKZ6jYQ-v8l6V7
+  duration: 19
+  source: ASEM
+  language: Italian
+  tags: [authentication, login-interface, password-policy, group-permissions, runtime-users, upload-from-device]
+
+- collection: essentials
+  number: 13
+  section: Recipes
+  title: Recipe Management
+  url: https://youtu.be/G_PphV37cbQ
+  duration: 20
+  source: ASEM
+  language: Italian
+  tags: [recipe-editor, recipe-database, edit-model, recipe-controller, apply-from-db, import-export]
+
+- collection: essentials
+  number: 14
+  section: Connectivity
+  title: Drivers
+  url: https://youtu.be/k8_cpICKa8g
+  duration: 24
+  source: ASEM
+  language: Italian
+  tags: [modbus, ethernet-ip, tag-importer, communication-status, backup-restore, plc-model-sync]
+
+- collection: essentials
+  number: 15
+  section: OPC UA
+  title: OPC UA Server
+  url: https://youtu.be/ojKnI5BROHU
+  duration: 17
+  source: ASEM
+  language: Italian
+  tags: [opc-ua-server, certificates, ua-expert, events, methods, node-publishing]
+
+- collection: essentials
+  number: 16
+  section: OPC UA
+  title: OPC UA Client
+  url: https://youtu.be/a1VnHdHaLkM
+  duration: 22
+  source: ASEM
+  language: Italian
+  tags: [opc-ua-client, plc-tag-exchange, method-calls, event-subscriptions, database-access, runtime-node-sync]
+
+- collection: essentials
+  number: 17
+  section: C# and NetLogic
+  title: C# 1 Introduction
+  url: https://youtu.be/ZCLcgSGX1YU
+  duration: 6
+  source: ASEM
+  language: Italian
+  tags: [netlogic-overview, runtime-netlogic, designtime-netlogic, api-docs, library-scripts]
+
+- collection: essentials
+  number: 18
+  section: C# and NetLogic
+  title: C# 2 DesignTime NetLogic
+  url: https://youtu.be/DMC5OB__D_c
+  duration: 20
+  source: ASEM
+  language: Italian
+  tags: [designtime-netlogic, visual-studio, write-log, make-variable, script-parameters, debugging]
+
+- collection: essentials
+  number: 19
+  section: C# and NetLogic
+  title: C# 3 RunTime NetLogic
+  url: https://youtu.be/EEExU0MsbtI
+  duration: 37
+  source: ASEM
+  language: Italian
+  tags: [runtime-netlogic, async-tasks, variable-subscription, ui-interaction, runtime-objects, debugging]
+
+- collection: essentials
+  number: 20
+  section: Advanced
+  title: How to update the project if the PLC tags have changed
+  url: https://youtu.be/CPDWtU506w8
+  duration: 12
+  source: ASEM
+  language: Italian
+  tags: [tag-import, plc-model-sync, from-plc-to-model, csv-model-export, library-scripts]
+
+- collection: essentials
+  number: 21
+  section: Advanced
+  title: Collaborative HMI Design using FTOptix and GitHub
+  url: https://youtu.be/6n876o6wXco
+  duration: 13
+  source: ASEM
+  language: Italian
+  tags: [github-setup, commit, collaborative-development, conflict-resolution, merge]
+
+- collection: webinars
+  section: Product releases
+  title: Novità introdotte in FactoryTalk Optix 1.7
+  url: https://www.youtube.com/watch?v=yjK06nGgBUk
+  source: ASEM
+  language: Italian
+  tags: [ftoptix-1.7, recipe, recipe-x, list-view, scale-factor, broken-dynamic-links, performance-optimization]
+
+- collection: webinars
+  section: Audit
+  title: Audit
+  url: https://www.youtube.com/watch?v=xaqXtFq0mNc
+  source: ASEM
+  language: Italian
+  tags: [audit-variables, signature-workflows, session-events, event-logger, recipe-audit]
+
+- collection: webinars
+  section: UI Design
+  title: Responsive UI
+  url: https://www.youtube.com/watch?v=1fI2JVNK3qY&ab_channel=ASEMS.r.l.
+  source: ASEM
+  language: Italian
+  tags: [responsive-graphics, multi-resolution, device-independent, web-interface]
+
+- collection: webinars
+  section: Troubleshooting
+  title: Troubleshooting FactoryTalk Optix and UBIQUITY
+  url: https://youtu.be/zDpK-mcqNcQ
+  source: ASEM
+  language: Italian
+  tags: [troubleshooting, ubiquity, performance, licenses, user-access, diagnostics]
+
+- collection: webinars
+  section: HMI modernization
+  title: "Webinar Series: Revitalize Your HMI Operations"
+  url: https://www.rockwellautomation.com/en-us/events/webinars.html
+  source: Rockwell Automation
+  language: English
+  tags: [hmi, modernization, operations]
+
+- collection: webinars
+  section: General
+  title: Rockwell Automation YouTube Playlist
+  url: https://www.youtube.com/playlist?list=PL3K_BigUXJ1M1-JpRiwIIhzJUbhwtK3yy
+  source: Rockwell Automation
+  language: English
+  tags: [youtube, tutorials, product-videos]

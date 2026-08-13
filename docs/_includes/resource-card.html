@@ -1,0 +1,36 @@
+{% assign resource = include.resource %}
+<article
+  class="resource-card"
+  data-resource-card
+  data-title="{{ resource.title | downcase | escape }}"
+  data-summary="{{ resource.summary | downcase | escape }}"
+  data-topic="{{ resource.topic | downcase | escape }}"
+  data-journey="{{ resource.journey | downcase | escape }}"
+  data-level="{{ resource.level | downcase | escape }}"
+  data-format="{{ resource.format | downcase | escape }}"
+  data-language="{{ resource.language | downcase | escape }}"
+  data-source="{{ resource.source | downcase | escape }}"
+  data-access="{% if resource.requires_login %}login{% else %}open{% endif %}">
+  <div class="resource-card__meta">
+    {% if resource.format %}<span class="meta-badge">{{ resource.format }}</span>{% endif %}
+    {% if resource.level %}<span class="meta-badge">{{ resource.level }}</span>{% endif %}
+    {% if resource.language %}<span class="meta-badge">{{ resource.language }}</span>{% endif %}
+    {% if resource.requires_login %}<span class="meta-badge meta-badge--warning">Login required</span>{% endif %}
+  </div>
+  <h3>
+    <a href="{% if resource.external %}{{ resource.url }}{% else %}{{ resource.url | relative_url }}{% endif %}"
+      {% if resource.external %}target="_blank" rel="noopener"{% endif %}>
+      {{ resource.title }}
+      {% if resource.external %}<span class="visually-hidden"> (opens in a new tab)</span>{% endif %}
+    </a>
+  </h3>
+  <p>{{ resource.summary }}</p>
+  <footer class="resource-card__footer">
+    <span>{{ resource.source }}</span>
+    {% if resource.product_version %}
+      <span>Version {{ resource.product_version }}</span>
+    {% else %}
+      <span>Reviewed {{ resource.last_reviewed | default: site.catalog_reviewed | date: "%Y-%m-%d" }}</span>
+    {% endif %}
+  </footer>
+</article>

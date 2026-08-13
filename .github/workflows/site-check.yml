@@ -1,0 +1,50 @@
+name: Site checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 5 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Validate source catalog
+        run: python scripts/check_site.py --root docs --mode source
+
+      - name: Build Jekyll site
+        run: bundle exec jekyll build --source docs --destination _site
+
+      - name: Validate generated site
+        run: python scripts/check_site.py --root _site --mode built
+
+  external-links:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --max-retries 2
+            --timeout 20
+            --exclude-mail
+            --exclude 'eng2e\.seismic\.com'
+            --exclude 'ra\.seismic\.com'
+            --exclude 'rockwellautomation\.custhelp\.com'
+            './docs/**/*.html'
