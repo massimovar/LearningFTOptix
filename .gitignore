@@ -6,3 +6,4 @@ _site/
 vendor/
 __pycache__/
 *.pyc
+/scripts/

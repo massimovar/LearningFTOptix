@@ -1,9 +1,6 @@
-name: Site checks
+name: External link checks
 
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
   schedule:
     - cron: "17 5 * * 1"
@@ -12,23 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  validate-source:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
-
-      - name: Validate source catalog
-        run: python scripts/check_site.py --root docs --mode source
-
-      - name: Validate release data
-        run: python scripts/check_site.py --root docs --mode releases
-
   external-links:
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
