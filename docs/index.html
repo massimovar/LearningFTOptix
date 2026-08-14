@@ -213,7 +213,8 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
       margin-bottom: 0;
     }
 
-    .tab-btn {
+    .tab-btn,
+    .tab-link {
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -229,15 +230,18 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
       white-space: nowrap;
       font-family: inherit;
       letter-spacing: 0.1px;
+      text-decoration: none;
     }
-    .tab-btn:hover { color: var(--text); background: rgba(0,0,0,.04); }
+    .tab-btn:hover,
+    .tab-link:hover { color: var(--text); background: rgba(0,0,0,.04); }
     .tab-btn.active {
       color: var(--accent);
       background: var(--bg-card);
       box-shadow: 0 1px 6px rgba(0,0,0,.08), 0 0 0 1px var(--border);
     }
     @media (prefers-color-scheme: dark) {
-      .tab-btn:hover { background: rgba(255,255,255,.05); }
+      .tab-btn:hover,
+      .tab-link:hover { background: rgba(255,255,255,.05); }
     }
 
     /* Tab panels */
@@ -313,7 +317,8 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
       .nav-grid { grid-template-columns: 1fr; gap: 12px; }
 
       .tab-nav { flex-wrap: wrap; }
-      .tab-btn { font-size: 12px; padding: 6px 12px; }
+      .tab-btn,
+      .tab-link { font-size: 12px; padding: 6px 12px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -382,7 +387,7 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
           <button id="tab-button-dev" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-dev" onclick="switchTab(this,'tab-dev')">⚙️ Develop Like a Pro</button>
           <button id="tab-button-debug" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-debug" onclick="switchTab(this,'tab-debug')">🔍 Debug</button>
           <button id="tab-button-examples" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-examples" onclick="switchTab(this,'tab-examples')">💡 Examples</button>
-          <button id="tab-button-docker" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-docker" onclick="switchTab(this,'tab-docker')">🐳 FTOptix on Docker</button>
+          <a class="tab-link" href="https://github.com/FactoryTalk-Optix/Optix_Docker_FTOptixUpdateServer">🐳 Deploy on Docker</a>
           <button id="tab-button-hw" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-hw" onclick="switchTab(this,'tab-hw')">🖥️ Hardware</button>
           <button id="tab-button-ubiquity" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-ubiquity" onclick="switchTab(this,'tab-ubiquity')">🌐 Ubiquity / FTRA</button>
           <button id="tab-button-cyber" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-cyber" onclick="switchTab(this,'tab-cyber')">🔒 Cyber Security</button>
@@ -397,18 +402,6 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
             <ul>
               <li><a href="chapters/Download_install_start.html">Download, Install, Start</a></li>
               <li><a href="https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.">License Management</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Panel: FTOptix & Docker ── -->
-      <div id="tab-docker" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-button-docker" hidden>
-        <div class="nav-grid">
-          <div class="nav-card">
-            <h3>FTOptix &amp; Docker</h3>
-            <ul>
-              <li><a href="https://github.com/FactoryTalk-Optix/Optix_Docker_FTOptixUpdateServer">Docker Deployment Guide</a></li>
             </ul>
           </div>
         </div>
