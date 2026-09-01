@@ -342,6 +342,8 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
       --tile-border: var(--border);
       --tile-rule: transparent;
       --tile-glow: transparent;
+      --tile-header-background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+      --tile-header-border: color-mix(in srgb, var(--accent) 18%, var(--border));
       --tile-glow-top: -130px;
       --tile-glow-right: -100px;
       --tile-glow-bottom: auto;
@@ -351,7 +353,7 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
       overflow: hidden;
       grid-column: span 4;
       min-width: 0;
-      padding: 22px;
+      padding: 0 22px 22px;
       background: var(--tile-background);
       border: 1px solid var(--tile-border);
       border-radius: var(--radius);
@@ -462,17 +464,37 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
       --tile-glow-bottom: -145px;
     }
     .category-tile__header {
-      margin-bottom: 17px;
+      padding: 18px 22px 16px;
+      margin: 0 -22px 18px;
+      background: var(--tile-header-background);
+      border-bottom: 1px solid var(--tile-header-border);
     }
     .category-tile__header h3 {
+      display: flex;
+      gap: 10px;
+      align-items: center;
       margin: 0;
-      font-size: 20px;
+      color: var(--text);
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 1.25;
       letter-spacing: -0.02em;
     }
+    .category-tile__header h3::before {
+      width: 4px;
+      height: 1.1em;
+      flex: 0 0 auto;
+      background: var(--accent);
+      border-radius: 999px;
+      box-shadow: 0 0 0 4px var(--accent-glow);
+      content: "";
+    }
     .category-tile__header p {
-      margin: 4px 0 0;
+      max-width: 54ch;
+      margin: 7px 0 0 14px;
       color: var(--text-secondary);
-      font-size: 13px;
+      font-size: 14px;
+      line-height: 1.45;
     }
     .category-tile__groups {
       display: grid;
