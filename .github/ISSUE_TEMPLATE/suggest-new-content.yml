@@ -1,0 +1,50 @@
+name: Suggest new content
+description: Propose a resource, guide, example, or topic for this repository.
+title: "[Content]: "
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Where should this content appear?
+      options:
+        - FactoryTalk Optix
+        - OptixEdge or hardware
+        - UBIQUITY or FTRA
+        - Cybersecurity
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: content
+    attributes:
+      label: Suggested content
+      description: Name the resource, guide, example, or topic.
+      placeholder: "Example: Add a guide for..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Explain what should be added and why it would help users.
+      placeholder: Describe requested content, intended audience, and expected value.
+    validations:
+      required: true
+
+  - type: input
+    id: references
+    attributes:
+      label: Reference links
+      description: Add official docs, examples, or other useful source links.
+      placeholder: https://...
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Existing issues
+      options:
+        - label: I searched existing issues and did not find this suggestion.
+          required: true

@@ -13,6 +13,7 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
   <title>Learning FactoryTalk® Optix™</title>
   <meta name="description" content="{{ page.description }}">
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
   <style>
     :root {
       --bg: #fafbfc;
@@ -135,11 +136,68 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .hero p { color: var(--muted); font-size: 16px; max-width: 62ch; margin: 0 auto; }
-    .hero .subtitle { margin-top: 12px; }
-    .hero .subtitle a { color: var(--accent); text-decoration: none; font-weight: 600; transition: var(--transition-fast); }
-    .hero .subtitle a:hover { color: var(--accent-hover); }
+    .hero-tagline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      max-width: 100%;
+    }
+    .hero-tagline p { margin: 0; }
+    .hero-tagline__star {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      flex-shrink: 0;
+    }
+    .repo-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      width: fit-content;
+      padding: 4px;
+      margin: 10px auto 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .repo-actions a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 11px;
+      color: var(--text-secondary);
+      background: transparent;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.3;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+    }
+    .repo-actions a:hover {
+      color: var(--accent);
+      background: var(--bg-card);
+      transform: translateY(-1px);
+    }
+    .repo-actions a:active { transform: translateY(0); }
+    .official-resources {
+      width: min(760px, 100%);
+      padding-top: 20px;
+      margin: 26px auto 0;
+      border-top: 1px solid var(--border);
+    }
+    .official-resources__source {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+    .official-resources__source:hover { color: var(--accent-hover); }
     .hero .links {
-      margin-top: 20px;
+      margin-top: 12px;
       display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
     }
     .hero .links a {
@@ -159,145 +217,321 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
 
     /* ── Day-to-Day Essentials ── */
     .quick-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
       margin-bottom: 32px;
-      padding: 24px;
+      padding: 8px 16px;
+      overflow-x: auto;
       border: 1px solid var(--border);
       border-left: 4px solid var(--accent);
       border-radius: var(--radius);
       background: var(--bg-card);
       box-shadow: var(--card-shadow);
     }
-    .quick-links h2 { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-    .quick-links ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 12px; }
+    .quick-links h2 {
+      flex: 0 0 auto;
+      margin: 0;
+      font-size: 15px;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+    .quick-links ul {
+      display: flex;
+      flex: 0 0 auto;
+      flex-wrap: nowrap;
+      gap: 8px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
     .quick-links li { display: inline-flex; }
     .quick-links a {
       display: inline-flex; align-items: center; gap: 6px;
-      padding: 10px 18px; border: 1px solid var(--border); border-radius: 24px;
+      padding: 6px 12px; border: 1px solid var(--border); border-radius: 24px;
       background: var(--surface); color: var(--text); text-decoration: none;
-      font-size: 14px; font-weight: 500;
+      font-size: 13px; font-weight: 500; white-space: nowrap;
     }
     .quick-links a:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
 
-    /* ══════════════════════════════════════════
-       TAB NAV — Apple-style platter
-       ══════════════════════════════════════════ */
-    .section-panel {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--bg-card);
-      box-shadow: var(--card-shadow);
-      overflow: hidden;
+    /* ── Searchable resource directory ── */
+    .resource-directory {
       margin-bottom: 48px;
     }
-
-    /* Sticky tab bar at the top of the panel */
-    .tab-nav-wrap {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: var(--bg-card);
-      border-bottom: 1px solid var(--border);
-      padding: 12px 16px 0;
+    .directory-intro {
+      margin-bottom: 18px;
     }
-
-    .tab-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2px;
+    .directory-intro h2 {
+      margin: 0;
+      font-size: clamp(1.7rem, 4vw, 2.2rem);
+      letter-spacing: -0.025em;
+    }
+    .directory-intro p {
+      max-width: 58ch;
+      margin: 6px 0 0;
+      color: var(--text-secondary);
+    }
+    .directory-search {
+      padding: 18px 20px;
+      margin-bottom: 18px;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 4px;
-      width: fit-content;
-      max-width: 100%;
-      margin-bottom: 0;
+      border-radius: var(--radius);
     }
-
-    .tab-btn,
-    .tab-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 16px;
-      border: none;
-      border-radius: 7px;
-      background: transparent;
-      color: var(--muted);
+    .directory-search label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--text-secondary);
       font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      white-space: nowrap;
-      font-family: inherit;
-      letter-spacing: 0.1px;
-      text-decoration: none;
+      font-weight: 700;
     }
-    .tab-btn:hover,
-    .tab-link:hover { color: var(--text); background: rgba(0,0,0,.04); }
-    .tab-btn.active {
+    .directory-search__control {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px;
+    }
+    .directory-search input {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 13px;
+      color: var(--text);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font: inherit;
+      font-size: 15px;
+    }
+    .directory-search input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+      outline: 0;
+    }
+    .directory-search__clear {
+      min-width: 72px;
+      padding: 0 14px;
       color: var(--accent);
       background: var(--bg-card);
-      box-shadow: 0 1px 6px rgba(0,0,0,.08), 0 0 0 1px var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
     }
-    @media (prefers-color-scheme: dark) {
-      .tab-btn:hover,
-      .tab-link:hover { background: rgba(255,255,255,.05); }
+    .directory-search__clear:hover {
+      background: var(--accent-light);
+      border-color: var(--accent);
     }
-
-    /* Tab panels */
-    .tab-panel { display: none; padding: 28px 24px 24px; }
-    .tab-panel.active { display: block; animation: fadeIn 0.2s ease-out; }
-
-    /* ── Nav card grid inside tab panels ── */
-    .nav-grid {
+    .directory-search__clear:disabled {
+      opacity: .45;
+      cursor: default;
+    }
+    .directory-search__status {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .category-index {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(12, minmax(0, 1fr));
       gap: 16px;
     }
-
-    .nav-card {
-      border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 20px; background: var(--surface);
-      box-shadow: var(--card-shadow); transition: var(--transition-smooth); position: relative;
+    .category-tile {
+      --tile-background: var(--bg-card);
+      --tile-border: var(--border);
+      --tile-rule: transparent;
+      --tile-glow: transparent;
+      --tile-glow-top: -130px;
+      --tile-glow-right: -100px;
+      --tile-glow-bottom: auto;
+      --tile-glow-left: auto;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      grid-column: span 4;
+      min-width: 0;
+      padding: 22px;
+      background: var(--tile-background);
+      border: 1px solid var(--tile-border);
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
     }
-    .nav-card:hover { border-color: var(--accent); box-shadow: var(--card-shadow-hover); transform: translateY(-2px); }
-    .nav-card h3 {
-      font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
-      color: var(--text-secondary); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
+    .category-tile::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 0;
+      height: 3px;
+      background: var(--tile-rule);
+      pointer-events: none;
     }
-    .nav-card ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-    .nav-card li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; }
-    .nav-card a {
-      color: var(--text); text-decoration: none; font-weight: 500;
-      transition: var(--transition-fast); position: relative;
-      line-height: 1.55;
+    .category-tile::after {
+      content: "";
+      position: absolute;
+      top: var(--tile-glow-top);
+      right: var(--tile-glow-right);
+      bottom: var(--tile-glow-bottom);
+      left: var(--tile-glow-left);
+      z-index: 0;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, var(--tile-glow), transparent 68%);
+      border-radius: 50%;
+      pointer-events: none;
     }
-    .nav-card a::after {
-      content: ""; position: absolute; bottom: -2px; left: 0;
-      width: 0; height: 2px; background: var(--accent); transition: width var(--transition-smooth);
+    .category-tile > * {
+      position: relative;
+      z-index: 1;
     }
-    .nav-card a:hover { color: var(--accent); }
-    .nav-card a:hover::after { width: 100%; }
-
-    /* Debugging card — accent highlight */
-    .nav-card.card-debug {
+    .category-tile:hover {
       border-color: var(--accent);
+      box-shadow: var(--card-shadow-hover);
+      transform: translateY(-2px);
+    }
+    .category-tile--learn,
+    .category-tile--ubiquity {
+      grid-column: span 8;
+    }
+    .category-tile--develop {
+      grid-column: span 7;
+    }
+    .category-tile--debug {
+      grid-column: span 5;
+    }
+    .category-tile--start {
+      --tile-background: color-mix(in srgb, var(--accent-light) 62%, var(--bg-card));
+      --tile-border: color-mix(in srgb, var(--accent) 42%, var(--border));
+      --tile-rule: var(--accent);
+      --tile-glow: color-mix(in srgb, var(--accent) 20%, transparent);
+    }
+    .category-tile--learn {
+      --tile-background: linear-gradient(135deg, var(--bg-card) 48%, color-mix(in srgb, var(--accent-light) 42%, var(--bg-card)));
+      --tile-rule: color-mix(in srgb, var(--accent) 42%, var(--border));
+      --tile-glow: color-mix(in srgb, var(--accent) 11%, transparent);
+      --tile-glow-top: auto;
+      --tile-glow-right: auto;
+      --tile-glow-bottom: -145px;
+      --tile-glow-left: -90px;
+    }
+    .category-tile--develop {
+      --tile-background: linear-gradient(160deg, color-mix(in srgb, var(--surface) 84%, var(--accent-light)), var(--bg-card) 72%);
+      --tile-rule: color-mix(in srgb, var(--accent) 28%, var(--border));
+      --tile-glow: color-mix(in srgb, var(--accent) 9%, transparent);
+    }
+    .category-tile--debug {
+      --tile-border: color-mix(in srgb, var(--accent) 45%, var(--border));
+      --tile-rule: color-mix(in srgb, var(--accent) 78%, var(--border));
+      --tile-glow: color-mix(in srgb, var(--accent) 12%, transparent);
+      --tile-glow-top: auto;
+      --tile-glow-bottom: -145px;
+    }
+    .category-tile--examples {
+      --tile-background: color-mix(in srgb, var(--surface) 55%, var(--bg-card));
+      --tile-glow: color-mix(in srgb, var(--accent) 10%, transparent);
+      --tile-glow-top: auto;
+      --tile-glow-right: auto;
+      --tile-glow-bottom: -145px;
+      --tile-glow-left: -100px;
+    }
+    .category-tile--docker {
+      --tile-background: linear-gradient(145deg, var(--surface), color-mix(in srgb, var(--accent-light) 30%, var(--bg-card)));
+      --tile-rule: color-mix(in srgb, var(--accent) 34%, var(--border));
+      --tile-glow: color-mix(in srgb, var(--accent) 8%, transparent);
+    }
+    .category-tile--hardware {
+      --tile-background: linear-gradient(180deg, var(--bg-card), color-mix(in srgb, var(--accent-light) 28%, var(--surface)));
+      --tile-rule: color-mix(in srgb, var(--accent) 24%, var(--border));
+      --tile-glow: color-mix(in srgb, var(--accent) 9%, transparent);
+      --tile-glow-top: auto;
+      --tile-glow-bottom: -145px;
+    }
+    .category-tile--ubiquity {
+      --tile-background: color-mix(in srgb, var(--accent-light) 38%, var(--bg-card));
+      --tile-border: color-mix(in srgb, var(--accent) 32%, var(--border));
+      --tile-rule: color-mix(in srgb, var(--accent) 64%, var(--border));
+      --tile-glow: color-mix(in srgb, var(--accent) 17%, transparent);
+    }
+    .category-tile--cyber {
+      --tile-background: linear-gradient(135deg, color-mix(in srgb, var(--surface) 74%, var(--accent-light)), var(--bg-card));
+      --tile-border: color-mix(in srgb, var(--accent) 38%, var(--border));
+      --tile-rule: color-mix(in srgb, var(--accent) 72%, var(--border));
+      --tile-glow: color-mix(in srgb, var(--accent) 12%, transparent);
+      --tile-glow-top: auto;
+      --tile-glow-bottom: -145px;
+    }
+    .category-tile__header {
+      margin-bottom: 17px;
+    }
+    .category-tile__header h3 {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+    .category-tile__header p {
+      margin: 4px 0 0;
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+    .category-tile__groups {
+      display: grid;
+      gap: 18px;
+    }
+    .category-tile--learn .category-tile__groups {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .category-tile--develop .category-tile__groups,
+    .category-tile--docker .category-tile__groups,
+    .category-tile--ubiquity .category-tile__groups {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .category-group h4 {
+      margin: 0 0 7px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .category-links {
+      display: grid;
+      gap: 2px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .category-links li {
+      margin: 0;
+    }
+    .category-links a {
+      display: block;
+      padding: 7px 9px;
+      margin: 0 -9px;
+      color: var(--text);
+      border-radius: 7px;
+      font-size: 14px;
+      font-weight: 550;
+      line-height: 1.4;
+      text-decoration: none;
+      transition: color var(--transition-fast), background var(--transition-fast);
+    }
+    .category-links a:hover {
+      color: var(--accent);
       background: var(--accent-light);
     }
-    .nav-card.card-debug h3 { color: var(--accent); border-color: rgba(0,102,204,.2); }
-
-    /* ── Star CTA (inline in hero links) ── */
-    .star-btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--accent);
-      background: var(--accent-light); border: 1px solid var(--accent);
-      border-radius: 24px; text-decoration: none;
-      transition: var(--transition-smooth); cursor: pointer;
+    .category-empty {
+      padding: 28px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      text-align: center;
     }
-    .star-btn:hover { background: var(--accent); color: #fff; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(0,102,204,.25); }
-    .star-btn:hover svg { color: #fff; }
-    .star-btn:active { transform: translateY(0); }
-    .star-btn svg { flex-shrink: 0; color: #f5a623; }
+    .category-tile[hidden],
+    .category-group[hidden],
+    .category-links li[hidden],
+    .category-empty[hidden] {
+      display: none;
+    }
 
     /* ── Footer ── */
     .footer {
@@ -314,11 +548,49 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
     @media (max-width: 768px) {
       .container { padding: 32px 16px; }
       .hero h1 { font-size: 26px; }
-      .nav-grid { grid-template-columns: 1fr; gap: 12px; }
+      .hero-tagline { flex-wrap: wrap; }
+      .repo-actions {
+        max-width: 100%;
+        flex-wrap: wrap;
+      }
+      .directory-search__control { grid-template-columns: 1fr; }
+      .directory-search__clear {
+        min-height: 42px;
+      }
+      .category-tile,
+      .category-tile--learn,
+      .category-tile--develop,
+      .category-tile--debug,
+      .category-tile--ubiquity {
+        grid-column: span 12;
+      }
+      .category-tile--learn .category-tile__groups,
+      .category-tile--develop .category-tile__groups,
+      .category-tile--docker .category-tile__groups,
+      .category-tile--ubiquity .category-tile__groups {
+        grid-template-columns: 1fr;
+      }
+    }
 
-      .tab-nav { flex-wrap: wrap; }
-      .tab-btn,
-      .tab-link { font-size: 12px; padding: 6px 12px; }
+    @media (min-width: 769px) and (max-width: 1040px) {
+      .category-tile,
+      .category-tile--learn,
+      .category-tile--develop,
+      .category-tile--debug,
+      .category-tile--ubiquity {
+        grid-column: span 6;
+      }
+      .category-tile--cyber {
+        grid-column: span 12;
+      }
+      .category-tile--learn .category-tile__groups {
+        grid-template-columns: 1fr;
+      }
+      .category-tile--develop .category-tile__groups,
+      .category-tile--docker .category-tile__groups,
+      .category-tile--ubiquity .category-tile__groups {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -342,20 +614,25 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
     <header class="hero" role="banner">
       <img src="images/logo.png" alt="Learning FactoryTalk Optix logo">
       <h1>Learning FactoryTalk® Optix™</h1>
-      <p>A set of resources to become an FTOptix power user <em>(unofficial repo)</em></p>
-      <p class="subtitle">
-        <a href="https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html">
+      <div class="hero-tagline">
+        <p>A set of resources to become an FTOptix power user <em>(unofficial repo)</em></p>
+        <span class="hero-tagline__star">
+          <a class="github-button" href="https://github.com/massimovar/LearningFTOptix" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" data-no-link-indicator aria-label="Star massimovar/LearningFTOptix on GitHub">Star</a>
+        </span>
+      </div>
+      <div class="repo-actions" aria-label="Help improve this repository">
+        <a href="https://github.com/massimovar/LearningFTOptix/issues/new?template=report-an-issue.yml" target="_blank" rel="noopener noreferrer" data-no-link-indicator>Report an issue</a>
+        <a href="https://github.com/massimovar/LearningFTOptix/issues/new?template=suggest-new-content.yml" target="_blank" rel="noopener noreferrer" data-no-link-indicator>Suggest new content</a>
+      </div>
+      <div class="official-resources">
+        <a class="official-resources__source" href="https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html" data-no-link-indicator>
           Resources by Rockwell Automation →
         </a>
-      </p>
-      <div class="links">
-        <a href="pdf/ftoptix/FTOptix%20Overview.pdf">What is FTOptix?</a>
-        <a href="chapters/FTOptix_overview.html#latest-releases">New releases</a>
-        <a href="pdf/ftoptix/FTOptix%20Public%20Outlook%20and%20Roadmap%20July%202025.pdf">What's next?</a>
-        <a class="star-btn" href="https://github.com/massimovar/LearningFTOptix" target="_blank" rel="noopener" title="Star this repo on GitHub">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/></svg>
-          Helpful? Star it
-        </a>
+        <div class="links">
+          <a href="pdf/ftoptix/FTOptix%20Overview.pdf">What is FTOptix?</a>
+          <a href="chapters/FTOptix_overview.html#latest-releases">New releases</a>
+          <a href="pdf/ftoptix/FTOptix%20Public%20Outlook%20and%20Roadmap%20July%202025.pdf">What's next?</a>
+        </div>
       </div>
     </header>
 
@@ -367,183 +644,220 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
       <h2 id="quick-links-heading">Day-to-Day Essentials</h2>
       <ul>
         <li><a href="chapters/Learning_material_Videos.html">Video tutorials</a></li>
-        <li><a href="https://eng2e.seismic.com/ls/5d78bc76-77f9-460a-a446-4685520db077/HRZbG6dVdtwIQipW#/content/9229e75b-dc4e-4165-bcc6-90450dc0fe4b">Complete Course</a></li>
+        <li><a href="{{ '/pdf/ftoptix/FactoryTalk Optix Technical Training.PDF' | relative_url }}">Complete Course</a></li>
         <li><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet">NetLogic Cheat Sheet</a></li>
         <li><a href="https://engage.rockwellautomation.com/communities/forums/forums-home?CommunityKey=0cbb1b6c-055d-48db-8d38-d24850beeec9">RA Community Forum</a></li>
         <li><a href="https://rockwellautomation.custhelp.com/app/home">RA Knowledge Base</a></li>
       </ul>
     </section>
 
-    <!-- ═══════════════════════════════════════════════
-         SINGLE SECTION WITH TAB NAVIGATION
-         ═══════════════════════════════════════════════ -->
-    <div class="section-panel" role="region" aria-label="Resource categories">
-
-      <!-- Tab bar -->
-      <div class="tab-nav-wrap">
-        <nav class="tab-nav" role="tablist" aria-label="Resource categories">
-          <button id="tab-button-start" class="tab-btn active" role="tab" aria-selected="true" tabindex="0" aria-controls="tab-start" onclick="switchTab(this,'tab-start')">🚀 Start</button>
-          <button id="tab-button-learn" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-learn" onclick="switchTab(this,'tab-learn')">📚 Learn</button>
-          <button id="tab-button-dev" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-dev" onclick="switchTab(this,'tab-dev')">⚙️ Develop Like a Pro</button>
-          <button id="tab-button-debug" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-debug" onclick="switchTab(this,'tab-debug')">🔍 Debug</button>
-          <button id="tab-button-examples" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-examples" onclick="switchTab(this,'tab-examples')">💡 Examples</button>
-          <a class="tab-link" href="https://github.com/FactoryTalk-Optix/Optix_Docker_FTOptixUpdateServer">🐳 Deploy on Docker</a>
-          <button id="tab-button-hw" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-hw" onclick="switchTab(this,'tab-hw')">🖥️ Hardware</button>
-          <button id="tab-button-ubiquity" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-ubiquity" onclick="switchTab(this,'tab-ubiquity')">🌐 Ubiquity / FTRA</button>
-          <button id="tab-button-cyber" class="tab-btn" role="tab" aria-selected="false" tabindex="-1" aria-controls="tab-cyber" onclick="switchTab(this,'tab-cyber')">🔒 Cyber Security</button>
-        </nav>
+    <section class="resource-directory" aria-labelledby="resource-directory-heading" data-category-finder>
+      <div class="directory-intro">
+        <h2 id="resource-directory-heading">Explore all resources</h2>
+        <p>Browse every category or search by product, task, or topic.</p>
       </div>
 
-      <!-- ── Panel: Getting Started ── -->
-      <div id="tab-start" class="tab-panel active" role="tabpanel" tabindex="0" aria-labelledby="tab-button-start">
-        <div class="nav-grid">
-          <div class="nav-card">
-            <h3>Getting Started</h3>
-            <ul>
-              <li><a href="chapters/Download_install_start.html">Download, Install, Start</a></li>
-              <li><a href="https://www.youtube.com/watch?v=BVXPn04wZ8M&ab_channel=ASEMS.r.l.">License Management</a></li>
-            </ul>
-          </div>
+      <div class="directory-search" role="search">
+        <label for="resource-search">Search resources</label>
+        <div class="directory-search__control">
+          <input id="resource-search" type="search" autocomplete="off" placeholder="Try NetLogic, Docker, UBIQUITY, releases..." data-category-query>
+          <button class="directory-search__clear" type="button" data-category-reset disabled>Clear</button>
         </div>
+        <p class="directory-search__status" aria-live="polite" data-category-status></p>
       </div>
 
-      <!-- ── Panel: Learning Materials ── -->
-      <div id="tab-learn" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-button-learn" hidden>
-        <div class="nav-grid">
-          <div class="nav-card">
-            <h3>Learning Materials</h3>
-            <ul>
-              <li><a href="https://eng2e.seismic.com/ls/5d78bc76-77f9-460a-a446-4685520db077/HRZbG6dVdtwIQipW#/content/9229e75b-dc4e-4165-bcc6-90450dc0fe4b">Complete Course</a></li>
-              <li><a href="chapters/Learning_material_Videos.html">Video Tutorials</a></li>
-              <li><a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html">Online Help</a></li>
-              <li><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet">NetLogic Cheat Sheet</a></li>
-            </ul>
+      <div class="category-index" data-category-results>
+        <article class="category-tile category-tile--start" data-category-tile data-search="start getting started beginner install setup license">
+          <header class="category-tile__header">
+            <h3>Start</h3>
+            <p>Install FactoryTalk Optix and build a first project.</p>
+          </header>
+          <div class="category-tile__groups">
+            <div class="category-group" data-category-group>
+              <ul class="category-links">
+                <li data-category-item><a href="chapters/Download_install_start.html">Download, install, start</a></li>
+                <li data-category-item><a href="https://www.youtube.com/watch?v=BVXPn04wZ8M&amp;ab_channel=ASEMS.r.l.">License management</a></li>
+                <li data-category-item data-search="training beginner tutorial"><a href="pdf/ftoptix/Introduction_to_FactoryTalk_Optix_Visualization_Platform_Hands_On_Lab.pdf">Hands-on lab</a></li>
+              </ul>
+            </div>
           </div>
-          <div class="nav-card">
-            <h3>Rockwell sites</h3>
-            <ul>
-              <li><a href="https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1141346/loc/en_US">FAQs (need RA login)</a></li>
-              <li><a href="https://rockwellautomation.custhelp.com/app/home">RA Knowledge Base (need RA login)</a></li>
-            </ul>
+        </article>
+
+        <article class="category-tile category-tile--learn" data-category-tile data-search="learn training documentation course support product overview releases roadmap">
+          <header class="category-tile__header">
+            <h3>Learn</h3>
+            <p>Courses, product guidance, official docs, and support.</p>
+          </header>
+          <div class="category-tile__groups">
+            <div class="category-group" data-category-group>
+              <h4>Training and docs</h4>
+              <ul class="category-links">
+                <li data-category-item data-search="technical training pdf"><a href="{{ '/pdf/ftoptix/FactoryTalk Optix Technical Training.PDF' | relative_url }}">Complete course</a></li>
+                <li data-category-item data-search="videos webinars"><a href="chapters/Learning_material_Videos.html">Video tutorials</a></li>
+                <li data-category-item><a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap.html">Online help</a></li>
+                <li data-category-item data-search="c# code scripting"><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet">NetLogic Cheat Sheet</a></li>
+              </ul>
+            </div>
+            <div class="category-group" data-category-group>
+              <h4>Product</h4>
+              <ul class="category-links">
+                <li data-category-item><a href="pdf/ftoptix/FTOptix%20Overview.pdf">FactoryTalk Optix overview</a></li>
+                <li data-category-item data-search="new versions"><a href="chapters/FTOptix_overview.html#latest-releases">Release history</a></li>
+                <li data-category-item data-search="future whats next"><a href="pdf/ftoptix/FTOptix%20Public%20Outlook%20and%20Roadmap%20July%202025.pdf">Public outlook and roadmap</a></li>
+              </ul>
+            </div>
+            <div class="category-group" data-category-group>
+              <h4>Support</h4>
+              <ul class="category-links">
+                <li data-category-item><a href="https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1141346/loc/en_US">FAQs (login required)</a></li>
+                <li data-category-item data-search="kb knowledge base"><a href="https://rockwellautomation.custhelp.com/app/home">RA Knowledgebase (login required)</a></li>
+              </ul>
+            </div>
           </div>
-        </div>
+        </article>
+
+        <article class="category-tile category-tile--develop" data-category-tile data-search="develop build engineering netlogic c# ai mcp scripting">
+          <header class="category-tile__header">
+            <h3>Develop like a pro</h3>
+            <p>Patterns, scripts, lifecycle guidance, and AI tooling.</p>
+          </header>
+          <div class="category-tile__groups">
+            <div class="category-group" data-category-group>
+              <h4>Engineering</h4>
+              <ul class="category-links">
+                <li data-category-item><a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices.html">Best practices</a></li>
+                <li data-category-item data-search="performance lifecycle"><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/netlogic-lifecycle.md">NetLogic lifecycle</a></li>
+                <li data-category-item><a href="chapters/Ready_to_use_scripts.html">Ready-to-use scripts and tools</a></li>
+              </ul>
+            </div>
+            <div class="category-group" data-category-group>
+              <h4>AI tooling</h4>
+              <ul class="category-links">
+                <li data-category-item><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet?tab=readme-ov-file#netlogic-cheat-sheet-mcp-server">NetLogic MCP server</a></li>
+                <li data-category-item><a href="chapters/FTOptix_expert_agent.html">FTOptix Expert Agent</a></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article id="debugging" class="category-tile category-tile--debug" data-category-tile data-search="debug troubleshooting diagnostics performance logs statistics">
+          <header class="category-tile__header">
+            <h3>Debug</h3>
+            <p>Find performance bottlenecks, warnings, and project issues.</p>
+          </header>
+          <div class="category-tile__groups">
+            <div class="category-group" data-category-group>
+              <ul class="category-links">
+                <li data-category-item><a href="chapters/Debugging.html">UI performance checklist</a></li>
+                <li data-category-item><a href="https://asem-applicationsoftwareengineers.github.io/OptixRuntimeLogsParser/index.html">Runtime Logs Parser</a></li>
+                <li data-category-item><a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices/statistics/nodes_counter_dialog.html">Nodes Counter Dialog</a></li>
+                <li data-category-item><a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices/statistics/project_information.html">Project Information</a></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="category-tile category-tile--examples" data-category-tile data-search="examples sample projects scripts repositories code">
+          <header class="category-tile__header">
+            <h3>Examples</h3>
+            <p>Working projects and reusable NetLogic resources.</p>
+          </header>
+          <div class="category-tile__groups">
+            <div class="category-group" data-category-group>
+              <ul class="category-links">
+                <li data-category-item><a href="https://github.com/orgs/FactoryTalk-Optix/repositories">120+ project examples</a></li>
+                <li data-category-item><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet">NetLogic Cheat Sheet</a></li>
+                <li data-category-item><a href="chapters/Ready_to_use_scripts.html">More scripting resources</a></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="category-tile category-tile--docker" data-category-tile data-search="docker containers deploy deployment portainer compose optixedge">
+          <header class="category-tile__header">
+            <h3>Deploy on Docker</h3>
+            <p>Build, transfer, run, and harden container workloads.</p>
+          </header>
+          <div class="category-tile__groups">
+            <div class="category-group" data-category-group>
+              <h4>Deploy</h4>
+              <ul class="category-links">
+                <li data-category-item><a href="https://github.com/FactoryTalk-Optix/Optix_Docker_FTOptixUpdateServer">FactoryTalk Optix Docker deployment</a></li>
+                <li data-category-item><a href="chapters/OptixEdge_first_container.html">Deploy a first OptixEdge container</a></li>
+                <li data-category-item data-search="offline usb"><a href="chapters/OptixEdge_usb_import.html">Import containers from USB</a></li>
+              </ul>
+            </div>
+            <div class="category-group" data-category-group>
+              <h4>Operate</h4>
+              <ul class="category-links">
+                <li data-category-item data-search="remote command line"><a href="chapters/OptixEdge_remote_cli.html">Manage Docker with CLI</a></li>
+                <li data-category-item><a href="chapters/OptixEdge_container_examples.html">Container examples</a></li>
+                <li data-category-item data-search="production security backup"><a href="chapters/OptixEdge_production_tips.html">Production hardening</a></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="category-tile category-tile--hardware" data-category-tile data-search="hardware optixpanel optixedge edge panel firmware device">
+          <header class="category-tile__header">
+            <h3>Hardware</h3>
+            <p>OptixPanel and OptixEdge product resources.</p>
+          </header>
+          <div class="category-tile__groups">
+            <div class="category-group" data-category-group>
+              <ul class="category-links">
+                <li data-category-item><a href="chapters/OptixPanels_and_co.html">OptixPanel details</a></li>
+                <li data-category-item><a href="chapters/OptixEdge.html">OptixEdge deep dive</a></li>
+                <li data-category-item><a href="https://github.com/FactoryTalk-Optix/OptixEdge_WizardApp">OptixEdge Wizard App</a></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="category-tile category-tile--ubiquity" data-category-tile data-search="ubiquity ftra remote access vpn rk20 system manager">
+          <header class="category-tile__header">
+            <h3>Ubiquity / FTRA</h3>
+            <p>Remote access, releases, API docs, and RK20 hardware.</p>
+          </header>
+          <div class="category-tile__groups">
+            <div class="category-group" data-category-group>
+              <h4>Platform</h4>
+              <ul class="category-links">
+                <li data-category-item><a href="pdf/ubiquity/UbiquityOverview.pdf">Ubiquity overview</a></li>
+                <li data-category-item><a href="https://ubiquity.asem.it/api/index.html">Ubiquity Web API</a></li>
+                <li data-category-item><a href="https://ubiquity.asem.it/en/Index">Ubiquity site</a></li>
+                <li data-category-item><a href="https://ubiquity.asem.it/Help/">Ubiquity help</a></li>
+              </ul>
+            </div>
+            <div class="category-group" data-category-group>
+              <h4>Updates and hardware</h4>
+              <ul class="category-links">
+                <li data-category-item><a href="chapters/Ubiquity_releases.html">Ubiquity release history</a></li>
+                <li data-category-item><a href="https://ubiquity.asem.it/en/News/Index">Latest news</a></li>
+                <li data-category-item data-search="rk2 manual hardware"><a href="https://literature.rockwellautomation.com/idc/groups/literature/documents/um/2800e-um007_-en-p.pdf">RK20 Manual</a></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="category-tile category-tile--cyber" data-category-tile data-search="cybersecurity security regulations nis2 compliance cra">
+          <header class="category-tile__header">
+            <h3>Cybersecurity</h3>
+            <p>European regulation guidance and compliance tools.</p>
+          </header>
+          <div class="category-tile__groups">
+            <div class="category-group" data-category-group>
+              <ul class="category-links">
+                <li data-category-item><a href="pdf/cybersecurity/New_European_CyberSecurityRegulations_Customer_v6_EN.pdf">Cybersecurity regulations overview</a></li>
+                <li data-category-item><a href="pdf/cybersecurity/New_European_CyberSecurityRegulations_NI2_Checklist_v2.0.html">NIS2 compliance checklist</a></li>
+              </ul>
+            </div>
+          </div>
+        </article>
       </div>
 
-      <!-- ── Panel: Develop Like a Pro ── -->
-      <div id="tab-dev" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-button-dev" hidden>
-        <div class="nav-grid">
-          <div class="nav-card">
-            <h3>Develop Like a Pro</h3>
-            <ul>
-              <li><a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices.html">Best Practices</a></li>
-              <li><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet/blob/main/pages/netlogic-lifecycle.md">NetLogic lifecycle: master it for better performances.</a></li>
-            </ul>
-          </div>
-          <div class="nav-card">
-            <h3>AI for FTOptix</h3>
-            <ul>
-              <li><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet?tab=readme-ov-file#netlogic-cheat-sheet-mcp-server">NetLogic cheat sheet MCP server</a></li>
-              <li><a href="chapters/FTOptix_expert_agent.html">FTOptix Expert Agent</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Panel: Debugging ── -->
-      <div id="tab-debug" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-button-debug" hidden>
-        <div class="nav-grid">
-          <div class="nav-card">
-            <h3>UI Performance Checklist</h3>
-            <ul>
-              <li><a href="chapters/Debugging.html">Step-by-step checklist for diagnosing slow UI</a></li>
-            </ul>
-          </div>
-          <div class="nav-card">
-            <h3>Diagnostic Tools</h3>
-            <ul>
-              <li><a href="https://asem-applicationsoftwareengineers.github.io/OptixRuntimeLogsParser/index.html">Runtime Logs Parser</a></li>
-              <li><a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices/statistics/nodes_counter_dialog.html">Nodes Counter Dialog</a></li>
-              <li><a href="https://www.rockwellautomation.com/en-us/docs/factorytalk-optix/current/contents-ditamap/best_practices/statistics/project_information.html">Project Information</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Panel: Examples & Scripts ── -->
-      <div id="tab-examples" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-button-examples" hidden>
-        <div class="nav-grid">
-          <div class="nav-card">
-            <h3>Examples &amp; Scripts</h3>
-            <ul>
-              <li><a href="https://github.com/orgs/FactoryTalk-Optix/repositories">120+ Project Examples</a></li>
-              <li><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet">NetLogic Cheat Sheet</a></li>
-              <li><a href="chapters/Ready_to_use_scripts.html">More Scripting Resources</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Panel: Hardware ── -->
-      <div id="tab-hw" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-button-hw" hidden>
-        <div class="nav-grid">
-          <div class="nav-card">
-            <h3>Optix Panel</h3>
-            <ul>
-              <li><a href="chapters/OptixPanels_and_co.html">OptixPanel details</a></li>
-            </ul>
-          </div>
-          <div class="nav-card">
-            <h3>OptixEdge</h3>
-            <ul>
-              <li><a href="chapters/OptixEdge.html">OptixEdge deep dive</a></li>
-              <li><a href="https://github.com/FactoryTalk-Optix/OptixEdge_WizardApp">OptixEdge's Wizard App</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Panel: Ubiquity / FTRA ── -->
-      <div id="tab-ubiquity" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-button-ubiquity" hidden>
-        <div class="nav-grid">
-          <div class="nav-card">
-            <h3>Ubiquity Overview</h3>
-            <ul>
-              <li><a href="pdf/ubiquity/UbiquityOverview.pdf">Ubiquity Overview (PDF)</a></li>
-              <li><a href="https://ubiquity.asem.it/api/index.html">Ubiquity Web API</a></li>
-              <li><a href="https://ubiquity.asem.it/en/Index">Ubiquity Site</a></li>
-            </ul>
-          </div>
-          <div class="nav-card">
-            <h3>New Releases</h3>
-            <ul>
-              <li><a href="chapters/Ubiquity_releases.html">Ubiquity Release History</a></li>
-              <li><a href="https://ubiquity.asem.it/en/News/Index">Latest News</a></li>
-            </ul>
-          </div>
-          <div class="nav-card">
-            <h3>Documentation</h3>
-            <ul>
-              <li><a href="https://literature.rockwellautomation.com/idc/groups/literature/documents/um/2800e-um007_-en-p.pdf">RK2 System Manager User Guide</a></li>
-              <li><a href="https://ubiquity.asem.it/Help/">Ubiquity Help</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Panel: Cyber Security ── -->
-      <div id="tab-cyber" class="tab-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-button-cyber" hidden>
-        <div class="nav-grid">
-          <div class="nav-card">
-            <h3>Cyber Security Regulations</h3>
-            <ul>
-              <li><a href="pdf/cybersecurity/New_European_CyberSecurityRegulations_Customer_v6_EN.pdf">Cyber Security Regulations Overview</a><br><small>Summary of new cyber security regulations affecting industrial customers</small></li>
-              <li><a href="pdf/cybersecurity/New_European_CyberSecurityRegulations_NI2_Checklist_v2.0.html">NIS2 Compliance Checklist</a><br><small>Step-by-step guide and checklist for NIS2 directive compliance</small></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /section-panel -->
+      <p class="category-empty" data-category-empty hidden>No resources match your search.</p>
+    </section>
 
     <hr>
 
@@ -553,62 +867,6 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
   </div>
 
   <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
-  <script>
-    // ── Tab navigation ──
-    function switchTab(btn, panelId) {
-      btn.closest('.tab-nav').querySelectorAll('.tab-btn').forEach(function(b) {
-        b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
-        b.setAttribute('tabindex', '-1');
-      });
-      btn.closest('.section-panel').querySelectorAll('.tab-panel').forEach(function(p) {
-        p.classList.remove('active');
-        p.setAttribute('hidden', 'hidden');
-      });
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-      btn.setAttribute('tabindex', '0');
-      var panel = document.getElementById(panelId);
-      panel.classList.add('active');
-      panel.removeAttribute('hidden');
-    }
-
-    function handleTabKeydown(event) {
-      var tabs = Array.from(document.querySelectorAll('.tab-nav .tab-btn'));
-      var currentIndex = tabs.indexOf(event.currentTarget);
-      var targetIndex = currentIndex;
-
-      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
-        targetIndex = (currentIndex + 1) % tabs.length;
-      } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
-        targetIndex = (currentIndex - 1 + tabs.length) % tabs.length;
-      } else if (event.key === 'Home') {
-        targetIndex = 0;
-      } else if (event.key === 'End') {
-        targetIndex = tabs.length - 1;
-      } else {
-        return;
-      }
-
-      event.preventDefault();
-      tabs[targetIndex].focus();
-      switchTab(tabs[targetIndex], tabs[targetIndex].getAttribute('aria-controls'));
-    }
-
-    // Open "Debugging" tab if URL hash targets it
-    (function() {
-      if (window.location.hash === '#debugging') {
-        var btn = document.querySelector('[aria-controls="tab-debug"]');
-        if (btn) switchTab(btn, 'tab-debug');
-      }
-    })();
-
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.tab-nav .tab-btn').forEach(function(tab) {
-        tab.addEventListener('keydown', handleTabKeydown);
-      });
-    });
-  </script>
 
 </body>
 

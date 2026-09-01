@@ -38,16 +38,16 @@
   featured: false
 
 - title: Complete FactoryTalk Optix Course
-  summary: The current complete training course hosted in the Rockwell Automation Seismic learning environment.
-  url: https://eng2e.seismic.com/ls/5d78bc76-77f9-460a-a446-4685520db077/HRZbG6dVdtwIQipW#/content/9229e75b-dc4e-4165-bcc6-90450dc0fe4b
+  summary: The complete FactoryTalk Optix technical training course in PDF format.
+  url: /pdf/ftoptix/FactoryTalk Optix Technical Training.PDF
   topic: Learning
   journey: Learn
   level: All levels
   format: Course
   language: English
   source: Rockwell Automation
-  external: true
-  requires_login: true
+  external: false
+  requires_login: false
   featured: true
 
 - title: FactoryTalk Optix Video Tutorials

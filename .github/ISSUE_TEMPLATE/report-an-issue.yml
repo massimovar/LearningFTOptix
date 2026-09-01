@@ -1,0 +1,58 @@
+name: Report an issue
+description: Report broken links, incorrect information, or other repository problems.
+title: "[Issue]: "
+body:
+  - type: dropdown
+    id: error-type
+    attributes:
+      label: Error type
+      options:
+        - Broken link
+        - Incorrect or outdated information
+        - Missing file or resource
+        - Typo or formatting problem
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Affected page or file
+      description: Paste the page URL or repository file path.
+      placeholder: https://massimovar.github.io/LearningFTOptix/...
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong?
+      description: Describe the error and how to reproduce it when relevant.
+      placeholder: Explain what happened and what you observed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected correction
+      description: Explain what the page, link, or content should show instead.
+      placeholder: Describe the correct result.
+    validations:
+      required: true
+
+  - type: input
+    id: references
+    attributes:
+      label: Supporting source
+      description: Add an official reference or other evidence when available.
+      placeholder: https://...
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Existing issues
+      options:
+        - label: I searched existing issues and did not find this error.
+          required: true

@@ -112,6 +112,99 @@
     }
   }
 
+  function initCategoryFinders() {
+    document.querySelectorAll("[data-category-finder]").forEach(function (finder) {
+      var queryInput = finder.querySelector("[data-category-query]");
+      var reset = finder.querySelector("[data-category-reset]");
+      var status = finder.querySelector("[data-category-status]");
+      var empty = finder.querySelector("[data-category-empty]");
+      var tiles = Array.from(finder.querySelectorAll("[data-category-tile]"));
+      var queryParam = "resource_q";
+
+      function updateUrl(rawQuery) {
+        var params = new URLSearchParams(window.location.search);
+        if (rawQuery) {
+          params.set(queryParam, rawQuery);
+        } else {
+          params.delete(queryParam);
+        }
+        var next = window.location.pathname + (params.toString() ? "?" + params.toString() : "") + window.location.hash;
+        window.history.replaceState(null, "", next);
+      }
+
+      function applyFilters(updateHistory) {
+        var rawQuery = (queryInput && queryInput.value || "").trim();
+        var query = normalize(rawQuery);
+        var visibleItems = 0;
+        var visibleTiles = 0;
+
+        tiles.forEach(function (tile) {
+          var tileHeader = tile.querySelector(".category-tile__header");
+          var categoryTitle = tileHeader && tileHeader.querySelector("h3");
+          var categoryHaystack = categoryTitle && categoryTitle.textContent;
+          var categoryMatches = Boolean(query && normalize(categoryHaystack).indexOf(query) !== -1);
+          var tileVisibleItems = 0;
+          var items = Array.from(tile.querySelectorAll("[data-category-item]"));
+
+          items.forEach(function (item) {
+            var itemHaystack = [
+              item.getAttribute("data-search"),
+              item.textContent
+            ].join(" ");
+            var show = !query || categoryMatches || normalize(itemHaystack).indexOf(query) !== -1;
+            item.hidden = !show;
+            if (show) {
+              tileVisibleItems += 1;
+              visibleItems += 1;
+            }
+          });
+
+          tile.querySelectorAll("[data-category-group]").forEach(function (group) {
+            group.hidden = !group.querySelector("[data-category-item]:not([hidden])");
+          });
+
+          tile.hidden = tileVisibleItems === 0;
+          if (!tile.hidden) visibleTiles += 1;
+        });
+
+        if (status) {
+          var resourceLabel = visibleItems === 1 ? "resource" : "resources";
+          var categoryLabel = visibleTiles === 1 ? "category" : "categories";
+          status.textContent = visibleItems + " " + resourceLabel + " across " + visibleTiles + " " + categoryLabel;
+        }
+        if (empty) empty.hidden = visibleItems !== 0;
+        if (reset) reset.disabled = !rawQuery;
+        if (updateHistory) updateUrl(rawQuery);
+      }
+
+      var params = new URLSearchParams(window.location.search);
+      if (queryInput && params.has(queryParam)) {
+        queryInput.value = params.get(queryParam);
+      }
+      applyFilters(false);
+
+      if (queryInput) {
+        queryInput.addEventListener("input", function () {
+          applyFilters(true);
+        });
+        queryInput.addEventListener("keydown", function (event) {
+          if (event.key !== "Escape" || !queryInput.value) return;
+          queryInput.value = "";
+          applyFilters(true);
+        });
+      }
+      if (reset) {
+        reset.addEventListener("click", function () {
+          if (queryInput) {
+            queryInput.value = "";
+            queryInput.focus();
+          }
+          applyFilters(true);
+        });
+      }
+    });
+  }
+
   function initReleaseFinders() {
     document.querySelectorAll("[data-release-finder]").forEach(function (finder) {
       var root = finder.closest(".release-history");
@@ -483,6 +576,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     initResourceFinder();
+    initCategoryFinders();
     initReleaseFinders();
     initCopyButtons();
     initLinkIndicators();
