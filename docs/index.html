@@ -219,10 +219,10 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
     .quick-links {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       gap: 16px;
       margin-bottom: 32px;
       padding: 8px 16px;
-      overflow-x: auto;
       border: 1px solid var(--border);
       border-left: 4px solid var(--accent);
       border-radius: var(--radius);
@@ -238,9 +238,10 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
     }
     .quick-links ul {
       display: flex;
-      flex: 0 0 auto;
-      flex-wrap: nowrap;
+      flex: 1 1 560px;
+      flex-wrap: wrap;
       gap: 8px;
+      min-width: 0;
       padding: 0;
       margin: 0;
       list-style: none;
@@ -552,6 +553,29 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
       .repo-actions {
         max-width: 100%;
         flex-wrap: wrap;
+      }
+      .quick-links {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 10px;
+        padding-block: 14px;
+      }
+      .quick-links h2 {
+        white-space: normal;
+      }
+      .quick-links ul {
+        flex: 0 1 auto;
+        width: 100%;
+      }
+      .quick-links li {
+        flex: 1 1 140px;
+        min-width: 0;
+      }
+      .quick-links a {
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+        white-space: normal;
       }
       .directory-search__control { grid-template-columns: 1fr; }
       .directory-search__clear {
