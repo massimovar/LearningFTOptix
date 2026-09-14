@@ -488,6 +488,20 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
       border-radius: 999px;
       box-shadow: 0 0 0 4px var(--accent-glow);
       content: "";
+      transition:
+        background-color var(--transition-smooth),
+        box-shadow var(--transition-smooth),
+        transform var(--transition-smooth);
+    }
+    .category-tile:hover .category-tile__header h3::before,
+    .category-tile:focus-within .category-tile__header h3::before {
+      background: #fff27a;
+      box-shadow:
+        0 0 2px #fff,
+        0 0 7px #ffe45c,
+        0 0 16px rgba(255, 216, 59, .92),
+        0 0 30px rgba(255, 193, 7, .62);
+      transform: scaleY(1.12);
     }
     .category-tile__header p {
       max-width: 54ch;
