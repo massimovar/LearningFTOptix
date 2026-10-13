@@ -402,6 +402,12 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
     .category-tile--debug {
       grid-column: span 5;
     }
+    .category-tile--examples,
+    .category-tile--docker,
+    .category-tile--hardware,
+    .category-tile--firmware {
+      grid-column: span 3;
+    }
     .category-tile--start {
       --tile-background: color-mix(in srgb, var(--accent-light) 62%, var(--bg-card));
       --tile-border: color-mix(in srgb, var(--accent) 42%, var(--border));
@@ -448,6 +454,12 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
       --tile-glow: color-mix(in srgb, var(--accent) 9%, transparent);
       --tile-glow-top: auto;
       --tile-glow-bottom: -145px;
+    }
+    .category-tile--firmware {
+      --tile-background: linear-gradient(160deg, color-mix(in srgb, var(--accent-light) 34%, var(--bg-card)), var(--surface));
+      --tile-border: color-mix(in srgb, var(--accent) 30%, var(--border));
+      --tile-rule: color-mix(in srgb, var(--accent) 52%, var(--border));
+      --tile-glow: color-mix(in srgb, var(--accent) 13%, transparent);
     }
     .category-tile--ubiquity {
       --tile-background: color-mix(in srgb, var(--accent-light) 38%, var(--bg-card));
@@ -639,7 +651,7 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
         grid-column: span 6;
       }
       .category-tile--cyber {
-        grid-column: span 12;
+        grid-column: span 6;
       }
       .category-tile--learn .category-tile__groups {
         grid-template-columns: 1fr;
@@ -855,6 +867,20 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
                 <li data-category-item><a href="chapters/OptixPanels_and_co.html">OptixPanel details</a></li>
                 <li data-category-item><a href="chapters/OptixEdge.html">OptixEdge deep dive</a></li>
                 <li data-category-item><a href="https://github.com/FactoryTalk-Optix/OptixEdge_WizardApp">OptixEdge Wizard App</a></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="category-tile category-tile--firmware" data-category-tile data-search="firmware optix-based devices optixpanel optixedge embedded edge compute system manager releases">
+          <header class="category-tile__header">
+            <h3>Optix-based devices Firmware</h3>
+            <p>Firmware releases for OptixPanel, OptixEdge, and Embedded Edge Compute.</p>
+          </header>
+          <div class="category-tile__groups">
+            <div class="category-group" data-category-group>
+              <ul class="category-links">
+                <li data-category-item data-search="7.0 release history timeline"><a href="chapters/Optix_firmware_releases.html#release-7-0-0-x">Firmware 7.0.0.x</a></li>
               </ul>
             </div>
           </div>

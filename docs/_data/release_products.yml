@@ -14,3 +14,10 @@ ubiquity:
   version_param: ubiquity_version
   anchor: latest-ubiquity-releases
   overview_pdf: /pdf/ubiquity/UbiquityOverview.pdf
+
+firmware:
+  name: Optix-based devices firmware
+  data_key: firmware_releases
+  query_param: firmware_q
+  version_param: firmware_version
+  anchor: latest-firmware-releases

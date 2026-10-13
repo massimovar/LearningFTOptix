@@ -54,3 +54,8 @@ products:
     history_title: Latest UBIQUITY releases
     finder_help: Search the complete feature inventory. Try terms such as VNC, VPN, Docker, TLS, invitations, permissions, or USB.
     version_label: UBIQUITY version
+
+  firmware:
+    history_title: Latest firmware releases
+    finder_help: Search the complete feature inventory. Try terms such as backup, bundle, USB, NAT, File Transfer, or System Manager.
+    version_label: Firmware version
