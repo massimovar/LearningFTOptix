@@ -91,7 +91,7 @@
   featured: false
 
 - title: Optix-based Devices Firmware Release Timeline
-  summary: Search PDF-sourced firmware features for OptixPanel, OptixEdge, and Embedded Edge Compute, starting with version 7.0.0.x.
+  summary: Search PDF-sourced firmware features for OptixPanel, OptixEdge, starting with version 7.0.0.x.
   url: /chapters/Optix_firmware_releases.html
   topic: Product releases
   journey: Deploy

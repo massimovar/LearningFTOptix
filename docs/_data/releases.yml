@@ -505,9 +505,6 @@
         - title: "Remembered Dynamic Link selection"
           detail: "Reopens the Dynamic Link popup at the last selected item."
           pages: "p. 8"
-        - title: "EEC export target"
-          detail: "Adds Embedded Edge Compute to the Export Application workflow."
-          pages: "p. 8"
         - title: "NetLogic Project View filter"
           detail: "Filters the Project View to NetLogic objects."
           pages: "p. 9"
@@ -631,7 +628,7 @@
   source_pages: "Source: FactoryTalk Optix v1.3 release presentation. Overview pp. 3-4; detailed feature pages are cited above."
   highlights:
     - title: "Project source recovery"
-      description: "Stores source with a deployment and uploads it later from PCs, OptixPanels, or Embedded Edge Compute devices."
+      description: "Stores source with a deployment and uploads it later from PCs, OptixPanels."
     - title: "Responsive HMI toolkit"
       description: "Adds new buttons, richer trends, Sparkline, expression functions, PWA support, and content wrapping."
     - title: "Security and maintainability"
@@ -642,7 +639,7 @@
     - name: "Core capabilities"
       items:
         - title: "Project upload from device"
-          detail: "Stores source with a deployment and later uploads it from PCs, OptixPanels, or Embedded Edge Compute devices."
+          detail: "Stores source with a deployment and later uploads it from PCs, OptixPanels."
           pages: "p. 6"
         - title: "Momentary, Toggle, and Delayed buttons"
           detail: "Adds button behaviors for held, switched, and long-press interactions."
