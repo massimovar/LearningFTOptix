@@ -210,6 +210,14 @@
 
 - collection: webinars
   section: Product releases
+  title: What's New in FactoryTalk Optix 1.8 and firmware 7.0
+  url: https://www.youtube.com/watch?v=gh1m9wq6DUg
+  source: ASEM
+  language: Italian
+  tags: [ftoptix-1.8, firmware-7.0, high-availability, thinmanager, ai-assistant, mqtt, data-connectivity]
+
+- collection: webinars
+  section: Product releases
   title: Novità introdotte in FactoryTalk Optix 1.7
   url: https://www.youtube.com/watch?v=yjK06nGgBUk
   source: ASEM

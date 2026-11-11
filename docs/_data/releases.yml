@@ -4,6 +4,8 @@
   date_iso: "2026-09-01"
   current: true
   pdf: "/pdf/ftoptix/releases/FTOptix v1.8.pdf"
+  video: "https://www.youtube.com/watch?v=gh1m9wq6DUg"
+  video_label: "ASEM release webinar (Italian)"
   summary: "A scale-out release introducing three-node High Availability, workstation clients, Base + Extended runtime licensing, ThinManager-managed containers, an AI documentation assistant in Studio, and richer MQTT data exchange."
   source_pages: "Source: FactoryTalk Optix v1.8 technical overview. Focus areas p. 5; detailed feature pages are cited above."
   notes:
