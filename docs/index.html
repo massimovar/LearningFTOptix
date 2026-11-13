@@ -35,16 +35,17 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
       text-align: center;
       margin-bottom: 40px;
     }
-    .hero img {
-      width: 88px; height: 88px;
-      margin-bottom: 16px;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,.08);
-    }
-    .hero h1 {
-      font-size: 32px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 8px;
-      background: linear-gradient(135deg, var(--text) 0%, var(--text-secondary) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    .hero-ascii {
+      width: max-content;
+      max-width: 100%;
+      margin: 0 auto 16px;
+      padding: 0;
+      overflow: hidden;
+      background: none;
+      border: 0;
+      text-align: left;
+      font: 700 clamp(5px, 1.6vw, 13px)/1.15 ui-monospace, Consolas, monospace;
+      color: var(--accent);
     }
     .hero p { color: var(--muted); font-size: 16px; max-width: 62ch; margin: 0 auto; }
     .hero-tagline {
@@ -492,7 +493,6 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
     /* Responsive */
     @media (max-width: 768px) {
       .container { padding: 32px 16px; }
-      .hero h1 { font-size: 26px; }
       .hero-tagline { flex-wrap: wrap; }
       .repo-actions {
         max-width: 100%;
@@ -567,8 +567,19 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
   <div class="container">
     <!-- Hero -->
     <header class="hero" role="banner">
-      <img src="images/logo.png" alt="Learning FactoryTalk Optix logo">
-      <h1>Learning FactoryTalk® Optix™</h1>
+      <h1 class="visually-hidden">Learning FactoryTalk® Optix™</h1>
+<pre class="hero-ascii" aria-hidden="true">                     _                          _
+                    | |    ___  __ _ _ __ _ __ (_)_ __   __ _
+                    | |   / _ \/ _` | '__| '_ \| | '_ \ / _` |
+                    | |__|  __/ (_| | |  | | | | | | | | (_| |
+                    |_____\___|\__,_|_|  |_| |_|_|_| |_|\__, |
+                                                        |___/
+ _____          _                  _____     _ _    (R)   ___        _   _      TM
+|  ___|_ _  ___| |_ ___  _ __ _   |_   _|_ _| | | __     / _ \ _ __ | |_(_)_  __
+| |_ / _` |/ __| __/ _ \| '__| | | || |/ _` | | |/ /    | | | | '_ \| __| \ \/ /
+|  _| (_| | (__| || (_) | |  | |_| || | (_| | |   &lt;     | |_| | |_) | |_| |&gt;  &lt;
+|_|  \__,_|\___|\__\___/|_|   \__, ||_|\__,_|_|_|\_\     \___/| .__/ \__|_/_/\_\
+                              |___/                           |_|</pre>
       <div class="hero-tagline">
         <p>A set of resources to become an FTOptix power user <em>(unofficial repo)</em></p>
         <span class="hero-tagline__star">
