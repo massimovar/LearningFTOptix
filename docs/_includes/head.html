@@ -1,14 +1,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light dark">
+{% if page.url == '/' or page.title == nil %}{% assign page_title = site.title %}{% else %}{% assign page_title = page.title | append: ' | ' | append: site.title %}{% endif %}
 {% assign meta_description = page.description | default: site.description %}
-<title>{% if page.layout == 'home' %}{{ site.title }}{% elsif page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+<title>{{ page_title }}</title>
 <meta name="description" content="{{ meta_description | escape }}">
 <link rel="canonical" href="{{ page.url | absolute_url }}">
 <meta property="og:type" content="website">
-<meta property="og:title" content="{% if page.layout == 'home' %}{{ site.title }}{% elsif page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}">
+<meta property="og:title" content="{{ page_title }}">
 <meta property="og:description" content="{{ meta_description | escape }}">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
 <meta property="og:image" content="{{ '/images/logo.png' | absolute_url }}">
 <link rel="icon" href="{{ '/images/logo.png' | relative_url }}">
+<script>
+  (function () {
+    var theme;
+    try { theme = localStorage.getItem("theme"); } catch (e) {}
+    if (theme !== "light" && theme !== "dark") {
+      theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
 <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">

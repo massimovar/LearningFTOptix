@@ -208,12 +208,10 @@ hide_page_header: true
   .badge-blue   { background: var(--accent-light); color: var(--accent); border: 1px solid transparent; }
   .badge-purple { background: #faf5ff; color: #7e22ce; border: 1px solid #e9d5ff; }
 
-  @media (prefers-color-scheme: dark) {
-    .badge-red    { background: #450a0a; color: #fca5a5; border-color: #7f1d1d; }
-    .badge-amber  { background: #431e02; color: #fcd34d; border-color: #78350f; }
-    .badge-green  { background: #052e16; color: #86efac; border-color: #166534; }
-    .badge-purple { background: #2e1065; color: #d8b4fe; border-color: #4c1d95; }
-  }
+  :root[data-theme="dark"] .badge-red    { background: #450a0a; color: #fca5a5; border-color: #7f1d1d; }
+  :root[data-theme="dark"] .badge-amber  { background: #431e02; color: #fcd34d; border-color: #78350f; }
+  :root[data-theme="dark"] .badge-green  { background: #052e16; color: #86efac; border-color: #166534; }
+  :root[data-theme="dark"] .badge-purple { background: #2e1065; color: #d8b4fe; border-color: #4c1d95; }
 
   /* ── Checklist items ── */
   .checklist {

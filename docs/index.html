@@ -7,104 +7,15 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="color-scheme" content="light dark">
-  <title>Learning FactoryTalk® Optix™</title>
-  <meta name="description" content="{{ page.description }}">
-  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  {% include head.html %}
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <style>
-    :root {
-      --bg: #fafbfc;
-      --bg-card: #ffffff;
-      --text: #1a1a2e;
-      --text-secondary: #4a5568;
-      --muted: #718096;
-      --border: #e2e8f0;
-      --accent: #0066cc;
-      --accent-hover: #0052a3;
-      --accent-light: #e6f2ff;
-      --accent-glow: rgba(0, 102, 204, 0.12);
-      --surface: #f7fafc;
-      --card-shadow: 0 1px 3px rgba(0, 0, 0, .04), 0 1px 2px rgba(0, 0, 0, .06);
-      --card-shadow-hover: 0 10px 40px rgba(0, 0, 0, .08), 0 2px 8px rgba(0, 0, 0, .04);
-      --transition-fast: 0.15s ease;
-      --transition-smooth: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      --radius: 12px;
-      --radius-sm: 8px;
-      --selection: rgba(0, 102, 204, 0.18);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0d1117;
-        --bg-card: #161b22;
-        --text: #e6edf3;
-        --text-secondary: #8b949e;
-        --muted: #8b949e;
-        --border: #30363d;
-        --accent: #58a6ff;
-        --accent-hover: #79b8ff;
-        --accent-light: #1a3a5c;
-        --accent-glow: rgba(88, 166, 255, 0.15);
-        --surface: #21262d;
-        --card-shadow: 0 1px 3px rgba(0, 0, 0, .2);
-        --card-shadow-hover: 0 10px 40px rgba(0, 0, 0, .3);
-        --selection: rgba(88, 166, 255, 0.22);
-      }
-    }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html {
-      scroll-behavior: smooth;
-      color-scheme: light dark;
-    }
-
-    ::selection {
-      background: var(--selection);
-      color: var(--text);
-    }
-
-    .skip-link {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      transform: translateY(-160%);
-      padding: 10px 14px;
-      border-radius: var(--radius-sm);
-      background: var(--bg-card);
-      color: var(--text);
-      border: 1px solid var(--border);
-      box-shadow: var(--card-shadow);
-      text-decoration: none;
-      z-index: 1000;
-      transition: transform var(--transition-fast);
-    }
-    .skip-link:focus { transform: translateY(0); }
-
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Helvetica, Arial, sans-serif;
       background:
         radial-gradient(circle at top, var(--accent-glow) 0%, transparent 30%),
         var(--bg);
-      color: var(--text);
       line-height: 1.6;
-      font-size: 16px;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
     }
 
     @keyframes fadeIn {
@@ -209,11 +120,7 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
     .hero .links a:hover { background: var(--accent-light); border-color: var(--accent); transform: translateY(-1px); }
 
     /* ── Separator ── */
-    hr {
-      border: none; height: 1px;
-      background: linear-gradient(to right, transparent, var(--border), transparent);
-      margin: 40px 0;
-    }
+    hr { margin: 40px 0; }
 
     /* ── Day-to-Day Essentials ── */
     .quick-links {
@@ -232,6 +139,7 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
     .quick-links h2 {
       flex: 0 0 auto;
       margin: 0;
+      border: 0;
       font-size: 15px;
       font-weight: 650;
       white-space: nowrap;
@@ -246,9 +154,9 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
       margin: 0;
       list-style: none;
     }
-    .quick-links li { display: inline-flex; }
+    .quick-links li { display: inline-flex; flex: 1 1 auto; }
     .quick-links a {
-      display: inline-flex; align-items: center; gap: 6px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 100%;
       padding: 6px 12px; border: 1px solid var(--border); border-radius: 24px;
       background: var(--surface); color: var(--text); text-decoration: none;
       font-size: 13px; font-weight: 500; white-space: nowrap;
@@ -581,17 +489,6 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
       display: none;
     }
 
-    /* ── Footer ── */
-    .footer {
-      text-align: center; color: var(--muted); font-size: 13px;
-      margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border);
-    }
-    .footer a { color: var(--accent); text-decoration: none; font-weight: 500; transition: var(--transition-fast); }
-    .footer a:hover { text-decoration: underline; }
-
-    /* Focus */
-    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
-
     /* Responsive */
     @media (max-width: 768px) {
       .container { padding: 32px 16px; }
@@ -619,8 +516,6 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
         min-width: 0;
       }
       .quick-links a {
-        justify-content: center;
-        width: 100%;
         text-align: center;
         white-space: normal;
       }
@@ -662,21 +557,12 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
       }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
   </style>
 </head>
 
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  <button class="theme-toggle theme-toggle--floating" type="button" data-theme-toggle aria-label="Toggle light/dark theme" title="Toggle light/dark theme"></button>
 
   <div class="container">
     <!-- Hero -->
@@ -687,6 +573,7 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
         <p>A set of resources to become an FTOptix power user <em>(unofficial repo)</em></p>
         <span class="hero-tagline__star">
           <a class="github-button" href="https://github.com/massimovar/LearningFTOptix" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" data-no-link-indicator aria-label="Star massimovar/LearningFTOptix on GitHub">Star</a>
+          <script>document.currentScript.previousElementSibling.setAttribute("data-color-scheme", document.documentElement.getAttribute("data-theme"));</script>
         </span>
       </div>
       <div class="repo-actions" aria-label="Help improve this repository">
