@@ -38,16 +38,56 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
     .hero-ascii {
       width: max-content;
       max-width: 100%;
-      margin: 0 auto 16px;
-      padding: 0;
+      margin: 0 auto 8px;
+      padding: 12px 16px;
       overflow: hidden;
       background: none;
       border: 0;
       text-align: left;
       font: 700 clamp(5px, 1.6vw, 13px)/1.15 ui-monospace, Consolas, monospace;
-      color: #000;
+      color: var(--text);
     }
-    :root[data-theme="dark"] .hero-ascii { color: var(--accent); }
+
+    /* ── Neon sign title ── */
+    .hero-ascii {
+      --neon: #0070d6;
+      --neon-halo: 0.4;
+    }
+    :root[data-theme="dark"] .hero-ascii {
+      --neon: #2ee6ff;
+      --neon-halo: 0.75;
+    }
+    .neon {
+      color: var(--neon);
+      text-shadow:
+        0 0 1px var(--neon),
+        0 0 4px color-mix(in srgb, var(--neon) calc(var(--neon-halo) * 100%), transparent),
+        0 0 12px color-mix(in srgb, var(--neon) calc(var(--neon-halo) * 70%), transparent);
+      animation: neon-power-on 1.6s steps(1, end) both;
+    }
+    :root[data-theme="dark"] .neon {
+      text-shadow:
+        0 0 1px #fff,
+        0 0 3px var(--neon),
+        0 0 8px var(--neon),
+        0 0 18px color-mix(in srgb, var(--neon) 70%, transparent),
+        0 0 32px color-mix(in srgb, var(--neon) 45%, transparent);
+    }
+    .neon--factorytalk { animation-delay: 0.25s; }
+    .neon--optix       { animation-delay: 0.5s; }
+    .neon__mark { opacity: 0.6; text-shadow: none; }
+
+    @keyframes neon-power-on {
+      0%   { opacity: 0.12; text-shadow: none; }
+      12%  { opacity: 1; }
+      18%  { opacity: 0.2; text-shadow: none; }
+      30%  { opacity: 1; }
+      34%  { opacity: 0.45; text-shadow: none; }
+      46%, 100% { opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .neon { animation: none; }
+    }
     .hero p { color: var(--muted); font-size: 16px; max-width: 62ch; margin: 0 auto; }
     .hero-tagline {
       display: inline-flex;
@@ -63,14 +103,55 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
       min-height: 28px;
       flex-shrink: 0;
     }
+    .hero-quote {
+      max-width: 60ch;
+      margin: 22px auto 0;
+    }
+    .hero-quote blockquote {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: none;
+    }
+    .hero-quote blockquote p {
+      max-width: none;
+      color: var(--text);
+      font-size: clamp(1rem, 2.2vw, 1.15rem);
+      font-style: italic;
+      line-height: 1.5;
+      text-wrap: balance;
+    }
+    .hero-quote blockquote p::before { content: "\201C"; }
+    .hero-quote blockquote p::after  { content: "\201D"; }
+    .hero-quote figcaption {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: center;
+      gap: 4px 10px;
+      margin-top: 6px;
+      font-size: 13px;
+    }
+    .hero-quote__author {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .hero-quote__author::before { content: "\2014\00A0"; }
+    .hero-quote__source {
+      color: var(--muted);
+      font-size: 12px;
+      text-decoration: none;
+    }
+    .hero-quote__source:hover { color: var(--accent); text-decoration: underline; }
     .repo-actions {
       display: flex;
+      flex-shrink: 0;
       align-items: center;
       justify-content: center;
       gap: 4px;
       width: fit-content;
       padding: 4px;
-      margin: 10px auto 0;
+      margin: 0;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 10px;
@@ -124,53 +205,21 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
     /* ── Separator ── */
     hr { margin: 40px 0; }
 
-    /* ── Day-to-Day Essentials ── */
-    .quick-links {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 32px;
-      padding: 8px 16px;
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--accent);
-      border-radius: var(--radius);
-      background: var(--bg-card);
-      box-shadow: var(--card-shadow);
-    }
-    .quick-links h2 {
-      flex: 0 0 auto;
-      margin: 0;
-      border: 0;
-      font-size: 15px;
-      font-weight: 650;
-      white-space: nowrap;
-    }
-    .quick-links ul {
-      display: flex;
-      flex: 1 1 560px;
-      flex-wrap: wrap;
-      gap: 8px;
-      min-width: 0;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-    }
-    .quick-links li { display: inline-flex; flex: 1 1 auto; }
-    .quick-links a {
-      display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 100%;
-      padding: 6px 12px; border: 1px solid var(--border); border-radius: 24px;
-      background: var(--surface); color: var(--text); text-decoration: none;
-      font-size: 13px; font-weight: 500; white-space: nowrap;
-    }
-    .quick-links a:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
-
     /* ── Searchable resource directory ── */
     .resource-directory {
       margin-bottom: 48px;
     }
     .directory-intro {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px 24px;
       margin-bottom: 18px;
+    }
+    .directory-intro > div:first-child {
+      flex: 1 1 320px;
+      min-width: 0;
     }
     .directory-intro h2 {
       margin: 0;
@@ -317,6 +366,32 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
     .category-tile--hardware,
     .category-tile--firmware {
       grid-column: span 3;
+    }
+    .category-index .category-tile--essentials {
+      grid-column: 1 / -1;
+      --tile-rule: var(--accent);
+      --tile-glow: color-mix(in srgb, var(--accent) 14%, transparent);
+    }
+    .category-tile--essentials .category-links {
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, max(190px, calc((100% - 40px) / 5))), 1fr));
+      gap: 10px;
+    }
+    .category-tile--essentials .category-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      margin: 0;
+      padding: 9px 14px;
+      text-align: center;
+      white-space: nowrap;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      transition: color var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+    }
+    .category-tile--essentials .category-links a:hover {
+      border-color: var(--accent);
     }
     .category-tile--start {
       --tile-background: color-mix(in srgb, var(--accent-light) 62%, var(--bg-card));
@@ -499,27 +574,6 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
         max-width: 100%;
         flex-wrap: wrap;
       }
-      .quick-links {
-        align-items: stretch;
-        flex-direction: column;
-        gap: 10px;
-        padding-block: 14px;
-      }
-      .quick-links h2 {
-        white-space: normal;
-      }
-      .quick-links ul {
-        flex: 0 1 auto;
-        width: 100%;
-      }
-      .quick-links li {
-        flex: 1 1 140px;
-        min-width: 0;
-      }
-      .quick-links a {
-        text-align: center;
-        white-space: normal;
-      }
       .directory-search__control { grid-template-columns: 1fr; }
       .directory-search__clear {
         min-height: 42px;
@@ -569,18 +623,18 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
     <!-- Hero -->
     <header class="hero" role="banner">
       <h1 class="visually-hidden">Learning FactoryTalk® Optix™</h1>
-<pre class="hero-ascii" aria-hidden="true">                     _                          _
+<pre class="hero-ascii" aria-hidden="true"><span class="neon neon--learning">                     _                          _
                     | |    ___  __ _ _ __ _ __ (_)_ __   __ _
                     | |   / _ \/ _` | '__| '_ \| | '_ \ / _` |
                     | |__|  __/ (_| | |  | | | | | | | | (_| |
                     |_____\___|\__,_|_|  |_| |_|_|_| |_|\__, |
-                                                        |___/
- _____          _                  _____     _ _    (R)   ___        _   _      TM
-|  ___|_ _  ___| |_ ___  _ __ _   |_   _|_ _| | | __     / _ \ _ __ | |_(_)_  __
-| |_ / _` |/ __| __/ _ \| '__| | | || |/ _` | | |/ /    | | | | '_ \| __| \ \/ /
-|  _| (_| | (__| || (_) | |  | |_| || | (_| | |   &lt;     | |_| | |_) | |_| |&gt;  &lt;
-|_|  \__,_|\___|\__\___/|_|   \__, ||_|\__,_|_|_|\_\     \___/| .__/ \__|_/_/\_\
-                              |___/                           |_|</pre>
+                                                        |___/</span>
+<span class="neon neon--factorytalk"> _____          _                  _____     _ _    <span class="neon__mark">(R)</span></span><span class="neon neon--optix">   ___        _   _      <span class="neon__mark">TM</span></span>
+<span class="neon neon--factorytalk">|  ___|_ _  ___| |_ ___  _ __ _   |_   _|_ _| | | __   </span><span class="neon neon--optix">  / _ \ _ __ | |_(_)_  __</span>
+<span class="neon neon--factorytalk">| |_ / _` |/ __| __/ _ \| '__| | | || |/ _` | | |/ /   </span><span class="neon neon--optix"> | | | | '_ \| __| \ \/ /</span>
+<span class="neon neon--factorytalk">|  _| (_| | (__| || (_) | |  | |_| || | (_| | |   &lt;    </span><span class="neon neon--optix"> | |_| | |_) | |_| |&gt;  &lt;</span>
+<span class="neon neon--factorytalk">|_|  \__,_|\___|\__\___/|_|   \__, ||_|\__,_|_|_|\_\   </span><span class="neon neon--optix">  \___/| .__/ \__|_/_/\_\</span>
+<span class="neon neon--factorytalk">                              |___/                    </span><span class="neon neon--optix">       |_|</span></pre>
       <div class="hero-tagline">
         <p>A set of resources to become an FTOptix power user <em>(unofficial repo)</em></p>
         <span class="hero-tagline__star">
@@ -588,10 +642,22 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
           <script>document.currentScript.previousElementSibling.setAttribute("data-color-scheme", document.documentElement.getAttribute("data-theme"));</script>
         </span>
       </div>
-      <div class="repo-actions" aria-label="Help improve this repository">
-        <a href="https://github.com/massimovar/LearningFTOptix/issues/new?template=report-an-issue.yml" target="_blank" rel="noopener noreferrer" data-no-link-indicator>Report an issue</a>
-        <a href="https://github.com/massimovar/LearningFTOptix/issues/new?template=suggest-new-content.yml" target="_blank" rel="noopener noreferrer" data-no-link-indicator>Suggest new content</a>
-      </div>
+      <figure class="hero-quote">
+        <blockquote><p data-hero-quote-text>Make it as simple as possible. But no simpler.</p></blockquote>
+        <figcaption>
+          <span class="hero-quote__author" data-hero-quote-author>Albert Einstein</span>
+          <a class="hero-quote__source" href="https://folklore.org/html/quotes.html" target="_blank" rel="noopener noreferrer" data-no-link-indicator>via folklore.org</a>
+        </figcaption>
+      </figure>
+      <script>
+        (function () {
+          var quotes = {{ site.data.quotes | jsonify }};
+          if (!quotes || !quotes.length) return;
+          var q = quotes[Math.floor(Math.random() * quotes.length)];
+          document.querySelector("[data-hero-quote-text]").textContent = q.text;
+          document.querySelector("[data-hero-quote-author]").textContent = q.author;
+        })();
+      </script>
       <div class="official-resources">
         <a class="official-resources__source" href="https://www.rockwellautomation.com/en-us/support/documentation/technical/capabilities/optix-portfolio.html" data-no-link-indicator>
           Resources by Rockwell Automation →
@@ -608,21 +674,16 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
 
     <hr>
 
-    <section class="quick-links" aria-labelledby="quick-links-heading">
-      <h2 id="quick-links-heading">Day-to-Day Essentials</h2>
-      <ul>
-        <li><a href="chapters/Learning_material_Videos.html">Video tutorials</a></li>
-        <li><a href="{{ '/pdf/ftoptix/FactoryTalk Optix Technical Training.PDF' | relative_url }}" target="_blank" rel="noopener noreferrer">Complete Course</a></li>
-        <li><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet">NetLogic Cheat Sheet</a></li>
-        <li><a href="https://engage.rockwellautomation.com/communities/forums/forums-home?CommunityKey=0cbb1b6c-055d-48db-8d38-d24850beeec9">RA Community Forum</a></li>
-        <li><a href="https://rockwellautomation.custhelp.com/app/home">RA Knowledge Base</a></li>
-      </ul>
-    </section>
-
     <section class="resource-directory" aria-labelledby="resource-directory-heading" data-category-finder>
       <div class="directory-intro">
-        <h2 id="resource-directory-heading">Explore all resources</h2>
-        <p>Browse every category or search by product, task, or topic.</p>
+        <div>
+          <h2 id="resource-directory-heading">Explore all resources</h2>
+          <p>Browse every category or search by product, task, or topic.</p>
+        </div>
+        <div class="repo-actions" aria-label="Help improve this repository">
+          <a href="https://github.com/massimovar/LearningFTOptix/issues/new?template=report-an-issue.yml" target="_blank" rel="noopener noreferrer" data-no-link-indicator>Report an issue</a>
+          <a href="https://github.com/massimovar/LearningFTOptix/issues/new?template=suggest-new-content.yml" target="_blank" rel="noopener noreferrer" data-no-link-indicator>Suggest new content</a>
+        </div>
       </div>
 
       <div class="directory-search" role="search">
@@ -635,6 +696,24 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
       </div>
 
       <div class="category-index" data-category-results>
+        <article class="category-tile category-tile--essentials" data-category-pinned>
+          <header class="category-tile__header">
+            <h3>Day-to-Day Essentials</h3>
+            <p>The shortcuts you reach for every day.</p>
+          </header>
+          <div class="category-tile__groups">
+            <div class="category-group">
+              <ul class="category-links">
+                <li><a href="chapters/Learning_material_Videos.html">Video tutorials</a></li>
+                <li><a href="{{ '/pdf/ftoptix/FactoryTalk Optix Technical Training.PDF' | relative_url }}" target="_blank" rel="noopener noreferrer">Complete course</a></li>
+                <li><a href="https://github.com/FactoryTalk-Optix/NetLogic_CheatSheet">NetLogic Cheat Sheet</a></li>
+                <li><a href="https://engage.rockwellautomation.com/communities/forums/forums-home?CommunityKey=0cbb1b6c-055d-48db-8d38-d24850beeec9">RA Community Forum</a></li>
+                <li><a href="https://rockwellautomation.custhelp.com/app/home">RA Knowledge Base</a></li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
         <article class="category-tile category-tile--start" data-category-tile data-search="start getting started beginner install setup license">
           <header class="category-tile__header">
             <h3>Start</h3>
@@ -679,6 +758,7 @@ description: A curated learning hub for FactoryTalk Optix resources, tutorials, 
               <ul class="category-links">
                 <li data-category-item><a href="https://rockwellautomation.custhelp.com/app/answers/answer_view/a_id/1141346/loc/en_US">FAQs (login required)</a></li>
                 <li data-category-item data-search="kb knowledge base"><a href="https://rockwellautomation.custhelp.com/app/home">RA Knowledgebase (login required)</a></li>
+                <li data-category-item data-search="community forum questions help"><a href="https://engage.rockwellautomation.com/communities/forums/forums-home?CommunityKey=0cbb1b6c-055d-48db-8d38-d24850beeec9">RA Community Forum</a></li>
               </ul>
             </div>
           </div>

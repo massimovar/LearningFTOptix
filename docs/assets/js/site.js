@@ -34,6 +34,7 @@
       var status = finder.querySelector("[data-category-status]");
       var empty = finder.querySelector("[data-category-empty]");
       var tiles = Array.from(finder.querySelectorAll("[data-category-tile]"));
+      var pinned = Array.from(finder.querySelectorAll("[data-category-pinned]"));
       var queryParam = "resource_q";
 
       function updateUrl(rawQuery) {
@@ -80,6 +81,11 @@
 
           tile.hidden = tileVisibleItems === 0;
           if (!tile.hidden) visibleTiles += 1;
+        });
+
+        // Pinned tiles duplicate links found elsewhere; hide them while searching.
+        pinned.forEach(function (tile) {
+          tile.hidden = Boolean(query);
         });
 
         if (status) {
